@@ -4,8 +4,8 @@ description: Bounded optimization implementation
 systemPromptMode: append
 model: "openai-codex/gpt-6-luna"
 thinking: max
-tools: ["read","grep","find","ls","bash","edit","write","notebook"]
-noExtensions: true
+tools: ["read","grep","find","ls","bash","edit","write","exec","wait","notebook","new_context","history","notes"]
+noExtensions: false
 noSkills: true
 agents: []
 inheritProjectContext: true

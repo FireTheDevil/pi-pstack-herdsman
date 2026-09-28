@@ -4,8 +4,8 @@ description: Bounded independent verification with Sol
 systemPromptMode: append
 model: "openai-codex/gpt-6-sol"
 thinking: medium
-tools: ["read","grep","find","ls","bash","notebook"]
-noExtensions: true
+tools: ["read","grep","find","ls","bash","exec","wait","notebook","new_context","history","notes"]
+noExtensions: false
 noSkills: true
 agents: []
 inheritProjectContext: true

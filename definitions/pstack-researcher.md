@@ -5,7 +5,7 @@ systemPromptMode: append
 model: "openai-codex/gpt-6-sol"
 thinking: medium
 tools: ["read","grep","find","ls"]
-noExtensions: true
+noExtensions: false
 noSkills: true
 agents: []
 inheritProjectContext: true

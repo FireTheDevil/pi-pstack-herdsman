@@ -758,7 +758,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "6c69601cfc0ac56994dd315f0cca9fc30fc58a50d2334ca55d3fd54477162f53",
+      "destinationSha256": "76e4c1d9a2b0921fdd682decaeb9f865a730f5f8f066c8de05fd2da75b9ee8d2",
       "disposition": "adapted"
     },
     {
@@ -1827,55 +1827,55 @@
     },
     {
       "path": "README.md",
-      "sha256": "f07402b7f26e0f53636f18ab234dec6a385d550b6240bc1bdaa7af837a896db4"
+      "sha256": "c7cbf49aefb16c24c7148662c1f8644ce51f92f09fd10965cdeb99fa76f8888c"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "e46e37ea285957c681b2dfa024672ca3c3a58438135f6eb25eacea61ee613700"
+      "sha256": "04420157b6d2bf4b8cb87b499816789038276b690c880610847ac6311dc426b8"
     },
     {
       "path": "definitions/pstack-advisor.md",
-      "sha256": "3c22276624f3d267bfb8a8aecbe1076e0795b3906a4440314b81e6ea63238d26"
+      "sha256": "33d0e2a14f2a2fa59122577fa46a4d43ba374c1ad33f00fa5750a997be9374d4"
     },
     {
       "path": "definitions/pstack-bug-fix.md",
-      "sha256": "ea64f2d7a42d634b384df41c40b84cd9d640739411cb39fab400c9762615c65c"
+      "sha256": "60fe197d2ccb721f7cc4a260fb970884b47e13588914e5232afef71ba3a0ae60"
     },
     {
       "path": "definitions/pstack-hillclimb.md",
-      "sha256": "7caecbae2f57a5d0501471c1108abf93b6b02dcc9335885af9c115b7598488ff"
+      "sha256": "d3c1eaacbcff180ad713ead5b790811b05351107005a38d05d4375ed0c55b91a"
     },
     {
       "path": "definitions/pstack-how-explorer.md",
-      "sha256": "b36f24b8f503559e20cab84524f723441fc0b363a473fa8fabceb8d428cee95a"
+      "sha256": "49e8244f8e7ebc356089aaad9faabc1a9c86ea16baa2119073d484fca56a9147"
     },
     {
       "path": "definitions/pstack-investigator.md",
-      "sha256": "24a09a7f3c34db736e035cb10120772e96892c69442878f8a57d96751c126840"
+      "sha256": "1f153b04052c78ab5a5d248adb21b3b637cf47885ca93c7e90741c7ef12e0eb0"
     },
     {
       "path": "definitions/pstack-perf-issue.md",
-      "sha256": "18b5dba0e493167289e09be9044f63067d60e31d8febfa4a0c6e013520b08963"
+      "sha256": "a70661044d27b1408876f9011e8757ba2d549d0959b44a6e4359835d3f90f918"
     },
     {
       "path": "definitions/pstack-poteto-agent.md",
-      "sha256": "3fa97995ed9bf0b70fe4c794c64e075cc441b8f3e13df7d8d6cb0a3e88dc8872"
+      "sha256": "2b6e1c85ff88a524ef525b51e86452feb6e4e664226c7b9f047ca1b568304342"
     },
     {
       "path": "definitions/pstack-researcher.md",
-      "sha256": "d07d8eec70d9c9971a879962980c31d389cb6e15b0104b72db23c6f25bb0dd3d"
+      "sha256": "864e6b7b206c9622400cb74308e12636a018f5ca39d3ea29a4b76fc01e841f88"
     },
     {
       "path": "definitions/pstack-reviewer.md",
-      "sha256": "f7ddd83d5d822a1162647f8783de63b04ce8380f97917836ce80b51c060b9171"
+      "sha256": "e6eb46c558a0d8bb1a11877d2127a8fc3711bf51b34527c17861e8bcfcb0ea94"
     },
     {
       "path": "definitions/pstack-verifier-sol.md",
-      "sha256": "6b958780daab29eda6bb7c6a2d9d54800e26c29dab77890eeb6938298e9dbf0d"
+      "sha256": "1c980793cf1d6405ff9c586e27b603666967b3c29ed13ef805403cd641d1e73e"
     },
     {
       "path": "definitions/pstack-verifier.md",
-      "sha256": "31f77d2291f3497254c4abfe3fc0e94ef80905ccdef2c40fde42990e6f554819"
+      "sha256": "949dbaed069d981756d3de9fe54c3cdf254d20d144325aee9bbb6db47fb9813d"
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",

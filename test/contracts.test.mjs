@@ -21,7 +21,7 @@ function template(text) {
     fields[match[1]] = match[2];
   }
   assert.match(fields.name, /^pstack-[a-z-]+$/);
-  assert.equal(fields.noExtensions, 'true');
+  assert.equal(fields.noExtensions, 'false');
   assert.equal(fields.noSkills, 'true');
   assert.deepEqual(JSON.parse(fields.agents), []);
   fields.tools = JSON.parse(fields.tools);
@@ -51,14 +51,14 @@ test('model-pinned leaf templates materialize at discoverable trusted project pa
     ['advisor','sol','medium']
   ]);
 });
-test('read-only template ceilings exclude mutation, shell and delegation tools', () => {
+test('all templates discover extensions while native tool allowlists remain role-specific', () => {
   for (const role of ['investigator', 'how-explorer', 'reviewer', 'researcher', 'advisor']) {
     assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls']);
   }
   for (const role of ['poteto-agent','bug-fix','perf-issue','hillclimb'])
-    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','edit','write','notebook']);
+    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','edit','write','exec','wait','notebook','new_context','history','notes']);
   for (const role of ['verifier','verifier-sol'])
-    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','notebook']);
+    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','exec','wait','notebook','new_context','history','notes']);
 });
 test('template contract rejects unknown, malformed and duplicate fields', () => {
   const text = read('definitions/pstack-reviewer.md');

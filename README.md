@@ -28,17 +28,17 @@ Reload/restart and inspect the effective Herdsman roster after the automatic cop
 |---|---|---|
 | investigator / pstack-investigator | Local evidence | read, grep, find, ls |
 | how-explorer / pstack-how-explorer | Deep how exploration | read, grep, find, ls |
-| poteto-agent / pstack-poteto-agent | Feature/refactoring implementation | read, grep, find, ls, bash, edit, write, notebook |
+| poteto-agent / pstack-poteto-agent | Feature/refactoring implementation | read, grep, find, ls, bash, edit, write, exec, wait, notebook, new_context, history, notes |
 | bug-fix / pstack-bug-fix | Bug-fix implementation | same as poteto-agent |
 | perf-issue / pstack-perf-issue | Performance implementation | same as poteto-agent |
 | hillclimb / pstack-hillclimb | Intensive optimization | same as poteto-agent |
 | reviewer / pstack-reviewer | Fresh independent review | read, grep, find, ls |
 | researcher / pstack-researcher | External-source evidence | read, grep, find, ls |
-| verifier / pstack-verifier | Authorized behavioral checks, Astra | read, grep, find, ls, bash, notebook |
+| verifier / pstack-verifier | Authorized behavioral checks, Astra | read, grep, find, ls, bash, exec, wait, notebook, new_context, history, notes |
 | verifier-sol / pstack-verifier-sol | Authorized behavioral checks, Sol | same as verifier |
 | advisor / pstack-advisor | Design, decisions, synthesis | read, grep, find, ls |
 
-All templates are leaves and disable ordinary extensions/skills. Their model/thinking pins follow `~/.pi/agent/pstack/models.json` as configured when these templates were authored; that file is not read at runtime. Verifier and researcher pins are inferred defaults because the policy lists neither role. Herdsman's mandatory infrastructure remains. Supply needed evidence/skills through files. Live external tools need explicit definition customization; the researcher can read supplied source snapshots without web access. Tool ceilings are not OS sandboxes.
+All templates are leaves and enable ordinary extension discovery (`noExtensions: false`), while native skill discovery remains disabled. Their model/thinking pins follow `~/.pi/agent/pstack/models.json` as configured when these templates were authored; that file is not read at runtime. Verifier and researcher pins are inferred defaults because the policy lists neither role. Herdsman's mandatory infrastructure remains. Supply needed evidence/skills through files. Extension tools still need to be listed in a profile's `tools` allowlist to be callable: the researcher can read supplied source snapshots, but its default allowlist does not include web tools. Loaded extensions can run handlers even when their tools are filtered, so tool lists are not extension sandboxes.
 
 ## Deliberate limits
 
