@@ -1,0 +1,41 @@
+{
+  "name": "pi-pstack-herdsman",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone local pstack workflow and command adapter for Pi Herdsman.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "files": [
+    "extensions/",
+    "skills/",
+    "definitions/",
+    "scripts/",
+    "README.md",
+    "VALIDATION.md",
+    "NOTICE.md",
+    "LICENSE",
+    "PORT-MANIFEST.json",
+    "upstream.lock.json",
+    "!**/node_modules/**",
+    "!**/.poteto-mode-tools-install-key"
+  ],
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.87.0 <0.88.0",
+    "pi-herdsman": ">=0.13.0 <0.14.0"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/pstack-herdsman/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test test/*.test.mjs skills/poteto-mode/scripts/check-plan.test.mjs",
+    "check": "node --experimental-strip-types --check extensions/pstack-herdsman/index.ts && node scripts/validate-port.mjs"
+  }
+}

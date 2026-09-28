@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { files, hash } from './manifest.mjs';
+import { staleBackend } from './backend-contract.mjs';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const resources = files(root, 'skills');
+const skills = resources.filter(path => path.endsWith('/SKILL.md'));
+assert.equal(skills.length, 47);
+assert.equal(resources.filter(path => path.includes('/playbooks/') && path.endsWith('.md')).length, 23);
+for (const path of skills) {
+  const text = readFileSync(join(root, path), 'utf8');
+  const fm = text.match(/^---\n([\s\S]*?)\n---/);
+  assert.ok(fm, path);
+  assert.match(fm[1], /^disable-model-invocation: true$/m, path);
+  assert.match(fm[1], /^name: [a-z0-9-]+$/m, path);
+}
+for (const path of resources.filter(path => path.endsWith('.md'))) {
+  const text = readFileSync(join(root, path), 'utf8');
+  assert.ok(!staleBackend.test(text), 'Stale backend: ' + path);
+  for (const match of text.matchAll(/\[[^\]\n]*\]\(([^)\n]+)\)/g)) {
+    const href = match[1].split('#')[0];
+    if (!href || href === 'url' || /^(?:[a-z]+:|\/)/i.test(href) || href.includes('<')) continue;
+    const target = resolve(root, dirname(path), href);
+    const rel = relative(root, target);
+    assert.ok(!rel.startsWith('..') && !isAbsolute(rel), 'Link escapes: ' + path);
+    assert.ok(existsSync(target), 'Broken link: ' + path + ' -> ' + href);
+  }
+}
+const manifest = JSON.parse(readFileSync(join(root, 'PORT-MANIFEST.json'), 'utf8'));
+assert.deepEqual(manifest.resources.map(r => r.destination).sort(), resources.sort(), 'Complete provenance inventory');
+for (const record of manifest.resources) {
+  assert.equal(hash(join(root, record.destination)), record.destinationSha256, record.destination);
+  assert.equal(record.disposition, record.sourceSha256 === record.destinationSha256 ? 'adopted' : 'adapted');
+}
+for (const record of manifest.generated) assert.equal(hash(join(root, record.path)), record.sha256, record.path);
+const expectedGenerated = files(root).filter(path => path !== 'PORT-MANIFEST.json' && !path.startsWith('test/') && !resources.includes(path)).sort();
+assert.deepEqual(manifest.generated.map(record => record.path).sort(), expectedGenerated, 'Complete generated inventory');
+for (const path of files(root).filter(path => /\.(?:ts|mjs)$/.test(path) && !path.startsWith('skills/') && !path.startsWith('test/'))) {
+  const text = readFileSync(join(root, path), 'utf8');
+  assert.ok(!/(?:from\s+|import\s*\()["'][^"']*\.\.\/pi-pstack/.test(text), path);
+}
+assert.match(readFileSync(join(root, 'skills/poteto-mode/SKILL.md'), 'utf8'), /ordinary replies.*without loading unslop/i);
+assert.match(readFileSync(join(root, 'skills/poteto-mode/SKILL.md'), 'utf8'), /Reuse that text/);
+assert.match(readFileSync(join(root, 'skills/typescript-best-practices/SKILL.md'), 'utf8'), /writing|modifying/i);
+const runtime = readFileSync(join(root, 'skills/poteto-mode/references/herdsman-runtime.md'), 'utf8');
+assert.match(runtime, /There is no wait\/join\/collection call/);
+assert.match(runtime, /exact returned Pi session/);
+assert.match(runtime, /available_actions/);
+console.log(JSON.stringify({ skills: skills.length, playbooks: 23, resources: resources.length, validation: 'metadata, links, backend, complete hashes, standalone imports' }));

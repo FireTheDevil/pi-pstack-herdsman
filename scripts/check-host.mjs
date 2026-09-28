@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import { readFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { pathToFileURL, fileURLToPath } from 'node:url';
+const [piPath, herdsmanPath] = process.argv.slice(2);
+if (!piPath || !herdsmanPath) throw new Error('Usage: node scripts/check-host.mjs <installed-pi-root> <installed-herdsman-root>');
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const piRoot = resolve(piPath), host = resolve(herdsmanPath);
+const version = JSON.parse(readFileSync(join(host, 'package.json'), 'utf8')).version;
+assert.equal(version, '0.13.0', 'Revalidate documented backend contracts before upgrading');
+const piVersion = JSON.parse(readFileSync(join(piRoot, 'package.json'), 'utf8')).version;
+assert.match(piVersion, /^0\.87\./);
+const schema = readFileSync(join(host, 'docs/reference/agent-definition-schema.md'), 'utf8');
+assert.match(schema, /active_agent name=/);
+assert.match(schema, /bundled < project < global/);
+assert.match(schema, /Unknown frontmatter fields fail validation/);
+assert.match(schema, /exclusion wins over an allowlist/);
+const api = readFileSync(join(host, 'docs/reference/agent.md'), 'utf8');
+assert.match(api, /timeoutMs/);
+const { loadExtensions } = await import(pathToFileURL(join(piRoot, 'dist/core/extensions/loader.js')));
+const { loadSkillsFromDir } = await import(pathToFileURL(join(piRoot, 'dist/core/skills.js')));
+const tmp = join(root, '.pi-herdsman/tmp');
+mkdirSync(tmp, { recursive: true });
+const isolated = mkdtempSync(join(tmp, 'host-'));
+try {
+  const loaded = await loadExtensions([join(root, 'extensions/pstack-herdsman/index.ts')], isolated);
+  assert.deepEqual(loaded.errors, []);
+  assert.equal(loaded.extensions.length, 1);
+  assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack', 'setup-pstack']);
+  const skills = loadSkillsFromDir({ dir: join(root, 'skills'), source: 'local' });
+  assert.equal(skills.skills.length, 47);
+  assert.deepEqual(skills.diagnostics, []);
+  assert.ok(skills.skills.every(s => s.disableModelInvocation));
+  console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: 47, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
+} finally { rmSync(isolated, { recursive: true, force: true }); }

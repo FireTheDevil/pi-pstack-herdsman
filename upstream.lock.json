@@ -1,0 +1,40 @@
+{
+  "formatVersion": 1,
+  "package": "pi-pstack-herdsman",
+  "originalUpstream": {
+    "name": "Cursor pstack (cursor/plugin/pstack, as named in the request)",
+    "canonical": "https://github.com/cursor/plugins/tree/main/pstack",
+    "repository": "https://github.com/cursor/plugins.git",
+    "subdirectory": "pstack",
+    "commit": "df3fb154fb982fb83f649de8646d4af6a0cb16b3",
+    "license": "MIT"
+  },
+  "intermediates": {
+    "zenspc": {
+      "repository": "https://github.com/zenspc/pi-extensions.git",
+      "subdirectory": "packages/pi-pstack",
+      "commit": "88600500953dfa28f19441d9085c3e9edcfc5b5c",
+      "version": "0.5.0",
+      "license": "MIT"
+    },
+    "shepherdr": {
+      "source": "local pi-pstack-shepherdr working tree with token-saving edits"
+    },
+    "fabric": {
+      "source": "/path/to/pi-pstack-fabric",
+      "repositoryHead": "27fb137cad688cc857419402133a0fdb29b23484",
+      "workingTreeInput": true,
+      "inspectedVersion": "0.92.5"
+    }
+  },
+  "backend": {
+    "package": "pi-herdsman",
+    "inspectedVersion": "0.13.0",
+    "license": "Apache-2.0"
+  },
+  "policy": {
+    "pinsInheritedFromAudit": true,
+    "remoteReverification": false,
+    "movePinOnlyAfterReview": true
+  }
+}

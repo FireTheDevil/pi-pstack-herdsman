@@ -1,0 +1,4 @@
+node_modules/
+*.tgz
+.pi-herdsman/tmp/
+**/.poteto-mode-tools-install-key
