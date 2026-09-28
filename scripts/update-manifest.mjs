@@ -10,7 +10,7 @@ const manifest = source ? {
   version: 1,
   source: 'Local pi-pstack-fabric working tree. Historical intermediate only; not a runtime dependency.',
   upstream: JSON.parse(readFileSync(join(root, 'upstream.lock.json'), 'utf8')),
-  backend: { package: 'pi-herdsman', inspectedVersion: '0.13.0', mode: 'existing agent API' },
+  backend: { package: 'pi-herdsman', inspectedVersion: '0.17.1', mode: 'split agent_* API' },
   resources: files(resolve(source), 'skills').map(path => ({
     sourcePath: path,
     sourceSha256: hash(join(source, path)),

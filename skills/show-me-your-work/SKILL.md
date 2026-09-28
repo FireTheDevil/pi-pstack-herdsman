@@ -23,6 +23,8 @@ Copy `references/decision-log-template.tsv` (the header row) to start a clean lo
 
 An example, plain-spoken so a reviewer reads it at a glance. This is illustration only. Don't copy these rows into a real log.
 
+A run is one agent conversation, including later turns. A pickup, replacement, or new chat starts a new run. When adding to a log another run touched, append a `start` row naming the prior row range and this run's exact identity. Do not rewrite prior rows or claim another run's decisions.
+
 ```
 ts	phase	decision	why	evidence	result
 2026-05-24T09:02:00Z	frame	counted the work first, about 100 components and roughly 75 hours	wanted to know the size before starting a long run	commit 3a9f1c2	found 5 things to sort out before starting
@@ -55,12 +57,12 @@ Commit it only when the work is ambitious enough that a reviewer needs the trail
 
 At the end of the run, before handing back, check the log told the truth. Read this run's transcript under the active workspace's `sessions/` directory (the system prompt names the path). Don't glob across `~/.pi/agent/sessions/*/`. That reads unrelated private chats. Walk the log against what actually happened:
 
-- Every row maps to a real action. Cut invented or aspirational entries.
+- Every row maps to a real action. Supersede invented or aspirational entries with a new corrective row.
 - Each row's evidence resolves and shows what the row claims.
 - A fork, pivot, or abandoned approach that shaped the work but isn't logged is a gap. Add it.
-- Drop padding.
+- Mark padding as superseded; do not erase it.
 
-Fix the log, not the story. If the work diverged from what a row claims, the row is wrong.
+Fix the log by appending a correction with evidence, not by deleting or editing history. If work diverged from what a row claims, supersede that row.
 
 ## Cross-model review of the trail
 

@@ -35,8 +35,8 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
 
 ### Arm the program
 
-- [ ] State the protocol and this plan to the operator, then stop. Start execution only on her explicit go.
-- [ ] On her go, record the standing goal with the plan path, PR ids in order, verification rule, merge authority, and done condition in the decision trail.
+- [ ] State the protocol and this plan to the operator, then stop. Start execution only on the operator's explicit go.
+- [ ] On the operator's go, record the standing goal with the plan path, PR ids in order, verification rule, merge authority, and done condition in the decision trail.
 - [ ] Read these from trunk at program start. Re-read them at every tick.
   - [ ] `git show origin/main:skills/poteto-mode/playbooks/<execution playbook>.md`
   - [ ] `git show origin/main:skills/swarm/SKILL.md`
@@ -44,7 +44,7 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
   - [ ] `git show origin/main:skills/poteto-mode/playbooks/opening-a-pr.md`
   - [ ] `git show origin/main:skills/<each other leaf skill the program uses>`
 - [ ] Arm the 30-minute audit tick with a separately installed, explicitly authorized scheduler; otherwise record the timed audit as blocked. Never leave the cadence to memory.
-- [ ] Use this tick prompt, verbatim. "Re-read the execution playbook from trunk and the plan. Audit the operation against both and fix authorized drift in this tick. Assess concrete evidence and required attention for direct-owned lanes only; do not status-poll active agents or treat inactivity as proof of a hang. If recovery is necessary, preserve exact assignment identity and partial-work evidence, and use only current available_actions for that live agent. Resolve pending controls and mailbox/result-persistence issues according to the recorded recovery instructions before closing or replacing an assignment. Confirm teardown of the old execution and release of its write ownership before any replacement; never create overlapping writers. If evidence, control resolution or teardown is uncertain, report the blocker and do not replace the lane. Then send the operator a status message, whether or not anything changed, with the queue table of PR, owner, state, and head SHA, the verdicts since the last tick, what merged, open operator gates, and blockers."
+- [ ] Use this tick prompt, verbatim. "Re-read the execution playbook from trunk and the plan. Audit the operation against both and fix authorized drift in this tick. Assess concrete evidence and required attention for direct-owned lanes only; do not status-poll active agents or treat inactivity as proof of a hang. If recovery is necessary, preserve exact assignment identity and partial-work evidence, and use only current available_tools for that live agent. Resolve pending controls and mailbox/result-persistence issues according to the recorded recovery instructions before closing or replacing an assignment. Confirm teardown of the old execution and release of its write ownership before any replacement; never create overlapping writers. If evidence, control resolution or teardown is uncertain, report the blocker and do not replace the lane. Then post a short status message in this chat only for tracked changes not reported before, such as a new PR or head, a verdict, merge, recovered lane, blocker, or operator decision. Do not repeat unchanged tables or blockers. If nothing changed, end the turn without a status message. Append this tick and its reported items (or none) to the decision trail."
 - [ ] On the operator's hold or stand-down, send every owner a zero-writes order at once.
 
 ### Spawn owners
@@ -63,11 +63,11 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
 - [ ] Run the repo's lint and typecheck once before the PR-facing push. Push with hooks on.
 - [ ] Run `/skill:deslop` before each commit using supplied instructions for a leaf. After the implementation handoff, the lead runs `/skill:no-comments` before review and owns any `/skill:interrogate` delegation, forwarding required skill/rubric evidence and exact result refs through files.
 - [ ] Triage every Bugbot and security-reviewer comment per `../references/bugbot-triage.md`.
-- [ ] Rebase onto current trunk before babysit and again before the merge-ready report.
+- [ ] Rebase onto current trunk before the code-ready report and babysit. Preserve that base during fix rounds. Rebase again only at merge prep, on a conflict with trunk, or when CI fails because trunk changed.
 
 ### Verdict and merge, for every PR
 
-- [ ] At the merge-ready head SHA, run the swarm per `skills/swarm/SKILL.md`. One gates lane. The ten live lanes from the PR's **Verify, live** block. The perf lane from its **Verify, perf** block. One audit lane that reads the diff and the receipts and distrusts the PR body.
+- [ ] At the code-ready head and each later push changing the patch, run the swarm per `skills/swarm/SKILL.md`. One gates lane. The ten live lanes from the PR's **Verify, live** block. The perf lane from its **Verify, perf** block. Two focused audit lanes read the diff and receipts rather than trusting the PR body. The root checks the receipts again at merge-ready.
 - [ ] Clean only when every lane is `PASS`. Findings go back to the owner. A new head gets a fresh swarm and a fresh verdict.
 - [ ] <The merge or append rule from the execution playbook, with the patch-id rule from `playbooks/shipping.md`.>
 

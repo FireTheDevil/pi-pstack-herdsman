@@ -114,7 +114,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/arena/SKILL.md",
-      "destinationSha256": "9a16dc63267db7fbea98c0bb0b7c7d4a4ccc97196c0bc272092ef0a00a496ab8",
+      "destinationSha256": "89f056af87330d18e6c0a955ab796bedfc6c98d38c0bf0cf80dc3e50d38f1adf",
       "disposition": "adapted"
     },
     {
@@ -254,7 +254,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/how/SKILL.md",
-      "destinationSha256": "ef00c6cd2cf40e62c7068c03515aad69959734ab7602e8d5f7e749412b00179e",
+      "destinationSha256": "48343ce47a9124e7b9ab432312496c939c361671a402babc3507ffbae1c7ea27",
       "disposition": "adapted"
     },
     {
@@ -408,7 +408,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "a337f0d34817f033eb257fa2dfaefd34bbdea2e5db6d8b48fd0571b59e2d4402",
+      "destinationSha256": "9f8bddadc1991f07e062328e04354903a18105f7b168753166b7d6ff1b2b5458",
       "disposition": "adapted"
     },
     {
@@ -450,7 +450,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-full.md",
-      "destinationSha256": "c8038eb841b8ab6b33a5e1f32ca90da6cb60e0f34c660e95162fa7e0d975d57c",
+      "destinationSha256": "d363e23a48393ca5cfa48e415a3e92eae56516dbc7b5e279d0fb37ad3ee13c9a",
       "disposition": "adapted"
     },
     {
@@ -464,7 +464,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-stack.md",
-      "destinationSha256": "bf8c62421cca8414463a998724605a30b6b2069487cd4ce29f25ad76e4205e4d",
+      "destinationSha256": "bbfc9c08506b43a4c868bfc557a08ce7aef00bfb52f2c57f6c8d7ab93e8a0fbc",
       "disposition": "adapted"
     },
     {
@@ -492,7 +492,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/bug-fix.md",
-      "destinationSha256": "704655b4210e43f687225e98c20e737ed557b18918b13f79546f171fc6450c08",
+      "destinationSha256": "f118505812fc3c28a50ba71530caf62e253e4cd61ca5b1d402a9cd10fcdd117b",
       "disposition": "adapted"
     },
     {
@@ -534,7 +534,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/hillclimb.md",
-      "destinationSha256": "9783a43d2c3c8bf84a74e1d5715f38bf6b1562c0fde1d0a4f4481821a6ef4dae",
+      "destinationSha256": "f61f8ce79b6237a23532610e9032809e20665178c36f37b5e9de1325442057e1",
       "disposition": "adapted"
     },
     {
@@ -562,7 +562,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "destinationSha256": "dc54a7b50715f92eb34377be5304cb189a0a9410017aec72c5fed31eb1e2ed34",
+      "destinationSha256": "7e3b46b275b2ba4cac71dc9b4ed561acdfe7422e05d7eeb772896560688dfc26",
       "disposition": "adapted"
     },
     {
@@ -576,7 +576,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/opening-a-pr.md",
-      "destinationSha256": "a6e23c6ffc36df09b5481513133020da100d7fa0c4be44d414dbf6e605e6064a",
+      "destinationSha256": "e78bfc5ed8068e600adcc68f36c800781139668b8160a0c973473dfb12258c72",
       "disposition": "adapted"
     },
     {
@@ -590,7 +590,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/orchestrate.md",
-      "destinationSha256": "10c00a691204d4a5195852aecbc800be39b986954366620909ccef2a6f965911",
+      "destinationSha256": "efc902e6806f1c4e7e68dfe4dee34bd1cad29adde6dd688d4cb6a9e7516c49fe",
       "disposition": "adapted"
     },
     {
@@ -604,7 +604,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/pause-safely.md",
-      "destinationSha256": "8f25b58b5074774d8387484b0c546b3b2bd27ddf9499cf2acf867cccea0aea15",
+      "destinationSha256": "d57cee65d8240146d6d70e5564ec25d342a50250c412c4d05ab5d4de5c41a11a",
       "disposition": "adapted"
     },
     {
@@ -618,7 +618,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/perf-issue.md",
-      "destinationSha256": "11c5cdbe7d842b42db243203542fef67759e684950b97ed35e2e225b3a17fb89",
+      "destinationSha256": "40e2472f8a94f47324efa8ef248b79ca2e53110dafa21ace573eefd55c31e195",
       "disposition": "adapted"
     },
     {
@@ -730,7 +730,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "destinationSha256": "317289be915e3e5b6c960baa525711ed49945864a84bfa9c7ef1993009d7d089",
+      "destinationSha256": "04fd66e298ba3d511016b35d098c038c0509a62125036faab55df953d52e988d",
       "disposition": "adapted"
     },
     {
@@ -758,7 +758,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "55a617ed698fedc88f5276f61b772b9a95b9a171242f5ae29696f880d9277eb2",
+      "destinationSha256": "6c69601cfc0ac56994dd315f0cca9fc30fc58a50d2334ca55d3fd54477162f53",
       "disposition": "adapted"
     },
     {
@@ -1108,8 +1108,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-build-the-lever/SKILL.md",
-      "destinationSha256": "458b269eab8e95a1573276955312f7d2a13ae8599879a9efc748248f6bc34b56",
-      "disposition": "adopted"
+      "destinationSha256": "3435ebe733c66367fba373ede67af3c90508aa11d20303b277739c02bfd5b807",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/principle-encode-lessons-in-structure/SKILL.md",
@@ -1276,8 +1276,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-never-block-on-the-human/SKILL.md",
-      "destinationSha256": "d82bce9ab9193249d1ec0d514202d89602f0fd3d312174d622c2dd222bae5a2e",
-      "disposition": "adopted"
+      "destinationSha256": "332af89f9401492ee542ed09e02cef94fbc73a1b304e637e08b51f9b195d5bac",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/principle-outcome-oriented-execution/SKILL.md",
@@ -1486,7 +1486,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/setup-pstack/SKILL.md",
-      "destinationSha256": "1c34802cb62c1351d64cabddf90bda754616b0996ed2b65a764a23f11c339c3e",
+      "destinationSha256": "05c7b2d42ee30172ff1ef10e63aad85d2b750dc13e9e950aeb7ebaf5461947a1",
       "disposition": "adapted"
     },
     {
@@ -1500,7 +1500,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/show-me-your-work/SKILL.md",
-      "destinationSha256": "de97c9818cc7e9842d3192660afa49aa04ccd1dcd8b8ca0394afa8c746b16242",
+      "destinationSha256": "adace414a21213f53728483479acb361c5430d723b1dc0317b1b68358aa3a1fb",
       "disposition": "adapted"
     },
     {
@@ -1528,8 +1528,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/show-me-your-work/scripts/log.sh",
-      "destinationSha256": "1601bc18f9aba0af3f5d6375e4f2d5dc6102334d1bca935026c0e3547cdadbbf",
-      "disposition": "adopted"
+      "destinationSha256": "0e149cf0bca44fdffda136e23a3b9d5d951f90234875f8751fbece2ec964fafd",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/swarm/SKILL.md",
@@ -1542,7 +1542,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/swarm/SKILL.md",
-      "destinationSha256": "9c3e869297f059c586a9831c7bfc6b0cbf182811977936dea1e11780a5bcdd01",
+      "destinationSha256": "a0b0758b514220119127db9053a232e2eff8b862e973db706e10075778afdd48",
       "disposition": "adapted"
     },
     {
@@ -1640,7 +1640,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/why/SKILL.md",
-      "destinationSha256": "91e8f670d6c2883099e18551df547fba412d834d252bb2fa2cf98c0334b59c3f",
+      "destinationSha256": "14d29c2caa48213479d8e0064162d394ce47466658f15396dc20b0078ce88e3c",
       "disposition": "adapted"
     },
     {
@@ -1823,15 +1823,15 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "4a085b876d6c22688dd70ea1c8aceacf3c219c9d22abe534b9810af8d98ea82e"
+      "sha256": "bbcc74fbd58642bbd3ad281a6c16c9c52b7fc00145ee4139f280efd0fa46f6ef"
     },
     {
       "path": "README.md",
-      "sha256": "650216d8cd2c5f2e74ff0b87700753c6dd700ca5a55005d256c44518cc667557"
+      "sha256": "f07402b7f26e0f53636f18ab234dec6a385d550b6240bc1bdaa7af837a896db4"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "cbd653969efd19c56594ef401093c7c9c466ae16c648cbf05de9ac3f360e0eb3"
+      "sha256": "e46e37ea285957c681b2dfa024672ca3c3a58438135f6eb25eacea61ee613700"
     },
     {
       "path": "definitions/pstack-advisor.md",
@@ -1879,7 +1879,7 @@
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",
-      "sha256": "16e0035b071a829e54b520cd605b59621c9c8a9bb9236bcac63126db22177d8e"
+      "sha256": "04ab9860483c7a5f387167273aed2b2dc3951a0829429bed52eb4d72294613b5"
     },
     {
       "path": "extensions/pstack-herdsman/skill-strip.ts",
@@ -1887,15 +1887,15 @@
     },
     {
       "path": "package.json",
-      "sha256": "30885c15f62c90df17db4a2e2f2ee2c2603ca03185ea410a278eab1160036eb8"
+      "sha256": "c0ff4ba5b0d00c933c38cfc23fc1b480185645e973ad8a11a143d412fce3e25e"
     },
     {
       "path": "scripts/backend-contract.mjs",
-      "sha256": "207e26187f7e0c64b032afcb6edfc04ce9d1be7b1de0698c106aa8c84ccf3bb9"
+      "sha256": "09983478f5307f62c56292eee6a5b85699934128905a6a9313c1080fe29b9071"
     },
     {
       "path": "scripts/check-host.mjs",
-      "sha256": "067990b32c46e2cd8dfdffb8a2479a8030e1ef67ad23983e13049bbb513c0a2f"
+      "sha256": "3b31db060205af620dce63f572d96c541998700edbcdb1c03c20f95208801f36"
     },
     {
       "path": "scripts/manifest.mjs",
@@ -1903,19 +1903,19 @@
     },
     {
       "path": "scripts/setup.mjs",
-      "sha256": "c68cab3c1037001cdc0b931923ae9cf190f4404df533cc13b4c0a418abe5734c"
+      "sha256": "ac6ab337a9c0e94ef05ed2fa6f9b677471cd8d032dfff7c4f9ed52484a8f99d4"
     },
     {
       "path": "scripts/update-manifest.mjs",
-      "sha256": "2acf7138fe228120b22fee298a9a4fb8b7cbd76c1bbd8d19139c2c046292f6a5"
+      "sha256": "2302c7ce3fc50d4746320da66a28b0fb5741ca8bc3d5ee3af012e3603f673203"
     },
     {
       "path": "scripts/validate-port.mjs",
-      "sha256": "1f12b4ca41153e5c56874ebb5bbbd9e95785f36ef60bcd2489fb59da6899208c"
+      "sha256": "d0aa20d8289db3902f6149735fe0aefb5f9143448f1e4fc4035baf4851b32d8a"
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "09ea82d41d9899928d1f1d17f63376752dee04ca0b042ef0b226f4cd52f4d3e6"
+      "sha256": "72138ad4747f223561bf19bee092328409bd25750cd48bd02f38e3f0b3a2711f"
     }
   ]
 }

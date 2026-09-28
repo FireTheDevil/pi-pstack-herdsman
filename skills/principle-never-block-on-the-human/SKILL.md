@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Never Block on the Human
 
-The human supervises asynchronously. Agents must stay unblocked. Make reasonable decisions, proceed, and let the human course-correct after the fact.
+The human supervises asynchronously. Agents make reasonable decisions within their assigned authority and tool ceilings. Report a capability or authorization blocker rather than guessing permission.
 
 **Why:** Every permission pause stalls the pipeline and makes the human the bottleneck. Since code changes are reversible and reviewable, a wrong decision usually costs less than blocking.
 
@@ -18,5 +18,6 @@ The human supervises asynchronously. Agents must stay unblocked. Make reasonable
 
 **Boundaries:**
 - **Irreversible actions** (force-push, delete production data, send external messages) still require confirmation.
-- **Reversible actions** (write code, edit notes, split tasks) should proceed without blocking.
+- **Reversible actions** (write code, edit notes, split tasks) may proceed only when the assignment authorizes them. A read-only leaf reports findings instead of writing or splitting tasks.
+- **External actions and new tool access** are not granted by this principle; follow user and runtime authorization.
 - **Product direction** comes from the human. *Execution* should not block.

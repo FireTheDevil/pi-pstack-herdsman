@@ -17,7 +17,7 @@ if [ -n "$logdir" ] && [ "$logdir" != "." ] && [ ! -d "$logdir" ]; then
 fi
 
 if [ ! -f "$logfile" ]; then
-	printf 'ts\tphase\tdecision\twhy\tevidence\tresult\n' > "$logfile"
+	printf 'ts\tphase\tdecision\twhy\tevidence\tresult\n' >> "$logfile"
 fi
 
 ts="$(date -u +%Y-%m-%dT%H:%M:%SZ)"

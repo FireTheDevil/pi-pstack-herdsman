@@ -9,6 +9,11 @@
     "commit": "df3fb154fb982fb83f649de8646d4af6a0cb16b3",
     "license": "MIT"
   },
+  "reviewedUpstream": {
+    "version": "0.15.5",
+    "pstackChangeCommit": "12d587dfb20741cafc376c42c696c5f6e2a64487",
+    "scope": "Reviewed instruction changes since originalUpstream.commit; adapted applicable behavior for Pi/Herdsman, not a byte-for-byte resource import"
+  },
   "intermediates": {
     "zenspc": {
       "repository": "https://github.com/zenspc/pi-extensions.git",
@@ -29,7 +34,7 @@
   },
   "backend": {
     "package": "pi-herdsman",
-    "inspectedVersion": "0.13.0",
+    "inspectedVersion": "0.17.1",
     "license": "Apache-2.0"
   },
   "policy": {

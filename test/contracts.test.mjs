@@ -4,7 +4,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { staleBackend } from '../scripts/backend-contract.mjs';
-import { ROLES, renderDefinition, saveDefinition, definitionPath } from '../scripts/setup.mjs';
+import { ROLES, renderDefinition, saveDefinition, definitionPath, installGlobalDefinitions } from '../scripts/setup.mjs';
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const read = path => readFileSync(join(root, path), 'utf8');
 // Deliberately narrow template contract, not a replacement Herdsman YAML parser.
@@ -72,18 +72,38 @@ test('setup refuses symlinked destination directories and existing definition fi
   symlinkSync(join(cwd, 'other'), join(cwd, '.pi'));
   assert.throws(() => saveDefinition(cwd, 'reviewer', 'text'), /Unsafe/);
 });
+test('global install refuses symlinked agent directory', t => {
+  const temp = join(root, '.pi-herdsman/tmp'); mkdirSync(temp, { recursive: true });
+  const cwd = mkdtempSync(join(temp, 'global-')); t.after(() => rmSync(cwd, { recursive: true, force: true }));
+  mkdirSync(join(cwd, 'other'));
+  symlinkSync(join(cwd, 'other'), join(cwd, 'agents'));
+  assert.throws(() => installGlobalDefinitions(root, cwd), /Unsafe global definition directory/);
+  assert.throws(() => readFileSync(join(cwd, 'other', 'pstack-reviewer.md'), 'utf8'), { code: 'ENOENT' });
+});
+test('global install preserves regular files but rejects profile path conflicts', t => {
+  const temp = join(root, '.pi-herdsman/tmp'); mkdirSync(temp, { recursive: true });
+  const cwd = mkdtempSync(join(temp, 'global-conflict-')); t.after(() => rmSync(cwd, { recursive: true, force: true }));
+  const dir = join(cwd, 'agents'); mkdirSync(dir);
+  const profile = join(dir, 'pstack-investigator.md');
+  mkdirSync(profile);
+  assert.throws(() => installGlobalDefinitions(root, cwd), /Conflicting global profile/);
+  rmSync(profile, { recursive: true });
+  symlinkSync(join(cwd, 'target'), profile);
+  assert.throws(() => installGlobalDefinitions(root, cwd), /Conflicting global profile/);
+});
 test('documented request uses only real delegation fields; instructions carry lifecycle limits', () => {
   const runtime = read('skills/poteto-mode/references/herdsman-runtime.md');
   const request = JSON.parse(runtime.match(/```json\n([\s\S]*?)\n```/)[1]);
-  const allowed = ['action','definition','task','files','label','fork','timeoutMs'];
+  const allowed = ['definition','task','files','label'];
   assert.ok(Object.keys(request).every(k => allowed.includes(k)));
-  assert.equal(request.action, 'delegate');
+  assert.match(runtime, /JSON request to `agent_delegate`/);
+  assert.deepEqual(Object.keys(request).sort(), ['definition','files','label','task']);
   assert.ok(ROLES.some(r => request.definition === 'pstack-' + r));
   assert.match(runtime, /There is no wait\/join\/collection call/);
   assert.match(runtime, /end the current turn and yield/);
   assert.match(runtime, /pass it unchanged through `files`/);
   assert.match(runtime, /exact returned Pi session/);
-  assert.match(runtime, /available_actions/);
+  assert.match(runtime, /available_tools/);
   assert.match(runtime, /bundled < trusted project < global/);
   assert.match(runtime, /same-name global definition overrides/);
   assert.match(runtime, /Unknown fields and malformed definitions fail discovery/);
@@ -94,7 +114,10 @@ test('backend scan rejects the reviewed stale isolation recipes', () => {
     'Background subagents inherit the requested cwd.',
     'Multiple `subagent` calls on the same branch need separate worktrees.',
     'git fetch && git reset --hard origin/<branch>',
-    'agents.spawn({ cwd: project })'
+    'agents.spawn({ cwd: project })',
+    'Inspect `agent {"action":"list"}` for the roster.',
+    'Use `agent` action `delegate` for new work.',
+    'Follow current available_actions.'
   ]) assert.equal(staleBackend.test(text), true, text);
   assert.equal(staleBackend.test("Delegates inherit the controller's cwd; use external worktrees and separate lead sessions."), false);
 });
@@ -118,7 +141,7 @@ test('read-only design candidates return results and the lead owns persistence',
   const arena = read('skills/arena/SKILL.md');
   assert.match(arena, /Read-only pstack-advisor candidates return designs and rationales in their completion results; they do not write files/);
   assert.match(arena, /The lead persists those results/);
-  assert.match(arena, /Reserve file-producing assignments for an appropriately authorized pstack-poteto-agent writer/);
+  assert.match(arena, /Reserve file-producing assignments for an appropriately authorized implementation-role writer/);
   assert.doesNotMatch(arena, /Each candidate writes to its own location/);
   for (const path of ['skills/architect/SKILL.md', 'skills/architect/references/runner-prompt.md']) {
     const workflow = read(path);
@@ -129,6 +152,21 @@ test('read-only design candidates return results and the lead owns persistence',
   assert.deepEqual(template(read('definitions/pstack-advisor.md')).tools, ['read','grep','find','ls']);
 });
 
+test('all eleven profiles have task routes without widening leaf capabilities', () => {
+  const runtime = read('skills/poteto-mode/references/herdsman-runtime.md');
+  const mode = read('skills/poteto-mode/SKILL.md');
+  for (const role of ROLES) {
+    assert.match(runtime, new RegExp('`pstack-' + role + '`'), role);
+    assert.match(mode, new RegExp('pstack-' + role + '\\b'), role);
+  }
+  for (const [playbook, role] of [['bug-fix','bug-fix'], ['perf-issue','perf-issue'], ['hillclimb','hillclimb'], ['feature','poteto-agent'], ['refactoring','poteto-agent']])
+    assert.match(read('skills/poteto-mode/playbooks/' + playbook + '.md'), new RegExp('`pstack-' + role + '`'), playbook);
+  assert.match(read('skills/how/SKILL.md'), /Herdsman definition: `pstack-how-explorer`/);
+  assert.match(read('skills/setup-pstack/SKILL.md'), /eleven roles/);
+  assert.match(mode, /A leaf's read-only profile cannot gain shell, file writes, MCP access, or controller tools/);
+  assert.match(read('skills/why/SKILL.md'), /shipped `pstack-investigator` has no shell or `gh`/);
+});
+
 test('plan audit prompt gates replacement on evidence, control resolution and teardown', () => {
   const plan = read('skills/poteto-mode/playbooks/multi-phase-plan.md');
   const prompts = plan.split('\n').filter(line => line.startsWith('- [ ] Use this tick prompt, verbatim.'));
@@ -136,7 +174,7 @@ test('plan audit prompt gates replacement on evidence, control resolution and te
   const prompt = prompts[0];
   assert.match(prompt, /Assess concrete evidence and required attention for direct-owned lanes only/);
   assert.match(prompt, /do not status-poll active agents or treat inactivity as proof of a hang/);
-  assert.match(prompt, /use only current available_actions for that live agent/);
+  assert.match(prompt, /use only current available_tools for that live agent/);
   assert.match(prompt, /Resolve pending controls and mailbox\/result-persistence issues.*before closing or replacing an assignment/);
   assert.match(prompt, /Confirm teardown of the old execution and release of its write ownership before any replacement; never create overlapping writers/);
   assert.match(prompt, /If evidence, control resolution or teardown is uncertain, report the blocker and do not replace the lane/);

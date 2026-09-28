@@ -24,7 +24,7 @@
   ],
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": ">=0.87.0 <0.88.0",
-    "pi-herdsman": ">=0.13.0 <0.14.0"
+    "pi-herdsman": ">=0.17.1 <0.18.0"
   },
   "pi": {
     "extensions": [

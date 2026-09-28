@@ -1,12 +1,14 @@
 # pi-pstack-herdsman
 
-Standalone **local** pstack workflow adapter for Pi Herdsman. It adds commands, 47 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. It does not implement orchestration.
+Standalone **local** pstack workflow adapter for Pi Herdsman. It adds commands, 47 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. It does not implement orchestration. On the first lead session after loading the extension, it copies missing templates into the global Herdsman agent directory.
 
 Original upstream is **Cursor pstack (`cursor/plugin/pstack`, as named in the request)**. The verified canonical location is https://github.com/cursor/plugins/tree/main/pstack in https://github.com/cursor/plugins. Lauren Tan's MIT license is retained. zenspc's Pi port, local Shepherdr and local Fabric adapters are intermediate adaptations, not the original upstream. See [NOTICE](NOTICE.md), [pins](upstream.lock.json) and [resource inventory](PORT-MANIFEST.json).
 
+The resource lineage remains pinned to upstream 0.15.0. Applicable skill/workflow changes through Cursor pstack 0.15.5 were reviewed and adapted, not copied wholesale: Cursor model rules, persistent agent routing and plugin-specific actions do not configure Pi. The eleven Herdsman profiles below remain intact; the [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes tasks by capability and pinned definition.
+
 ## Try locally
 
-Requires Node >=24, Pi >=0.87.0 <0.88.0 and an independently configured Herdsman 0.13.x host (including its Herdr prerequisites). This package does not install or configure them.
+Requires Node >=24, Pi >=0.87.0 <0.88.0 and an independently configured Herdsman >=0.17.1 <0.18.0 host (including its Herdr prerequisites). This package does not install or configure them.
 
 From a trusted target project, load this local package for one invocation alongside your existing Herdsman setup:
 
@@ -14,13 +16,13 @@ From a trusted target project, load this local package for one invocation alongs
 pi -e /path/to/pi-pstack-herdsman
 ```
 
-No global installation is needed. Review project resources before granting trust.
+No global Pi package installation is needed. Loading the extension (including from a trusted project or in headless mode) writes missing `pstack-*.md` profiles to `~/.pi/agent/agents/`, or `$PI_CODING_AGENT_DIR/agents/` when set. Existing files are never overwritten; later package updates do not refresh customized or previously copied profiles. There is no npm postinstall hook, so `pi install` alone does not copy profiles until the extension starts a lead session. Review the package before granting project trust or loading it explicitly.
 
 - `/poteto-mode [task]` enables the sticky controller hint and opens the workflow. Default is off. `/poteto-mode off` disables it. Explicit decisions restore from the active session branch.
 - `/pstack [on|off|status]` independently filters this package's skill catalog. Hidden skills remain directly callable with `/skill:<name>`. Status does not test backend readiness.
-- `/setup-pstack [role]` selects a model-pinned role, checks exact model availability, then previews the full project definition before confirmation. Cancellation and headless execution write nothing. Existing definitions are never overwritten; no global setup option exists.
+- `/setup-pstack [role]` remains an optional, project-only template preview/copy command. It checks model availability and requires confirmation; cancellation and headless *command execution* write nothing. A same-name global profile installed on session start takes precedence, so edit that global profile if you need to customize the effective role.
 
-Repeat setup for the roles you need. Reload/restart and inspect the effective Herdsman roster. Definitions are discovered from trusted project `.pi/agents/`, not package `definitions/`; same-name global definitions override project definitions. Setup does not grant trust or edit settings.
+Reload/restart and inspect the effective Herdsman roster after the automatic copy. Global definitions override trusted project `.pi/agents/` definitions with the same name. Package `definitions/` are templates, not directly discovered. The copy does not grant project trust or edit settings. If a pinned model is unavailable, edit the corresponding global profile manually before delegation.
 
 | Role argument / definition | Purpose | Native tools |
 |---|---|---|

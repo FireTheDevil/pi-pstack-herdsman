@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import extension, { POTETO_HINT, isManagedAgent } from '../extensions/pstack-herdsman/index.ts';
 import { stripSkillsByLocationPrefix } from '../extensions/pstack-herdsman/skill-strip.ts';
-import { definitionPath, renderDefinition, saveDefinition } from '../scripts/setup.mjs';
+import { definitionPath, renderDefinition, saveDefinition, ROLES } from '../scripts/setup.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const tempRoot = join(root, '.pi-herdsman/tmp');
@@ -28,7 +28,15 @@ function harness({ child = false, entries = [], confirm = false } = {}) {
   };
   extension(pi);
   return { cwd, ctx, entries, commands, messages, notifications, statuses,
-    emit: (name, event = {}) => handlers.get(name)(event, ctx),
+    emit: async (name, event = {}) => {
+      const prior = process.env.PI_CODING_AGENT_DIR;
+      process.env.PI_CODING_AGENT_DIR = cwd;
+      try { return await handlers.get(name)(event, ctx); }
+      finally {
+        if (prior === undefined) delete process.env.PI_CODING_AGENT_DIR;
+        else process.env.PI_CODING_AGENT_DIR = prior;
+      }
+    },
     close: () => rmSync(cwd, { recursive: true, force: true })
   };
 }
@@ -46,6 +54,20 @@ test('controller starts off and explicit command enables sticky status and hint'
   assert.equal(h.entries.at(-1).data.enabled, true);
   await h.emit('session_tree');
   assert.deepEqual(h.statuses.at(-1), ['pstack-mode', 'pstack: poteto mode']);
+});
+test('first session load installs missing global profiles without replacing existing ones', async t => {
+  const h = harness(); t.after(h.close);
+  const existing = join(h.cwd, 'agents', 'pstack-reviewer.md');
+  mkdirSync(dirname(existing), { recursive: true });
+  writeFileSync(existing, 'user-customized');
+  await h.emit('session_start');
+  assert.equal(readFileSync(existing, 'utf8'), 'user-customized');
+  for (const role of ROLES) assert.ok(existsSync(join(h.cwd, 'agents', 'pstack-' + role + '.md')));
+  assert.match(h.notifications.at(-1)[0], /Installed 10 pstack agent profiles globally/);
+  const count = h.notifications.length;
+  await h.emit('session_start');
+  assert.equal(h.notifications.length, count);
+  assert.equal(readFileSync(existing, 'utf8'), 'user-customized');
 });
 test('saved off survives session restoration and branch navigation', async t => {
   const h = harness(); t.after(h.close);
@@ -75,6 +97,7 @@ test('Managed agents suppress controller state, commands and setup even with inh
   assert.equal(h.entries.length, 1);
   assert.equal(h.messages.length, 0);
   assert.ok(!existsSync(definitionPath(h.cwd, 'investigator')));
+  assert.ok(!existsSync(join(h.cwd, 'agents')));
   assert.equal((await h.emit('before_agent_start', { systemPrompt: 'base' })).systemPrompt, 'base');
 });
 test('catalog filter state is independent from Poteto state and rejects bad input', async t => {

@@ -47,5 +47,5 @@ assert.match(readFileSync(join(root, 'skills/typescript-best-practices/SKILL.md'
 const runtime = readFileSync(join(root, 'skills/poteto-mode/references/herdsman-runtime.md'), 'utf8');
 assert.match(runtime, /There is no wait\/join\/collection call/);
 assert.match(runtime, /exact returned Pi session/);
-assert.match(runtime, /available_actions/);
+assert.match(runtime, /available_tools/);
 console.log(JSON.stringify({ skills: skills.length, playbooks: 23, resources: resources.length, validation: 'metadata, links, backend, complete hashes, standalone imports' }));

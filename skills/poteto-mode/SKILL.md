@@ -55,7 +55,7 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 - **Outcome-Oriented Execution** (**principle-outcome-oriented-execution**). Planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture, don't preserve throwaway compatibility states.
 - **Experience First** (**principle-experience-first**). Product, UX, or feature-scope tradeoffs. Choose user delight over implementation convenience.
 - **Exhaust the Design Space** (**principle-exhaust-the-design-space**). A novel interaction or architectural decision with no precedent. Build 2-3 competing prototypes and compare before committing.
-- **Build the Lever** (**principle-build-the-lever**). Any non-trivial work. Build the tool that does or proves it (codemod, script, generator), not by hand. The tool is the artifact a reviewer reruns.
+- **Build the Lever** (**principle-build-the-lever**). Non-trivial work with an authorized write scope. Build the smallest tool that does or proves it when a rerunnable tool earns its cost. Read-only roles return evidence, not files.
 
 **Architecture**
 
@@ -84,11 +84,11 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 ## Autonomy
 
-**Just do it.** Use any MCP tool. Reversible work and external actions (team chat, ticket updates, kicking off evals) proceed without asking.
+**Just do authorized work.** Use only tools actually available to this session and authorized for this task. A leaf's read-only profile cannot gain shell, file writes, MCP access, or controller tools from this skill or a task brief. External actions (team chat, ticket updates, evals) require applicable authorization; do not assume access or consent.
 
 **Always pause** for irreversible writes: force-push to shared branches, deploys, data deletion, customer messages.
 
-User and harness approval constraints always take precedence over these defaults.
+User and harness approval constraints always take precedence over these defaults. Principles guide method within the selected role's tool ceiling and assignment, not permission to widen them. The lead owns role selection and dependent orchestration.
 
 **Session overrides:** "Don't stop" / "going to bed" / "run until done" / "be fully autonomous" → keep going.
 
@@ -98,9 +98,9 @@ User and harness approval constraints always take precedence over these defaults
 
 Read [Herdsman runtime](references/herdsman-runtime.md) on the first delegation in the current context. Its API, ownership, tool ceilings and isolation limits govern every playbook.
 
-Use pstack-poteto-agent for bounded implementation, pstack-investigator for local evidence, pstack-researcher for supplied external evidence, pstack-verifier for behavioral checks, pstack-advisor for synthesis and pstack-reviewer for independent review. These definitions are leaves; the lead owns dependent steps.
+Select from all eleven profiles in the [runtime role table](references/herdsman-runtime.md). Use pstack-poteto-agent for feature/refactoring implementation, pstack-bug-fix for fixes, pstack-perf-issue for one-off measured performance work, and pstack-hillclimb for iterative optimization. Use pstack-how-explorer for complex how exploration, pstack-investigator for local evidence, pstack-researcher for supplied external evidence, pstack-advisor for synthesis/design, and pstack-reviewer for independent judgment. Use pstack-verifier for behavioral checks, or pstack-verifier-sol when an Astra-authored change calls for a different verifier model. These definitions are leaves; the lead owns dependent steps. A missing or unavailable definition blocks that route; inspect the roster instead of silently substituting.
 
-Delegate independent assignments with the existing agent tool, action delegate, definition, self-contained task and files. Results arrive asynchronously; there is no collection call. Continue necessary independent work, then end the current turn and yield when only dependencies remain. Do not poll. Forward exact returned result refs through files. Continue genuinely related work only by the exact returned Pi session; use fresh delegates for independent review.
+Delegate independent assignments with `agent_delegate`, supplying definition, self-contained task and files. Results arrive asynchronously; there is no collection call. Continue necessary independent work, then end the current turn and yield when only dependencies remain. Do not poll. Forward exact returned result refs through files. Continue genuinely related work only by the exact returned Pi session; use fresh delegates for independent review.
 
 Inspect evidence and diffs before synthesis. Model/thinking come from effective definitions. Preserve pool intent through explicitly configured distinct definitions only when available; disclose model overlap otherwise. For isolated checkouts prepare external worktrees with authorization and run separate lead sessions there. Never pass cwd or worktree request fields. One writer per ownership boundary.
 
@@ -114,6 +114,7 @@ Write the reply clean as you draft it. A cleanup pass after drafting does not re
 - **Terse is not an excuse to drop content.** Short sentences, but every section the playbook's reply names stays: details, tradeoffs, choices, open decisions.
 - **Frame impact for the consumer and the maintainer.** Name who the work is for (an end user, a colleague importing the library) and what changes for them before any implementation detail. Then what the next engineer who owns this code inherits. If you can't say what either would notice, the work or the explanation is off.
 - **Never fabricate a link, citation, or transcript reference.** Link only artifacts you produced or read this session.
+- **Evidence in the same claim.** Label predictions or unseen causes as inferred or guesses; give measured claims their actual evidence. Run checks you can run instead of handing them to the user.
 
 Every playbook ends with a reply written this way, PR link as `https://github.com/<owner>/<repo>/pull/<number>`. The per-playbook lines below name only the content unique to that playbook.
 

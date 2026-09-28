@@ -21,9 +21,9 @@ When in doubt, take the simple path.
 
 ## Step 2a. Explore (complex questions only)
 
-Decompose the question into 2 to 4 exploration angles, each a distinct slice of the subsystem. Delegate each independent explorer with the existing `agent` tool. Preserve exact live labels and completion identities; continue independent work or end the turn and yield to asynchronous results:
+Decompose the question into 2 to 4 exploration angles, each a distinct slice of the subsystem. Delegate each independent explorer with `agent_delegate`. Preserve exact live labels and completion identities; continue independent work or end the turn and yield to asynchronous results:
 
-- Herdsman definition: `pstack-investigator`
+- Herdsman definition: `pstack-how-explorer`
 - Use model/thinking from the effective discovered definition. Global definitions override project definitions; there are no per-request model fields.
 - Read-only assignment. Confirm repository tools in the effective definition; a prompt does not grant tools or enforce filesystem permissions.
 

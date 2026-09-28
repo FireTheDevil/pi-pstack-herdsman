@@ -1,7 +1,7 @@
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ExtensionAPI, ExtensionContext } from '@earendil-works/pi-coding-agent';
-import { definitionPath, renderDefinition, saveDefinition, ROLES } from '../../scripts/setup.mjs';
+import { definitionPath, renderDefinition, saveDefinition, installGlobalDefinitions, ROLES } from '../../scripts/setup.mjs';
 import { stripSkillsByLocationPrefix } from './skill-strip.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -31,7 +31,14 @@ export default function pstackHerdsman(pi: ExtensionAPI): void {
     catalog = decision(ctx, 'pstack-herdsman-catalog') ?? true;
     status(ctx);
   };
-  pi.on('session_start', async (_, ctx) => restore(ctx));
+  pi.on('session_start', async (_, ctx) => {
+    restore(ctx);
+    if (leaf(ctx)) return;
+    try {
+      const created = installGlobalDefinitions(ROOT);
+      if (created.length) ctx.ui.notify('Installed ' + created.length + ' pstack agent profiles globally. Reload Pi and inspect the effective Herdsman roster before delegating. Existing global profiles were preserved.', 'info');
+    } catch (error) { ctx.ui.notify('Could not install global pstack profiles: ' + (error instanceof Error ? error.message : String(error)), 'error'); }
+  });
   pi.on('session_tree', async (_, ctx) => restore(ctx));
   pi.on('input', async (event, ctx) => {
     if (!leaf(ctx) && /^\/skill:poteto-mode(?:\s|$)/.test(event.text)) persist(true, ctx);

@@ -24,12 +24,12 @@ If the target is vague ("why do we do it this way?" with no clear referent), mak
 
 ## Step 2. Establish the Code Anchor
 
-Before spawning investigators, anchor the investigation in concrete code. You need:
+Before spawning investigators, anchor the investigation in concrete code. Gather available history in the lead session; the shipped `pstack-investigator` has no shell or `gh`. You need:
 
 - The relevant file path(s) and line range(s)
 - The key symbols (function names, class names, constants)
-- An initial commit list. The last few commits touching the target.
-- PR numbers from merge commits (pattern `(#1234)` in the subject line)
+- An initial commit list where source-control history is accessible. The last few commits touching the target.
+- PR numbers from merge commits (pattern `(#1234)` in the subject line), when available.
 
 Build this inline.
 
@@ -47,7 +47,7 @@ git log --oneline -20 -- <file>
 git log -1 --format=%B <commit>
 ```
 
-Pull PR bodies and discussion via `gh` for any substantive commits:
+If the lead has `gh` and authorization, pull PR bodies and discussion for substantive commits:
 
 ```bash
 gh pr view <number> --json title,body,author,createdAt,mergedAt,labels,closingIssuesReferences,comments,reviews
@@ -57,7 +57,7 @@ Capture this as seed context (file paths, symbols, commits, PR numbers, linked t
 
 ## Step 3. Spawn Parallel Investigators (default posture)
 
-**Default to the full parallel investigation.**
+**Default to parallel investigation of reachable evidence.**
 
 ### Discovery
 
@@ -73,11 +73,11 @@ Map each available MCP to one evidence category:
 6. Error / exception tracking
 7. Product analytics warehouse
 
-Source control is always available through git and `gh`. For the other six, classify using the MCP name, server instructions, tool names, and resource descriptors. If an MCP could fit more than one category, choose the one matching its primary evidence. Record ambiguous cases in the coverage map.
+Source control may be available to the lead through git or `gh`, but neither tool is in the shipped investigator profile. Collect history in the lead and pass relevant snapshots as files; otherwise mark history blocked. For the other six, classify using the MCP name, server instructions, tool names, and resource descriptors. If an MCP could fit more than one category, choose the one matching its primary evidence. Record ambiguous cases in the coverage map.
 
-Aim for a complete **coverage map**, not a minimal one. Document the null, don't skip the search.
+Aim for a complete **coverage map**, not a minimal one. Document unavailable categories as gaps; a tool visible to the lead is not automatically available to a child.
 
-Launch separate nonblocking Herdsman spawns for all matching investigators so they run concurrently. Collect every attributed settlement before synthesis. Don't ask one agent to cover multiple MCPs.
+Launch separate `agent_delegate` assignments only for categories whose evidence files or verified tools the selected definition can actually access. Collect every attributed completion before synthesis. Don't ask one agent to cover multiple MCPs.
 
 Herdsman task assignment for each source:
 - Herdsman definition: `pstack-investigator` for local source-control evidence; `pstack-researcher` for web or MCP evidence. Confirm target tool availability before launch.
@@ -99,7 +99,7 @@ Spawn one investigator per category that has a matching MCP. Each owns exactly o
 
 Each entry names the category and the kind of "why" it uniquely surfaces. Use it to know what to expect back, how to name a gap when a category returns empty, and (only in the rare provably-irrelevant case) to justify a skip.
 
-1. **Source control investigator**. Git history, `gh` for PRs, code comments, tests. Always spawn. The only guaranteed source. Best at surfacing *implementation-time rationale captured during review*.
+1. **Source control investigator**. Code comments and tests are readable locally; git history and PR discussion require lead-supplied snapshots or an explicitly customized definition with shell access. Spawn when this evidence is available. Best at surfacing *implementation-time rationale captured during review*.
 
 2. **Issue / ticket tracker investigator** (e.g. Linear, Jira, GitHub Issues, Plane, Shortcut MCP). Best at surfacing *the product or business forcing function*. Strongest when the why is external to engineering.
 
@@ -117,10 +117,10 @@ Each entry names the category and the kind of "why" it uniquely surfaces. Use it
 
 Only skip with an **explicit, written justification** that goes in the final "Sources Consulted" section. Two valid reasons:
 
-- **No MCP is available for that category** in this environment. Flag this as a gap, not a choice. Example: "Real-time team chat skipped. No matching MCP available, so the conversational record was not searchable."
+- **No accessible evidence or authorized tool is available for that category** in this environment. Flag this as a gap, not a choice. Example: "Real-time team chat skipped. No matching MCP or supplied snapshot was available, so the conversational record was not searchable."
 - **The source is provably irrelevant**, not just "probably irrelevant." A high bar. Example: "Error / exception tracking skipped. Target is a build-time script with no runtime code path."
 
-If your scope assessment suggests a single-commit trivial target where the PR description already contains the complete answer, you may answer inline **only after** confirming all seven available category searches would be redundant. Say so explicitly. This should be rare.
+If your scope assessment suggests a single-commit trivial target where the PR description already contains the complete answer, you may answer inline after checking available categories and naming the gaps. Say so explicitly.
 
 ## Step 4. Synthesize
 
