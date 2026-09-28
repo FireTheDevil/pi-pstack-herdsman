@@ -758,7 +758,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "76e4c1d9a2b0921fdd682decaeb9f865a730f5f8f066c8de05fd2da75b9ee8d2",
+      "destinationSha256": "8eff81222cf40ae56a346cf69c7d7a62eb51b188d5ec90993c81f071007f2855",
       "disposition": "adapted"
     },
     {
@@ -1827,7 +1827,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "c7cbf49aefb16c24c7148662c1f8644ce51f92f09fd10965cdeb99fa76f8888c"
+      "sha256": "f777f64ed6b11bf82090f905282900f20bf3124f1b41d20e0113007c7d61a9ed"
     },
     {
       "path": "VALIDATION.md",
@@ -1839,11 +1839,11 @@
     },
     {
       "path": "definitions/pstack-bug-fix.md",
-      "sha256": "60fe197d2ccb721f7cc4a260fb970884b47e13588914e5232afef71ba3a0ae60"
+      "sha256": "3b8092501e447841859825080128b4ba5412853ab4c08e5f4560a78809dee687"
     },
     {
       "path": "definitions/pstack-hillclimb.md",
-      "sha256": "d3c1eaacbcff180ad713ead5b790811b05351107005a38d05d4375ed0c55b91a"
+      "sha256": "e4a515b2b28d619072f4f65217e81a26deb737ee10256afdbb6547b623e244b8"
     },
     {
       "path": "definitions/pstack-how-explorer.md",
@@ -1855,11 +1855,11 @@
     },
     {
       "path": "definitions/pstack-perf-issue.md",
-      "sha256": "a70661044d27b1408876f9011e8757ba2d549d0959b44a6e4359835d3f90f918"
+      "sha256": "a518dc1aa9be9289411fbea8e15f4beb6508685168f644b8846f37971fe9ec02"
     },
     {
       "path": "definitions/pstack-poteto-agent.md",
-      "sha256": "2b6e1c85ff88a524ef525b51e86452feb6e4e664226c7b9f047ca1b568304342"
+      "sha256": "45a8b1296029622ddf9b62c9a42991dc51cfb12b559e86d7db099e4c96e1edc7"
     },
     {
       "path": "definitions/pstack-researcher.md",
@@ -1871,11 +1871,11 @@
     },
     {
       "path": "definitions/pstack-verifier-sol.md",
-      "sha256": "1c980793cf1d6405ff9c586e27b603666967b3c29ed13ef805403cd641d1e73e"
+      "sha256": "53b8f6aec8e37ec4b305f8c28c93f7a84f0f9aa790c92a75487fb7653c75f8ef"
     },
     {
       "path": "definitions/pstack-verifier.md",
-      "sha256": "949dbaed069d981756d3de9fe54c3cdf254d20d144325aee9bbb6db47fb9813d"
+      "sha256": "da11d6b040bdd77e322a1d2be11d0c15221e671a577b0463e2ee5e52b8ef4ab8"
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",

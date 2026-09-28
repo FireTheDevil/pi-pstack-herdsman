@@ -4,7 +4,7 @@ description: Bounded pstack verifier
 systemPromptMode: append
 model: "openai-codex/gpt-6-astra"
 thinking: medium
-tools: ["read","grep","find","ls","bash","exec","wait","notebook","new_context","history","notes"]
+tools: ["read","grep","find","ls","bash","exec_command","write_stdin","exec","wait","notebook","new_context","history","notes"]
 noExtensions: false
 noSkills: true
 agents: []

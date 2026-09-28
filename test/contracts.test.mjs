@@ -56,9 +56,9 @@ test('all templates discover extensions while native tool allowlists remain role
     assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls']);
   }
   for (const role of ['poteto-agent','bug-fix','perf-issue','hillclimb'])
-    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','edit','write','exec','wait','notebook','new_context','history','notes']);
+    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','edit','write','exec_command','write_stdin','exec','wait','notebook','new_context','history','notes']);
   for (const role of ['verifier','verifier-sol'])
-    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','exec','wait','notebook','new_context','history','notes']);
+    assert.deepEqual(template(read('definitions/pstack-' + role + '.md')).tools, ['read','grep','find','ls','bash','exec_command','write_stdin','exec','wait','notebook','new_context','history','notes']);
 });
 test('template contract rejects unknown, malformed and duplicate fields', () => {
   const text = read('definitions/pstack-reviewer.md');

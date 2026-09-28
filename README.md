@@ -28,13 +28,13 @@ Reload/restart and inspect the effective Herdsman roster after the automatic cop
 |---|---|---|
 | investigator / pstack-investigator | Local evidence | read, grep, find, ls |
 | how-explorer / pstack-how-explorer | Deep how exploration | read, grep, find, ls |
-| poteto-agent / pstack-poteto-agent | Feature/refactoring implementation | read, grep, find, ls, bash, edit, write, exec, wait, notebook, new_context, history, notes |
+| poteto-agent / pstack-poteto-agent | Feature/refactoring implementation | read, grep, find, ls, bash, edit, write, exec_command, write_stdin, exec, wait, notebook, new_context, history, notes |
 | bug-fix / pstack-bug-fix | Bug-fix implementation | same as poteto-agent |
 | perf-issue / pstack-perf-issue | Performance implementation | same as poteto-agent |
 | hillclimb / pstack-hillclimb | Intensive optimization | same as poteto-agent |
 | reviewer / pstack-reviewer | Fresh independent review | read, grep, find, ls |
 | researcher / pstack-researcher | External-source evidence | read, grep, find, ls |
-| verifier / pstack-verifier | Authorized behavioral checks, Astra | read, grep, find, ls, bash, exec, wait, notebook, new_context, history, notes |
+| verifier / pstack-verifier | Authorized behavioral checks, Astra | read, grep, find, ls, bash, exec_command, write_stdin, exec, wait, notebook, new_context, history, notes |
 | verifier-sol / pstack-verifier-sol | Authorized behavioral checks, Sol | same as verifier |
 | advisor / pstack-advisor | Design, decisions, synthesis | read, grep, find, ls |
 
