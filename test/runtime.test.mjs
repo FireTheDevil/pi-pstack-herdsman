@@ -63,7 +63,7 @@ test('first session load installs missing global profiles without replacing exis
   await h.emit('session_start');
   assert.equal(readFileSync(existing, 'utf8'), 'user-customized');
   for (const role of ROLES) assert.ok(existsSync(join(h.cwd, 'agents', 'pstack-' + role + '.md')));
-  assert.match(h.notifications.at(-1)[0], /Installed 10 pstack agent profiles globally/);
+  assert.match(h.notifications.at(-1)[0], /Copied 10 missing pstack profiles globally\. Restart Pi/);
   const count = h.notifications.length;
   await h.emit('session_start');
   assert.equal(h.notifications.length, count);

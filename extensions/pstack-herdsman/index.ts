@@ -36,7 +36,7 @@ export default function pstackHerdsman(pi: ExtensionAPI): void {
     if (leaf(ctx)) return;
     try {
       const created = installGlobalDefinitions(ROOT);
-      if (created.length) ctx.ui.notify('Installed ' + created.length + ' pstack agent profiles globally. Reload Pi and inspect the effective Herdsman roster before delegating. Existing global profiles were preserved.', 'info');
+      if (created.length) ctx.ui.notify('Copied ' + created.length + ' missing pstack profiles globally. Restart Pi to make them available to Herdsman. Existing profiles were preserved.', 'info');
     } catch (error) { ctx.ui.notify('Could not install global pstack profiles: ' + (error instanceof Error ? error.message : String(error)), 'error'); }
   });
   pi.on('session_tree', async (_, ctx) => restore(ctx));
