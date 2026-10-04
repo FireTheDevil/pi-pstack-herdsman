@@ -4,7 +4,7 @@ Pstack workflow and command adapter for [Pi](https://github.com/earendil-works/p
 
 ## Skill origins
 
-The skills originate in [Cursor's pstack plugin](https://github.com/cursor/plugins/tree/main/pstack), authored by Lauren Tan. The repository preserves the upstream MIT license and copyright notice. zenspc's Pi port and the local Shepherdr and Fabric ports are intermediate adaptations, not the original upstream or runtime dependencies. See [NOTICE](NOTICE.md), [version pins](upstream.lock.json), and the [resource inventory](PORT-MANIFEST.json).
+The skills originate in [Cursor's pstack plugin](https://github.com/cursor/plugins/tree/main/pstack), authored by Lauren Tan. The repository preserves the upstream MIT license and copyright notice. This extension uses [zenspc's pi-pstack port](https://github.com/zenspc/pi-extensions/tree/main/packages/pi-pstack) as its starting point and adapts it for pi-herdsman. See [NOTICE](NOTICE.md), [version pins](upstream.lock.json), and the [resource inventory](PORT-MANIFEST.json).
 
 The resource lineage retains its original upstream pin. Selected skill and workflow changes through Cursor pstack 0.15.9 were reviewed and adapted for Pi/Herdsman, not copied wholesale. Cursor model rules and plugin-specific actions do not configure Pi. The [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes tasks to the eleven Herdsman profiles.
 
@@ -25,7 +25,7 @@ For the Codex Notebook tools listed in the implementation and verifier profiles,
 pi install npm:@howaboua/pi-codex-conversion
 ```
 
-Open `/codex` and select Notebook mode if you want those tools. Tool names in a definition do not install or enable an extension. The package does not require pi-fabric or pi-shepherdr.
+Open `/codex` and select Notebook mode if you want those tools. Tool names in a definition do not install or enable an extension.
 
 Start `herdr` in your target project, then start `pi` inside its pane. Run `/poteto-mode` to enable the workflow. After the first lead session copies the profiles, restart or reload Pi and inspect the effective definitions with `agent_list`. Authenticate the providers and ensure the models named in those definitions are available before delegating.
 

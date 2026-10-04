@@ -1956,11 +1956,11 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "7018c94cefb467262855d50464c71698f4cf2372c93e04156bef70fc4a563759"
+      "sha256": "55f197c49013d344fb4bb032be552671edd08a49ee033313f153b5e53ef01281"
     },
     {
       "path": "README.md",
-      "sha256": "2e40c96f3cc5f2b170bad7312dbf695fddb05fd883fea0fd5f8fe57c9db5b17e"
+      "sha256": "09d17d5eb9b82cd3b84f88b2b62f9fd3098869e728453d86a05043898fb548a7"
     },
     {
       "path": "VALIDATION.md",
