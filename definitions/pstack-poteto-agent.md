@@ -2,7 +2,7 @@
 name: pstack-poteto-agent
 description: Bounded implementation in Poteto style
 systemPromptMode: append
-model: "openai-codex/gpt-6-sol"
+model: "openai-codex/gpt-6.1-sol"
 thinking: medium
 tools: ["read","grep","find","ls","bash","edit","write","exec_command","write_stdin","exec","wait","notebook","new_context","history","notes"]
 noExtensions: false

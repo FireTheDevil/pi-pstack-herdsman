@@ -434,7 +434,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "c3771de233deb87c0e284bc1a1fb3614aac34a089cef8014dcfb45254ad6a846",
+      "destinationSha256": "e6b72455e2eab7941c4bd1e5760fd8ccb11ac9e331117ed793b069f346f5e37a",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1968,11 +1968,11 @@
     },
     {
       "path": "definitions/pstack-advisor.md",
-      "sha256": "33d0e2a14f2a2fa59122577fa46a4d43ba374c1ad33f00fa5750a997be9374d4"
+      "sha256": "8a7135f5ab8d050db776a02e7f6857243a2da2967b79cce782bbf06f8809789f"
     },
     {
       "path": "definitions/pstack-bug-fix.md",
-      "sha256": "3b8092501e447841859825080128b4ba5412853ab4c08e5f4560a78809dee687"
+      "sha256": "ad9c3379adaeda34fde76acd370352c3659fa04d85509ff23457dc9bf76e754c"
     },
     {
       "path": "definitions/pstack-hillclimb.md",
@@ -1992,19 +1992,19 @@
     },
     {
       "path": "definitions/pstack-poteto-agent.md",
-      "sha256": "45a8b1296029622ddf9b62c9a42991dc51cfb12b559e86d7db099e4c96e1edc7"
+      "sha256": "dc3eb37dfad71e3253687fc1aad23435192b840db0d9a9f2e9ffad5ec9fed579"
     },
     {
       "path": "definitions/pstack-researcher.md",
-      "sha256": "864e6b7b206c9622400cb74308e12636a018f5ca39d3ea29a4b76fc01e841f88"
+      "sha256": "087c379df19dfa261abacfac6dc5303dd651315202d78e084b06d0befcf84c7d"
     },
     {
       "path": "definitions/pstack-reviewer.md",
-      "sha256": "e6eb46c558a0d8bb1a11877d2127a8fc3711bf51b34527c17861e8bcfcb0ea94"
+      "sha256": "8b7334084513190c54f701b8e2682008f77559d655dad0f237c37daf4076d829"
     },
     {
       "path": "definitions/pstack-verifier-sol.md",
-      "sha256": "53b8f6aec8e37ec4b305f8c28c93f7a84f0f9aa790c92a75487fb7653c75f8ef"
+      "sha256": "d65e45ed5ea9dde7f2a6b2c2e0b9db351d5fa1b27412552a830ffbe11e4f0a4c"
     },
     {
       "path": "definitions/pstack-verifier.md",

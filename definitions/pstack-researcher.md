@@ -2,7 +2,7 @@
 name: pstack-researcher
 description: Bounded pstack researcher
 systemPromptMode: append
-model: "openai-codex/gpt-6-sol"
+model: "openai-codex/gpt-6.1-sol"
 thinking: medium
 tools: ["read","grep","find","ls"]
 noExtensions: false

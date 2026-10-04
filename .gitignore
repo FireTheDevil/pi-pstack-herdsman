@@ -2,3 +2,9 @@ node_modules/
 *.tgz
 .pi-herdsman/tmp/
 **/.poteto-mode-tools-install-key
+/.pi/
+/definitions/generalist.md
+/definitions/implementer.md
+/definitions/researcher.md
+/definitions/reviewer.md
+/definitions/scout.md

@@ -2,7 +2,7 @@
 name: pstack-reviewer
 description: Bounded pstack reviewer
 systemPromptMode: append
-model: "openai-codex/gpt-6-sol"
+model: "openai-codex/gpt-6.1-sol"
 thinking: low
 tools: ["read","grep","find","ls"]
 noExtensions: false
