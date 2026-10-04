@@ -37,7 +37,7 @@
     },
     "backend": {
       "package": "pi-herdsman",
-      "inspectedVersion": "0.17.1",
+      "inspectedVersion": "0.19.1",
       "license": "Apache-2.0"
     },
     "policy": {
@@ -55,7 +55,7 @@
   },
   "backend": {
     "package": "pi-herdsman",
-    "inspectedVersion": "0.17.1",
+    "inspectedVersion": "0.19.1",
     "mode": "split agent_* API"
   },
   "resources": [
@@ -840,7 +840,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "8eff81222cf40ae56a346cf69c7d7a62eb51b188d5ec90993c81f071007f2855",
+      "destinationSha256": "29861b1ca27e8ec0633d475848960fa053152a1d231b65b0d1a9972ed8518911",
       "disposition": "adapted"
     },
     {
@@ -1960,11 +1960,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "f777f64ed6b11bf82090f905282900f20bf3124f1b41d20e0113007c7d61a9ed"
+      "sha256": "a05d0ee8adc1f9302a7587288b47678aa90af91778d91c181bc053565c048f05"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "a47eaaa70ec173294cc0cb2bb50f287ca1112640972e0a88da5df624216c022a"
+      "sha256": "982b986d3f7ad708bbdb9b83b1c9222a68f8245be8508cca569ead088059325b"
     },
     {
       "path": "definitions/pstack-advisor.md",
@@ -2020,7 +2020,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "e001dc511bda8887381c7260439448bda490a86a1f6b2aa582ebe03f0be1343e"
+      "sha256": "7b7f6ddb5e07491a14ae27b58cdc5912ad53c772f117cd7ac2dce2117cce820c"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -2028,7 +2028,7 @@
     },
     {
       "path": "scripts/check-host.mjs",
-      "sha256": "3b31db060205af620dce63f572d96c541998700edbcdb1c03c20f95208801f36"
+      "sha256": "24c6debca0905b7932d4950a2725ef3715f089b88427ce13c9dd5c922909f867"
     },
     {
       "path": "scripts/manifest.mjs",
@@ -2040,7 +2040,7 @@
     },
     {
       "path": "scripts/update-manifest.mjs",
-      "sha256": "db0a62b13039402b539929de5f229fcdd01cac05e7729d7b03436b20dca56148"
+      "sha256": "3e2c9bca51de6f3071a03785ee3114774887561e03ac82c9695db47f603fa9b9"
     },
     {
       "path": "scripts/validate-port.mjs",
@@ -2048,7 +2048,7 @@
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "d92ae5ac381167018bcd5e83910cf7620aa2b95a30f76c8a8f79e29f164f023c"
+      "sha256": "8ba16e1977c379c495cf6f25e0c13d207521ce8c0686f769172d9a1fd9443d68"
     }
   ],
   "metadataHistory": [

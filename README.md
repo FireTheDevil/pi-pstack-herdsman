@@ -1,6 +1,6 @@
 # pi-pstack-herdsman
 
-Standalone **local** pstack workflow adapter for Pi Herdsman. It adds commands, 47 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. It does not implement orchestration. On the first lead session after loading the extension, it copies missing templates into the global Herdsman agent directory.
+Standalone **local** pstack workflow adapter for Pi Herdsman. It adds commands, 50 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. It does not implement orchestration. On the first lead session after loading the extension, it copies missing templates into the global Herdsman agent directory.
 
 Original upstream is **Cursor pstack (`cursor/plugin/pstack`, as named in the request)**. The verified canonical location is https://github.com/cursor/plugins/tree/main/pstack in https://github.com/cursor/plugins. Lauren Tan's MIT license is retained. zenspc's Pi port, local Shepherdr and local Fabric adapters are intermediate adaptations, not the original upstream. See [NOTICE](NOTICE.md), [pins](upstream.lock.json) and [resource inventory](PORT-MANIFEST.json).
 
@@ -8,7 +8,7 @@ The resource lineage remains pinned to upstream 0.15.0. Applicable skill/workflo
 
 ## Try locally
 
-Requires Node >=24, Pi >=0.87.0 <0.88.0 and an independently configured Herdsman >=0.17.1 <0.18.0 host (including its Herdr prerequisites). This package does not install or configure them.
+Requires Node >=24, Pi >=1.0.2 <1.1.0 and an independently configured Herdsman >=0.19.1 <0.20.0 host (including its Herdr prerequisites). This package does not install or configure them.
 
 From a trusted target project, load this local package for one invocation alongside your existing Herdsman setup:
 

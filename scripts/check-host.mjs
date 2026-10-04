@@ -7,9 +7,9 @@ if (!piPath || !herdsmanPath) throw new Error('Usage: node scripts/check-host.mj
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const piRoot = resolve(piPath), host = resolve(herdsmanPath);
 const version = JSON.parse(readFileSync(join(host, 'package.json'), 'utf8')).version;
-assert.equal(version, '0.17.1', 'Revalidate documented backend contracts before upgrading');
+assert.equal(version, '0.19.1', 'Revalidate documented backend contracts before upgrading');
 const piVersion = JSON.parse(readFileSync(join(piRoot, 'package.json'), 'utf8')).version;
-assert.match(piVersion, /^0\.87\./);
+assert.match(piVersion, /^1\.0\.(?:[2-9]|[1-9]\d+)$/);
 const schema = readFileSync(join(host, 'docs/reference/agent-definition-schema.md'), 'utf8');
 assert.match(schema, /active_agent name=/);
 assert.match(schema, /bundled < project < global/);
@@ -31,8 +31,8 @@ try {
   assert.equal(loaded.extensions.length, 1);
   assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack', 'setup-pstack']);
   const skills = loadSkillsFromDir({ dir: join(root, 'skills'), source: 'local' });
-  assert.equal(skills.skills.length, 47);
+  assert.equal(skills.skills.length, 50);
   assert.deepEqual(skills.diagnostics, []);
   assert.ok(skills.skills.every(s => s.disableModelInvocation));
-  console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: 47, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
+  console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: 50, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
 } finally { rmSync(isolated, { recursive: true, force: true }); }
