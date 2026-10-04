@@ -16,7 +16,7 @@ if [ -n "$logdir" ] && [ "$logdir" != "." ] && [ ! -d "$logdir" ]; then
 	mkdir -p "$logdir"
 fi
 
-if [ ! -f "$logfile" ]; then
+if [ ! -s "$logfile" ]; then
 	printf 'ts\tphase\tdecision\twhy\tevidence\tresult\n' >> "$logfile"
 fi
 

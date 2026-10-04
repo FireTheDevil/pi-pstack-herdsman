@@ -351,14 +351,14 @@ const deadlinePassed = (
   now: number
 ): boolean => options.timeout > 0 && now - started >= options.timeout;
 type StepResult<V> =
-  | { readonly kind: "terminal"; readonly verdict: V }
+  | { readonly kind: "done"; readonly verdict: V }
   | {
       readonly kind: "sleep";
       readonly seconds: number;
       readonly onDeadline?: () => V;
     }
   | { readonly kind: "continue" };
-async function pollUntilTerminal<V>(args: {
+async function pollUntilDone<V>(args: {
   readonly dependencies: RunDependencies;
   readonly options: T.PollingOptions;
   readonly stamp: VerdictStamp;
@@ -399,7 +399,7 @@ async function pollUntilTerminal<V>(args: {
       await args.dependencies.clock.sleep(retryInSeconds);
       continue;
     }
-    if (result.kind === "terminal") return result.verdict;
+    if (result.kind === "done") return result.verdict;
     if (result.kind === "sleep") {
       if (
         result.onDeadline !== undefined &&
@@ -433,7 +433,7 @@ export async function runSimple(args: {
     if (complete === null) throw new Error("watch context cannot be empty");
     if (args.statusOnly)
       return {
-        kind: "terminal",
+        kind: "done",
         verdict: stamp({
           kind: "STATUS",
           terminal: true,
@@ -457,12 +457,12 @@ export async function runSimple(args: {
         : selectTierMajorStackDecision(complete, args.options.allowDraft);
     if (decision.kind === "blocker")
       return {
-        kind: "terminal",
+        kind: "done",
         verdict: blockerVerdict(stamp, decision.blocker),
       };
     if (decision.kind === "ready" || decision.kind === "merged")
       return {
-        kind: "terminal",
+        kind: "done",
         verdict: stamp(
           {
             kind: "READY",
@@ -475,7 +475,7 @@ export async function runSimple(args: {
       };
     if (decision.kind === "clear")
       return {
-        kind: "terminal",
+        kind: "done",
         verdict: stamp(
           {
             kind: "READY",
@@ -506,7 +506,7 @@ export async function runSimple(args: {
         }),
     };
   };
-  return pollUntilTerminal({
+  return pollUntilDone({
     dependencies: args.dependencies,
     options: args.options,
     stamp,
@@ -700,17 +700,29 @@ export function evaluateQueue(
     emit: state.lastWaitKey !== key,
   };
 }
-export async function runQueued(args: {
+interface QueuedRunArgs {
   readonly dependencies: RunDependencies;
   readonly contexts: T.NonEmpty<T.PrContext>;
   readonly options: T.PollingOptions;
-}): Promise<T.QueueTerminalVerdict> {
+}
+export function runQueued(
+  args: QueuedRunArgs & { readonly stopAt?: "complete" }
+): Promise<T.QueueTerminalVerdict>;
+export function runQueued(
+  args: QueuedRunArgs & { readonly stopAt: "frontier-ready" }
+): Promise<T.QueueRunResult>;
+export function runQueued(
+  args: QueuedRunArgs & { readonly stopAt: T.QueueStopAt }
+): Promise<T.QueueRunResult>;
+export async function runQueued(
+  args: QueuedRunArgs & { readonly stopAt?: T.QueueStopAt }
+): Promise<T.QueueRunResult> {
   let state = createQueueState(args.contexts, args.dependencies.clock.now());
   const stamp = verdictFactory(args.dependencies.clock, "queued-stack");
   args.dependencies.emit(
     stamp({ kind: "QUEUE", terminal: false, queue: args.contexts })
   );
-  const step = async (): Promise<StepResult<T.QueueTerminalVerdict>> => {
+  const step = async (): Promise<StepResult<T.QueueRunResult>> => {
     state = planQueue(state, args.dependencies.clock.now());
     if (state.work === null) {
       const complete = evaluateQueue(
@@ -721,7 +733,7 @@ export async function runQueued(args: {
       if (complete.kind !== "complete")
         throw new Error("queue has no work while active");
       return {
-        kind: "terminal",
+        kind: "done",
         verdict: stamp({
           kind: "COMPLETE",
           terminal: true,
@@ -767,7 +779,7 @@ export async function runQueued(args: {
     switch (evaluation.kind) {
       case "complete":
         return {
-          kind: "terminal",
+          kind: "done",
           verdict: stamp({
             kind: "COMPLETE",
             terminal: true,
@@ -778,7 +790,7 @@ export async function runQueued(args: {
         };
       case "blocker":
         return {
-          kind: "terminal",
+          kind: "done",
           verdict: blockerVerdict(stamp, evaluation.blocker),
         };
       case "advance":
@@ -794,7 +806,7 @@ export async function runQueued(args: {
         return { kind: "continue" };
       case "timeout":
         return {
-          kind: "terminal",
+          kind: "done",
           verdict: stamp({
             kind: "TIMEOUT",
             terminal: true,
@@ -807,6 +819,16 @@ export async function runQueued(args: {
           }),
         };
       case "waiting":
+        if (args.stopAt === "frontier-ready" && evaluation.reason.kind === "merge-queue")
+          return {
+            kind: "done",
+            verdict: stamp({
+              kind: "WAITING",
+              terminal: false,
+              frontier: evaluation.frontier,
+              reason: evaluation.reason,
+            }),
+          };
         if (evaluation.emit)
           args.dependencies.emit(
             stamp({
@@ -823,7 +845,7 @@ export async function runQueued(args: {
       }
     }
   };
-  return pollUntilTerminal({
+  return pollUntilDone({
     dependencies: args.dependencies,
     options: args.options,
     stamp,

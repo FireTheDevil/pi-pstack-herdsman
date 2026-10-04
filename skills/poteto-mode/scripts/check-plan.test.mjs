@@ -19,9 +19,23 @@ test("bundled multi-phase-plan skeleton passes check-plan.mjs", (t) => {
 	const dir = mkdtempSync(join(tempRoot, "check-plan-"));
 	t.after(() => rmSync(dir, { recursive: true, force: true }));
 	const file = join(dir, "plan.md");
-	writeFileSync(file, playbook.slice(start, close));
+	const skeleton = playbook.slice(start, close);
+	writeFileSync(file, skeleton);
 	const result = spawnSync(process.execPath, [join(here, "check-plan.mjs"), file], {
 		encoding: "utf8",
 	});
 	assert.equal(result.status, 0, result.stderr + result.stdout);
+	// Exercise the CLI against invalid plans, not just constants in its source.
+	for (const [label, oldText, replacement, diagnostic] of [
+		["cadence", "hourly", "30-minute", 'Program checklist lacks "hourly"'],
+		["scheduler authority", "explicitly authorized scheduler", "scheduler", 'Program checklist lacks "explicitly authorized scheduler"'],
+		["objective", "standing goal", "objective", 'Program checklist lacks "standing goal"'],
+	]) {
+		assert.ok(skeleton.includes(oldText), label);
+		writeFileSync(file, skeleton.replace(oldText, replacement));
+		const rejected = spawnSync(process.execPath, [join(here, "check-plan.mjs"), file], { encoding: "utf8" });
+		assert.equal(rejected.status, 1, label + rejected.stderr);
+		assert.ok(rejected.stderr.includes(diagnostic), rejected.stderr);
+	}
+
 });

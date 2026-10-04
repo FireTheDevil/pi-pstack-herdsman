@@ -362,6 +362,18 @@ export type TerminalVerdict =
     })
   | BlockerVerdict
   | TimeoutVerdict;
+export type QueueStopAt = "complete" | "frontier-ready";
+export type FrontierReadyReceipt = Extract<
+  ProgressVerdict,
+  { readonly kind: "WAITING" }
+> & {
+  readonly mode: "queued-stack";
+  readonly reason: {
+    readonly kind: "merge-queue";
+    readonly unmergedCount: number;
+  };
+};
+export type QueueRunResult = QueueTerminalVerdict | FrontierReadyReceipt;
 export type WatcherVerdict = ProgressVerdict | TerminalVerdict;
 export type ExitCode = TerminalVerdict["exitCode"];
 export type QueueTerminalVerdict =

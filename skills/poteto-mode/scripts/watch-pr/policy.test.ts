@@ -413,6 +413,95 @@ describe("queued-stack cadence", () => {
   });
 });
 
+describe("queued invocation goals", () => {
+  it("returns the genuine merge-queue receipt with pending upstack checks before sleep", async () => {
+    const base = fakeReader();
+    const pending = fakeReader({ fastPath: { kind: "checks", checks: [pendingCheck("upstack")] } });
+    const emitted: ProgressVerdict[] = [];
+    const result = await runQueued({
+      dependencies: {
+        reader: { ...base, checksFastPath: pr => pr.number === 11 ? pending.checksFastPath(pr) : base.checksFastPath(pr) },
+        clock: { now: () => 0, observedAt: () => "now", async sleep() { throw new Error("must not sleep"); } },
+        emit: verdict => emitted.push(verdict),
+      },
+      contexts: [context(10), context(11)], options, stopAt: "frontier-ready",
+    });
+    expect(result).toEqual({
+      schemaVersion: 1, sequence: 3, observedAt: "now", mode: "queued-stack",
+      kind: "WAITING", terminal: false, frontier: context(10),
+      reason: { kind: "merge-queue", unmergedCount: 2 },
+    });
+    expect(emitted.map(v => v.kind)).toEqual(["QUEUE", "STATUS"]);
+  });
+
+  it("continues through pending frontier checks and retries, then returns readiness", async () => {
+    const base = fakeReader();
+    const pending = fakeReader({ fastPath: { kind: "checks", checks: [pendingCheck()] } });
+    let reads = 0;
+    let sleeps = 0;
+    const emitted: ProgressVerdict[] = [];
+    const result = await runQueued({
+      dependencies: {
+        reader: {
+          ...base,
+          async pullRequest(pr) {
+            reads += 1;
+            if (reads === 1) throw new WatcherQueryError({ kind: "command-exit", retryable: true, detail: "retry", code: 1 });
+            return base.pullRequest(pr);
+          },
+          checksFastPath: pr => sleeps < 2 ? pending.checksFastPath(pr) : base.checksFastPath(pr),
+        },
+        clock: { now: () => 0, observedAt: () => "now", async sleep() { sleeps += 1; if (sleeps > 2) throw new Error("extra sleep"); } },
+        emit: verdict => emitted.push(verdict),
+      },
+      contexts: [context(10)], options, stopAt: "frontier-ready",
+    });
+    expect(sleeps).toBe(2);
+    expect(emitted.map(v => v.kind)).toEqual(["QUEUE", "RETRY", "STATUS", "WAITING"]);
+    expect(result).toMatchObject({ kind: "WAITING", terminal: false, reason: { kind: "merge-queue" } });
+  });
+
+  it("preserves blockers and complete outcomes under the bounded goal", async () => {
+    for (const [reader, kind, exitCode] of [
+      [fakeReader({ facts: { mergeable: "CONFLICTING" } }), "BLOCKER", 2],
+      [fakeReader({ fastPath: { kind: "checks", checks: [failedCheck()] } }), "BLOCKER", 4],
+      [fakeReader({ facts: { isDraft: true } }), "BLOCKER", 6],
+      [fakeReader({ facts: { state: "MERGED", mergedAt: "now" } }), "COMPLETE", 0],
+    ] satisfies [GitHubReader, string, number][]) {
+      const result = await runQueued({
+        dependencies: {
+          reader, clock: { now: () => 0, observedAt: () => "now", async sleep() { throw new Error("must not sleep"); } }, emit() {},
+        },
+        contexts: [context(10)], options, stopAt: "frontier-ready",
+      });
+      expect(result).toMatchObject({ kind, terminal: true, exitCode });
+    }
+  });
+});
+
+it("retains bounded timeout and query exhaustion exit codes", async () => {
+  let now = 0;
+  const base = fakeReader();
+  const timeout = await runQueued({
+    dependencies: {
+      reader: { ...base, async pullRequest(pr) { now = 1; return base.pullRequest(pr); } },
+      clock: { now: () => now, observedAt: () => "now", async sleep() { throw new Error("unexpected sleep"); } }, emit() {},
+    },
+    contexts: [context(10)], options: { ...options, timeout: 1 }, stopAt: "frontier-ready",
+  });
+  expect(timeout).toMatchObject({ kind: "TIMEOUT", terminal: true, exitCode: 5 });
+  let sleeps = 0;
+  const exhausted = await runQueued({
+    dependencies: {
+      reader: { ...base, async pullRequest() { throw new WatcherQueryError({ kind: "command-exit", retryable: true, code: 1, detail: "unavailable" }); } },
+      clock: { now: () => 0, observedAt: () => "now", async sleep() { sleeps += 1; } }, emit() {},
+    },
+    contexts: [context(10)], options: { ...options, maxQueryErrors: 2 }, stopAt: "frontier-ready",
+  });
+  expect(sleeps).toBe(1);
+  expect(exhausted).toMatchObject({ kind: "BLOCKER", terminal: true, exitCode: 7, blocker: { kind: "status-query", failures: 2 } });
+});
+
 it("uses the specified retry floor and cap", () => {
   expect(queryBackoffSeconds(1, 1)).toBe(60);
   expect(queryBackoffSeconds(1, 2)).toBe(120);

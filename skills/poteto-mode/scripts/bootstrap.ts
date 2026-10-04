@@ -22,6 +22,34 @@ function currentInstallKey(): string {
     .digest("hex");
 }
 
+export function assertDependenciesInstalled(): void {
+  const configured: unknown = JSON.parse(
+    readFileSync(join(scriptsDirectory, "package.json"), "utf8")
+  );
+  const dependencies =
+    configured !== null && typeof configured === "object" && "dependencies" in configured
+      ? configured.dependencies
+      : null;
+  const expected =
+    dependencies !== null && typeof dependencies === "object" && "commander" in dependencies
+      ? dependencies.commander
+      : null;
+  const installed: unknown = existsSync(commanderPackagePath)
+    ? JSON.parse(readFileSync(commanderPackagePath, "utf8"))
+    : null;
+  const version =
+    installed !== null && typeof installed === "object" && "version" in installed
+      ? installed.version
+      : null;
+  if (
+    typeof expected !== "string" || version !== expected ||
+    !existsSync(installKeyPath) ||
+    readFileSync(installKeyPath, "utf8").trim() !== currentInstallKey()
+  ) {
+    throw new Error("Bounded watcher requires current installed dependencies; no installation or restart was attempted");
+  }
+}
+
 export function ensureDependenciesInstalled(): void {
   const installKey = currentInstallKey();
   if (

@@ -12,6 +12,11 @@
       "commit": "df3fb154fb982fb83f649de8646d4af6a0cb16b3",
       "license": "MIT"
     },
+    "reviewedUpstream": {
+      "version": "0.15.9",
+      "pstackChangeCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "scope": "Assessed all supplied 0.15.5 to 0.15.9 skill delta hunks; semantically adapted for Pi/Herdsman. Added only benchmark-checklist, correct, principle-explain-the-number. make-bot-ui excluded by user and unavailable capabilities. Existing skill descriptions preserved pending separate owner review."
+    },
     "intermediates": {
       "zenspc": {
         "repository": "https://github.com/zenspc/pi-extensions.git",
@@ -32,19 +37,26 @@
     },
     "backend": {
       "package": "pi-herdsman",
-      "inspectedVersion": "0.13.0",
+      "inspectedVersion": "0.17.1",
       "license": "Apache-2.0"
     },
     "policy": {
       "pinsInheritedFromAudit": true,
       "remoteReverification": false,
       "movePinOnlyAfterReview": true
-    }
+    },
+    "reviewHistory": [
+      {
+        "version": "0.15.5",
+        "pstackChangeCommit": "12d587dfb20741cafc376c42c696c5f6e2a64487",
+        "scope": "Reviewed instruction changes since originalUpstream.commit; adapted applicable behavior for Pi/Herdsman, not a byte-for-byte resource import"
+      }
+    ]
   },
   "backend": {
     "package": "pi-herdsman",
-    "inspectedVersion": "0.13.0",
-    "mode": "existing agent API"
+    "inspectedVersion": "0.17.1",
+    "mode": "split agent_* API"
   },
   "resources": [
     {
@@ -58,8 +70,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/architect/SKILL.md",
-      "destinationSha256": "c30afcea0a898542dbee99bb41bd4b118fa4453a1e0dd6ed3c6e892914ab9479",
-      "disposition": "adapted"
+      "destinationSha256": "8b422b38d92663eaa097071e2b89d4d1578c7008215d3df45faef5d8dbdecc47",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/architect/SKILL.md",
+        "sourceSha256": "741901140ee382ebf93263a7ed03c6ee3719e578416d81afcd195876fa16c496",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/architect/references/design-red-flags.md",
@@ -72,8 +91,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/architect/references/design-red-flags.md",
-      "destinationSha256": "905066f9bbac81c573c2b325be47751d2c0f9325e0a0772bd4384e82dafe9336",
-      "disposition": "adopted"
+      "destinationSha256": "d0e639e4cc588ec865f930d3a4111faad60987ae36925917e319d7ceca7c69ce",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/architect/references/design-red-flags.md",
+        "sourceSha256": "d0e639e4cc588ec865f930d3a4111faad60987ae36925917e319d7ceca7c69ce",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/architect/references/rationale-template.md",
@@ -408,8 +434,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "9f8bddadc1991f07e062328e04354903a18105f7b168753166b7d6ff1b2b5458",
-      "disposition": "adapted"
+      "destinationSha256": "8df6475134fc9f9535b58da69b4782da8f9c8f624c4773470e20dc8f327fbf50",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
+        "sourceSha256": "404c0ef4a78e93451b2ab555ca532e7197b5cf87de29205b6f7109dbee5d9c4d",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/authoring-a-skill.md",
@@ -450,8 +483,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-full.md",
-      "destinationSha256": "d363e23a48393ca5cfa48e415a3e92eae56516dbc7b5e279d0fb37ad3ee13c9a",
-      "disposition": "adapted"
+      "destinationSha256": "f45efa464e870b69a7a02655688865c32ffaa3351c16841d19204466319d88b7",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+        "sourceSha256": "05ca30a16242c19d0c78ba1e88cca66f858d75252cb154fd740099fe292de802",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/autopilot-stack.md",
@@ -464,8 +504,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-stack.md",
-      "destinationSha256": "bbfc9c08506b43a4c868bfc557a08ce7aef00bfb52f2c57f6c8d7ab93e8a0fbc",
-      "disposition": "adapted"
+      "destinationSha256": "eae0dc99d44280091ba4f7b678412617a18c224f29fd94cf9c60a009d7b8b3d0",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+        "sourceSha256": "007c0a3b12011954a224f54773ef4ad7b75918be0a311914c1b51ad4e794c1e5",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/babysit.md",
@@ -478,7 +525,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/babysit.md",
-      "destinationSha256": "bd04d23063b302e588043b049b65ddd80f6fa626d25ad60bdc971f69118b448b",
+      "destinationSha256": "8d994842917698d5efc3e470835344f3d21a51b77bb9b921f5db24b599c79bd4",
       "disposition": "adapted"
     },
     {
@@ -534,8 +581,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/hillclimb.md",
-      "destinationSha256": "f61f8ce79b6237a23532610e9032809e20665178c36f37b5e9de1325442057e1",
-      "disposition": "adapted"
+      "destinationSha256": "03056ce6fe1beda7ab4492f47eb955467eb5018ed2161d4f4d18612275583ac2",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/hillclimb.md",
+        "sourceSha256": "244f289898fe67a458065e90fe8217c916c5acf61cdee8975ade3f9831a12e91",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/investigation.md",
@@ -562,8 +616,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "destinationSha256": "7e3b46b275b2ba4cac71dc9b4ed561acdfe7422e05d7eeb772896560688dfc26",
-      "disposition": "adapted"
+      "destinationSha256": "221a8ef4db9b98a714415fd088b63721c64df0d6bb7d36289fe48becd5af74fa",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
+        "sourceSha256": "27d310e3fc3937a60b8fcbe1318f9d249a7477a722907bf85b3e4eb3dc436b11",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/opening-a-pr.md",
@@ -576,8 +637,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/opening-a-pr.md",
-      "destinationSha256": "e78bfc5ed8068e600adcc68f36c800781139668b8160a0c973473dfb12258c72",
-      "disposition": "adapted"
+      "destinationSha256": "3925d22877ed3530d11ed09b0c5cbe2b5258337c2b2652748755eda3cc8f05ec",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+        "sourceSha256": "ab40de7163c1c6e274f46ee559b2e53ef45673703f601f13f4931c199e6fb90f",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/orchestrate.md",
@@ -618,8 +686,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/perf-issue.md",
-      "destinationSha256": "40e2472f8a94f47324efa8ef248b79ca2e53110dafa21ace573eefd55c31e195",
-      "disposition": "adapted"
+      "destinationSha256": "a6597b129595ff4e61e536bc28b83c8341a7a36dee091f4dd1f2c2afbb7c7198",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/perf-issue.md",
+        "sourceSha256": "2b88ad0f880e4d4d755ac19fe52414d6631d6baa816d060f53cf0a7429d7e14a",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/prototype.md",
@@ -688,8 +763,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/shipping.md",
-      "destinationSha256": "7310eb05dac5c89f619ae718a652ac23951e91479824e179a351296e21952db6",
-      "disposition": "adapted"
+      "destinationSha256": "9541d03b79f287baddbbba5b25f0793c3f5a251c6af9fec88258bec33fe2999f",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/shipping.md",
+        "sourceSha256": "19f3f6803a7bbe9ff04f624b03e3b55f07ac0a05e991aa00d5fe51239b920b2a",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/trace-forensics.md",
@@ -786,8 +868,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/bootstrap.ts",
-      "destinationSha256": "ccd2ed08fd9da9d0d942e5f2491cfc74bb92d8a08fa51755e0da1ac8de287361",
-      "disposition": "adopted"
+      "destinationSha256": "6b0e051f7eb6a4cb360a158cbc3f657da0d5293f4cac948ded98323f5e17025f",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/bun.lock",
@@ -814,8 +896,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/check-plan.mjs",
-      "destinationSha256": "21c454fe1b4060d99444db9285cd2f7df8d0f2527b781c584c8f120ce8bc0364",
-      "disposition": "adopted"
+      "destinationSha256": "5ddfe9fbab95da6dd80c3aa8b49f771829fe99f57d5b9de295f4267aa348287b",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
+        "sourceSha256": "4f9432d9989880b6afc2bdda503d5b12a9d07d357ecf31936b7ab5e83bc80523",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/check-plan.test.mjs",
@@ -828,7 +917,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/check-plan.test.mjs",
-      "destinationSha256": "96db047eec3c398084f28a070803c668c5c811e05019f14ca477b70c3de0c31a",
+      "destinationSha256": "f62c399e98978a7f4cf2ce3cf0d1f8f7cdf07fac8ba60f6c1b2c850f099594bc",
       "disposition": "adapted"
     },
     {
@@ -898,8 +987,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/cli.test.ts",
-      "destinationSha256": "a35592b4c6da96caf8d47987e9cd503fab6c7774ab87d11a43f24b4b5df2a9d1",
-      "disposition": "adopted"
+      "destinationSha256": "f7bad6e2665c58952bf2ccf7b471ea1a897c8617676e3430d5dfc1a9dd5e9546",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/cli.ts",
@@ -912,8 +1001,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/cli.ts",
-      "destinationSha256": "89c08863089181a232be782c4b2ed90a1552f44aeecb0dcb7aac2c623620e680",
-      "disposition": "adopted"
+      "destinationSha256": "f3973a198db589089c6e017089570c4cfbd5d8450c6268fa3d3e10ff8ba828d1",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/fakes.test-helper.ts",
@@ -968,8 +1057,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/policy.test.ts",
-      "destinationSha256": "a9fedb25feefd1f57ef6a662f80c99018690170a3a8070773a08eaf694d1d3d9",
-      "disposition": "adopted"
+      "destinationSha256": "88807a02f1921bb1182291b05bd5ec7ca0a5d51879d55f3ab1e06c46f557e8f7",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/policy.ts",
@@ -982,8 +1071,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/policy.ts",
-      "destinationSha256": "68d240505852cf23c9b2dea463342e9e61243f486b3cc86c735d140f9ee7be49",
-      "disposition": "adopted"
+      "destinationSha256": "e92981ba357cac9a4eae35b0b7a236d8e84b82aba6c4d42b162ae589254840bd",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/render.ts",
@@ -1038,8 +1127,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/types.ts",
-      "destinationSha256": "64ba6221e3bfe61bbb292337d199cdec6309455477280efb060203dba34e0e91",
-      "disposition": "adopted"
+      "destinationSha256": "4f8174f13426ba7d59fa1a2612bbdf87e3dafb025a2c152286f227a0994999d9",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/watch-pr",
@@ -1052,8 +1141,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/watch-pr",
-      "destinationSha256": "d955603be6cc0e8b8ffcec722f635192b2261410b1f2929abea94480e47eb5d4",
-      "disposition": "adopted"
+      "destinationSha256": "e0f5e566c7486039b9ffaa9a20290c50f18cbaca9daa5fa025eb7e7fc60e753b",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/worktree-audit.sh",
@@ -1430,8 +1519,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/divergent-reviewer.md",
-      "destinationSha256": "3476318beac829506b9125089fb923495604da1ead2965816e52d93f9dff1532",
-      "disposition": "adopted"
+      "destinationSha256": "156e311f30d86b0572dc754a4d4c1a952b1a4882f81c0975004203758a3338f5",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/reflect/references/judgment-reviewer.md",
@@ -1444,8 +1533,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/judgment-reviewer.md",
-      "destinationSha256": "c4c0b1df1d22232a9af093a2559ff9de244df57393bec04631615fa64374e380",
-      "disposition": "adopted"
+      "destinationSha256": "d73f46a882a53bdb8475ec090217aa088e02249999f2ab6e28025cbed36f75ae",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/reflect/references/synthesizer.md",
@@ -1472,8 +1561,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/tooling-reviewer.md",
-      "destinationSha256": "8847c636a3dae4bbd3b0b3666a9f846409418dc71929a74a7f0a255a4a6da64d",
-      "disposition": "adopted"
+      "destinationSha256": "ad9263912bbab4598c5d565fd32664e0f46a12e1b5204a1aa65e022a0b345cff",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/setup-pstack/SKILL.md",
@@ -1486,7 +1575,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/setup-pstack/SKILL.md",
-      "destinationSha256": "05c7b2d42ee30172ff1ef10e63aad85d2b750dc13e9e950aeb7ebaf5461947a1",
+      "destinationSha256": "37bad898d769478e7bdb24ab4de64fee5033573f036313d48b1d839cd3cdbd5a",
       "disposition": "adapted"
     },
     {
@@ -1500,7 +1589,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/show-me-your-work/SKILL.md",
-      "destinationSha256": "adace414a21213f53728483479acb361c5430d723b1dc0317b1b68358aa3a1fb",
+      "destinationSha256": "df3a89b079fc2e705a77b3e419fdfbbd23188a6106800b819c404945c4629094",
       "disposition": "adapted"
     },
     {
@@ -1528,7 +1617,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/show-me-your-work/scripts/log.sh",
-      "destinationSha256": "0e149cf0bca44fdffda136e23a3b9d5d951f90234875f8751fbece2ec964fafd",
+      "destinationSha256": "2940be7684263b73fe926002cd064e9d1df09671f25dd0e5034c7c04ac12279a",
       "disposition": "adapted"
     },
     {
@@ -1542,8 +1631,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/swarm/SKILL.md",
-      "destinationSha256": "a0b0758b514220119127db9053a232e2eff8b862e973db706e10075778afdd48",
-      "disposition": "adapted"
+      "destinationSha256": "0ebf19dbd5c687217a7f59602093498cb1c3e797949ad90efb771b19a8e36556",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/swarm/SKILL.md",
+        "sourceSha256": "bdcee4168e22428036e93d7cdeec3f391dbc4132f927f6db2540328c22db0273",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/tdd/SKILL.md",
@@ -1584,8 +1680,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/technical-writing/SKILL.md",
-      "destinationSha256": "470d4ab987e6390eb24e52906b21a7d8ae176961def2d5ba1b4279b957c89073",
-      "disposition": "adopted"
+      "destinationSha256": "d3b9323c7654ba43c267b346fb196ce7e5e0915e668bdb8d3610927e281a6431",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/technical-writing/SKILL.md",
+        "sourceSha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/typescript-best-practices/SKILL.md",
@@ -1612,8 +1715,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/typescript-best-practices/references/patterns.md",
-      "destinationSha256": "62e9cd32d2fa066a35d0d1349aac22dce31a48ad7d5eaf142570770cfe707384",
-      "disposition": "adopted"
+      "destinationSha256": "d3c6dc720314a85c4da3a2e273f76e7b4b3cd88dd0b74a8ff62aaca59c8fc772",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourcePath": "pstack/skills/typescript-best-practices/references/patterns.md",
+        "sourceSha256": "faa1362055374452efccac1b629677c61acfb0bcc6c4e3311836b5715638ee18",
+        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+      }
     },
     {
       "sourcePath": "skills/unslop/SKILL.md",
@@ -1640,7 +1750,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/why/SKILL.md",
-      "destinationSha256": "14d29c2caa48213479d8e0064162d394ce47466658f15396dc20b0078ce88e3c",
+      "destinationSha256": "d7b5dcbe5a05fdeccb06ba5a208b2def542429c914637cc6c56bd602ba3fe210",
       "disposition": "adapted"
     },
     {
@@ -1808,15 +1918,38 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/synthesizer-prompt.md",
-      "destinationSha256": "733a3e9cf897b1aca56aaddeae01a3832e4bfed024c2f602db2d1bf807d7a73b",
-      "disposition": "adopted"
+      "destinationSha256": "7aaac1b431ff63885aa4994307ec6cff7468b27a90d00c727f199d1138764a61",
+      "disposition": "adapted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "sourcePath": "pstack/skills/benchmark-checklist/SKILL.md",
+      "sourceSha256": "6a767e788a60428fa14e645ee10fe2e49896e514ff654f668b1d824deb9038e8",
+      "destination": "skills/benchmark-checklist/SKILL.md",
+      "destinationSha256": "c7b25e0587a7fb9102c2174cf35dd8ef749a609722fef3634f04793cdeb18b21",
+      "disposition": "adapted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "sourcePath": "pstack/skills/correct/SKILL.md",
+      "sourceSha256": "bf482bacc972b3f124a4af8bf9364b4b3e280cb5845e44c326ea4f4565e5c904",
+      "destination": "skills/correct/SKILL.md",
+      "destinationSha256": "7cfff08ea1ccae5b853e71e276488d624693574185159feb9f17d261f9559f62",
+      "disposition": "adapted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "sourcePath": "pstack/skills/principle-explain-the-number/SKILL.md",
+      "sourceSha256": "5aac99e7ce0bb1b37e2579acf4fe88c32a1456d9d46afd4a57cfe1df9092e89c",
+      "destination": "skills/principle-explain-the-number/SKILL.md",
+      "destinationSha256": "19a3ed803e1e4021026c9b715c77a977ba1057f2d07bed9f4426328db942a8e5",
+      "disposition": "adapted"
     }
   ],
   "generated": [
-    {
-      "path": ".gitignore",
-      "sha256": "eea4f6256d4a3fbe51d6bdab84b60ed172d768988fe95964ef69da2a471e8489"
-    },
     {
       "path": "LICENSE",
       "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
@@ -1831,7 +1964,7 @@
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "04420157b6d2bf4b8cb87b499816789038276b690c880610847ac6311dc426b8"
+      "sha256": "a47eaaa70ec173294cc0cb2bb50f287ca1112640972e0a88da5df624216c022a"
     },
     {
       "path": "definitions/pstack-advisor.md",
@@ -1887,7 +2020,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "c0ff4ba5b0d00c933c38cfc23fc1b480185645e973ad8a11a143d412fce3e25e"
+      "sha256": "e001dc511bda8887381c7260439448bda490a86a1f6b2aa582ebe03f0be1343e"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -1899,7 +2032,7 @@
     },
     {
       "path": "scripts/manifest.mjs",
-      "sha256": "aabf36915a78ddc3d0cfccc489a6b0d282b95995b040cee30a9c94ff277e9e5b"
+      "sha256": "1ad817b992438d1d7cdcf34c5405505928003da6968bc72ca8e2e8dd5067c44d"
     },
     {
       "path": "scripts/setup.mjs",
@@ -1907,15 +2040,74 @@
     },
     {
       "path": "scripts/update-manifest.mjs",
-      "sha256": "2302c7ce3fc50d4746320da66a28b0fb5741ca8bc3d5ee3af012e3603f673203"
+      "sha256": "db0a62b13039402b539929de5f229fcdd01cac05e7729d7b03436b20dca56148"
     },
     {
       "path": "scripts/validate-port.mjs",
-      "sha256": "d0aa20d8289db3902f6149735fe0aefb5f9143448f1e4fc4035baf4851b32d8a"
+      "sha256": "e3f6b8a06ae5e3577bab79dbbc816b60077e92205175a6199a0959e8899b7fbb"
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "72138ad4747f223561bf19bee092328409bd25750cd48bd02f38e3f0b3a2711f"
+      "sha256": "d92ae5ac381167018bcd5e83910cf7620aa2b95a30f76c8a8f79e29f164f023c"
+    }
+  ],
+  "metadataHistory": [
+    {
+      "upstream": {
+        "formatVersion": 1,
+        "package": "pi-pstack-herdsman",
+        "originalUpstream": {
+          "name": "Cursor pstack (cursor/plugin/pstack, as named in the request)",
+          "canonical": "https://github.com/cursor/plugins/tree/main/pstack",
+          "repository": "https://github.com/cursor/plugins.git",
+          "subdirectory": "pstack",
+          "commit": "df3fb154fb982fb83f649de8646d4af6a0cb16b3",
+          "license": "MIT"
+        },
+        "intermediates": {
+          "zenspc": {
+            "repository": "https://github.com/zenspc/pi-extensions.git",
+            "subdirectory": "packages/pi-pstack",
+            "commit": "88600500953dfa28f19441d9085c3e9edcfc5b5c",
+            "version": "0.5.0",
+            "license": "MIT"
+          },
+          "shepherdr": {
+            "source": "local pi-pstack-shepherdr working tree with token-saving edits"
+          },
+          "fabric": {
+            "source": "/path/to/pi-pstack-fabric",
+            "repositoryHead": "27fb137cad688cc857419402133a0fdb29b23484",
+            "workingTreeInput": true,
+            "inspectedVersion": "0.92.5"
+          }
+        },
+        "backend": {
+          "package": "pi-herdsman",
+          "inspectedVersion": "0.13.0",
+          "license": "Apache-2.0"
+        },
+        "policy": {
+          "pinsInheritedFromAudit": true,
+          "remoteReverification": false,
+          "movePinOnlyAfterReview": true
+        }
+      },
+      "backend": {
+        "package": "pi-herdsman",
+        "inspectedVersion": "0.13.0",
+        "mode": "existing agent API"
+      }
+    }
+  ],
+  "generatedHistory": [
+    {
+      "path": ".gitignore",
+      "sha256": "eea4f6256d4a3fbe51d6bdab84b60ed172d768988fe95964ef69da2a471e8489"
+    },
+    {
+      "path": ".pi-herdsman/adapter-handoff.md",
+      "sha256": "1c0c848c95e497ac3c5d08a00962bfae587c39fe38075c68a2d117861675a571"
     }
   ]
 }

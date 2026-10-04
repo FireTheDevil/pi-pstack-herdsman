@@ -43,7 +43,7 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
   - [ ] `git show origin/main:<project verification skill or harness path>`
   - [ ] `git show origin/main:skills/poteto-mode/playbooks/opening-a-pr.md`
   - [ ] `git show origin/main:skills/<each other leaf skill the program uses>`
-- [ ] Arm the 30-minute audit tick with a separately installed, explicitly authorized scheduler; otherwise record the timed audit as blocked. Never leave the cadence to memory.
+- [ ] Arm the hourly audit tick with a separately installed, explicitly authorized scheduler; otherwise record the timed audit as blocked. Never leave the cadence to memory.
 - [ ] Use this tick prompt, verbatim. "Re-read the execution playbook from trunk and the plan. Audit the operation against both and fix authorized drift in this tick. Assess concrete evidence and required attention for direct-owned lanes only; do not status-poll active agents or treat inactivity as proof of a hang. If recovery is necessary, preserve exact assignment identity and partial-work evidence, and use only current available_tools for that live agent. Resolve pending controls and mailbox/result-persistence issues according to the recorded recovery instructions before closing or replacing an assignment. Confirm teardown of the old execution and release of its write ownership before any replacement; never create overlapping writers. If evidence, control resolution or teardown is uncertain, report the blocker and do not replace the lane. Then post a short status message in this chat only for tracked changes not reported before, such as a new PR or head, a verdict, merge, recovered lane, blocker, or operator decision. Do not repeat unchanged tables or blockers. If nothing changed, end the turn without a status message. Append this tick and its reported items (or none) to the decision trail."
 - [ ] On the operator's hold or stand-down, send every owner a zero-writes order at once.
 
@@ -59,7 +59,7 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
 ### PR mechanics, for every PR
 
 - [ ] Resolve the forge once. Default to `gh`; if `command -v origin` succeeds and Origin can resolve the repository, use `origin pr` for every PR operation. Record any fallback to `gh`. Never require `gt`.
-- [ ] Open the PR ready, never draft, with `origin pr create --status open --base <base-branch>` or `gh pr create --base <base-branch>` according to the resolved forge. A stack child targets its parent branch.
+- [ ] Open the PR ready, never draft, per **Opening a PR**, using an available PR tool only for operations its documented schema supports. Otherwise use `origin pr create --status open --base <base-branch>` or `gh pr create --base <base-branch>` according to the resolved forge. A stack child targets its parent branch. After each verifiable unit, push the authorized branch with hooks on. Use fresh consolidated assignments for independent items.
 - [ ] Run the repo's lint and typecheck once before the PR-facing push. Push with hooks on.
 - [ ] Run `/skill:deslop` before each commit using supplied instructions for a leaf. After the implementation handoff, the lead runs `/skill:no-comments` before review and owns any `/skill:interrogate` delegation, forwarding required skill/rubric evidence and exact result refs through files.
 - [ ] Triage every Bugbot and security-reviewer comment per `../references/bugbot-triage.md`.
@@ -68,7 +68,7 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
 ### Verdict and merge, for every PR
 
 - [ ] At the code-ready head and each later push changing the patch, run the swarm per `skills/swarm/SKILL.md`. One gates lane. The ten live lanes from the PR's **Verify, live** block. The perf lane from its **Verify, perf** block. Two focused audit lanes read the diff and receipts rather than trusting the PR body. The root checks the receipts again at merge-ready.
-- [ ] Clean only when every lane is `PASS`. Findings go back to the owner. A new head gets a fresh swarm and a fresh verdict.
+- [ ] Clean only when every lane is `PASS`. The lead sends every proven finding to the owner in one fix-forward. A behavior defect filed as a note is a finding. Require a red test across every site with the same defect, or a reproduction receipt when no test can demonstrate it. Carry each defect into the next review brief. A new head gets a fresh swarm and a fresh verdict.
 - [ ] <The merge or append rule from the execution playbook, with the patch-id rule from `playbooks/shipping.md`.>
 
 ### Boot recipe, for every live lane
@@ -132,7 +132,8 @@ Each live lane requiring isolation runs in an explicitly prepared external workt
 
 - [ ] Root's clean verdict at the exact head SHA.
 - [ ] Bugbot triage done.
-- [ ] Rebased onto current trunk after the verdict, patch-id unchanged.
+- [ ] Merge-preparation rebase completed after verification lanes start, current-head CI passed, and patch-id checked per `playbooks/shipping.md`.
+- [ ] Immediately before merge, fetched trunk, confirmed a clean merge-tree and no trunk changes overlapping PR paths or CI-selection paths. Otherwise rebase, require CI, and repeat, re-verifying any changed patch.
 - [ ] <The owner squash-merges its own PR, or the root appends it to the base-branch stack and the operator lands it bottom-up.>
 
 ## Close the program

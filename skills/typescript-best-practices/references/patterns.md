@@ -77,9 +77,11 @@ A time range, as start plus duration:
 // Don't: a comment holds the invariant
 type TimeRange = { start: Date; end: Date }; // start <= end
 
-// Do: a negative range can't be written; derive end when needed
+// Do: derive end from start and duration; validate duration at the boundary
 type TimeRange = { start: Date; durationMs: number };
 ```
+
+A plain `durationMs: number` still permits negative values. Validate that the duration is nonnegative at the boundary before using this representation. The representation alone does not enforce that invariant.
 
 Keep `durationMs` a plain number. Brand it (per Branded types) only if a raw number could be passed where a duration is expected, not by reflex. Pick the representation that makes the bad state unconstructable, then expose the reading you need on top (`pairs.flat()`, a `rangeEnd()` helper).
 
@@ -153,27 +155,38 @@ Use `safeParse` when failure is an expected branch. Use the equivalent inference
 Every `as` is a potential runtime crash. Cast only after the type system has verified the claim.
 
 ```ts
+import { z } from "zod";
+
 // Don't
 const user = data as User;
 
-// Do. Earn the cast at the boundary.
-function parseUser(data: unknown): User {
-  if (typeof data !== "object" || data === null) {
-    throw new Error("expected object");
-  }
-  if (!("id" in data) || typeof (data as Record<string, unknown>).id !== "string") {
-    throw new Error("expected id");
-  }
-  // ... validate all fields
-  return data as User; // OK, earned cast after full validation
+// Don't
+function isUser(data: unknown): data is User {
+  return typeof data === "object" && data !== null && "id" in data;
 }
+
+// Do
+const userSchema = z.object({ id: z.string(), name: z.string() });
+type User = z.infer<typeof userSchema>;
+
+function parseUser(data: unknown): User {
+  return userSchema.parse(data);
+}
+```
+
+When the type comes first, annotate the validator with the type it proves. The compiler then rejects a validator that proves less than the type. Remove `name` from the object below and the assignment fails to compile.
+
+```ts
+type User = { id: string; name: string };
+
+const userSchema: z.ZodType<User> = z.object({ id: z.string(), name: z.string() });
 ```
 
 When refactoring an `as` out of existing code, identify why TypeScript can't infer:
 
 - Missing discriminant: add one, switch to a discriminated union.
 - Overly wide source type (e.g. `Record<string, unknown>`): narrow it.
-- Untyped boundary: add a parse function or schema.
+- Untyped boundary: parse with the schema that owns the shape. Add a schema only where none exists.
 - Genuinely inexpressible: use a branded type or `satisfies`.
 
 ## Narrowing hierarchy

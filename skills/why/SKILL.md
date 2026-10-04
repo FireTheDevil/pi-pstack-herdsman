@@ -120,7 +120,7 @@ Only skip with an **explicit, written justification** that goes in the final "So
 - **No accessible evidence or authorized tool is available for that category** in this environment. Flag this as a gap, not a choice. Example: "Real-time team chat skipped. No matching MCP or supplied snapshot was available, so the conversational record was not searchable."
 - **The source is provably irrelevant**, not just "probably irrelevant." A high bar. Example: "Error / exception tracking skipped. Target is a build-time script with no runtime code path."
 
-If your scope assessment suggests a single-commit trivial target where the PR description already contains the complete answer, you may answer inline after checking available categories and naming the gaps. Say so explicitly.
+If your scope assessment suggests a single-commit trivial target where the PR description already contains the complete answer, you may answer inline only after explicitly showing why every reachable category search would be redundant across the seven categories. Availability alone does not show redundancy. Name inaccessible categories as gaps. State each redundancy determination in Sources Consulted. This shortcut should be rare.
 
 ## Step 4. Synthesize
 

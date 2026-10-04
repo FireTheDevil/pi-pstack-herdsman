@@ -25,7 +25,7 @@ Open a todolist with one entry per phase before launching anything.
 2. Choose the shape. Partition into slices, race N workers on identical briefs, or mix both. For a race or mixed shape, declare `first pass`, `rank all`, or `best-of` before spawning.
 3. Set N from the user or derive it from the shape. N is total workers.
 4. Pick a discovered pstack-* definition for each arm using the [role table](../poteto-mode/references/herdsman-runtime.md). Match the work: poteto-agent for features/refactoring, bug-fix for defects, perf-issue for a one-off performance fix, hillclimb for iterative optimization, how-explorer or investigator for local exploration, researcher only for accessible source evidence, advisor for design, reviewer for judgment, and verifier or verifier-sol for authorized behavioral checks. Record effective model identities; a same-model race is independent-attempt evidence, not multi-model evidence.
-5. Give each worker its own writable output when it writes.
+5. Give each worker its own writable output when it writes. For verification or measurement, each brief names the exact commit SHAs. A measurement brief also names the sample count, what one sample is, and the order of samples. Require the worker to record the SHAs and the measurement method in its result.
 
 ## Phase B: Fan out
 
@@ -33,13 +33,13 @@ Launch independent arms with `agent_delegate`, definition, self-contained task a
 
 For different branches or competing code writers, explicitly prepare external worktrees and start separate lead sessions there. Fresh delegates inherit their lead cwd. Do not change a shared branch or pass cwd/worktree request fields.
 
-Every brief stands alone. Include the goal, scope, exact slice or race arm, how to verify, and what to report. Reports use `PASS`, `ISSUES`, or `BLOCKED` with evidence.
+Every brief stands alone. Include the goal, scope, exact slice or race arm, how to verify, and what to report. Reports use `PASS`, `ISSUES`, or `BLOCKED` with evidence. A worker that proves a defect reports `ISSUES` and lists every issue it can prove, not only the first.
 
 If a worker drops out, proceed with N-1 and note it.
 
 ## Phase C: Aggregate
 
-Read the terminal results. For coverage, every required slice needs a result. For a race, apply the selection rule declared up front. Use first pass, rank all, or best-of. Do not paste raw worker dumps.
+Read the terminal results. Drop a result that omits the SHAs or method required by its brief, and assign that slice to a fresh worker once with consolidated scope and the invalid receipt. After a second miss, record a gap, never a pass. Resolve any outstanding execution and write ownership before replacement. For coverage, every required slice needs a result. For a race, apply the selection rule declared up front. Use first pass, rank all, or best-of. Do not paste raw worker dumps.
 
 Keep a compact result table, one-line evidenced issues, and explicit gaps or dropouts.
 

@@ -28,6 +28,7 @@ export interface CliOptions {
   readonly mode: T.WatchMode;
   readonly stackPrs: readonly T.PrNumber[];
   readonly statusOnly: boolean;
+  readonly stopAt: T.QueueStopAt;
   readonly pretty: boolean;
   readonly polling: T.PollingOptions;
 }
@@ -70,6 +71,7 @@ interface RawOptions {
   readonly pr?: T.PrNumber;
   readonly stack: boolean;
   readonly queuedStack: boolean;
+  readonly stopAtFrontierReady: boolean;
   readonly stackPrs?: T.NonEmpty<T.PrNumber>;
   readonly interval: number;
   readonly sweepInterval: number;
@@ -103,6 +105,11 @@ export function parseArgs(
       false
     )
     .option(
+      "--stop-at-frontier-ready",
+      "finish queued observation at a merge-ready frontier without merging",
+      false
+    )
+    .option(
       "--stack-prs <n,...>",
       "frozen bottom-to-top queue (queued mode only)",
       stackPrList
@@ -133,6 +140,10 @@ export function parseArgs(
   const raw = program.opts<RawOptions>();
   if (raw.stackPrs !== undefined && !raw.queuedStack)
     program.error("error: --stack-prs requires --queued-stack");
+  if (raw.stopAtFrontierReady && (!raw.queuedStack || raw.statusOnly))
+    program.error(
+      "error: --stop-at-frontier-ready requires --queued-stack and conflicts with --status-only"
+    );
   return {
     owner: raw.owner ?? null,
     repo: raw.repo ?? null,
@@ -140,6 +151,7 @@ export function parseArgs(
     mode: raw.queuedStack ? "queued-stack" : raw.stack ? "stack" : "single",
     stackPrs: raw.stackPrs ?? [],
     statusOnly: raw.statusOnly,
+    stopAt: raw.stopAtFrontierReady ? "frontier-ready" : "complete",
     pretty: raw.pretty,
     polling: {
       interval: raw.interval,
@@ -210,7 +222,12 @@ export async function main(
   const dependencies = { reader: runtime.reader, clock: runtime.clock, emit };
   const verdict =
     options.mode === "queued-stack" && !options.statusOnly
-      ? await runQueued({ dependencies, contexts, options: options.polling })
+      ? await runQueued({
+          dependencies,
+          contexts,
+          options: options.polling,
+          stopAt: options.stopAt,
+        })
       : await runSimple({
           dependencies,
           contexts,
@@ -219,5 +236,5 @@ export async function main(
           options: options.polling,
         });
   runtime.stdout(render(verdict));
-  return verdict.exitCode;
+  return verdict.terminal ? verdict.exitCode : 0;
 }

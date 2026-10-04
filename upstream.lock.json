@@ -10,9 +10,9 @@
     "license": "MIT"
   },
   "reviewedUpstream": {
-    "version": "0.15.5",
-    "pstackChangeCommit": "12d587dfb20741cafc376c42c696c5f6e2a64487",
-    "scope": "Reviewed instruction changes since originalUpstream.commit; adapted applicable behavior for Pi/Herdsman, not a byte-for-byte resource import"
+    "version": "0.15.9",
+    "pstackChangeCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+    "scope": "Assessed all supplied 0.15.5 to 0.15.9 skill delta hunks; semantically adapted for Pi/Herdsman. Added only benchmark-checklist, correct, principle-explain-the-number. make-bot-ui excluded by user and unavailable capabilities. Existing skill descriptions preserved pending separate owner review."
   },
   "intermediates": {
     "zenspc": {
@@ -41,5 +41,12 @@
     "pinsInheritedFromAudit": true,
     "remoteReverification": false,
     "movePinOnlyAfterReview": true
-  }
+  },
+  "reviewHistory": [
+    {
+      "version": "0.15.5",
+      "pstackChangeCommit": "12d587dfb20741cafc376c42c696c5f6e2a64487",
+      "scope": "Reviewed instruction changes since originalUpstream.commit; adapted applicable behavior for Pi/Herdsman, not a byte-for-byte resource import"
+    }
+  ]
 }
