@@ -1,14 +1,35 @@
 # pi-pstack-herdsman
 
-Standalone **local** pstack workflow adapter for Pi Herdsman. It adds commands, 50 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. It does not implement orchestration. On the first lead session after loading the extension, it copies missing templates into the global Herdsman agent directory.
+Pstack workflow and command adapter for [Pi](https://github.com/earendil-works/pi) and the [pi-herdsman extension](https://github.com/boadij/pi-herdsman). It adds commands, 50 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. Herdsman provides agent orchestration; this package provides workflow guidance and commands. On the first lead session after loading the extension, it copies missing templates into the global Herdsman agent directory.
 
-Original upstream is **Cursor pstack (`cursor/plugin/pstack`, as named in the request)**. The verified canonical location is https://github.com/cursor/plugins/tree/main/pstack in https://github.com/cursor/plugins. Lauren Tan's MIT license is retained. zenspc's Pi port, local Shepherdr and local Fabric adapters are intermediate adaptations, not the original upstream. See [NOTICE](NOTICE.md), [pins](upstream.lock.json) and [resource inventory](PORT-MANIFEST.json).
+## Skill origins
 
-The resource lineage remains pinned to upstream 0.15.0. Applicable skill/workflow changes through Cursor pstack 0.15.5 were reviewed and adapted, not copied wholesale: Cursor model rules, persistent agent routing and plugin-specific actions do not configure Pi. The eleven Herdsman profiles below remain intact; the [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes tasks by capability and pinned definition.
+The skills originate in [Cursor's pstack plugin](https://github.com/cursor/plugins/tree/main/pstack), authored by Lauren Tan. The repository preserves the upstream MIT license and copyright notice. zenspc's Pi port and the local Shepherdr and Fabric ports are intermediate adaptations, not the original upstream or runtime dependencies. See [NOTICE](NOTICE.md), [version pins](upstream.lock.json), and the [resource inventory](PORT-MANIFEST.json).
 
-## Try locally
+The resource lineage retains its original upstream pin. Selected skill and workflow changes through Cursor pstack 0.15.9 were reviewed and adapted for Pi/Herdsman, not copied wholesale. Cursor model rules and plugin-specific actions do not configure Pi. The [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes tasks to the eleven Herdsman profiles.
 
-Requires Node >=24, Pi >=1.0.2 <1.1.0 and an independently configured Herdsman >=0.19.1 <0.20.0 host (including its Herdr prerequisites). This package does not install or configure them.
+## Install
+
+Requires Node >=24, Pi >=1.0.2 <1.1.0, and pi-herdsman >=0.19.1 <0.20.0 with its Herdr prerequisites. Follow the [Herdsman setup guide](https://github.com/boadij/pi-herdsman/blob/main/docs/getting-started.md) to install Herdr and its Pi integration. This package does not install or configure its host dependencies.
+
+If you already manage Pi and Herdr yourself, install the extensions:
+
+```sh
+pi install npm:pi-herdsman@0.19.1
+pi install git:github.com/FireTheDevil/pi-pstack-herdsman
+```
+
+For the Codex Notebook tools listed in the implementation and verifier profiles, also install the Codex conversion extension:
+
+```sh
+pi install npm:@howaboua/pi-codex-conversion
+```
+
+Open `/codex` and select Notebook mode if you want those tools. Tool names in a definition do not install or enable an extension. The package does not require pi-fabric or pi-shepherdr.
+
+Start `herdr` in your target project, then start `pi` inside its pane. Run `/poteto-mode` to enable the workflow. After the first lead session copies the profiles, restart or reload Pi and inspect the effective definitions with `agent_list`. Authenticate the providers and ensure the models named in those definitions are available before delegating.
+
+## Try a local checkout
 
 From a trusted target project, load this local package for one invocation alongside your existing Herdsman setup:
 

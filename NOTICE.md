@@ -1,5 +1,7 @@
 # Attribution and provenance
 
+This extension uses [zenspc's pi-pstack port](https://github.com/zenspc/pi-extensions/tree/main/packages/pi-pstack) as its starting point and adapts its workflows and commands for the [pi-herdsman extension](https://github.com/boadij/pi-herdsman).
+
 Original upstream: **Cursor pstack (`cursor/plugin/pstack`, as named in the request)** by Lauren Tan.
 Verified repository spelling: https://github.com/cursor/plugins
 Canonical plugin: https://github.com/cursor/plugins/tree/main/pstack
