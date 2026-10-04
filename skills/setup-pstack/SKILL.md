@@ -1,6 +1,6 @@
 ---
 name: setup-pstack
-description: Preview and create project-local Herdsman definitions with /setup-pstack.
+description: "Preview and create project-local Herdsman definitions with /setup-pstack."
 disable-model-invocation: true
 ---
 

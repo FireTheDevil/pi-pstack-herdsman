@@ -434,7 +434,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "8df6475134fc9f9535b58da69b4782da8f9c8f624c4773470e20dc8f327fbf50",
+      "destinationSha256": "c3771de233deb87c0e284bc1a1fb3614aac34a089cef8014dcfb45254ad6a846",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1575,7 +1575,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/setup-pstack/SKILL.md",
-      "destinationSha256": "37bad898d769478e7bdb24ab4de64fee5033573f036313d48b1d839cd3cdbd5a",
+      "destinationSha256": "4b625324ee1e4c274482aa38f6fdb027bdeb100bbcc581722a250e5d33d0a189",
       "disposition": "adapted"
     },
     {
@@ -1701,8 +1701,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/typescript-best-practices/SKILL.md",
-      "destinationSha256": "919f18c7b83f57a637af70bcddd9bb108172c709f3680aba04eb9c96535aeb21",
-      "disposition": "adopted"
+      "destinationSha256": "696280cba426d9af14ace9a35bb7e3607faf607a7938d7b20b79286af7a1e6aa",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/typescript-best-practices/references/patterns.md",

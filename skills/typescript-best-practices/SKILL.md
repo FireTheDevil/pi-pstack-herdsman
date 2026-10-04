@@ -1,6 +1,6 @@
 ---
 name: typescript-best-practices
-description: TypeScript best practices. Use when writing or modifying .ts or .tsx code, or explicitly reviewing TypeScript type-system correctness. Not for ordinary read-only navigation or explanation.
+description: "TypeScript best practices. Use when writing or modifying .ts or .tsx code, or explicitly reviewing TypeScript type-system correctness. Not for ordinary read-only navigation or explanation."
 disable-model-invocation: true
 ---
 
