@@ -35,20 +35,20 @@ test('model-pinned leaf templates materialize at discoverable trusted project pa
     const path = saveDefinition(cwd, role, text);
     assert.equal(path, join(cwd, '.pi/agents', 'pstack-' + role + '.md'));
     const fields = template(readFileSync(path, 'utf8'));
-    assert.match(fields.model, /^"openai-codex\/gpt-6-(?:sol|astra|luna)"$/);
+    assert.match(fields.model, /^"openai-codex\/(?:gpt-6\.1-sol|gpt-6-astra|gpt-6-luna)"$/);
     assert.match(fields.thinking, /^(?:low|medium|high|max)$/);
     assert.equal(fields.name, 'pstack-' + role);
   }
   assert.deepEqual(ROLES.map(role => {
     const { model, thinking } = template(read('definitions/pstack-' + role + '.md'));
-    return [role, JSON.parse(model).replace('openai-codex/gpt-6-', ''), thinking];
+    return [role, JSON.parse(model), thinking];
   }), [
-    ['investigator','luna','max'], ['poteto-agent','sol','medium'],
-    ['bug-fix','sol','high'], ['perf-issue','astra','medium'],
-    ['hillclimb','luna','max'], ['how-explorer','luna','max'],
-    ['reviewer','sol','low'], ['researcher','sol','medium'],
-    ['verifier','astra','medium'], ['verifier-sol','sol','medium'],
-    ['advisor','sol','medium']
+    ['investigator','openai-codex/gpt-6-luna','max'], ['poteto-agent','openai-codex/gpt-6.1-sol','medium'],
+    ['bug-fix','openai-codex/gpt-6.1-sol','high'], ['perf-issue','openai-codex/gpt-6-astra','medium'],
+    ['hillclimb','openai-codex/gpt-6-luna','max'], ['how-explorer','openai-codex/gpt-6-luna','max'],
+    ['reviewer','openai-codex/gpt-6.1-sol','low'], ['researcher','openai-codex/gpt-6.1-sol','medium'],
+    ['verifier','openai-codex/gpt-6-astra','medium'], ['verifier-sol','openai-codex/gpt-6.1-sol','medium'],
+    ['advisor','openai-codex/gpt-6.1-sol','medium']
   ]);
 });
 test('all templates discover extensions while native tool allowlists remain role-specific', () => {

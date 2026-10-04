@@ -23,7 +23,7 @@ function harness({ child = false, entries = [], confirm = false } = {}) {
   const ctx = { cwd, mode: 'tui', hasUI: true, isIdle: () => true,
     sessionManager: { getBranch: () => entries },
     getSystemPrompt: () => child ? 'base\n<active_agent name="pstack-poteto-agent"/>' : 'base',
-    modelRegistry: { getAvailable: () => ['sol','astra','luna'].map(id => ({ provider: 'openai-codex', id: 'gpt-6-' + id })) },
+    modelRegistry: { getAvailable: () => ['gpt-6.1-sol','gpt-6-astra','gpt-6-luna'].map(id => ({ provider: 'openai-codex', id })) },
     ui: { setStatus(...args) { statuses.push(args); }, notify(...args) { notifications.push(args); }, select: async (_, choices) => choices[0], confirm: async () => confirm }
   };
   extension(pi);
@@ -135,7 +135,7 @@ test('setup previews complete definition, confirms, refuses overwrite and preser
   const path = definitionPath(h.cwd, 'reviewer');
   const saved = readFileSync(path, 'utf8');
   assert.match(saved, /name: pstack-reviewer/);
-  assert.match(saved, /model: "openai-codex\/gpt-6-sol"/);
+  assert.match(saved, /model: "openai-codex\/gpt-6\.1-sol"/);
   assert.match(saved, /thinking: low/);
   assert.ok(preview.includes(saved));
   assert.ok(preview.includes(path));
