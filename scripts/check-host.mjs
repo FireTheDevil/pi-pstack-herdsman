@@ -31,8 +31,8 @@ try {
   assert.equal(loaded.extensions.length, 1);
   assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack', 'setup-pstack']);
   const skills = loadSkillsFromDir({ dir: join(root, 'skills'), source: 'local' });
-  assert.equal(skills.skills.length, 50);
+  assert.equal(skills.skills.length, 52);
   assert.deepEqual(skills.diagnostics, []);
   assert.ok(skills.skills.every(s => s.disableModelInvocation));
-  console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: 50, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
+  console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: skills.skills.length, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
 } finally { rmSync(isolated, { recursive: true, force: true }); }

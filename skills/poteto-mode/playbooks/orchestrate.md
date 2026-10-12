@@ -1,5 +1,7 @@
 ### Orchestrate
 
+Before unattended execution, read and satisfy all four checks in [Unattended trust preflight](autonomous-run.md#unattended-trust-preflight). Missing checks block unattended work, but may be established through authorized attended preparation. This grants no additional scheduling, publication, scope, or tools authority and does not gate normal attended work.
+
 **Adapter boundary.** Use bounded leaf assignments, not persistent actors or nested controller workflows. The lead dispatches independent review and subsequent phases. Competing checkouts require explicitly prepared external worktrees and separate lead sessions; direct delegates share the lead cwd. Do not pass model/tools/cwd/worktree/schema in agent requests. When only dependent agent work remains, end the turn and yield; integrate asynchronous results and forward exact result refs through files. These constraints govern the workflow below.
 
 Use [Herdsman runtime](../references/herdsman-runtime.md) for supported launch, wake, isolation, and stop semantics. A written goal or cadence is not a running scheduler.

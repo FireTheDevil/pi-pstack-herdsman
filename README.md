@@ -1,12 +1,12 @@
 # pi-pstack-herdsman
 
-Pstack workflow and command adapter for [Pi](https://github.com/earendil-works/pi) and the [pi-herdsman extension](https://github.com/boadij/pi-herdsman). It adds commands, 50 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. Herdsman provides agent orchestration; this package provides workflow guidance and commands. On the first lead session after loading the extension, it copies missing templates into the global Herdsman agent directory.
+Pstack workflow and command adapter for [Pi](https://github.com/earendil-works/pi) and the [pi-herdsman extension](https://github.com/boadij/pi-herdsman). It adds commands, 52 hidden explicitly callable skills, 23 playbooks, supporting references/scripts and eleven leaf definition templates. Herdsman provides agent orchestration; this package provides workflow guidance and commands. On the first lead session after loading the extension, it copies missing templates into the global Herdsman agent directory.
 
 ## Skill origins
 
 The skills originate in [Cursor's pstack plugin](https://github.com/cursor/plugins/tree/main/pstack), authored by Lauren Tan. The repository preserves the upstream MIT license and copyright notice. This extension uses [zenspc's pi-pstack port](https://github.com/zenspc/pi-extensions/tree/main/packages/pi-pstack) as its starting point and adapts it for pi-herdsman. See [NOTICE](NOTICE.md), [version pins](upstream.lock.json), and the [resource inventory](PORT-MANIFEST.json).
 
-The resource lineage retains its original upstream pin. Selected skill and workflow changes through Cursor pstack 0.15.9 were reviewed and adapted for Pi/Herdsman, not copied wholesale. Cursor model rules and plugin-specific actions do not configure Pi. The [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes tasks to the eleven Herdsman profiles.
+The resource lineage retains its original upstream pin. Portable skill and workflow changes through Cursor pstack 0.15.17 were reviewed and adapted for Pi/Herdsman. This includes upstream prompt distillation, prose cleanup for ordinary replies, catch-up/help skills, and unattended-run trust checks. Cursor model rules and plugin-specific actions do not configure Pi. The [alignment report](docs/upstream-alignment-0.15.17.md) explains the recommendations, approved scope, changes, and verification limits. The [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes tasks to the eleven Herdsman profiles.
 
 ## Install
 
@@ -42,6 +42,7 @@ No global Pi package installation is needed. Loading the extension (including fr
 - `/poteto-mode [task]` enables the sticky controller hint and opens the workflow. Default is off. `/poteto-mode off` disables it. Explicit decisions restore from the active session branch.
 - `/pstack [on|off|status]` independently filters this package's skill catalog. Hidden skills remain directly callable with `/skill:<name>`. Status does not test backend readiness.
 - `/setup-pstack [role]` remains an optional, project-only template preview/copy command. It checks model availability and requires confirmation; cancellation and headless *command execution* write nothing. A same-name global profile installed on session start takes precedence, so edit that global profile if you need to customize the effective role.
+- `/skill:poteto-help <question>` explains setup, skill selection, or prompt wording without executing the workflow. `/skill:ketchup` gives a read-only current-chat catch-up with unresolved human decisions.
 
 Reload/restart and inspect the effective Herdsman roster after the automatic copy. Global definitions override trusted project `.pi/agents/` definitions with the same name. Package `definitions/` are templates, not directly discovered. The copy does not grant project trust or edit settings. If a pinned model is unavailable, edit the corresponding global profile manually before delegation.
 
