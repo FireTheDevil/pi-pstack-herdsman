@@ -62,6 +62,10 @@ Reload/restart and inspect the effective Herdsman roster after the automatic cop
 
 All templates are leaves and enable ordinary extension discovery (`noExtensions: false`), while native skill discovery remains disabled. Their model/thinking pins follow `~/.pi/agent/pstack/models.json` as configured when these templates were authored; that file is not read at runtime. Verifier and researcher pins are inferred defaults because the policy lists neither role. Herdsman's mandatory infrastructure remains. Supply needed evidence/skills through files. Extension tools still need to be listed in a profile's `tools` allowlist to be callable: the researcher can read supplied source snapshots, but its default allowlist does not include web tools. Loaded extensions can run handlers even when their tools are filtered, so tool lists are not extension sandboxes.
 
+## Artifact locations
+
+[Artifact locations](config/artifact-locations.md) is the central model-readable configuration for Orchestrate, Pause safely, and Show me your work. It defines project-local defaults and path precedence, not runtime-enforced settings or Herdsman session/result storage.
+
 ## Deliberate limits
 
 Read the [runtime contract](skills/poteto-mode/references/herdsman-runtime.md) before delegation.

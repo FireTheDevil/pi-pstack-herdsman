@@ -897,7 +897,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/orchestrate.md",
-      "destinationSha256": "6ef38315544776d5752ccfed1a7f32b33e91628f5c1f684985e3a5c5d846ff36",
+      "destinationSha256": "02108314c53849bdf9ccb34bd8cc0ea67af057b47f5a19ad330bc4c4f730b153",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -925,7 +925,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/pause-safely.md",
-      "destinationSha256": "d57cee65d8240146d6d70e5564ec25d342a50250c412c4d05ab5d4de5c41a11a",
+      "destinationSha256": "cfd76e54a88a0ca46bfc774ef44e67fedf3de3cbe81b7f7903ebbd15f486ae14",
       "disposition": "adapted"
     },
     {
@@ -1963,7 +1963,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/show-me-your-work/SKILL.md",
-      "destinationSha256": "df3a89b079fc2e705a77b3e419fdfbbd23188a6106800b819c404945c4629094",
+      "destinationSha256": "5969bf6f251e922a5976f3b7aa7edece303e1cb1e43b1908938b2f31c3f006ac",
       "disposition": "adapted"
     },
     {
@@ -2372,11 +2372,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "695ee9f1674f87c4a49c9e2ad4b3b57c759000958bcc413d4291fbe9ef950122"
+      "sha256": "78621649b1ce21fe69fbe0500fd04f771b3fce81344ddcf726421829fd2860dd"
     },
     {
       "path": "VALIDATION.md",
       "sha256": "095a9f50b2764c203cd32dd3466fc3ff3d7b3f0f73f7b90709ac33174263f3be"
+    },
+    {
+      "path": "config/artifact-locations.md",
+      "sha256": "a355eca0e5787cda4522a8635a9bfb394313d7b547caf77e2a621d6c5ac1416c"
     },
     {
       "path": "definitions/pstack-advisor.md",
@@ -2436,7 +2440,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "f2c7c0eeae5378c4d8efc710af37522fea4a24b6ca75c21702157adf25136830"
+      "sha256": "9b85ad5a4543300e94d815e39ed63109d0570295268e5c216527057b3c44db1c"
     },
     {
       "path": "scripts/backend-contract.mjs",

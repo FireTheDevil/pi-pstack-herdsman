@@ -26,7 +26,7 @@ With namespaced definitions, execution depth stays at controller and leaf; track
 
 #### Store layout
 
-Create `orchestrate/<project-slug>/` in the current agent's store (path in the system prompt). Every file has exactly one writer. Owners publish facts, readers aggregate at read time. Use `bun scripts/orch/orch.ts` for bookkeeping, written below as `orch`, while its canonical plain TSV and JSON stay readable without the CLI.
+Read [artifact locations](../../../config/artifact-locations.md) and resolve its Orchestrate store for this project, honoring explicit paths and existing adequate artifacts. This is the coordination store, not Herdsman's runtime session/result store. Every file has exactly one writer. Owners publish facts, readers aggregate at read time. Use `bun scripts/orch/orch.ts` for bookkeeping, written below as `orch`, while its canonical plain TSV and JSON stay readable without the CLI. The CLI still requires `--store <resolved-store-path>` or `ORCH_STORE` set to that chosen absolute path on every invocation; it does not read the configuration.
 
 - `preferences.md` is the standing-orders register: numbered lines, one constraint each (model policy, stack shape and count, verification bar, forbidden paths, escalation policy). Supply it in every spawn and assign, using a scoped accessible file pointer instead of repeating its contents when possible. When you catch yourself restating an instruction, append the line before you act (principle-encode-lessons-in-structure).
 - `overview.md` is the durable PR and issue DB. Append. Never rewrite wholesale per event.

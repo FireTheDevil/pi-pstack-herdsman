@@ -14,6 +14,7 @@
     "PORT-MANIFEST.json",
     "README.md",
     "VALIDATION.md",
+    "config/artifact-locations.md",
     "definitions/pstack-advisor.md",
     "definitions/pstack-bug-fix.md",
     "definitions/pstack-hillclimb.md",
