@@ -4,7 +4,7 @@
 
 This document explains the proposed changes, the scope Alex approved, and the implementation results. It is readable without the earlier conversation or Git history.
 
-The work is on `review/cursor-pstack-0.15.17`. The requested resource changes are applied, and focused independent review passed. The full test suite and supported-host certification are not green; the exact limitations are recorded below. Existing uncommitted work that predates this task is preserved outside the commit. No release, remote push, or pull request is part of this request.
+The work is on `review/cursor-pstack-0.15.17`. The requested resource changes are applied, and focused independent review passed. After the separately requested count update, the isolated branch passes all 34 existing tests, and the current working tree passes all 37. Supported-host certification remains blocked. The earlier committed-snapshot results and their scope are recorded below. Existing uncommitted work that predates this task is preserved outside the commit. No release or pull request is part of this work.
 
 Our previous reviewed baseline was Cursor pstack 0.15.9. A fresh upstream audit found eight later pstack commits through 0.15.17. The main token-efficiency change is 0.15.16, which distills 35 skill and reference Markdown files. The upstream audit found no measured token savings or behavioral evaluation results.
 
@@ -139,3 +139,9 @@ The requested commit includes upstream alignment only. Pre-existing artifact-loc
 The working-tree checks above used 161 package members because the local artifact-location addition was present. The isolated commit contains 160 members. It has the same 52 skills and 133 resources. Its manifest is refreshed against the isolated files, so it does not require excluded local files or their hashes. Commit-snapshot verification results are recorded below.
 
 The isolated snapshot passed `npm run check` with 52 skills, 23 playbooks, and 133 resources. Its unchanged existing tests passed 33 of 34. The sole failure expects 155 package members while the snapshot contains 160. The pre-existing local test edit that raises the expectation to 156 was deliberately excluded. No test files were changed for this commit.
+
+## Follow-up inventory count update
+
+Alex subsequently requested the count update. The existing expectation in `test/package-inventory.test.mjs` now matches the inventory: 160 in the isolated branch and 161 in the local working tree that includes the uncommitted artifact-location file. No new tests or test logic were added.
+
+The current checkout passed `npm test` with 37 of 37 tests and passed `npm run check`. The isolated follow-up snapshot passed all 34 existing tests and its structural check. The follow-up commit contains only count maintenance and this report update, with refreshed generated hashes. Unrelated artifact-location work remains uncommitted. The earlier 33-of-34 snapshot failure is historical and is resolved by this count correction.

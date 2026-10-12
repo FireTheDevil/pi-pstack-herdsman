@@ -2424,7 +2424,7 @@
     },
     {
       "path": "docs/upstream-alignment-0.15.17.md",
-      "sha256": "ec43410a0368aeed0b5c8bd8bf145019247a213657804d9d1998b652e78ad0e6"
+      "sha256": "f05110d50a3e2c7a54db2e1295ad9aff2a78008f685bcf04e86922e809466ca1"
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",
