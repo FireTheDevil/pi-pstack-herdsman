@@ -39,8 +39,8 @@ pi -e /path/to/pi-pstack-herdsman
 
 No global Pi package installation is needed. Loading the extension (including from a trusted project or in headless mode) writes missing `pstack-*.md` profiles to `~/.pi/agent/agents/`, or `$PI_CODING_AGENT_DIR/agents/` when set. Existing files are never overwritten; later package updates do not refresh customized or previously copied profiles. There is no npm postinstall hook, so `pi install` alone does not copy profiles until the extension starts a lead session. Review the package before granting project trust or loading it explicitly.
 
-- `/poteto-mode [task]` enables the sticky controller hint and opens the workflow. Default is off. `/poteto-mode off` disables it. Explicit decisions restore from the active session branch.
-- `/pstack [on|off|status]` independently filters this package's skill catalog. Hidden skills remain directly callable with `/skill:<name>`. Status does not test backend readiness.
+- `/poteto-mode [task]` enables the sticky controller hint and opens the workflow. Default is off. `/poteto-mode off` disables it. Explicit decisions restore from the active session branch. When enabled in a lead TUI session, the indicator reads `• poteto mode •` with purple words and muted dots; it is hidden when off.
+- `/pstack-status` takes no arguments and reports Poteto Mode and bundled skill visibility without changing session state. Bundled skills stay hidden by frontmatter and remain directly callable with `/skill:<name>`. The old `/pstack` catalog toggle is removed; historical catalog-filter decisions are ignored.
 - `/setup-pstack [role]` remains an optional, project-only template preview/copy command. It checks model availability and requires confirmation; cancellation and headless *command execution* write nothing. A same-name global profile installed on session start takes precedence, so edit that global profile if you need to customize the effective role.
 - `/skill:poteto-help <question>` explains setup, skill selection, or prompt wording without executing the workflow. `/skill:ketchup` gives a read-only current-chat catch-up with unresolved human decisions.
 

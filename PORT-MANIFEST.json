@@ -1956,7 +1956,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/setup-pstack/SKILL.md",
-      "destinationSha256": "4b625324ee1e4c274482aa38f6fdb027bdeb100bbcc581722a250e5d33d0a189",
+      "destinationSha256": "6f75255fba1c560f0ec964927ed2db0c99663eda88a63a0d0e82104ef0e712d7",
       "disposition": "adapted"
     },
     {
@@ -2379,7 +2379,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "96e5d9bc7cbab6b46b22d429787b51aa255b7558347a31f1d20cc6469542d952"
+      "sha256": "6ed453a197b8aa8db4f7d4d25fb485db1daf077aa2ead3e7dc32a3f9446e4915"
     },
     {
       "path": "VALIDATION.md",
@@ -2439,7 +2439,7 @@
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",
-      "sha256": "1c45e06c0cf58672b6bd5a47d02e974286184fa22cd126afe058cd8cea2be4fc"
+      "sha256": "4ae128ba74bbf6b36428a26ab917b13b49fbb46571f21e8127b31e28477d65a2"
     },
     {
       "path": "extensions/pstack-herdsman/skill-strip.ts",
