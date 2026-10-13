@@ -172,8 +172,8 @@
     "upstream.lock.json"
   ],
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": ">=1.0.2 <1.1.0",
-    "pi-herdsman": ">=0.19.1 <0.20.0"
+    "@earendil-works/pi-coding-agent": ">=1.1.0 <1.2.0",
+    "pi-herdsman": ">=0.25.1 <0.26.0"
   },
   "pi": {
     "extensions": [

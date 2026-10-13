@@ -10,12 +10,12 @@ The resource lineage retains its original upstream pin. Portable skill and workf
 
 ## Install
 
-Requires Node >=24, Pi >=1.0.2 <1.1.0, and pi-herdsman >=0.19.1 <0.20.0 with its Herdr prerequisites. Follow the [Herdsman setup guide](https://github.com/boadij/pi-herdsman/blob/main/docs/getting-started.md) to install Herdr and its Pi integration. This package does not install or configure its host dependencies.
+Requires Node >=24, Pi >=1.1.0 <1.2.0, and pi-herdsman >=0.25.1 <0.26.0 with its Herdr prerequisites. Follow the [Herdsman setup guide](https://github.com/boadij/pi-herdsman/blob/main/docs/getting-started.md) to install Herdr and its Pi integration. This package does not install or configure its host dependencies.
 
 If you already manage Pi and Herdr yourself, install the extensions:
 
 ```sh
-pi install npm:pi-herdsman@0.19.1
+pi install npm:pi-herdsman@0.25.1
 pi install git:github.com/FireTheDevil/pi-pstack-herdsman
 ```
 
@@ -27,7 +27,7 @@ pi install npm:@howaboua/pi-codex-conversion
 
 Open `/codex` and select Notebook mode if you want those tools. Tool names in a definition do not install or enable an extension.
 
-Start `herdr` in your target project, then start `pi` inside its pane. Run `/poteto-mode` to enable the workflow. After the first lead session copies the profiles, restart or reload Pi and inspect the effective definitions with `agent_list`. Authenticate the providers and ensure the models named in those definitions are available before delegating.
+Start `herdr` in your target project, then start `pi` inside its pane. Run `/poteto-mode` to enable the workflow. After the first lead session copies the profiles, restart or reload Pi and inspect the effective definitions with `list_agents`. Authenticate the providers and ensure the models named in those definitions are available before delegating.
 
 ## Try a local checkout
 

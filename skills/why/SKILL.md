@@ -46,7 +46,7 @@ Source control may be available to the lead through git or `gh`, but neither too
 
 Aim for a complete **coverage map**, not a minimal one. Document unavailable categories as gaps; a tool visible to the lead is not automatically available to a child.
 
-Launch separate `agent_delegate` assignments only for categories whose evidence files or verified tools the selected definition can actually access. Collect every attributed completion before synthesis. Don't ask one agent to cover multiple MCPs.
+Launch separate `delegate_agent` assignments only for categories whose evidence files or verified tools the selected definition can actually access. Collect every attributed completion before synthesis. Don't ask one agent to cover multiple MCPs.
 
 Herdsman task assignment for each source:
 - Herdsman definition: `pstack-investigator` for local source-control evidence; `pstack-researcher` for web or MCP evidence. Confirm target tool availability before launch.

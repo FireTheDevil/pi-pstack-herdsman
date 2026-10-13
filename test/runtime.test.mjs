@@ -24,7 +24,7 @@ function harness({ child = false, entries = [], confirm = false } = {}) {
     sessionManager: { getBranch: () => entries },
     getSystemPrompt: () => child ? 'base\n<active_agent name="pstack-poteto-agent"/>' : 'base',
     modelRegistry: { getAvailable: () => ['gpt-6.1-sol','gpt-6-astra','gpt-6-luna'].map(id => ({ provider: 'openai-codex', id })) },
-    ui: { setStatus(...args) { statuses.push(args); }, notify(...args) { notifications.push(args); }, select: async (_, choices) => choices[0], confirm: async () => confirm }
+    ui: { theme: { fg: (_, text) => text }, setStatus(...args) { statuses.push(args); }, notify(...args) { notifications.push(args); }, select: async (_, choices) => choices[0], confirm: async () => confirm }
   };
   extension(pi);
   return { cwd, ctx, entries, commands, messages, notifications, statuses,
@@ -43,17 +43,17 @@ function harness({ child = false, entries = [], confirm = false } = {}) {
 
 test('controller starts off and explicit command enables sticky status and hint', async t => {
   const h = harness(); t.after(h.close);
-  assert.deepEqual([...h.commands.keys()].sort(), ['poteto-mode', 'pstack', 'setup-pstack']);
+  assert.deepEqual([...h.commands.keys()].sort(), ['poteto-mode', 'pstack-status', 'setup-pstack']);
   await h.emit('session_start');
   assert.deepEqual(h.statuses.at(-1), ['pstack-mode', undefined]);
   assert.equal((await h.emit('before_agent_start', { systemPrompt: 'base' })).systemPrompt, 'base');
   assert.equal(h.entries.length, 0);
   await h.commands.get('poteto-mode').handler('', h.ctx);
-  assert.deepEqual(h.statuses.at(-1), ['pstack-mode', 'pstack: poteto mode']);
+  assert.deepEqual(h.statuses.at(-1), ['pstack-mode', '• poteto mode •']);
   assert.equal((await h.emit('before_agent_start', { systemPrompt: 'base' })).systemPrompt, 'base\n\n' + POTETO_HINT);
   assert.equal(h.entries.at(-1).data.enabled, true);
   await h.emit('session_tree');
-  assert.deepEqual(h.statuses.at(-1), ['pstack-mode', 'pstack: poteto mode']);
+  assert.deepEqual(h.statuses.at(-1), ['pstack-mode', '• poteto mode •']);
 });
 test('first session load installs missing global profiles without replacing existing ones', async t => {
   const h = harness(); t.after(h.close);
@@ -100,16 +100,23 @@ test('Managed agents suppress controller state, commands and setup even with inh
   assert.ok(!existsSync(join(h.cwd, 'agents')));
   assert.equal((await h.emit('before_agent_start', { systemPrompt: 'base' })).systemPrompt, 'base');
 });
-test('catalog filter state is independent from Poteto state and rejects bad input', async t => {
+test('pstack-status reports skill visibility without changing Poteto state and rejects arguments', async t => {
   const h = harness(); t.after(h.close);
   await h.emit('session_start');
   await h.commands.get('poteto-mode').handler('', h.ctx);
-  await h.commands.get('pstack').handler('off', h.ctx);
-  assert.deepEqual(h.entries.at(-1), { type: 'custom', customType: 'pstack-herdsman-catalog', data: { enabled: false } });
-  assert.match((await h.emit('before_agent_start', { systemPrompt: 'base' })).systemPrompt, /New task/);
-  const length = h.entries.length;
-  await h.commands.get('pstack').handler('typo', h.ctx);
-  assert.equal(h.entries.length, length);
+  const entries = structuredClone(h.entries), statuses = structuredClone(h.statuses), messages = structuredClone(h.messages);
+  for (const args of ['', 'off', 'typo']) {
+    const notifications = h.notifications.length;
+    await h.commands.get('pstack-status').handler(args, h.ctx);
+    assert.equal(h.notifications.length, notifications + 1);
+    assert.deepEqual(h.notifications.at(-1), args
+      ? ['Usage: /pstack-status', 'error']
+      : ['Poteto Mode on. Bundled skills remain hidden by frontmatter. Direct /skill:<name> still works.', 'info']);
+    assert.deepEqual(h.entries, entries);
+    assert.deepEqual(h.statuses, statuses);
+    assert.deepEqual(h.messages, messages);
+    assert.equal((await h.emit('before_agent_start', { systemPrompt: 'base' })).systemPrompt, 'base\n\n' + POTETO_HINT);
+  }
 });
 test('catalog filtering removes only package-owned skill entries', () => {
   const prompt = 'base\n<available_skills>\n  <skill><name>local</name><location>/pkg/skills/how/SKILL.md</location></skill>\n  <skill><name>other</name><location>/other/skills/how/SKILL.md</location></skill>\n</available_skills>\ntail';

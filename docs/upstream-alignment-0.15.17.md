@@ -4,7 +4,7 @@
 
 This document explains the proposed changes, the scope Alex approved, and the implementation results. It is readable without the earlier conversation or Git history.
 
-The work is on `review/cursor-pstack-0.15.17`. The requested resource changes are applied, and focused independent review passed. After the separately requested count update, the isolated branch passes all 34 existing tests, and the current working tree passes all 37. Supported-host certification remains blocked. The earlier committed-snapshot results and their scope are recorded below. Existing uncommitted work that predates this task is preserved outside the commit. No release or pull request is part of this work.
+The work is on `review/cursor-pstack-0.15.17`. The requested resource changes are applied, and focused independent review passed. After the separately requested count update, the isolated branch passed all 34 existing tests, and that working tree passed all 37. Supported-host certification was blocked at that stage; the later compatibility migration and its scoped checks are recorded at the end. The earlier committed-snapshot results and their scope are recorded below. Existing uncommitted work that predates this task is preserved outside the commit. No release or pull request is part of this work.
 
 Our previous reviewed baseline was Cursor pstack 0.15.9. A fresh upstream audit found eight later pstack commits through 0.15.17. The main token-efficiency change is 0.15.16, which distills 35 skill and reference Markdown files. The upstream audit found no measured token savings or behavioral evaluation results.
 
@@ -144,4 +144,21 @@ The isolated snapshot passed `npm run check` with 52 skills, 23 playbooks, and 1
 
 Alex subsequently requested the count update. The existing expectation in `test/package-inventory.test.mjs` now matches the inventory: 160 in the isolated branch and 161 in the local working tree that includes the uncommitted artifact-location file. No new tests or test logic were added.
 
-The current checkout passed `npm test` with 37 of 37 tests and passed `npm run check`. The isolated follow-up snapshot passed all 34 existing tests and its structural check. The follow-up commit contains only count maintenance and this report update, with refreshed generated hashes. Unrelated artifact-location work remains uncommitted. The earlier 33-of-34 snapshot failure is historical and is resolved by this count correction.
+At the count-update stage, the checkout passed `npm test` with 37 of 37 tests and passed `npm run check`. The isolated follow-up snapshot passed all 34 existing tests and its structural check. The follow-up commit contains only count maintenance and this report update, with refreshed generated hashes. Unrelated artifact-location work remains uncommitted. The earlier 33-of-34 snapshot failure is historical and is resolved by this count correction.
+
+## Follow-up Herdsman 0.25.1 terminology and host compatibility
+
+A separately requested scoped migration now targets Pi >=1.1.0 <1.2.0 and Herdsman >=0.25.1 <0.26.0. README, Arena, Swarm, Why, Poteto mode, Orchestrate, Worktree cleanup and the runtime reference use the installed canonical tools: `list_agents`, `delegate_agent`, `continue_agent`, `steer_agent`, `interrupt_agent`, `reply_agent`, `close_agent`, `inspect_agent` and `read_agent_transcript`. The install example pins Herdsman 0.25.1.
+
+The runtime update is not just a rename. It records the installed API's unchanged delegation fields, continuation's `session`/`task`/optional `files`, one-assignment generations, startup-versus-terminal results, terminal cleanup with saved-session retention, branch-resolved reusable result refs, current live-control eligibility, and bounded stale diagnostics. Continuation does not reuse a live agent or promise to preserve its running process. No tools, models, profiles or workflow features were added.
+
+The host checker now gates the declared ranges and checks the nine canonical API headings plus current continuation/lifecycle contracts. The operational-resource validator rejects obsolete split-tool names. `upstream.lock.json` and `PORT-MANIFEST.json` record the current 0.25.1 inspection and preserve 0.19.1 backend history, original resource lineage and prior adaptations. The manifest updater refreshes this current metadata without rewriting history. The sole test maintenance changes the existing delegation-name assertion; no new unit tests were written.
+
+Verification against the installed Pi 1.1.0 and Herdsman 0.25.1:
+
+- `npm run check` passed: 52 skills, 23 playbooks, 133 resources.
+- `npm test` passed 35 of 37, matching the pre-migration baseline. The two failures are carried user edits in `test/runtime.test.mjs` expecting `pstack-status`; the unchanged extension provides `pstack`. That file was not edited or fixed for this task.
+- The installed-host checker passed extension loading, all 52 hidden skills without diagnostics, and definition/API documentation contracts. The earlier version-gate blockage is resolved for these loader/documentation checks, not for full runtime certification.
+- The scoped diff passed `git diff --check`. No installs, global configuration changes, commits or live delegation smoke tests were performed.
+
+The earlier Pi 1.0.2/Herdsman 0.19.1 results, failed live delegation attempts and upstream-alignment test results above remain historical evidence. Current checks do not establish Herdr connectivity, runtime definition discovery, effective provider tools, model availability, managed-child execution or live delegation. The declared minor-version ranges were not tested release by release. See [Validation boundaries](../VALIDATION.md) for the distinction.

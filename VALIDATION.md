@@ -1,10 +1,22 @@
 # Validation boundaries
 
+## Current compatibility migration: Pi 1.1.0 / Herdsman 0.25.1
+
+The declared host ranges are Pi >=1.1.0 <1.2.0 and Herdsman >=0.25.1 <0.26.0. Verification ran against exactly Pi 1.1.0 and Herdsman 0.25.1, not every release in those ranges. Active instructions use all nine canonical managed-agent tool names. The runtime reference follows the installed agent API's request fields, one-assignment generations, saved-session continuation, result refs, control eligibility and bounded diagnostic reads. Current backend inspection metadata is refreshed; 0.19.1 inspection records and resource lineage remain historical.
+
+`npm run check` passed with 52 skills, 23 playbooks and 133 resources. `npm test` passed 35 of 37 tests, matching the pre-migration baseline: two carried changes in `test/runtime.test.mjs` expect `pstack-status`, while the extension still exposes `pstack`. That file was not edited. Only the existing contract assertion naming the delegation tool was maintained; no new tests were added.
+
+The installed-host checker passed extension loading (the unchanged `poteto-mode`, `pstack`, `setup-pstack` commands), loading all 52 hidden skills without diagnostics, and the installed definition/API documentation contracts. It checks the nine canonical tool headings, continuation fields, new-generation lifecycle and terminal cleanup, alongside the existing definition precedence, validation, exclusion and identity-marker contracts. This is loader/documentation compatibility evidence, not live delegation or full supported-host certification. No global installation/configuration was changed, no session or model inference was started, and live definition discovery, provider/model availability, Herdr connectivity and managed-child execution were not exercised.
+
+Read-only static inspection found no additional concrete incompatibility in the unchanged eleven definition templates, setup paths or extension API use: current Herdsman schema/validator accepts their fields and thinking levels, and Pi 1.1.0 declarations retain the used events, command/context/UI methods and model registry interface. This does not establish model availability or runtime execution.
+
+## Earlier evidence and other validation boundaries
+
 Local command tests exercise the actual extension handlers using a mock Pi context. They cover mode default/enable/disable, queueing, active-branch restore, catalog independence, child identity suppression, automatic global profile copying on lead session load, preservation of existing global files, symlink refusal, and project-only preview/confirmation/cancellation/headless command behavior. Tests redirect the agent directory to temporary project fixtures; they do not modify the user's global directory.
 
-Definition tests check the shipped leaf template contract, extension-discovery flag, native tool allowlists and materialized project paths. The allowlists do not sandbox loaded extension handlers. These tests are not a reimplementation or runtime test of Herdsman's full YAML discovery/overlay engine. Documentation contract checks confirm global-over-project precedence, malformed-definition failure and exclusion precedence against the installed 0.19.1 docs.
+Definition tests check the shipped leaf template contract, extension-discovery flag, native tool allowlists and materialized project paths. The allowlists do not sandbox loaded extension handlers. These tests are not a reimplementation or runtime test of Herdsman's full YAML discovery/overlay engine. Historical documentation contract checks confirmed global-over-project precedence, malformed-definition failure and exclusion precedence against the installed 0.19.1 docs. Current-host checks are recorded above.
 
-Host loader, API, and documentation compatibility was checked against Pi 1.0.2 and pi-herdsman 0.19.1. Live delegation attempts with both shell verifier profiles and the read-only investigator failed with `Tool fabric_exec not found`. The cause of this tool-route failure is not established. These checks do not prove working live delegation or complete fleet compatibility.
+Historically, host loader, API, and documentation compatibility was checked against Pi 1.0.2 and pi-herdsman 0.19.1. Live delegation attempts with both shell verifier profiles and the read-only investigator failed with `Tool fabric_exec not found`. The cause of this tool-route failure is not established. These checks do not prove working live delegation or complete fleet compatibility.
 
 The host check uses the installed Pi loader and skill loader in a repository-local disposable cwd, without starting a session, inference or launching an agent. It does not copy global profiles or establish live Herdr connectivity, agent discovery/override behavior, model availability, effective provider tool presentation, or live child suppression. These remain runtime-validation limits for a later authorized environment test.
 

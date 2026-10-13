@@ -34,9 +34,16 @@
   },
   "backend": {
     "package": "pi-herdsman",
-    "inspectedVersion": "0.19.1",
+    "inspectedVersion": "0.25.1",
     "license": "Apache-2.0"
   },
+  "backendHistory": [
+    {
+      "package": "pi-herdsman",
+      "inspectedVersion": "0.19.1",
+      "license": "Apache-2.0"
+    }
+  ],
   "policy": {
     "pinsInheritedFromAudit": true,
     "remoteReverification": true,

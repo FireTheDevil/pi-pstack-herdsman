@@ -12,7 +12,7 @@ const manifest = source ? {
   version: 1,
   source: 'Local pi-pstack-fabric working tree. Historical intermediate only; not a runtime dependency.',
   upstream: JSON.parse(readFileSync(join(root, 'upstream.lock.json'), 'utf8')),
-  backend: { package: 'pi-herdsman', inspectedVersion: '0.19.1', mode: 'split agent_* API' },
+  backend: previous.backend,
   resources: files(resolve(source), 'skills').map(path => ({
     sourcePath: path,
     sourceSha256: hash(join(source, path)),
@@ -20,6 +20,16 @@ const manifest = source ? {
     destination: path.replace('fabric-runtime.md', 'herdsman-runtime.md')
   }))
 } : previous;
+// Refresh current inspection metadata without rewriting inherited resource lineage.
+const lock = JSON.parse(readFileSync(join(root, 'upstream.lock.json'), 'utf8'));
+const backend = { package: lock.backend.package, inspectedVersion: lock.backend.inspectedVersion, mode: 'nine canonical managed-agent tools' };
+if (JSON.stringify(manifest.backend) !== JSON.stringify(backend)) {
+  const history = manifest.backendHistory ?? [];
+  if (!history.some(record => JSON.stringify(record) === JSON.stringify(manifest.backend))) history.push(manifest.backend);
+  manifest.backendHistory = history;
+}
+manifest.upstream = lock;
+manifest.backend = backend;
 const inventory = packageInventory(root, manifest);
 for (const record of manifest.resources) {
   record.destinationSha256 = hash(join(root, record.destination));
