@@ -2,7 +2,6 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ExtensionAPI, ExtensionContext } from '@earendil-works/pi-coding-agent';
 import { definitionPath, renderDefinition, saveDefinition, installGlobalDefinitions, ROLES } from '../../scripts/setup.mjs';
-import { stripSkillsByLocationPrefix } from './skill-strip.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const POTETO_HINT = "New task? Playbook match or rigor needed -> apply /skill:poteto-mode. Casual turn or user opts out -> don't.";
@@ -19,16 +18,18 @@ function decision(ctx: ExtensionContext, type: string): boolean | undefined {
 }
 export default function pstackHerdsman(pi: ExtensionAPI): void {
   let enabled = false;
-  let catalog = true;
   const leaf = (ctx: ExtensionContext) => isManagedAgent(ctx.getSystemPrompt());
   const status = (ctx: ExtensionContext) => {
-    if (ctx.mode === 'tui') ctx.ui.setStatus('pstack-mode', enabled && !leaf(ctx) ? 'pstack: poteto mode' : undefined);
+    if (ctx.mode !== 'tui') return;
+    if (!enabled || leaf(ctx)) { ctx.ui.setStatus('pstack-mode', undefined); return; }
+    const theme = ctx.ui.theme;
+    // setStatus accepts strings only; resolve the current theme whenever status is refreshed.
+    ctx.ui.setStatus('pstack-mode', theme.fg('muted', '•') + ' ' + theme.fg('mdCode', 'poteto mode') + ' ' + theme.fg('muted', '•'));
   };
   const persist = (value: boolean, ctx: ExtensionContext) => { enabled = value; pi.appendEntry('pstack-mode', { enabled: value }); status(ctx); };
   const restore = (ctx: ExtensionContext) => {
     const prior = decision(ctx, 'pstack-mode');
     enabled = !leaf(ctx) && prior === true;
-    catalog = decision(ctx, 'pstack-herdsman-catalog') ?? true;
     status(ctx);
   };
   pi.on('session_start', async (_, ctx) => {
@@ -45,8 +46,7 @@ export default function pstackHerdsman(pi: ExtensionAPI): void {
     return { action: 'continue' };
   });
   pi.on('before_agent_start', async (event, ctx) => {
-    const base = catalog ? event.systemPrompt : stripSkillsByLocationPrefix(event.systemPrompt, join(ROOT, 'skills')).prompt;
-    return { systemPrompt: enabled && !leaf(ctx) ? base + '\n\n' + POTETO_HINT : base };
+    return { systemPrompt: enabled && !leaf(ctx) ? event.systemPrompt + '\n\n' + POTETO_HINT : event.systemPrompt };
   });
   pi.registerCommand('poteto-mode', {
     description: 'Enable sticky Poteto Mode, or disable it with /poteto-mode off.',
@@ -58,13 +58,11 @@ export default function pstackHerdsman(pi: ExtensionAPI): void {
       pi.sendUserMessage('/skill:poteto-mode' + (raw ? ' ' + raw : ''), ctx.isIdle() ? { expandPromptTemplates: true } : { expandPromptTemplates: true, deliverAs: 'followUp' });
     }
   });
-  pi.registerCommand('pstack', {
-    description: 'Show or toggle the session pstack skill catalog filter: on, off, status.',
+  pi.registerCommand('pstack-status', {
+    description: 'Report Poteto Mode and bundled skill visibility without changing session state.',
     handler: async (args, ctx) => {
-      const token = args.trim().toLowerCase();
-      if (token === 'on' || token === 'off') { catalog = token === 'on'; pi.appendEntry('pstack-herdsman-catalog', { enabled: catalog }); }
-      else if (token && token !== 'status') { ctx.ui.notify('Usage: /pstack [on|off|status]', 'error'); return; }
-      ctx.ui.notify('pstack-herdsman catalog filter ' + (catalog ? 'on' : 'off') + '; Poteto Mode ' + (enabled ? 'on' : 'off') + '. Bundled skills remain hidden by frontmatter. Direct /skill:<name> still works. Backend readiness is not tested by this status command.', 'info');
+      if (args.trim()) { ctx.ui.notify('Usage: /pstack-status', 'error'); return; }
+      ctx.ui.notify('Poteto Mode ' + (enabled ? 'on' : 'off') + '. Bundled skills remain hidden by frontmatter. Direct /skill:<name> still works.', 'info');
     }
   });
   pi.registerCommand('setup-pstack', {
