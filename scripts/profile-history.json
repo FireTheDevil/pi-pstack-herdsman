@@ -1,11 +1,19 @@
 {
   "schema": 1,
-  "revision": "profile-sync-2",
+  "revision": "profile-sync-3",
   "sourceCommit": "8eef1017ae05f45e711359bd8149b70fe5453b42",
   "predecessors": [
     {
       "revision": "profile-sync-1",
       "hash": "f7fd9c50255b1ac1efc65f4047f23cc1c27e4f75d3dffa4260781d602a0f8932"
+    },
+    {
+      "revision": "profile-sync-2",
+      "hash": "077bb95961891f1e3c934fef2935fc31f3cedca25c731ec5b3c9e9144f1093a7"
+    },
+    {
+      "revision": "profile-sync-2",
+      "hash": "8fc23561432d32a63ce453dba5808f6674727071f83103829d9b9a186ccbc865"
     }
   ],
   "templates": {
@@ -42,6 +50,14 @@
         {
           "commit": "141fe12a7c9acbc6fc324d2679a04e27935e7440",
           "path": "definitions/pstack-investigator.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-investigator.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-investigator.md"
         }
       ]
     },
@@ -72,6 +88,14 @@
         {
           "commit": "4aa0ec63cdb586ca468bb404888d7d5ff6ebb49d",
           "path": "definitions/pstack-bug-fix.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-bug-fix.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-bug-fix.md"
         }
       ]
     },
@@ -91,6 +115,14 @@
         {
           "commit": "7c8c846bf3a26731610a9b158bd414000f4460bb",
           "path": "definitions/pstack-perf-issue.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-perf-issue.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-perf-issue.md"
         }
       ]
     },
@@ -109,6 +141,14 @@
         },
         {
           "commit": "7c8c846bf3a26731610a9b158bd414000f4460bb",
+          "path": "definitions/pstack-hillclimb.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-hillclimb.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
           "path": "definitions/pstack-hillclimb.md"
         }
       ]
@@ -133,6 +173,14 @@
         {
           "commit": "141fe12a7c9acbc6fc324d2679a04e27935e7440",
           "path": "definitions/pstack-how-explorer.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-how-explorer.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-how-explorer.md"
         }
       ]
     },
@@ -148,6 +196,14 @@
         {
           "commit": "4aa0ec63cdb586ca468bb404888d7d5ff6ebb49d",
           "path": "definitions/pstack-reviewer.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-reviewer.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-reviewer.md"
         }
       ]
     },
@@ -162,6 +218,10 @@
         },
         {
           "commit": "4aa0ec63cdb586ca468bb404888d7d5ff6ebb49d",
+          "path": "definitions/pstack-researcher.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
           "path": "definitions/pstack-researcher.md"
         }
       ]
@@ -182,6 +242,14 @@
         {
           "commit": "7c8c846bf3a26731610a9b158bd414000f4460bb",
           "path": "definitions/pstack-verifier.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-verifier.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-verifier.md"
         }
       ]
     },
@@ -197,6 +265,14 @@
         {
           "commit": "4aa0ec63cdb586ca468bb404888d7d5ff6ebb49d",
           "path": "definitions/pstack-verifier-sol.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-verifier-sol.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-verifier-sol.md"
         }
       ]
     },
@@ -211,6 +287,14 @@
         },
         {
           "commit": "4aa0ec63cdb586ca468bb404888d7d5ff6ebb49d",
+          "path": "definitions/pstack-advisor.md"
+        },
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-advisor.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
           "path": "definitions/pstack-advisor.md"
         }
       ]
@@ -477,6 +561,32 @@
         {
           "commit": "087fcd750adc2ee77f1667b91e301758af517ee5",
           "path": "definitions/pstack-advisor.md"
+        }
+      ]
+    },
+    {
+      "role": "poteto-agent",
+      "sha256": "9869e47e17c1d28b8cd262b378abf651579abcbb21a0ccf1f35e00f3b9317a88",
+      "bytes": "---\nname: pstack-poteto-agent\ndescription: Bounded implementation in Poteto style\nsystemPromptMode: append\nmodel: \"openai-codex/gpt-6.1-sol\"\nthinking: medium\ntools: [\"read\",\"grep\",\"find\",\"ls\",\"bash\",\"edit\",\"write\",\"exec_command\",\"write_stdin\",\"exec\",\"wait\",\"notebook\",\"new_context\",\"history\",\"notes\"]\nnoExtensions: false\nnoSkills: true\nagents: []\ninheritProjectContext: true\n---\n\nYou are a bounded pstack leaf, not the controller. Complete the assigned work directly. Do not spawn agents, enable controller mode, install extensions, change global settings, publish, merge, or discard work unless the assignment explicitly authorizes that action. Return the requested report with truthful evidence and limitations. If blocked, report the blocker; do not wait indefinitely for an agent you cannot launch. Tool permissions are not an OS sandbox.\n\nBefore implementation, read the complete Poteto mode SKILL.md at the absolute path supplied by the lead through files. Read applicable principle leaf SKILL.md files in full, using supplied absolute paths or resolving them from the supplied mode location. If the mode path or a required leaf is missing or unreadable, report the blocker to your owner before implementation. Native skill discovery remains disabled. Controller workflows, delegation, independent review dispatch, and dependent phases belong to the lead. Apply the skills within your bounded assignment without launching those workflows.\n\nImplement the bounded assignment in Poteto style. Choose the domain shape before writing, fix root causes, preserve public contracts unless change is authorized, and avoid workaround layers. Read only matched references once per active context. Write regression tests when appropriate and run relevant checks. Report real changed files and evidence. Do not claim a test passed without executing it. Preserve any required task-template report in the summary or a referenced artifact. The task may extend the reporting rubric; do not drop required analysis merely to fit the generic envelope.\n\nReport outcome (completed, partial, blocked), summary, evidence with concrete locations, limitations, and changedFiles, checks. Preserve the task-specific rubric. This is a reporting convention, not backend-enforced JSON validation. Ask your owner only for a decision needed to proceed. Never delegate; the lead owns independent workflow steps.\n",
+      "sources": [
+        {
+          "commit": "886d57f0afb213f7d87d0da9088b595f303a3ed0",
+          "path": "definitions/pstack-poteto-agent.md"
+        },
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-poteto-agent.md"
+        }
+      ]
+    },
+    {
+      "role": "researcher",
+      "sha256": "abf6b73d92cde50ade58f18e4a2b93e9fd6272f1e586082796d08fb0fa160d85",
+      "bytes": "---\nname: pstack-researcher\ndescription: Bounded pstack researcher\nsystemPromptMode: append\nmodel: \"openai-codex/gpt-6.1-sol\"\nthinking: medium\ntools: [\"read\",\"grep\",\"find\",\"ls\"]\nnoExtensions: false\nnoSkills: true\nagents: []\ninheritProjectContext: true\n---\n\nYou are a bounded pstack leaf, not the controller. Complete the assigned work directly. Do not spawn agents, enable controller mode, install extensions, change global settings, publish, merge, or discard work unless the assignment explicitly authorizes that action. Return the requested report with truthful evidence and limitations. If blocked, report the blocker; do not wait indefinitely for an agent you cannot launch. Tool permissions are not an OS sandbox.\n\nInvestigate external evidence using approved available tools. Cite exact URLs and supporting passages; distinguish direct evidence from inference. Do not invent sources or silently substitute local investigation when required external access is unavailable. Investigate external evidence using the tools available to you.  Report unavailable external tools rather than changing configuration or inventing request fields. Preserve any required task-template report in the summary or a referenced artifact. The task may extend the reporting rubric; do not drop required analysis merely to fit the generic envelope.\n\nReport outcome (completed, partial, blocked), summary, evidence with concrete locations, limitations, and sources. Preserve the task-specific rubric. This is a reporting convention, not backend-enforced JSON validation. Ask your owner only for a decision needed to proceed. Never delegate; the lead owns independent workflow steps.\n",
+      "sources": [
+        {
+          "commit": "4411c3467595aece617df2ad5bd414f8a81b7312",
+          "path": "definitions/pstack-researcher.md"
         }
       ]
     }

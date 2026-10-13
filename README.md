@@ -62,6 +62,14 @@ A cleanup failure reports that profile synchronization succeeded but backup clea
 
 Notifications separate created, updated, adopted, held, and failed outcomes and identify affected paths or fields. Published or recovered profile changes are reported separately, even when later baseline or transaction completion fails. Such failures retain transaction evidence and still require restart. To resolve an exceptional hold, inspect the profile and its retained baseline/backups, reconcile the conflicting unit, and restart Pi. Do not delete baseline or transaction evidence to force synchronization. An older or divergent package root cannot downgrade accepted baselines. Package releases that change templates must update their catalog revision, template hashes, and explicit predecessor identities in `scripts/profile-history.json`. Its historical bytes include exact source commits and hashes. The catalog's `sourceCommit` records its historical origin, not proof of current template bytes. Runtime does not invoke Git.
 
+### Editing bundled profiles
+
+After editing `definitions/pstack-*.md`, run `npm run profiles:refresh`, then `npm run check` and `npm test`. Include the definitions, `scripts/profile-history.json`, and `PORT-MANIFEST.json` together in the change. Do not hand-edit template hashes or reuse a revision for different catalog identities.
+
+The refresh command deterministically updates hashes, advances the `profile-sync-N` catalog revision only when templates or required lineage change, preserves committed profile bytes with exact source commits, records explicit predecessor identities, and runs the existing manifest refresh. Repeating it without profile/lineage changes does not advance the revision; unrelated edits only refresh manifest hashes. The initial lineage repair includes both shipped `profile-sync-2` identities. Package version (`package.json`) is separate from the profile catalog revision.
+
+`npm run check` rejects stale template hashes and divergent same-revision identities against available Git catalog history, including after committing. Changed-profile refreshes require the source Git checkout; no-Git packages can validate and perform an unchanged refresh without Git. Extracted packages never consult an enclosing repository. Shallow history limits lineage evidence to available catalog commits; use full history when authoring releases. This authoring mechanism does not deploy profiles or weaken runtime holds.
+
 The concurrency guarantee covers cooperating synchronizers. An external editor can still race between the final content check and rename. Do not edit profiles concurrently with startup reconciliation. Restart Pi after reported changes to ensure discovery; no same-session roster refresh is promised. There is no routine update command or manual file carry-over between releases.
 
 | Role argument / definition | Purpose | Native tools |

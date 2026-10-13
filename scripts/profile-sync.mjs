@@ -172,7 +172,7 @@ function merge(base, local, incoming, role, reader) {
   if (body === 'incoming' && proposed.body !== local.body && proposed.body.split('\n').some(line => /^@(?:[./~\\]|[A-Za-z]:)/.test(line.trim()))) throw new Hold('New prompt instruction file references require explicit review', ['body']);
   return candidate;
 }
-function catalog(root) {
+export function catalog(root) {
   const path = join(root, 'scripts', 'profile-history.json');
   const data = JSON.parse(snapshot(path)?.bytes ?? 'null');
   if (data?.schema !== 1 || !/^[a-f0-9]{40}$/.test(data.sourceCommit) || typeof data.revision !== 'string' || !Array.isArray(data.predecessors) || !Array.isArray(data.history)) throw new Hold('Unsupported package history catalog');

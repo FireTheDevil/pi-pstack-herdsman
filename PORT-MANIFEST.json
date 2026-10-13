@@ -2379,7 +2379,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "17aa48672c88234a5cde5ef3a73472b8730643430cf4fc183e2ef5e195235161"
+      "sha256": "4aeb89ba7d5cdfa980996bb45473f6bbd014b9ecc82c40a1ac770b781934a63e"
     },
     {
       "path": "VALIDATION.md",
@@ -2447,7 +2447,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "05a47219f7ba485901afc7679191f62fd438e1642ba4cc8d8b60aa678df49f23"
+      "sha256": "6090d8afc9a2927a28da6f81e023b2a36e0639a23b890c936e6a5a16429a30bd"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -2459,15 +2459,15 @@
     },
     {
       "path": "scripts/manifest.mjs",
-      "sha256": "1ad817b992438d1d7cdcf34c5405505928003da6968bc72ca8e2e8dd5067c44d"
+      "sha256": "84d9b47167576e7debc9fe8c68a016ca7b947a94e7d800dc015356fcdc8ff9ab"
     },
     {
       "path": "scripts/profile-history.json",
-      "sha256": "e802a990797d59fd36d943c19982d8d7f7009a0ec1e2fd3f108c2a14a94e062f"
+      "sha256": "704beabc40231874121da3eac33d47b29342d0042fd9944b298c19fe67266b8b"
     },
     {
       "path": "scripts/profile-sync.mjs",
-      "sha256": "f22725eaea449975f142890c2de81619310b201257810b6a01ced00bfa4935b6"
+      "sha256": "b8e4c4100df3dff4e1f7d9c3b66c5fd147beb55928c8ff5096929dd1d3313d13"
     },
     {
       "path": "scripts/setup.mjs",
@@ -2475,11 +2475,11 @@
     },
     {
       "path": "scripts/update-manifest.mjs",
-      "sha256": "7b5e9617b36ecb14be0b6cd8d1fe2bc87e35c5bc269e4ef8a2c6e49552c25178"
+      "sha256": "b0748a68dcce72634daab5573a040c0ed4ac990cb36b859cd77eb319a71aabc1"
     },
     {
       "path": "scripts/validate-port.mjs",
-      "sha256": "7d013e8959cc28d65abade2a2dc8254dbf62337a1416e175afcb37b7eb2529de"
+      "sha256": "8ef41750f84b732ac6dd3bdc28c790bbdbcaf8eb6c583ba9b24a07cbe011fe69"
     },
     {
       "path": "upstream.lock.json",

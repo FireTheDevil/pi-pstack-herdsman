@@ -1,10 +1,12 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { files, hash, packageInventory } from './manifest.mjs';
+import { files, hash, packageInventory, refreshProfiles } from './manifest.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const path = join(root, 'PORT-MANIFEST.json');
-const source = process.argv[2];
+const refresh = process.argv[2] === '--profiles';
+const source = refresh ? undefined : process.argv[2];
+if (refresh) refreshProfiles(root);
 const previous = JSON.parse(readFileSync(path, 'utf8'));
 const prior = source ? JSON.parse(readFileSync(join(resolve(source), 'PORT-MANIFEST.json'), 'utf8')) : undefined;
 const manifest = source ? {

@@ -187,6 +187,7 @@
   },
   "scripts": {
     "test": "node --experimental-strip-types --test test/*.test.mjs skills/poteto-mode/scripts/check-plan.test.mjs",
-    "check": "node --experimental-strip-types --check extensions/pstack-herdsman/index.ts && node scripts/validate-port.mjs"
+    "check": "node --experimental-strip-types --check extensions/pstack-herdsman/index.ts && node scripts/validate-port.mjs",
+    "profiles:refresh": "node scripts/update-manifest.mjs --profiles"
   }
 }
