@@ -1,7 +1,7 @@
 import { readFileSync, mkdirSync, writeFileSync, lstatSync } from 'node:fs';
 import { join } from 'node:path';
-import { homedir } from 'node:os';
-export const ROLES = ['investigator', 'poteto-agent', 'bug-fix', 'perf-issue', 'hillclimb', 'how-explorer', 'reviewer', 'researcher', 'verifier', 'verifier-sol', 'advisor'];
+import { ROLES, globalAgentDir, installMissingFacade } from './profile-sync.mjs';
+export { ROLES, globalAgentDir } from './profile-sync.mjs';
 export const THINKING = ['off', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'];
 export function definitionPath(cwd, role) {
   if (!ROLES.includes(role)) throw new Error('Unknown role: ' + role);
@@ -27,25 +27,6 @@ export function saveDefinition(cwd, role, content) {
   writeFileSync(path, content, { flag: 'wx' });
   return path;
 }
-export function globalAgentDir() {
-  const configured = process.env.PI_CODING_AGENT_DIR;
-  return configured ? configured.replace(/^~(?=\/|$)/, homedir()) : join(homedir(), '.pi', 'agent');
-}
 export function installGlobalDefinitions(root, agentDir = globalAgentDir()) {
-  const dir = join(agentDir, 'agents');
-  for (const path of [agentDir, dir]) {
-    try { if (!lstatSync(path).isDirectory() || lstatSync(path).isSymbolicLink()) throw new Error('Unsafe global definition directory: ' + path); }
-    catch (error) { if (error.code !== 'ENOENT') throw error; }
-  }
-  mkdirSync(dir, { recursive: true });
-  const created = [];
-  for (const role of ROLES) {
-    const path = join(dir, 'pstack-' + role + '.md');
-    try { writeFileSync(path, renderDefinition(root, role), { flag: 'wx' }); created.push(path); }
-    catch (error) {
-      if (error.code !== 'EEXIST') throw error;
-      if (!lstatSync(path).isFile()) throw new Error('Conflicting global profile: ' + path);
-    }
-  }
-  return created;
+  return installMissingFacade(root, agentDir);
 }

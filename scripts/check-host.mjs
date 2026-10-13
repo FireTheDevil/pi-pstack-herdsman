@@ -34,7 +34,7 @@ try {
   const loaded = await loadExtensions([join(root, 'extensions/pstack-herdsman/index.ts')], isolated);
   assert.deepEqual(loaded.errors, []);
   assert.equal(loaded.extensions.length, 1);
-  assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack', 'setup-pstack']);
+  assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack-status', 'setup-pstack']);
   const skills = loadSkillsFromDir({ dir: join(root, 'skills'), source: 'local' });
   assert.equal(skills.skills.length, 52);
   assert.deepEqual(skills.diagnostics, []);

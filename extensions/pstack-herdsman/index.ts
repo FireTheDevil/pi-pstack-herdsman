@@ -1,7 +1,9 @@
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ExtensionAPI, ExtensionContext } from '@earendil-works/pi-coding-agent';
-import { definitionPath, renderDefinition, saveDefinition, installGlobalDefinitions, ROLES } from '../../scripts/setup.mjs';
+import { definitionPath, renderDefinition, saveDefinition, ROLES } from '../../scripts/setup.mjs';
+
+import { synchronizeGlobalProfiles } from '../../scripts/profile-sync.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const POTETO_HINT = "New task? Playbook match or rigor needed -> apply /skill:poteto-mode. Casual turn or user opts out -> don't.";
@@ -16,7 +18,8 @@ function decision(ctx: ExtensionContext, type: string): boolean | undefined {
   }
   return value;
 }
-export default function pstackHerdsman(pi: ExtensionAPI): void {
+type HostParser = (text: string) => { frontmatter: unknown; body: string };
+export default function pstackHerdsman(pi: ExtensionAPI, host: { parseFrontmatter?: HostParser } = {}): void {
   let enabled = false;
   const leaf = (ctx: ExtensionContext) => isManagedAgent(ctx.getSystemPrompt());
   const status = (ctx: ExtensionContext) => {
@@ -36,9 +39,57 @@ export default function pstackHerdsman(pi: ExtensionAPI): void {
     restore(ctx);
     if (leaf(ctx)) return;
     try {
-      const created = installGlobalDefinitions(ROOT);
-      if (created.length) ctx.ui.notify('Copied ' + created.length + ' missing pstack profiles globally. Restart Pi to make them available to Herdsman. Existing profiles were preserved.', 'info');
-    } catch (error) { ctx.ui.notify('Could not install global pstack profiles: ' + (error instanceof Error ? error.message : String(error)), 'error'); }
+      let parser = host.parseFrontmatter;
+      if (!parser) {
+        try { parser = (await import('@earendil-works/pi-coding-agent')).parseFrontmatter; }
+        catch {}
+      }
+      const report = synchronizeGlobalProfiles({ packageRoot: ROOT, parseFrontmatter: parser });
+      if (report.coordination.kind !== 'complete') ctx.ui.notify('Pstack profile synchronization deferred. ' + report.coordination.action, 'warning');
+      const outcomeLabel = (profile: typeof report.profiles[number]) => profile.kind === 'updated'
+        && profile.publications.length > 0 && profile.publications.every(publication => publication.recovered)
+        ? 'recovered' : profile.kind;
+      const counts = ['created', 'updated', 'recovered', 'adopted', 'held', 'failed'].map(kind => ({
+        kind, count: report.profiles.filter(profile => outcomeLabel(profile) === kind).length
+      }));
+      const publications = report.profiles.filter(profile => profile.publications.length > 0);
+      const issues = report.profiles.filter(profile => profile.kind === 'held' || profile.kind === 'failed');
+      if (counts.some(({ count }) => count > 0)) {
+        const sections = ['Pstack profiles: ' + counts.filter(({ count }) => count > 0)
+          .map(({ kind, count }) => count + ' ' + (kind === 'held' ? 'needs review' : kind)).join(', ') + '.'];
+        if (counts.some(({ kind, count }) => kind === 'adopted' && count > 0)) {
+          sections.push(publications.some(profile => profile.kind === 'adopted')
+            ? 'Adopted profiles are now tracked for future updates. Adoption itself does not change their files.'
+            : 'Adopted profiles are unchanged and now tracked for future updates.');
+        }
+        if (report.restartRequired) {
+          const publicationKinds = new Set(publications.flatMap(profile => profile.publications.map(publication => publication.kind)));
+          const change = (publicationKinds.size === 1 && publicationKinds.has('created') ? 'new'
+            : publicationKinds.size === 1 && publicationKinds.has('updated') ? 'updated' : 'new or updated')
+            + (publications.length === 1 ? ' profile' : ' profiles');
+          sections.push('Restart Pi to load the ' + change + '. Running agents are unchanged.');
+        }
+        for (const profile of issues) {
+          const outcome = profile.kind === 'held' ? 'needs review' : 'sync failed';
+          const fileStatus = profile.publications.length
+            ? (profile.kind === 'failed' ? 'its file changed despite the failure.' : 'its file changed before sync needed review.')
+            : 'sync did not change its file.';
+          const explanation = profile.reasonCode === 'unmatched-shipped-prompt'
+            ? 'Its prompt instructions could not be matched to a compatible shipped version.\nCompare the installed prompt with the bundled profile before reconciling.'
+            : profile.reason + (profile.units.length ? '\nFields: ' + profile.units.map((unit: string) => unit === 'body' ? 'prompt instructions' : unit).join(', ') : '');
+          sections.push('pstack-' + profile.role + ' ' + outcome + '; ' + fileStatus + '\n' + explanation
+            + '\n\nProfile: ' + profile.path + '\nSync records: ' + profile.evidencePath
+            + (profile.publications.length ? '\nTransactions: ' + profile.publications.map(publication => {
+              const evidence = publication.backupEvidence;
+              if (evidence.kind === 'retained') return publication.backup;
+              if (evidence.kind === 'staged') return publication.backup + ' (cleanup staging; may be partially deleted; receipt: ' + evidence.receiptPath + ')';
+              if (evidence.kind === 'pruned') return publication.transactionId + ' (backup pruned' + (evidence.receiptPath ? '; cleanup receipt: ' + evidence.receiptPath : '') + ')';
+              return publication.transactionId + ' (backup unavailable; ' + evidence.reason + ')';
+            }).join(', ') : ''));
+        }
+        ctx.ui.notify(sections.join('\n\n'), issues.length ? 'warning' : 'info');
+      }
+    } catch (error) { ctx.ui.notify('Could not synchronize global pstack profiles: ' + (error instanceof Error ? error.message : String(error)), 'error'); }
   });
   pi.on('session_tree', async (_, ctx) => restore(ctx));
   pi.on('input', async (event, ctx) => {

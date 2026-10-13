@@ -33,6 +33,8 @@
     "scripts/backend-contract.mjs",
     "scripts/check-host.mjs",
     "scripts/manifest.mjs",
+    "scripts/profile-history.json",
+    "scripts/profile-sync.mjs",
     "scripts/setup.mjs",
     "scripts/update-manifest.mjs",
     "scripts/validate-port.mjs",

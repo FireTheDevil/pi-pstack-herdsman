@@ -55,7 +55,7 @@ test('controller starts off and explicit command enables sticky status and hint'
   await h.emit('session_tree');
   assert.deepEqual(h.statuses.at(-1), ['pstack-mode', '• poteto mode •']);
 });
-test('first session load installs missing global profiles without replacing existing ones', async t => {
+test('first session load creates missing profiles and reports unsupported existing profiles', async t => {
   const h = harness(); t.after(h.close);
   const existing = join(h.cwd, 'agents', 'pstack-reviewer.md');
   mkdirSync(dirname(existing), { recursive: true });
@@ -63,10 +63,11 @@ test('first session load installs missing global profiles without replacing exis
   await h.emit('session_start');
   assert.equal(readFileSync(existing, 'utf8'), 'user-customized');
   for (const role of ROLES) assert.ok(existsSync(join(h.cwd, 'agents', 'pstack-' + role + '.md')));
-  assert.match(h.notifications.at(-1)[0], /Copied 10 missing pstack profiles globally\. Restart Pi/);
+  assert.match(h.notifications.at(-1)[0], /Pstack profiles: 10 created, 1 needs review\.\n\nRestart Pi/);
   const count = h.notifications.length;
   await h.emit('session_start');
-  assert.equal(h.notifications.length, count);
+  assert.equal(h.notifications.length, count + 1);
+  assert.match(h.notifications.at(-1)[0], /Pstack profiles: 1 needs review\./);
   assert.equal(readFileSync(existing, 'utf8'), 'user-customized');
 });
 test('saved off survives session restoration and branch navigation', async t => {

@@ -1107,7 +1107,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "69011c62cd884617cbbf28635db2a2a63214f3ec5d4998db9157c92b8c769227",
+      "destinationSha256": "3778140b3d82b4d12d2e3d29ff016805f4d2a243d91910b87d46370f8799a6d1",
       "disposition": "adapted"
     },
     {
@@ -1956,7 +1956,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/setup-pstack/SKILL.md",
-      "destinationSha256": "6f75255fba1c560f0ec964927ed2db0c99663eda88a63a0d0e82104ef0e712d7",
+      "destinationSha256": "3477f3eaffea918cb2e0951df9a0721681cd0a3afde192ef893976c1fa2f2e53",
       "disposition": "adapted"
     },
     {
@@ -2379,11 +2379,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "6ed453a197b8aa8db4f7d4d25fb485db1daf077aa2ead3e7dc32a3f9446e4915"
+      "sha256": "17aa48672c88234a5cde5ef3a73472b8730643430cf4fc183e2ef5e195235161"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "ab290eb1672783dc3b9941cc6ef081ccebcc6451c413c597ebadfe109c811712"
+      "sha256": "3b273a6548f3950bc2f6bfd5ad4f2cf28446b7ef2ebaafb1560778ccbccb7920"
     },
     {
       "path": "config/artifact-locations.md",
@@ -2439,7 +2439,7 @@
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",
-      "sha256": "4ae128ba74bbf6b36428a26ab917b13b49fbb46571f21e8127b31e28477d65a2"
+      "sha256": "bfc474477c8f6f763d5390acf686dcc5fa41f29297f0ced9af38cd0777b1a909"
     },
     {
       "path": "extensions/pstack-herdsman/skill-strip.ts",
@@ -2447,7 +2447,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "f60bc4770676268605f64d816cd2ef80ba1b2d00d9884f4d930020a4f93ee55a"
+      "sha256": "05a47219f7ba485901afc7679191f62fd438e1642ba4cc8d8b60aa678df49f23"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -2455,15 +2455,23 @@
     },
     {
       "path": "scripts/check-host.mjs",
-      "sha256": "0256396d0469cbe5132cb1e72e8db0fb98010c7cf5b6f3eb4b084c2a38906fec"
+      "sha256": "20d0d63fafc2a82d40747725091636357ff0b627e86edf5f07e02d69545606af"
     },
     {
       "path": "scripts/manifest.mjs",
       "sha256": "1ad817b992438d1d7cdcf34c5405505928003da6968bc72ca8e2e8dd5067c44d"
     },
     {
+      "path": "scripts/profile-history.json",
+      "sha256": "eeffa80566f034fd31ae79f862f841013affba21117144d08739a4365346bc9c"
+    },
+    {
+      "path": "scripts/profile-sync.mjs",
+      "sha256": "f22725eaea449975f142890c2de81619310b201257810b6a01ced00bfa4935b6"
+    },
+    {
       "path": "scripts/setup.mjs",
-      "sha256": "ac6ab337a9c0e94ef05ed2fa6f9b677471cd8d032dfff7c4f9ed52484a8f99d4"
+      "sha256": "209bd3e37f100ee1249cb170ca34321dda8e61c7db9fae0911282f82d7803b81"
     },
     {
       "path": "scripts/update-manifest.mjs",
