@@ -2419,7 +2419,7 @@
     },
     {
       "path": "definitions/pstack-researcher.md",
-      "sha256": "087c379df19dfa261abacfac6dc5303dd651315202d78e084b06d0befcf84c7d"
+      "sha256": "abf6b73d92cde50ade58f18e4a2b93e9fd6272f1e586082796d08fb0fa160d85"
     },
     {
       "path": "definitions/pstack-reviewer.md",
@@ -2463,7 +2463,7 @@
     },
     {
       "path": "scripts/profile-history.json",
-      "sha256": "eeffa80566f034fd31ae79f862f841013affba21117144d08739a4365346bc9c"
+      "sha256": "e802a990797d59fd36d943c19982d8d7f7009a0ec1e2fd3f108c2a14a94e062f"
     },
     {
       "path": "scripts/profile-sync.mjs",
