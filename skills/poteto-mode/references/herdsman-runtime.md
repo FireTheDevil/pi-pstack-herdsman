@@ -1,10 +1,10 @@
 # Herdsman runtime
 
-Load once per active context when delegating. This adapter targets pi-herdsman >=0.19.1 <0.20.0 and Pi >=1.0.2 <1.1.0. Use Herdsman's `agent_*` tools, not a package scheduler or a new orchestration engine.
+Load once per active context when delegating. This adapter targets pi-herdsman >=0.19.1 <0.27.0 and Pi >=1.0.2 <1.3.0. Use Herdsman's agent tools (`delegate_agent`, `continue_agent`, `list_agents`, ...), not a package scheduler or a new orchestration engine.
 
 ## Definitions and models
 
-On first lead session load after enabling the extension, missing `pstack-*.md` templates are copied into the global `<agent-dir>/agents/` directory (`~/.pi/agent/agents/` by default, `$PI_CODING_AGENT_DIR/agents/` when set). Existing global definitions are preserved, including customized models; copying does not check model availability or change live agents. A later package update does not overwrite them. There is no install hook: `pi install` alone does not copy anything until a session loads the extension. Reload/restart and call `agent_list` when resolving the effective roster, not as a progress poll. `/setup-pstack [role]` remains an optional confirmed project copy command, but a same-name global profile wins over it.
+On first lead session load after enabling the extension, missing `pstack-*.md` templates are copied into the global `<agent-dir>/agents/` directory (`~/.pi/agent/agents/` by default, `$PI_CODING_AGENT_DIR/agents/` when set). Existing global definitions are preserved, including customized models; copying does not check model availability or change live agents. A later package update does not overwrite them. There is no install hook: `pi install` alone does not copy anything until a session loads the extension. Reload/restart and call `list_agents` when resolving the effective roster, not as a progress poll. `/setup-pstack [role]` remains an optional confirmed project copy command, but a same-name global profile wins over it.
 
 Herdsman precedence is bundled < trusted project < global. A same-name global definition overrides the project, including tools and model. Unknown fields and malformed definitions fail discovery, not silently fall back. Inspect effective definitions before assigning work. Skill and extension paths in definitions pass unchanged, so use absolute paths for explicitly authorized additions.
 
@@ -28,7 +28,7 @@ Verifier and researcher pins are inferred defaults because the policy lists neit
 
 ## Delegate and hand off
 
-The following is a JSON request to `agent_delegate`. Replace the example assignment and evidence paths with a complete authorized brief.
+The following is a JSON request to `delegate_agent`. Replace the example assignment and evidence paths with a complete authorized brief.
 
 ```json
 {
@@ -39,22 +39,22 @@ The following is a JSON request to `agent_delegate`. Replace the example assignm
 }
 ```
 
-Accepted `agent_delegate` inputs are definition, task, optional files and label. Do not pass action, fork, timeoutMs, model, thinking, tools, schema, cwd, worktree, runner or recursive fields. Startup uses Herdsman's configured timeout; it does not budget the task's execution.
+Accepted `delegate_agent` inputs are definition, task, optional files and label. Do not pass action, fork, timeoutMs, model, thinking, tools, schema, cwd, worktree, runner or recursive fields. Startup uses Herdsman's configured timeout; it does not budget the task's execution.
 
 Include objective, scope/non-goals, exact paths, authority, acceptance/validation, dependencies, and expected handoff. Evidence files do not grant runtime capabilities. Attach needed skills only if unavailable to the definition; do not attach instruction files merely because they exist. Put coordination artifacts under project-local `.pi-herdsman/`, with one current artifact per objective. Reports preserve task rubrics and concrete evidence; no backend JSON-schema enforcement is claimed.
 
 Launch genuinely independent assignments, then do necessary independent lead work. Results arrive asynchronously. There is no wait/join/collection call. No sleep or status polling loops. When only dependent work remains, end the current turn and yield without a final synthesis. Integrate every required completion or report missing coverage before concluding.
 
-Preserve each exact returned completion ref, such as `result:<request-id>`, and pass it unchanged through `files` to dependent assignments, rather than copying summaries. A fresh independent review always uses `agent_delegate`, not continuation. For genuinely continuing work, use `agent_continue` with the exact returned Pi session path or full UUID and a self-contained task plus files. Never guess a session from a live label. A retired session requires fresh delegation with its result evidence.
+Preserve each exact returned completion ref, such as `result:<request-id>`, and pass it unchanged through `files` to dependent assignments, rather than copying summaries. A fresh independent review always uses `delegate_agent`, not continuation. For genuinely continuing work, use `continue_agent` with the exact returned Pi session path or full UUID and a self-contained task plus files. Never guess a session from a live label. A retired session requires fresh delegation with its result evidence.
 
 ## Ownership, controls and recovery
 
 Live controls use the exact returned agent label and only currently listed `available_tools`.
-- `agent_steer` changes ongoing work non-preemptively, not a status request.
-- `agent_interrupt` cancels the current operation and supplies required replacement instructions.
-- `agent_reply` answers a valid outstanding owner question.
-- `agent_close` intentionally tears down or abandons work.
-- `agent_inspect` and `agent_transcript` are bounded read-only evidence tools, not progress polling.
+- `steer_agent` changes ongoing work non-preemptively, not a status request.
+- `interrupt_agent` cancels the current operation and supplies required replacement instructions.
+- `reply_agent` answers a valid outstanding owner question.
+- `close_agent` intentionally tears down or abandons work.
+- `inspect_agent` and `read_agent_transcript` are bounded read-only evidence tools, not progress polling.
 
 Every action revalidates ownership and state. Own only direct agents. Inactivity is advisory, not proof of loss. Handle required attention before yielding. A lost assignment is unresolved, not a completed failure: preserve physical/session identity and cleanup evidence, follow currently available recovery actions, and do not silently replace it. On result persistence errors follow the recorded nextAction and resolve the mailbox before closing and replacing. Do not conclude while unresolved work can still progress or requires your control.
 

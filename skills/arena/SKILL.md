@@ -32,7 +32,7 @@ The N candidates will receive the same prompt, so the prompt is the contract.
 
 ## Phase B: Fan out
 
-Launch independent candidates using `agent_delegate` with definition, task and evidence files. For code in competing checkouts, first authorize external worktrees and separate lead sessions; there is no request cwd or managed isolation. Read-only proposals return through results, not filesystem writes. Disjoint output paths may suffice only for authorized file-producing writers; paths do not grant tools. Continue independent work or end the turn and yield. Integrate all asynchronous completions before Phase C. Include a short rationale request.
+Launch independent candidates using `delegate_agent` with definition, task and evidence files. For code in competing checkouts, first authorize external worktrees and separate lead sessions; there is no request cwd or managed isolation. Read-only proposals return through results, not filesystem writes. Disjoint output paths may suffice only for authorized file-producing writers; paths do not grant tools. Continue independent work or end the turn and yield. Integrate all asynchronous completions before Phase C. Include a short rationale request.
 
 Each rationale names the alternatives the candidate considered and what it rejected.
 

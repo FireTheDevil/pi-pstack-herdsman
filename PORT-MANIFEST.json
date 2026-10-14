@@ -37,7 +37,7 @@
     },
     "backend": {
       "package": "pi-herdsman",
-      "inspectedVersion": "0.19.1",
+      "inspectedVersion": "0.26.0",
       "license": "Apache-2.0"
     },
     "policy": {
@@ -55,8 +55,8 @@
   },
   "backend": {
     "package": "pi-herdsman",
-    "inspectedVersion": "0.19.1",
-    "mode": "split agent_* API"
+    "inspectedVersion": "0.26.0",
+    "mode": "split *_agent API"
   },
   "resources": [
     {
@@ -140,7 +140,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/arena/SKILL.md",
-      "destinationSha256": "89f056af87330d18e6c0a955ab796bedfc6c98d38c0bf0cf80dc3e50d38f1adf",
+      "destinationSha256": "14e35a218d4edb3b580820a3c32761cf32dac360c10e2810d4719cd2430cfe75",
       "disposition": "adapted"
     },
     {
@@ -280,7 +280,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/how/SKILL.md",
-      "destinationSha256": "48343ce47a9124e7b9ab432312496c939c361671a402babc3507ffbae1c7ea27",
+      "destinationSha256": "f34ef4791ac324f28b3b85b65b2e95bb2a6b88d6d276fd543e473bf4bac5fa13",
       "disposition": "adapted"
     },
     {
@@ -434,7 +434,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "e6b72455e2eab7941c4bd1e5760fd8ccb11ac9e331117ed793b069f346f5e37a",
+      "destinationSha256": "420f14e135bbabcaf986ae0f983757f688413d56e6157de951e2bc27713e1e8c",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -658,7 +658,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/orchestrate.md",
-      "destinationSha256": "efc902e6806f1c4e7e68dfe4dee34bd1cad29adde6dd688d4cb6a9e7516c49fe",
+      "destinationSha256": "d757c57a72f0fbbab6072dc397a52d0c80dba9ee34511e585d024de58a78bed8",
       "disposition": "adapted"
     },
     {
@@ -812,7 +812,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "destinationSha256": "04fd66e298ba3d511016b35d098c038c0509a62125036faab55df953d52e988d",
+      "destinationSha256": "3b7ae7f498f4468620cfff76bf081871351178d89187dc633cb8cb3f40b94891",
       "disposition": "adapted"
     },
     {
@@ -840,7 +840,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "29861b1ca27e8ec0633d475848960fa053152a1d231b65b0d1a9972ed8518911",
+      "destinationSha256": "9a228266dc856c35812cce37321d1f9ca7fae9a6408b6a882a1e508a00569669",
       "disposition": "adapted"
     },
     {
@@ -1631,7 +1631,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/swarm/SKILL.md",
-      "destinationSha256": "0ebf19dbd5c687217a7f59602093498cb1c3e797949ad90efb771b19a8e36556",
+      "destinationSha256": "3640efc527f28b38ca6d2063433d4f320315f8a8fc6ceeb76b6251ff23249a4c",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1750,7 +1750,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/why/SKILL.md",
-      "destinationSha256": "d7b5dcbe5a05fdeccb06ba5a208b2def542429c914637cc6c56bd602ba3fe210",
+      "destinationSha256": "37bcec1a40aa8cabaf600da12296b3771e0eb049215bbf52ea73fa6a49f2ce0d",
       "disposition": "adapted"
     },
     {
@@ -1960,11 +1960,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "e368d5e2ef2ecc1c277f0636d28a2d25704a6949736830dc100581d4658bf2db"
+      "sha256": "631f4795cc18459737a56fc57d6e24dc48193d431d0db7b5a6751dc0c81a0949"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "982b986d3f7ad708bbdb9b83b1c9222a68f8245be8508cca569ead088059325b"
+      "sha256": "735c066caba49960dd7616c32bd86f04c6d0e97cfabc46298034238f3a529c49"
     },
     {
       "path": "definitions/pstack-advisor.md",
@@ -2020,15 +2020,15 @@
     },
     {
       "path": "package.json",
-      "sha256": "7b7f6ddb5e07491a14ae27b58cdc5912ad53c772f117cd7ac2dce2117cce820c"
+      "sha256": "2e47203110602ae30a81b17bf0e82a6425c20d42eab920ab3c97c50982d02eb4"
     },
     {
       "path": "scripts/backend-contract.mjs",
-      "sha256": "09983478f5307f62c56292eee6a5b85699934128905a6a9313c1080fe29b9071"
+      "sha256": "d0a8c784585fc50f26b14d7a7ef9b72d98d6f0e7c24f4b8ecfedb4ba54e6a0fa"
     },
     {
       "path": "scripts/check-host.mjs",
-      "sha256": "24c6debca0905b7932d4950a2725ef3715f089b88427ce13c9dd5c922909f867"
+      "sha256": "2a4bb208746394a22c5a52679bfcc4b6de7bb92bf45267b86b249afd161903d2"
     },
     {
       "path": "scripts/manifest.mjs",
@@ -2040,7 +2040,7 @@
     },
     {
       "path": "scripts/update-manifest.mjs",
-      "sha256": "3e2c9bca51de6f3071a03785ee3114774887561e03ac82c9695db47f603fa9b9"
+      "sha256": "f2b1839b4b79d208be73d587f7d630a69ea8df53724fdf9f3493667d1234264a"
     },
     {
       "path": "scripts/validate-port.mjs",
@@ -2048,7 +2048,7 @@
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "8ba16e1977c379c495cf6f25e0c13d207521ce8c0686f769172d9a1fd9443d68"
+      "sha256": "b1e8b2e91cae769e2630a781d705b989c0e6e852291ef39b123da42dfaa7de79"
     }
   ],
   "metadataHistory": [

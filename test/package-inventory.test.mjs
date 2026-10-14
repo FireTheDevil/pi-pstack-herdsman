@@ -117,14 +117,15 @@ test('npm tarball exactly matches approved files; extracted checks never call Gi
   const noGit = join(isolated, 'bin');
   mkdirSync(noGit);
   symlinkSync(process.execPath, join(noGit, 'node'));
-  const npm = execFileSync('which', ['npm'], { encoding: 'utf8' }).trim();
+  // Run npm's JS entry with this node: the `npm` on PATH may be a shell wrapper (e.g. mise) that cannot run with PATH reduced to node only.
+  const npmCli = process.env.npm_execpath?.endsWith('.js') ? process.env.npm_execpath : join(dirname(process.execPath), '..', 'lib', 'node_modules', 'npm', 'bin', 'npm-cli.js');
   for (const name of ['outside', 'unrelated']) {
     const target = join(isolated, name);
     mkdirSync(target);
     if (name === 'unrelated') execFileSync('git', ['init', '--quiet'], { cwd: target });
     execFileSync('tar', ['-xzf', join(dir, packed.filename), '-C', target]);
     const cwd = join(target, 'package');
-    const result = spawnSync(npm, ['run', 'check', '--script-shell=/bin/sh'], { cwd, encoding: 'utf8', env: { ...process.env, PATH: noGit } });
+    const result = spawnSync(process.execPath, [npmCli, 'run', 'check', '--script-shell=/bin/sh'], { cwd, encoding: 'utf8', env: { ...process.env, PATH: noGit } });
     assert.equal(result.status, 0, result.stderr + result.stdout);
     assert.equal(existsSync(join(cwd, '.git')), false);
     for (const path of [manifest.resources[0].destination, 'README.md']) {
