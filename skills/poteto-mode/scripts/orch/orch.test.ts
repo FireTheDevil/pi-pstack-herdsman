@@ -82,6 +82,7 @@ async function makeGitStack(directory: string): Promise<{
   git({ repo, args: ["init", "--initial-branch=main"] });
   git({ repo, args: ["config", "user.name", "Orch Test"] });
   git({ repo, args: ["config", "user.email", "orch@example.com"] });
+  git({ repo, args: ["remote", "add", "origin", "git@github.example.com:fixture/project.git"] });
   await writeFile(join(repo, "main.txt"), "main\n");
   git({ repo, args: ["add", "."] });
   git({ repo, args: ["commit", "-m", "main"] });
@@ -102,7 +103,7 @@ async function makeGitStack(directory: string): Promise<{
   };
 }
 
-async function withFakeGt<T>({
+async function withFakeForge<T>({
   directory,
   operation,
   output,
@@ -112,39 +113,30 @@ async function withFakeGt<T>({
   output: string;
 }): Promise<T> {
   const bin = join(directory, "bin");
-  const outputPath = join(directory, "gt-output.txt");
+  const outputPath = join(directory, "forge-output.json");
   await mkdir(bin);
   await writeFile(outputPath, output);
-  const gt = join(bin, "gt");
+  const gh = join(bin, "gh");
   await writeFile(
-    gt,
-    `#!/usr/bin/env bash
-set -euo pipefail
-if [ "$(pwd -P)" != "${realpathSync(join(directory, "repo"))}" ]; then
-  printf 'gt ran outside the fixture repo: %s\\n' "$(pwd -P)" >&2
-  exit 2
-fi
-case "$*" in
-  "--no-interactive log short --stack --reverse")
-    cat "${outputPath}"
-    ;;
-  "--no-interactive info stack/merged")
-    printf 'stack/merged\\nPR #10 (Merged) merged change\\n'
-    ;;
-  "--no-interactive info stack/closed")
-    printf 'stack/closed\\nPR #13 (Closed) closed change\\n'
-    ;;
-  "--no-interactive info stack/open")
-    printf 'stack/open\\nPR #11 (Needs approvals) open change\\n'
-    ;;
-  *)
-    printf 'unexpected gt arguments: %s\\n' "$*" >&2
-    exit 2
-    ;;
-esac
+    gh,
+    `#!/usr/bin/env bun
+if (process.cwd() !== ${JSON.stringify(realpathSync(join(directory, "repo")))}) {
+  throw new Error("gh ran outside the fixture repo");
+}
+const args = process.argv.slice(2);
+if (args[0] !== "pr" || args[1] !== "list" ||
+    !["--head", "--base"].includes(args[2]) ||
+    args.slice(4).join(" ") !== "--repo github.example.com/fixture/project --state all --limit 1000 --json number,state,headRefName,baseRefName,isCrossRepository") {
+  throw new Error("unexpected gh arguments: " + args.join(" "));
+}
+const raw = await Bun.file(${JSON.stringify(outputPath)}).text();
+let rows;
+try { rows = JSON.parse(raw); } catch { process.stdout.write(raw); process.exit(0); }
+const field = args[2] === "--head" ? "headRefName" : "baseRefName";
+console.log(JSON.stringify(rows.filter(row => row[field] === args[3])));
 `
   );
-  await chmod(gt, 0o755);
+  await chmod(gh, 0o755);
 
   const originalPath = process.env.PATH;
   process.env.PATH = `${bin}:${originalPath ?? ""}`;
@@ -406,16 +398,16 @@ describe("Store", () => {
     ]);
   });
 
-  it("resolves the ordered Graphite frontier and validates an optional pin", async () => {
+  it("resolves the ordered forge frontier and validates an optional pin", async () => {
     const { directory, store } = await initializedStore();
     const stack = await makeGitStack(directory);
-    const output = `◯ main
-◯ stack/merged
-◯ stack/closed
-◉ stack/open (current)
-`;
+    const output = JSON.stringify([
+      { number: 10, state: "MERGED", headRefName: "stack/merged", baseRefName: "main", isCrossRepository: false },
+      { number: 13, state: "CLOSED", headRefName: "stack/closed", baseRefName: "stack/merged", isCrossRepository: false },
+      { number: 11, state: "OPEN", headRefName: "stack/open", baseRefName: "stack/closed", isCrossRepository: false },
+    ]);
 
-    await withFakeGt({
+    await withFakeForge({
       directory,
       output,
       operation: async () => {
@@ -458,7 +450,7 @@ describe("Store", () => {
             prs: [10, 11, 12],
           })
         ).rejects.toThrow(
-          "frontier pin mismatch: missing from gt: 12; extra in gt: 13"
+          "frontier pin mismatch: missing from resolved chain: 12; extra in resolved chain: 13"
         );
         await expect(
           store.frontier.set({
@@ -466,7 +458,7 @@ describe("Store", () => {
             prs: [13, 10, 11],
           })
         ).rejects.toThrow(
-          "frontier pin mismatch: order differs: expected 13,10,11; gt 10,13,11"
+          "frontier pin mismatch: order differs: expected 13,10,11; resolved 10,13,11"
         );
         await expect(
           store.frontier.set({
@@ -478,18 +470,18 @@ describe("Store", () => {
     });
   });
 
-  it("rejects unparseable Graphite output loudly", async () => {
+  it("rejects invalid forge JSON loudly", async () => {
     const { directory, store } = await initializedStore();
     const stack = await makeGitStack(directory);
 
-    await withFakeGt({
+    await withFakeForge({
       directory,
-      output: "◯ main\nthis line is not Graphite output\n",
+      output: "not JSON",
       operation: async () => {
         await expect(
           store.frontier.set({ repo: stack.repo })
         ).rejects.toThrow(
-          'gt log short output has an unparseable line 2: "this line is not Graphite output"'
+          'gh pr list --head stack/open output is not valid JSON'
         );
       },
     });

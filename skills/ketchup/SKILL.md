@@ -1,29 +1,35 @@
 ---
 name: ketchup
-description: "Catch up on this chat since your last message, with decision-ready summaries of outstanding user action items. Use for /skill:ketchup."
+description: "Catch up on what changed in this chat in plain words and small evidence-backed visuals, with concise human decisions. Use for /skill:ketchup."
 disable-model-invocation: true
 ---
 
 # Ketchup
 
-Catch the user up on this chat since the last actual user message before this invocation. Notifications and agent results do not reset that boundary. Use the plain voice of [bro](../bro/SKILL.md), without its restating step. Assume the user remembers their last message and nothing after it. Use recognizable names for branches, PRs, and agents.
+Catch the user up since the last actual user message before this invocation. Notifications and agent results do not reset that boundary. Assume the user remembers their last message and nothing after it.
+
+Use [bro](../bro/SKILL.md)'s voice, not its restating task: plain words, short sentences, no jargon. Explain what changed for the user, not how you did it. Say "the tests pass", not "CI is green". Omit hashes, paths, commands and counts unless needed to act. Use names the user recognizes; give context when a fact needs it.
 
 ## Gather what changed
 
-Keep this turn read-only. Collect your own progress, arrived agent reports, and other messages in this chat. Do not continue the task, approve actions, write files, or mine other sessions.
+Keep this turn read-only. Collect your progress, arrived reports and messages in this chat. Do not continue the task, approve actions, write files, mine other sessions, start apps or jobs, or post anything to manufacture visuals.
 
-Report the current PR, CI, or agent state from available authorized evidence. A bounded PR or CI read is allowed when tools and authority exist. Consume arrived agent results, not progress polls. Use Herdsman evidence/control tools only when runtime eligibility permits; never use roster calls or inspection as a waiting loop. Say which work is still running, which state is stale, and what could not be checked. Do not invent completion.
+Report current PR, check and agent state from available authorized evidence. A bounded PR or CI read is allowed when tools and authority exist; do not open a new investigation. Consume arrived results, not progress polls. Herdsman evidence/control tools require runtime eligibility; never use roster or inspection calls as a waiting loop. Say what is still running, stale, unknown or uncheckable. Check displayed numbers against source facts and disclose corrections. Do not invent completion.
 
-An action item is a decision or step only the user can take, such as a product choice, approval, irreversible action, or missing access. Include unresolved user items raised earlier than the boundary. Work the agent can still do is not a user action item.
+An action item is a decision or step only the user can take: a product choice, approval, irreversible action or missing access. Include older unanswered items. Remaining agent work is not a user item. Never invent a call to fill the reply. An unasked, unnecessary step is not an action item unless it is irreversible and already waiting on the user; give that exception one action line, no visual and no invented consequence of silence.
 
-## Reply
+## Write the reply
 
-Open with the action-item count, or say there are none. If nothing happened and no user items remain, say so and stop.
+Aim well under 150 words excluding visuals. Never hide material decisions, blockers or uncertainty to meet the target. Cut history before action items. Open with the action-item count, or say none. If nothing changed and nothing waits, say so and stop.
 
-Describe outcomes most important first and what they mean for the user. Omit steps that changed nothing. Name remaining agent work in one line without doing it.
+Show outcomes pictures first. Embed existing screenshots or videos inline when supported, then a diagram if it explains the change. Give one short bullet per requested outcome: what came of it and whether it is done, running, failed or unchecked. Each bullet must be true alone. Name bugs found and fixed. Never mark work done while it still needs the user. Avoid repeating facts from visuals or action items. Add at most three short contextual lines, then one line of remaining agent work without doing it.
 
-For each user item, explain the decision, why it matters now, options and costs, recommendation, and what happens if unanswered. Say when a part is unknown. Link available detail, but give enough context to decide without opening it. Apply [unslop](../unslop/SKILL.md), reusing instructions already in context.
+List human action items as plain bullets, never boxes. Give each two lines: the decision, recommendation and reason; then what no answer means. Include prerequisites and irreversible effects in the recommendation. Write "unknown" where needed and link existing detail. The unasked irreversible exception gets only one line.
 
-Show each action item as an evidence-backed before-and-after comparison, side by side. For a choice, show the current state beside each option, or just the options when there is no current state. Use existing screenshots or video for visible changes. Otherwise use an inline table, diff, or diagram based only on evidence already available in this chat. Label proposed outcomes as proposals, not observed results.
+After the list, compare choices with their gains and costs and the current state when one exists. Reuse screenshots already shown rather than draw a duplicate. Label proposed outcomes as proposals, not observed results. Apply [unslop](../unslop/SKILL.md), reusing instructions already in context.
 
-Do not start an app, investigate further, or write files solely to create catch-up visuals. Never invent numbers, screenshots, or figures of screens you did not capture. Link only existing artifacts. If no supported visual is available, say so plainly and give the decision in prose. Prefer a supported visual to dense prose.
+## Visuals
+
+A Markdown table is not a visual. Prefer real screenshots or video for visible changes. If none exists, mark the outcome "No screenshot yet" and explain the visible change plainly. Link only artifacts that exist; do not create files or investigate solely for catch-up visuals.
+
+An inline Mermaid diagram or chart may use facts already available when it is clearer than prose. Use only available output capabilities, not assumed graphics or image-generation tools. Keep connected diagrams small: at most six boxes and eight words per box. No empty status boxes, disconnected status lists, invented numbers or fake screens. If no supported visual helps, use honest prose.

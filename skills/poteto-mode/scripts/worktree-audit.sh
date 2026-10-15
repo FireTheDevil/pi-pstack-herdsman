@@ -47,10 +47,58 @@ origin/*) git fetch origin "+refs/heads/${base#origin/}:refs/remotes/$base" --qu
 esac
 git rev-parse --verify --quiet "$base^{commit}" >/dev/null 2>&1 || { echo "error: base ref not found: $base" >&2; exit 1; }
 
-# PR state by branch, fetched once. Empty if gh is unavailable.
-prs=$(mktemp)
-gh pr list --author "@me" --state all --limit 1000 \
-	--json number,state,headRefName 2>/dev/null > "$prs" || echo "[]" > "$prs"
+# Origin's upstream list fields lack a verified completeness/repository-identity
+# contract. Try its read-only lookup first, but never use that as cleanup proof.
+# Until that contract is documented, fall back to gh's bounded, explicit read.
+prs=$(mktemp) || exit 1
+trap 'rm -f "$prs"' EXIT
+if command -v origin >/dev/null 2>&1; then
+	origin pr list --state all --json number,status,headRef >/dev/null 2>&1 || :
+	echo "warn: Origin PR evidence cannot certify completeness/identity; trying gh" >&2
+fi
+# Match the documented [HOST/]OWNER/REPO selector against exactly one origin
+# URL. Never let GH_REPO, GH_HOST, or gh's default-repo configuration choose it.
+github_repository() {
+	local remote host owner name label
+	local https_ssh='^(https://|ssh://git@)([A-Za-z0-9.-]+)/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)$'
+	local scp='^git@([A-Za-z0-9.-]+):([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)$'
+	# Sentinel preserves trailing empty URL rows for ambiguity rejection.
+	remote=$(git remote get-url --all origin 2>/dev/null && printf '|') || return 1
+	remote=${remote%|}
+	remote=${remote%$'\n'}
+	if [[ "$remote" =~ $https_ssh ]]; then
+		host=${BASH_REMATCH[2]}; owner=${BASH_REMATCH[3]}; name=${BASH_REMATCH[4]}
+	elif [[ "$remote" =~ $scp ]]; then
+		host=${BASH_REMATCH[1]}; owner=${BASH_REMATCH[2]}; name=${BASH_REMATCH[3]}
+	else return 1; fi
+	name=${name%.git}
+	case "$owner" in ""|.|..) return 1 ;; esac
+	case "$name" in ""|.|..) return 1 ;; esac
+	# No empty labels or leading/trailing hyphens; no ports or URL suffixes.
+	case "$host" in .*|*.|*..*) return 1 ;; esac
+	for label in ${host//./ }; do
+		[[ "$label" =~ ^[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?$ ]] || return 1
+	done
+	printf '%s/%s/%s\n' "$host" "$owner" "$name"
+}
+forge_known=no
+gh_repository=$(github_repository) || gh_repository=""
+if [ -n "$gh_repository" ] \
+	&& (unset GH_REPO GH_HOST; gh pr list --repo "$gh_repository" --state all --limit 1000 \
+	--json number,state,headRefName,isCrossRepository) > "$prs" 2>/dev/null \
+	&& jq -e 'type == "array" and length < 1000 and
+		all(.[]; type == "object" and
+			(.number | type == "number" and . > 0 and floor == .) and
+			(.headRefName | type == "string" and length > 0) and
+			(.state == "OPEN" or .state == "DRAFT" or .state == "MERGED" or .state == "CLOSED") and
+			.isCrossRepository == false) and
+		([.[].number] | length == (unique | length)) and
+		([.[].headRefName] | length == (unique | length))' "$prs" >/dev/null 2>&1; then
+	forge_known=yes
+else
+	echo "warn: unresolved origin repository or missing, malformed, ambiguous or possibly truncated PR evidence; holding candidates" >&2
+	printf '[]\n' > "$prs"
+fi
 
 # Match Pi session-manager cwd encoding without scanning other workspaces.
 slug=$(printf '%s' "$main_wt" | sed 's#^[/\\]##; s#[/\\:]#-#g')
@@ -60,7 +108,7 @@ now=$(date +%s)
 echo "# base: $base"
 printf "SIZE\tAGE\tMERGED\tDIRTY\tREMOTE\tPR\tLAST_CHAT\tBUCKET\tWORKTREE\n"
 
-git worktree list --porcelain | sed -n 's/^worktree //p' | while read -r wt; do
+git worktree list --porcelain | sed -n 's/^worktree //p' | while IFS= read -r wt; do
 	[ "$wt" = "$main_wt" ] && continue
 
 	size=$(du -sh "$wt" 2>/dev/null | awk '{print $1}')
@@ -73,8 +121,10 @@ git worktree list --porcelain | sed -n 's/^worktree //p' | while read -r wt; do
 	git merge-base --is-ancestor "$head" "$base" 2>/dev/null && merged=YES || merged=no
 
 	# Distinguish real WIP (tracked edits) from disposable untracked scratch.
-	porcelain=$(git -C "$wt" status --porcelain 2>/dev/null)
-	if [ -z "$porcelain" ]; then dirty=clean
+	status_known=yes
+	porcelain=$(git -C "$wt" status --porcelain 2>/dev/null) || status_known=no
+	if [ "$status_known" = no ]; then dirty=unknown
+	elif [ -z "$porcelain" ]; then dirty=clean
 	elif printf '%s\n' "$porcelain" | grep -qv '^??'; then
 		dirty="wip:$(printf '%s\n' "$porcelain" | grep -cv '^??')"
 	else dirty="scratch:$(printf '%s\n' "$porcelain" | grep -c '^??')"; fi
@@ -88,7 +138,7 @@ git worktree list --porcelain | sed -n 's/^worktree //p' | while read -r wt; do
 	else remote=no-remote; fi
 
 	pr=$([ -n "$branch" ] && jq -r --arg b "$branch" \
-		'.[] | select(.headRefName==$b) | "#\(.number)/\(.state)"' "$prs" 2>/dev/null | head -1)
+		'.[] | select(.headRefName==$b) | "#\(.number)/\(.state | ascii_downcase)"' "$prs" 2>/dev/null | head -1)
 	[ -z "$pr" ] && pr="-"
 
 	# Most recent chat whose transcript operated in this worktree. Match path
@@ -109,16 +159,15 @@ git worktree list --porcelain | sed -n 's/^worktree //p' | while read -r wt; do
 	fi
 	recent=$([ "$last_ts" -gt 0 ] 2>/dev/null && [ $(( (now - last_ts) / 86400 )) -le 4 ] && echo yes || echo no)
 
-	case "$dirty" in wip:*) bucket=hold-wip ;; *)
-		case "$pr" in *OPEN*) bucket=hold-open-pr ;; *)
+	case "$dirty" in unknown) bucket=hold-unknown-state ;; wip:*) bucket=hold-wip ;; *)
+		if [ "$forge_known" != yes ]; then bucket=hold-unknown-pr
+		else case "$pr" in */open|*/draft) bucket=hold-open-pr ;; *)
 			if [ "$recent" = yes ]; then bucket=verify-recent-chat
-			elif [ "$merged" = YES ] || [ "$pr" != "-" ]; then bucket=safe
+			elif [ "$merged" = YES ] || [[ "$pr" == */merged ]]; then bucket=safe
 			else bucket=review; fi ;;
-		esac ;;
+		esac; fi ;;
 	esac
 
 	printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" \
 		"$size" "$age" "$merged" "$dirty" "$remote" "$pr" "$last" "$bucket" "$wt"
 done | sort -t$'\t' -k1,1 -rh
-
-rm -f "$prs"

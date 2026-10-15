@@ -4,6 +4,9 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 ## Understand
 
+- `/skill:in-your-own-words restate my goals and the problem in <thread>. don't start implementation.`
+- `/skill:sharpen <task>. use expert sources and an independent check within the tools and scope already authorized. leave my product choices open.`
+
 - `/poteto-mode read <thread>. restate the underlying issue in your own words, in plain english.`
 - `/poteto-mode investigate why <symptom>. give me what we know, what data you used, and your best hypotheses. don't change any code yet.`
 - `use /skill:how to understand <subsystem>. then use /skill:why to find out why it broke recently.`

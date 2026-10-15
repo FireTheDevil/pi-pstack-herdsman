@@ -16,7 +16,8 @@ When debugging, do not fix symptoms. Trace every problem to its root cause and f
 - Do not add guards (adding a nil check to silence a crash is a symptom fix)
 - If a workaround needs a paragraph-long comment to justify it, the code is wrong (fix the code, not the comment)
 - Check for the pattern, not just the instance (grep for the same pattern, fix all instances)
-- When stuck, instrument. Don't guess (add logging, read the actual error)
+- When stuck, instrument. Don't guess (add logging, read the actual error), within the task's authority.
+- After a deep dig finds the deciding fact, propose the cheap always-on signal that would have exposed it at first look. A proposal is not permission to add instrumentation, telemetry, or expand the task.
 
 **Restart bugs: suspect state before code**
 

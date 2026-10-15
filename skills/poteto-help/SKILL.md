@@ -28,8 +28,10 @@ For verification questions, identify whether a matching project verification ski
 | Mechanics, ownership, or placement | [how](../how/SKILL.md) |
 | Historical reasons or a number's origin | [why](../why/SKILL.md) |
 | Plain explanation | [teach](../teach/SKILL.md) |
+| Restate the goals and underlying problem without starting work | [in-your-own-words](../in-your-own-words/SKILL.md) |
+| Sharpen an authorized task without expanding it | [sharpen](../sharpen/SKILL.md) |
 | Recent cross-session context on a topic | [recall](../recall/SKILL.md) |
-| Current-chat catch-up and human decisions | [ketchup](../ketchup/SKILL.md) |
+| Short current-chat outcomes, real visuals and human decisions | [ketchup](../ketchup/SKILL.md) |
 | Breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
 | Types and module design | [architect](../architect/SKILL.md) |
 | Same brief, competing candidates and synthesis | [arena](../arena/SKILL.md) |
