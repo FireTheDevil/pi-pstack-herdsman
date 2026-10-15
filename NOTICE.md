@@ -8,9 +8,9 @@ Canonical plugin: https://github.com/cursor/plugins/tree/main/pstack
 License: MIT; original copyright and full license are preserved in LICENSE.
 
 Recorded upstream pin: df3fb154fb982fb83f649de8646d4af6a0cb16b3.
-Instruction changes through Cursor pstack 0.15.5 (pstack change commit 12d587dfb20741cafc376c42c696c5f6e2a64487) were reviewed and selectively adapted. Resource lineage still points to the original pinned input; this is not a claim of byte-for-byte parity with 0.15.5.
+Portable instruction changes through Cursor pstack 0.15.17 (pstack change commit 978ca6e9c0e012047cd5058b8e829240336e704e) were reviewed and adapted. Resource lineage still points to the original pinned input; this is not a claim of byte-for-byte parity. The alignment report in docs/upstream-alignment-0.15.17.md records the scope and exclusions.
 Intermediate Pi adaptation: zenspc/pi-extensions, packages/pi-pstack, commit 88600500953dfa28f19441d9085c3e9edcfc5b5c (0.5.0).
 
-PORT-MANIFEST.json records source and destination hashes for copied skills and supporting resources and preserves their prior lineage. Historical pins come from the supplied audit/lock, not a new remote or byte-for-byte Git verification.
+PORT-MANIFEST.json records source and destination hashes for copied skills and supporting resources and preserves their prior lineage. Historical pins remain unchanged. The 0.15.17 review used a freshly checked upstream repository snapshot and records its pinned source hashes.
 
 This adapter replaces backend-specific orchestration guidance and command setup with Herdsman's existing API and native definitions. No runtime code or engine from pi-herdsman is copied. Herdsman 0.17.1 is Apache-2.0; its API/docs are the integration reference. It is not the original pstack upstream.

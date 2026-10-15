@@ -100,7 +100,7 @@ test('invalid membership fails before writing', t => {
 
 test('npm tarball exactly matches approved files; extracted checks never call Git', t => {
   const dir = fixture(t);
-  assert.equal(approved.length, 155);
+  assert.equal(approved.length, 163);
   assert.deepEqual(JSON.parse(readFileSync(join(dir, 'package.json'))).files, approved);
   for (const path of ['definitions/custom.md', '.pi/config', 'scripts/private.md']) {
     mkdirSync(dirname(join(dir, path)), { recursive: true });

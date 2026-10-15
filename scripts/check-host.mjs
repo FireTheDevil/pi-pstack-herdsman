@@ -7,17 +7,22 @@ if (!piPath || !herdsmanPath) throw new Error('Usage: node scripts/check-host.mj
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const piRoot = resolve(piPath), host = resolve(herdsmanPath);
 const version = JSON.parse(readFileSync(join(host, 'package.json'), 'utf8')).version;
-assert.equal(version, '0.19.1', 'Revalidate documented backend contracts before upgrading');
+assert.match(version, /^0\.25\.(?:[1-9]\d*)$/, 'Requires Herdsman >=0.25.1 <0.26.0; revalidate contracts for other releases');
 const piVersion = JSON.parse(readFileSync(join(piRoot, 'package.json'), 'utf8')).version;
-assert.match(piVersion, /^1\.0\.(?:[2-9]|[1-9]\d+)$/);
+assert.match(piVersion, /^1\.1\.\d+$/, 'Requires Pi >=1.1.0 <1.2.0');
 const schema = readFileSync(join(host, 'docs/reference/agent-definition-schema.md'), 'utf8');
 assert.match(schema, /active_agent name=/);
 assert.match(schema, /bundled < project < global/);
 assert.match(schema, /Unknown frontmatter fields fail validation/);
 assert.match(schema, /exclusion wins over an allowlist/);
 const api = readFileSync(join(host, 'docs/reference/agent.md'), 'utf8');
-assert.match(api, /agent_delegate/);
-assert.match(api, /agent_continue/);
+for (const name of ['list_agents', 'delegate_agent', 'continue_agent', 'steer_agent', 'interrupt_agent', 'reply_agent', 'close_agent', 'inspect_agent', 'read_agent_transcript']) {
+  assert.ok(api.includes('## `' + name + '`'), 'Documented canonical tool: ' + name);
+}
+assert.match(api, /Continuation always creates a new agent generation/);
+assert.match(api, /terminal result is delivered once and the agent is cleaned up/);
+assert.match(api, /No selectors or other fields are accepted/);
+assert.match(api, /`session`, `task`, and optional `files`/);
 assert.match(api, /available_tools/);
 assert.match(api, /Each tool accepts only its operation's fields/);
 const { loadExtensions } = await import(pathToFileURL(join(piRoot, 'dist/core/extensions/loader.js')));
@@ -29,10 +34,10 @@ try {
   const loaded = await loadExtensions([join(root, 'extensions/pstack-herdsman/index.ts')], isolated);
   assert.deepEqual(loaded.errors, []);
   assert.equal(loaded.extensions.length, 1);
-  assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack', 'setup-pstack']);
+  assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack-status', 'setup-pstack']);
   const skills = loadSkillsFromDir({ dir: join(root, 'skills'), source: 'local' });
-  assert.equal(skills.skills.length, 50);
+  assert.equal(skills.skills.length, 52);
   assert.deepEqual(skills.diagnostics, []);
   assert.ok(skills.skills.every(s => s.disableModelInvocation));
-  console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: 50, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
+  console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: skills.skills.length, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
 } finally { rmSync(isolated, { recursive: true, force: true }); }

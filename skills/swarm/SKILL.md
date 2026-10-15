@@ -29,7 +29,7 @@ Open a todolist with one entry per phase before launching anything.
 
 ## Phase B: Fan out
 
-Launch independent arms with `agent_delegate`, definition, self-contained task and files. Retain live labels and completion/session identities. Continue necessary independent work; when only dependencies remain, end the turn and yield. Integrate asynchronous completions before synthesis; no collection call or polling. One writer per disjoint output boundary.
+Launch independent arms with `delegate_agent`, definition, self-contained task and files. Retain live labels and completion/session identities. Continue necessary independent work; when only dependencies remain, end the turn and yield. Integrate asynchronous completions before synthesis; no collection call or polling. One writer per disjoint output boundary.
 
 For different branches or competing code writers, explicitly prepare external worktrees and start separate lead sessions there. Fresh delegates inherit their lead cwd. Do not change a shared branch or pass cwd/worktree request fields.
 

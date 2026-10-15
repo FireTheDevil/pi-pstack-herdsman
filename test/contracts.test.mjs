@@ -96,7 +96,7 @@ test('documented request uses only real delegation fields; instructions carry li
   const request = JSON.parse(runtime.match(/```json\n([\s\S]*?)\n```/)[1]);
   const allowed = ['definition','task','files','label'];
   assert.ok(Object.keys(request).every(k => allowed.includes(k)));
-  assert.match(runtime, /JSON request to `agent_delegate`/);
+  assert.match(runtime, /JSON request to `delegate_agent`/);
   assert.deepEqual(Object.keys(request).sort(), ['definition','files','label','task']);
   assert.ok(ROLES.some(r => request.definition === 'pstack-' + r));
   assert.match(runtime, /There is no wait\/join\/collection call/);

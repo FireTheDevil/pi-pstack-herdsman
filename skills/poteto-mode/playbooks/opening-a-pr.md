@@ -1,6 +1,6 @@
 ### Opening a PR
 
-Invoked at the end of every other playbook.
+Prepare a PR only within current implementation authority. Read-only investigations and plans do not authorize commits or publication. Inspect `git status` and the diff first. Confirm branch/worktree ownership and preserve unrelated changes. Commit, rebase, push, open, or merge only when explicitly authorized.
 
 **Worktree.** For isolated checkout work, explicitly authorize and prepare an external git worktree from the intended base, then start a separate lead session in that worktree. Herdsman delegates inherit the controller's cwd; there is no per-request cwd or managed-worktree option. Keep one writer per worktree or file boundary. Preserve unrelated dirty work in place. If the checkout is dirty or tangled, stop and report its state; use an authorized fresh worktree and transfer only the intended change after inspection. Never discard or reset shared work as a delegation fallback.
 
@@ -10,18 +10,18 @@ Invoked at the end of every other playbook.
 
 **Titles.** Use Conventional Commits in the form `type(scope): subject`. Use `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, or `perf` as the type. Use the changed area, such as `pstack` or `poteto-mode`, as the scope. Keep the subject short and imperative. Name a real symbol when one carries the change. For example, `fix(pstack): retarget opening-a-pr babysit trigger`. Do not add a trailing period.
 
-**Descriptions.** The PR body is a briefing, not the lab notebook. A reviewer who has the diff should learn why the change exists, what it leaves out, what it could break, and how you proved it works, in under a minute. Write short, simple sentences with few identifiers. Do not write walls of text. The squash commit body is the PR body. If the body would make the squash commit longer than about 40 lines, cut the body.
+**Descriptions.** A reviewer should understand why, scope, risks, and proof in under a minute. The PR body becomes the squash body; keep it below about 40 lines. Commit bodies do not repeat the subject.
 
-Put each section under a `##` heading, not a bold lead-in, so the sections stand apart. Use these sections in order. Scope is mandatory. Drop other sections when they have nothing to say.
+Use `##` headings in this order. Scope is mandatory. Omit empty optional sections.
 
-- `## Why` gives the problem and the approach in one to three short sentences. Do not list SHAs or rebase genealogy. Do not add a "based on main" preamble.
-- `## What changed` has one to three short bullets. Name a real symbol or path only when it carries the change. Name both sides of a rename or retarget.
-- `## Scope` always names what the PR covers and what it deliberately leaves out, for example a related follow-up or a known gap. Use one to three short items. Do not list symbols or paths, and do not write a file-by-file essay.
-- `## Tradeoffs` names only rejected alternatives that a reviewer would otherwise ask about. Skip this section when there was no real choice.
-- `## Blast Radius` gives one or two sentences on who or what the change touches and why that is safe or risky. If main is red, state the cost of leaving it red.
-- `## Verification` has one to three bullets. Each bullet names a real run path and its outcome. For a performance change, report one primary number with its unit in `before → after` form. Link the arena or swarm directory for the remaining evidence. Do not include sample-size methodology, swarm recitals, or metric tables.
+- `## Why` gives the problem and approach in one to three short sentences. No SHAs or rebase genealogy.
+- `## What changed` has one to three short bullets. Name real paths or symbols only when they carry the change. Name both sides of a rename.
+- `## Scope` gives one to three items on what is covered and deliberately excluded. No file-by-file essay.
+- `## Tradeoffs` names rejected alternatives a reviewer would otherwise ask about.
+- `## Blast Radius` gives one or two sentences on affected users or code and the risk. If main is red, state the cost.
+- `## Verification` gives one to three actual run paths and outcomes. For performance, give one primary before-and-after number with its unit, and link detailed evidence.
 
-After these sections, attach videos or screenshots when they prove a claim. Do not paste full SHAs, swarm or arena lane recitals, lever-correction essays, file-by-file checklists, or "CLEAN" verdicts. Put these details in a linked artifact. A commit body does not restate its subject.
+Attach screenshots or videos when they prove a claim. Link logs, metric tables, SHAs, and detailed checklists instead of pasting them.
 
 **Forge.** Resolve the forge before the first PR operation and keep that choice for create, edit, view, watch, and merge. GitHub CLI (`gh`) is the default. If `command -v origin` succeeds and Origin can resolve the repository, prefer `origin pr ...`. If Origin is absent or cannot resolve the repository, stay on `gh` and record the fallback. Do not require Graphite (`gt`).
 
@@ -31,6 +31,6 @@ After these sections, attach videos or screenshots when they prove a claim. Do n
 
 **Readiness.** Open every PR ready, never as a draft. With a PR tool, use its documented readiness controls and verify the resulting state. Do not assume a universal draft field. With Origin, pass `--status open`. With `gh`, omit `--draft`. If a PR still opens as a draft, run `origin pr ready <number>` or `gh pr ready <number>` according to the resolved forge. Run `origin pr view <number>` or `gh pr view <number>` before you refer to PR status.
 
-**Babysit.** Opening a PR does not start a babysit. Post the URL and keep building. Finish the phase or stack first. Run a separate the Babysit playbook (`playbooks/babysit.md`) pass only when the user asks for one after the whole stack exists. A babysit for each new PR stalls the build and spends checks on commits that later waves restart. Push back when feedback drifts from intent.
+**Babysit.** Opening a PR does not start a babysit. Post the URL and keep building. Finish the phase or stack first. Run a separate Babysit playbook (`playbooks/babysit.md`) pass only when the user asks for one after the whole stack exists. A babysit for each new PR stalls the build and spends checks on commits later waves restart. Push back when feedback drifts from intent.
 
 **Lead-owned review.** The selected implementation leaf (poteto-agent, bug-fix, perf-issue or hillclimb) implements only its authorized scope and returns the diff, validation evidence and exact completion ref to the lead. It does not launch reviewers. After the implementation handoff, the lead runs `/skill:no-comments` and `/skill:interrogate`, supplying the required review skills/rubrics explicitly through files when the reviewer definition does not already provide them. Forward the exact implementation result ref through files and keep the reviewed scope frozen. Integrate asynchronous review results before authorizing follow-up edits or PR opening; end the turn and yield when only dependencies remain. Supply any needed deslop, technical-writing and unslop instructions as explicit evidence to a leaf assigned local cleanup or PR preparation. A leaf explicitly authorized to open the reviewed PR returns the URL and evidence, then returns to its owner without starting a babysit or nested review.
