@@ -12,7 +12,7 @@ Infer the need from the message and chat. If unclear, ask one multiple-choice qu
 
 ## Setup and runtime
 
-Read [setup-pstack](../setup-pstack/SKILL.md) and [Herdsman runtime](../poteto-mode/references/herdsman-runtime.md) for setup questions. Missing global profile templates are copied on lead session load, not installation alone. Existing globals are preserved and override project definitions. `/setup-pstack [role]` previews an optional confirmed project copy; it is not a model-budget wizard. Models and tools belong to effective discovered definitions. Preserve Sol, Luna, and Astra policy; never invent model availability or substitute a fallback.
+Read [setup-pstack](../setup-pstack/SKILL.md) and [Herdsman runtime](../poteto-mode/references/herdsman-runtime.md) for setup questions. On lead session startup, the extension reconciles global profiles, creating missing ones and applying safe package description and prompt updates. Installed configuration, including models, thinking, and tools, remains user-owned. Conflicts and package capability changes hold the affected profile. Restart Pi after reported profile changes and inspect the effective definitions. Same-name globals override project definitions. Installation alone does not synchronize profiles. `/setup-pstack [role]` previews an optional confirmed project copy; it is not a model-budget wizard. Models and tools belong to effective discovered definitions. Preserve Sol, Luna, and Astra policy; never invent model availability or substitute a fallback.
 
 When effective definitions or availability are unknown and matter to the answer, mention that uncertainty. At most once per chat, ask whether the user wants setup guidance now or later. Do not inspect agents as a progress poll or change configuration from help. For cost questions, explain the cost of independent exploration and review, not nonexistent budget menus.
 
@@ -20,7 +20,7 @@ For verification questions, identify whether a matching project verification ski
 
 ## Start and select
 
-`/poteto-mode` enables the style for the session; `/poteto-mode off` disables it. `/skill:poteto-mode` also enables it. `/pstack [on|off|status]` independently filters the skill catalog; it does not enable poteto-mode or test backend readiness. Hidden skills remain explicitly callable as `/skill:<name>`; no automatic discovery accuracy is promised. For prompt wording, read [prompting](references/prompting.md) and [recipes](references/recipes.md).
+`/poteto-mode` enables the style for the session; `/poteto-mode off` disables it. `/skill:poteto-mode` also enables it. `/pstack-status` takes no arguments and reports Poteto Mode and bundled skill visibility without changing session state. Hidden skills remain explicitly callable as `/skill:<name>`; no automatic discovery accuracy is promised. For prompt wording, read [prompting](references/prompting.md) and [recipes](references/recipes.md).
 
 | Need | Source |
 | --- | --- |

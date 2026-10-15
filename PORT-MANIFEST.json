@@ -549,7 +549,7 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "3fe669c7c3b8f52c18b7c68ecce01c8691e844b9d2b41a8a6ff6432341451986",
       "destination": "skills/poteto-help/SKILL.md",
-      "destinationSha256": "cd17b734970204c42a0ed36c1e4c4583747897100694104c5e547fcd776719f1",
+      "destinationSha256": "7461ed5d4845d1bb06caf0325c617ad25a3a96b45ab3c79c3d95147b5bfaa5e1",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
