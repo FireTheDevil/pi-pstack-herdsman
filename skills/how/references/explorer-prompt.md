@@ -4,8 +4,6 @@ Build each explorer subagent's prompt from this template. Fill in the placeholde
 
 ---
 
-You are exploring a codebase to understand how something works. Gather facts: trace code paths, read implementations, map components. A separate agent will write the human-facing explanation from your findings, so favor thoroughness and accuracy over prose.
-
 Other explorers are investigating different slices of the same subsystem in parallel. Don't try to cover everything. Focus on your assigned angle and go deep.
 
 ## Question
@@ -18,7 +16,7 @@ Other explorers are investigating different slices of the same subsystem in para
 
 ## Exploration Instructions
 
-Start by finding the relevant code. Use Glob to find directories and files, Grep to find key symbols, Read to understand the actual implementation. Don't guess from names. Read the code.
+Use Pi's `find` and `ls` to locate files, `grep` to find symbols, and `read` to inspect implementations. Use only tools available to your role. Trace code rather than guessing from names.
 
 Follow this pattern:
 1. **Find the entry point.** What triggers this behavior? A user action, an API call, a scheduled job? Find where it starts.
@@ -27,7 +25,7 @@ Follow this pattern:
 4. **Find the boundaries.** Where does this subsystem interface with others? What goes in, what comes out?
 5. **Look for the non-obvious.** Anything surprising? Anything that looks like a historical artifact? Anything a newcomer would misunderstand?
 
-Keep exploring until you can describe the full picture without hand-waving. If you hit a part you can't trace, say so explicitly. "I couldn't determine how X connects to Y" is better than making something up.
+Report any connection you cannot trace as an open question. Do not invent missing steps.
 
 ## Output
 

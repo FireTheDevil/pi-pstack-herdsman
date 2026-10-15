@@ -1,5 +1,13 @@
 # Validation boundaries
 
+## Selective 0.15.21 carry-over on branch 0.15.25
+
+Only the unique behavior from local source commit `c6c572656c4120878de92e01b16358dae805df1e` was integrated onto `896c2d8`. The reviewed upstream snapshot remains `1dcc2bacde73ddd284803b7af28164d0436198fc` (0.15.21); the branch name does not claim a 0.15.25 upstream review. Existing profile synchronization/catalog/refresh history, model pins, status/help behavior and host fixes are preserved. No definitions, tests or shipped inventory were changed. See the carry-over section in the [alignment report](docs/upstream-alignment-0.15.17.md).
+
+Fresh root tests passed all 37 tests. Existing watcher GitHub/policy suites passed 33 tests and 90 assertions. Reused disposable probes were rerun against this checkout: ten fake-gh scenarios passed, including a blocker beyond 100 threads, cross-page Bugbot pass counts, malformed/missing pagination data, repeated/cyclic cursors, READY and the nonterminal queued frontier-ready stop. Actual plan CLI probes passed 15 cases; actual audit CLI probes passed 13 cases using disposable local repositories, including explicit bases, fallback priorities, validation, paths with spaces, Pi session evidence and held tracked edits. Node/Bash syntax checks passed. Final structural and whitespace checks are recorded in the carry-over report.
+
+The full watcher suite was attempted but cannot load missing `commander`; typechecking was attempted but `tsc` is absent. No dependencies were installed. The host checker with Pi 1.1.0 stops at the installed Herdsman 0.26.0 version gate, outside the declared range; no fresh loader or live-runtime certification is claimed. No live GitHub, macOS audit, browser or prompt model trial was performed. Source-branch historical results below are not fresh evidence. Logs and reused unshipped probes are under `.pi-herdsman/integrate-0.15.21/`.
+
 ## Current compatibility migration: Pi 1.1.0 / Herdsman 0.25.1
 
 The declared host ranges are Pi >=1.1.0 <1.2.0 and Herdsman >=0.25.1 <0.26.0. Verification ran against exactly Pi 1.1.0 and Herdsman 0.25.1, not every release in those ranges. Active instructions use all nine canonical managed-agent tool names. The runtime reference follows the installed agent API's request fields, one-assignment generations, saved-session continuation, result refs, control eligibility and bounded diagnostic reads. Current backend inspection metadata is refreshed; 0.19.1 inspection records and resource lineage remain historical.

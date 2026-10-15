@@ -13,9 +13,9 @@
       "license": "MIT"
     },
     "reviewedUpstream": {
-      "version": "0.15.17",
-      "pstackChangeCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
-      "scope": "Reviewed portable 0.15.9 to 0.15.17 Markdown delta and adapted 0.15.16 distillation, all-prose unslop, ketchup/poteto-help with guide material, unattended-run trust checks and commit hygiene. Pi model policy, runtime capabilities, authorization and hidden invocation preserved; Cursor-only behavior and make-bot-ui excluded. PR entry authorization strengthened while preserving existing worktree/reset safety; Reflect Backlog authorization inconsistency corrected. See docs/upstream-alignment-0.15.17.md for changes and verification limits."
+      "version": "0.15.21",
+      "pstackChangeCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+      "scope": "Selective carry-over from local commit c6c572656c4120878de92e01b16358dae805df1e, reviewed against exact supplied 0.15.21 snapshot; not complete or byte-for-byte parity and not a 0.15.25 upstream review. Ports review-thread pagination, Markdown fences, configurable worktree base, empty-data verification readiness, Pi explorer tool names and evidence-backed ketchup visuals. Preserves newer local profile synchronization/catalog/refresh history, model pins, status/help behavior and host compatibility fixes. Retains local Babysit/worktree safety, principle and Why source guidance, authorization and hidden skills. Excludes Cursor manifests, tools, selectors, model defaults and Cursor global profile updater. Prior 0.15.17 review preserved in reviewHistory. See docs/upstream-alignment-0.15.17.md and VALIDATION.md."
     },
     "intermediates": {
       "zenspc": {
@@ -62,6 +62,11 @@
         "version": "0.15.9",
         "pstackChangeCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
         "scope": "Assessed all supplied 0.15.5 to 0.15.9 skill delta hunks; semantically adapted for Pi/Herdsman. Added only benchmark-checklist, correct, principle-explain-the-number. make-bot-ui excluded by user and unavailable capabilities. Existing skill descriptions preserved pending separate owner review."
+      },
+      {
+        "version": "0.15.17",
+        "pstackChangeCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "scope": "Reviewed portable 0.15.9 to 0.15.17 Markdown delta and adapted 0.15.16 distillation, all-prose unslop, ketchup/poteto-help with guide material, unattended-run trust checks and commit hygiene. Pi model policy, runtime capabilities, authorization and hidden invocation preserved; Cursor-only behavior and make-bot-ui excluded. PR entry authorization strengthened while preserving existing worktree/reset safety; Reflect Backlog authorization inconsistency corrected. See docs/upstream-alignment-0.15.17.md for changes and verification limits."
       }
     ]
   },
@@ -249,8 +254,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/create-verification-skill/SKILL.md",
-      "destinationSha256": "919bbf44692f95eaafe52cd78d2ef14e77bc9be5da677fcd189d7d88ff49b059",
-      "disposition": "adopted"
+      "destinationSha256": "fca7256056b229b384de3b9b967429742eeb5501921fbc93c0e6ce4e1ceb6e9d",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/create-verification-skill/references/feature-map-example/README.md",
@@ -391,8 +396,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/how/references/explorer-prompt.md",
-      "destinationSha256": "3a6965276d23be7d8da6c305bfd5d7bf29d2aef09e5dae4119463ac72022a02d",
-      "disposition": "adopted"
+      "destinationSha256": "aa760ad9d3597fbe57957d02e27e1477943fb010914a662a5d8eb0f1ad1d3014",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/interrogate/SKILL.md",
@@ -491,7 +496,7 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "f460a861cf2179808abc24b5588c94709f8cc3e58d4da2e44baf89556f53b587",
       "destination": "skills/ketchup/SKILL.md",
-      "destinationSha256": "d2dc380b4333721e3c07e9940874bced6e1c97aeeee29b31f804806b14e65550",
+      "destinationSha256": "2469ea4847a7f9991adab34ca8a4b220dbbd03fbc5d6f9045ae1f750449027bf",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1079,7 +1084,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "destinationSha256": "3b7ae7f498f4468620cfff76bf081871351178d89187dc633cb8cb3f40b94891",
+      "destinationSha256": "4158961119a588048d209cd24930a324b613deb2e0019e1be59feef595356306",
       "disposition": "adapted"
     },
     {
@@ -1163,7 +1168,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/check-plan.mjs",
-      "destinationSha256": "5ddfe9fbab95da6dd80c3aa8b49f771829fe99f57d5b9de295f4267aa348287b",
+      "destinationSha256": "57cb86cf43b0fbc572661af3bacedc2418ddb8b34d59fb648a6dd566e674fb16",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1310,8 +1315,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/github.ts",
-      "destinationSha256": "d1bbbafbe8e2c703c84da2029de7f2c4011412512f8cf65a42100f46bcb92c8a",
-      "disposition": "adopted"
+      "destinationSha256": "faf840e02bc30df05f332ee36bb083aaf8cf14a27c41b9119ba687a8a79d6fc5",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/policy.test.ts",
@@ -1394,7 +1399,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/types.ts",
-      "destinationSha256": "4f8174f13426ba7d59fa1a2612bbdf87e3dafb025a2c152286f227a0994999d9",
+      "destinationSha256": "1a971a9e8012a25a5895bd8c122c27e1055b526a2e89c53e44857a020635cb1a",
       "disposition": "adapted"
     },
     {
@@ -1422,8 +1427,8 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/worktree-audit.sh",
-      "destinationSha256": "9d065d837a711280504734cca5eb6acfbcaf926b71dd070e354806981b5d5ac6",
-      "disposition": "adopted"
+      "destinationSha256": "a65a5c95d4fc5ffed52dd46dc1e5d8ef688d77fd6f34fab014924671649b9a83",
+      "disposition": "adapted"
     },
     {
       "sourcePath": "skills/principle-attack-the-premise/SKILL.md",
@@ -2379,11 +2384,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "4aeb89ba7d5cdfa980996bb45473f6bbd014b9ecc82c40a1ac770b781934a63e"
+      "sha256": "38bdb677c71b82968698db531a6c6fed33ff7edb9be998efb9a2d1adf2dff28c"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "3b273a6548f3950bc2f6bfd5ad4f2cf28446b7ef2ebaafb1560778ccbccb7920"
+      "sha256": "1edd6ef352e0df81e49e0a8c67ec346397bca82ac993ecac85fd16ee1c55775b"
     },
     {
       "path": "config/artifact-locations.md",
@@ -2435,7 +2440,7 @@
     },
     {
       "path": "docs/upstream-alignment-0.15.17.md",
-      "sha256": "eb35019d7c4122bb6fbdcc24568c6ada033a9f9504d6812a75c1acf01b1fef04"
+      "sha256": "c31049e0483dcd81f61e7f88ca75117316c64c9e520b600d9c1a6e36c6fb493d"
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",
@@ -2483,7 +2488,7 @@
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "c344a6e83d93ff86870f35cb467e46641f1325085e1c2dedb6a55f59fe06ccb8"
+      "sha256": "a9b7e53d366cdc7a88897436d717581d7eb9e689401840576a745cdbff3b32af"
     }
   ],
   "metadataHistory": [

@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 import type * as T from "./types.ts";
 import { nonEmpty, parsePrNumber } from "./types.ts";
 export const REVIEW_THREADS_QUERY =
-  "\nquery ReviewThreads($owner: String!, $repo: String!, $pr: Int!) {\n  repository(owner: $owner, name: $repo) {\n    pullRequest(number: $pr) {\n      reviewThreads(first: 100) {\n        nodes {\n          id\n          isResolved\n          comments(first: 10) {\n            nodes {\n              body\n              createdAt\n              path\n              line\n              author { login }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n";
+  "\nquery ReviewThreads($owner: String!, $repo: String!, $pr: Int!, $after: String) {\n  repository(owner: $owner, name: $repo) {\n    pullRequest(number: $pr) {\n      reviewThreads(first: 100, after: $after) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        nodes {\n          id\n          isResolved\n          comments(first: 10) {\n            nodes {\n              body\n              createdAt\n              path\n              line\n              author { login }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n";
 export const PR_COMMIT_STATUS_QUERY =
   "\nquery PrCommitStatuses($owner: String!, $repo: String!, $pr: Int!) {\n  repository(owner: $owner, name: $repo) {\n    pullRequest(number: $pr) {\n      commits(last: 50) {\n        nodes {\n          commit {\n            oid\n            statusCheckRollup {\n              state\n            }\n          }\n        }\n      }\n    }\n  }\n}\n";
 export const PR_CHECK_ROLLUP_QUERY =
@@ -357,16 +357,12 @@ function passKey(comment: T.ReviewComment | null): string | null {
   }
   return null;
 }
-export function parseReviewThreads(value: unknown): readonly T.ReviewThread[] {
+function parseRawReviewThreads(value: unknown): readonly T.RawReviewThread[] {
   const nodes = list(
     at(value, ["data", "repository", "pullRequest", "reviewThreads", "nodes"]),
     "reviewThreads.nodes"
   );
-  const threads: {
-    readonly id: string;
-    readonly firstComment: T.ReviewComment | null;
-    readonly resolved: boolean;
-  }[] = [];
+  const threads: T.RawReviewThread[] = [];
   for (const node of nodes) {
     const thread = record(node, "review thread");
     if (typeof thread.isResolved !== "boolean")
@@ -381,6 +377,29 @@ export function parseReviewThreads(value: unknown): readonly T.ReviewThread[] {
       resolved: thread.isResolved,
     });
   }
+  return threads;
+}
+export function parseReviewThreadPage(value: unknown): T.ReviewThreadPage {
+  const page = record(
+    at(value, ["data", "repository", "pullRequest", "reviewThreads", "pageInfo"]),
+    "reviewThreads.pageInfo"
+  );
+  if (typeof page.hasNextPage !== "boolean")
+    missing("reviewThreads.pageInfo.hasNextPage", page.hasNextPage);
+  const cursor = optionalString(page.endCursor, "reviewThreads.pageInfo.endCursor");
+  if (page.hasNextPage && (cursor === null || cursor.trim() === ""))
+    missing("reviewThreads.pageInfo.endCursor", page.endCursor);
+  return {
+    threads: parseRawReviewThreads(value),
+    endCursor: page.hasNextPage ? cursor : null,
+  };
+}
+export function parseReviewThreads(value: unknown): readonly T.ReviewThread[] {
+  return buildReviewThreads(parseRawReviewThreads(value));
+}
+function buildReviewThreads(
+  threads: readonly T.RawReviewThread[]
+): readonly T.ReviewThread[] {
   const keys = new Set<string>();
   let keyless = false;
   for (const thread of threads) {
@@ -571,9 +590,22 @@ export class GhGitHubReader implements T.GitHubReader {
   async reviewThreads(
     context: T.PrContext
   ): Promise<readonly T.ReviewThread[]> {
-    return parseReviewThreads(
-      await runJson(graphqlArgs(REVIEW_THREADS_QUERY, context))
-    );
+    const threads: T.RawReviewThread[] = [];
+    const cursors = new Set<string>();
+    let after: string | null = null;
+    do {
+      const argv = graphqlArgs(REVIEW_THREADS_QUERY, context);
+      if (after !== null) argv.push("-f", `after=${after}`);
+      const page = parseReviewThreadPage(await runJson(argv));
+      threads.push(...page.threads);
+      after = page.endCursor;
+      if (after !== null) {
+        if (cursors.has(after))
+          missing("reviewThreads.pageInfo.endCursor (repeated cursor)", after);
+        cursors.add(after);
+      }
+    } while (after !== null);
+    return buildReviewThreads(threads);
   }
   async commitRollups(
     context: T.PrContext

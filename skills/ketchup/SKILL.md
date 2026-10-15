@@ -23,3 +23,7 @@ Open with the action-item count, or say there are none. If nothing happened and 
 Describe outcomes most important first and what they mean for the user. Omit steps that changed nothing. Name remaining agent work in one line without doing it.
 
 For each user item, explain the decision, why it matters now, options and costs, recommendation, and what happens if unanswered. Say when a part is unknown. Link available detail, but give enough context to decide without opening it. Apply [unslop](../unslop/SKILL.md), reusing instructions already in context.
+
+Show each action item as an evidence-backed before-and-after comparison, side by side. For a choice, show the current state beside each option, or just the options when there is no current state. Use existing screenshots or video for visible changes. Otherwise use an inline table, diff, or diagram based only on evidence already available in this chat. Label proposed outcomes as proposals, not observed results.
+
+Do not start an app, investigate further, or write files solely to create catch-up visuals. Never invent numbers, screenshots, or figures of screens you did not capture. Link only existing artifacts. If no supported visual is available, say so plainly and give the decision in prose. Prefer a supported visual to dense prose.

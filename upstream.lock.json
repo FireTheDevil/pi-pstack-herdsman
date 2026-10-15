@@ -10,9 +10,9 @@
     "license": "MIT"
   },
   "reviewedUpstream": {
-    "version": "0.15.17",
-    "pstackChangeCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
-    "scope": "Reviewed portable 0.15.9 to 0.15.17 Markdown delta and adapted 0.15.16 distillation, all-prose unslop, ketchup/poteto-help with guide material, unattended-run trust checks and commit hygiene. Pi model policy, runtime capabilities, authorization and hidden invocation preserved; Cursor-only behavior and make-bot-ui excluded. PR entry authorization strengthened while preserving existing worktree/reset safety; Reflect Backlog authorization inconsistency corrected. See docs/upstream-alignment-0.15.17.md for changes and verification limits."
+    "version": "0.15.21",
+    "pstackChangeCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+    "scope": "Selective carry-over from local commit c6c572656c4120878de92e01b16358dae805df1e, reviewed against exact supplied 0.15.21 snapshot; not complete or byte-for-byte parity and not a 0.15.25 upstream review. Ports review-thread pagination, Markdown fences, configurable worktree base, empty-data verification readiness, Pi explorer tool names and evidence-backed ketchup visuals. Preserves newer local profile synchronization/catalog/refresh history, model pins, status/help behavior and host compatibility fixes. Retains local Babysit/worktree safety, principle and Why source guidance, authorization and hidden skills. Excludes Cursor manifests, tools, selectors, model defaults and Cursor global profile updater. Prior 0.15.17 review preserved in reviewHistory. See docs/upstream-alignment-0.15.17.md and VALIDATION.md."
   },
   "intermediates": {
     "zenspc": {
@@ -59,6 +59,11 @@
       "version": "0.15.9",
       "pstackChangeCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
       "scope": "Assessed all supplied 0.15.5 to 0.15.9 skill delta hunks; semantically adapted for Pi/Herdsman. Added only benchmark-checklist, correct, principle-explain-the-number. make-bot-ui excluded by user and unavailable capabilities. Existing skill descriptions preserved pending separate owner review."
+    },
+    {
+      "version": "0.15.17",
+      "pstackChangeCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+      "scope": "Reviewed portable 0.15.9 to 0.15.17 Markdown delta and adapted 0.15.16 distillation, all-prose unslop, ketchup/poteto-help with guide material, unattended-run trust checks and commit hygiene. Pi model policy, runtime capabilities, authorization and hidden invocation preserved; Cursor-only behavior and make-bot-ui excluded. PR entry authorization strengthened while preserving existing worktree/reset safety; Reflect Backlog authorization inconsistency corrected. See docs/upstream-alignment-0.15.17.md for changes and verification limits."
     }
   ]
 }
