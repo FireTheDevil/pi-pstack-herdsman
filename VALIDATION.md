@@ -1,5 +1,21 @@
 # Validation boundaries
 
+## Current installed-host compatibility update
+
+The declared compatibility ranges are Pi >=1.1.0 <1.4.0 and Herdsman >=0.25.1 <0.30.0. Prereleases remain excluded. The checker reads these ranges from `package.json`. Verification ran against exactly Pi 1.3.0 and Herdsman 0.29.0, not every eligible release. Backend inspection metadata now records 0.29.0 and retains earlier inspection history.
+
+`npm test` passes all 37 existing root tests. `npm run check` passes with 54 hidden skills, 23 playbooks, 135 resources, and 166 shipped files. The installed-host command passes extension loading, all three command registrations, all 54 skills without diagnostics, and every existing documentation contract assertion. It also verifies the built Herdsman launch argument and `<active_agent>` marker together.
+
+```sh
+node scripts/check-host.mjs /home/alex/.pi/agent/install/releases/1.3.0/node_modules/@earendil-works/pi-coding-agent /home/alex/.pi/agent/npm/node_modules/pi-herdsman
+```
+
+The npm-wrapper defect reproduced before the fix. The extracted-package check failed because the selected wrapper needed `dirname` after PATH was restricted to Node alone. The existing test now resolves the installed npm JavaScript entry and runs it with `process.execPath`. The wrapper regression passes both with no `npm_execpath` and with `npm_execpath` pointing at the shell wrapper. Both extraction contexts, `npm run check`, the no-Git restriction, and tamper checks remain covered.
+
+All 21 disposable CLI probes pass. They cover the missing built marker, missing/unreadable/nonregular Pi loader and skills files, unmodified dependency and initialization failures, lower and upper policy boundaries, intermediate eligible version metadata, and prerelease rejection. Version-metadata fixtures reuse the installed implementations and do not certify other host releases. Reproducible probes and logs are local under `.pi-herdsman/host-compatibility/`, including `wrapper-probe.sh`, `probes.mjs`, `host.log`, `npm-test.log`, and `npm-check.log`. Disposable host copies were removed.
+
+No definitions, profile configuration, dependencies, or global installations changed. No inference or live delegation ran. Definition discovery, provider/model availability, Herdr connectivity, and live child suppression remain unverified. All earlier records below describe their original validation stages and retain the older blocked-host evidence.
+
 ## Current 0.15.25 integration
 
 The [0.15.25 alignment report](docs/upstream-alignment-0.15.25.md) records the exact upstream pin, selected changes and deliberate differences. Final post-fix structural validation and all 37 root tests pass: 54 hidden skills, 23 playbooks, 135 resources and 166 shipped files. All 65 existing helper tests (714 assertions), watcher/orch strict typechecks, 17 frontier scenarios and 18 real-jq audit scenarios pass. Independent review closed both findings: Shipping's verified ceiling and explicit origin binding for GitHub reads. Test maintenance updates existing inventory/forge/pageInfo fixtures without adding unit tests. Profiles, model choices, synchronization history and declared host ranges are unchanged.

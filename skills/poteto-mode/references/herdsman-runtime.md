@@ -1,6 +1,6 @@
 # Herdsman runtime
 
-Load once per active context when delegating. This adapter targets pi-herdsman >=0.25.1 <0.26.0 and Pi >=1.1.0 <1.2.0. Use Herdsman's nine managed-agent tools listed below, not a package scheduler or a new orchestration engine.
+Load once per active context when delegating. This adapter targets pi-herdsman >=0.25.1 <0.30.0 and Pi >=1.1.0 <1.4.0. These declared compatibility ranges exclude prereleases and do not certify every release. Use Herdsman's nine managed-agent tools listed below, not a package scheduler or a new orchestration engine.
 
 ## Definitions and models
 

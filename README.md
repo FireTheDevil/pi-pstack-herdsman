@@ -10,12 +10,12 @@ The resource lineage retains its original upstream pin. Selected portable change
 
 ## Install
 
-Requires Node >=24, Pi >=1.1.0 <1.2.0, and pi-herdsman >=0.25.1 <0.26.0 with its Herdr prerequisites. Follow the [Herdsman setup guide](https://github.com/boadij/pi-herdsman/blob/main/docs/getting-started.md) to install Herdr and its Pi integration. This package does not install or configure its host dependencies.
+Requires Node >=24, Pi >=1.1.0 <1.4.0, and pi-herdsman >=0.25.1 <0.30.0 with its Herdr prerequisites. Follow the [Herdsman setup guide](https://github.com/boadij/pi-herdsman/blob/main/docs/getting-started.md) to install Herdr and its Pi integration. These are declared compatibility ranges, not certification of every release. Prereleases are excluded. This package does not install or configure its host dependencies.
 
 If you already manage Pi and Herdr yourself, install the extensions:
 
 ```sh
-pi install npm:pi-herdsman@0.25.1
+pi install npm:pi-herdsman@0.29.0
 pi install git:github.com/FireTheDevil/pi-pstack-herdsman
 ```
 

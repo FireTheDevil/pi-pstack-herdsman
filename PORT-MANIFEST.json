@@ -37,13 +37,18 @@
     },
     "backend": {
       "package": "pi-herdsman",
-      "inspectedVersion": "0.25.1",
+      "inspectedVersion": "0.29.0",
       "license": "Apache-2.0"
     },
     "backendHistory": [
       {
         "package": "pi-herdsman",
         "inspectedVersion": "0.19.1",
+        "license": "Apache-2.0"
+      },
+      {
+        "package": "pi-herdsman",
+        "inspectedVersion": "0.25.1",
         "license": "Apache-2.0"
       }
     ],
@@ -77,7 +82,7 @@
   },
   "backend": {
     "package": "pi-herdsman",
-    "inspectedVersion": "0.25.1",
+    "inspectedVersion": "0.29.0",
     "mode": "nine canonical managed-agent tools"
   },
   "resources": [
@@ -1220,7 +1225,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "3778140b3d82b4d12d2e3d29ff016805f4d2a243d91910b87d46370f8799a6d1",
+      "destinationSha256": "176c4c5c8250b3189b49387c8b38157312416cd7b511d1753fca4cfffb96901d",
       "disposition": "adapted"
     },
     {
@@ -2607,11 +2612,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "92c4606bad98204368391b96251d52ac068b97a78593a180f878477a0ba6e640"
+      "sha256": "a22b368aa965eb0fcb5a371af6f709343db23281e3cea26fe84fd08750de5e6f"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "8c60d1914c2f9662ba96b48c8ee3e09f09be9ed627bea04280d089ca18310686"
+      "sha256": "91876ba4537503432d0904b7e7b4a206531400edc0cdba93ea3d9a1ab111af74"
     },
     {
       "path": "config/artifact-locations.md",
@@ -2679,7 +2684,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "df236b7a260b187d12717b5451f762891b93a89074bfc72222a880f6752397b0"
+      "sha256": "a607f275603047e3ca18f0b8fa619188acd0905e561f5bfb8101eeaf68aba6a4"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -2687,7 +2692,7 @@
     },
     {
       "path": "scripts/check-host.mjs",
-      "sha256": "f6fc3c8031620cff6beca6b4cc37b61804421a3eaccb490b78f3f112c574cdb4"
+      "sha256": "6db2a8cba398be12c9d46dbb5db2db2778c4f0bb0e06954b353a7de021c3ec92"
     },
     {
       "path": "scripts/manifest.mjs",
@@ -2715,7 +2720,7 @@
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "caee9cef4f063fd14e608b97e291115e59b0cac49de8c6b0183e4fe04305f22b"
+      "sha256": "ee22c9b4254fe035771a659adc95a24e82dee23a0ce06a68fbdbe611fb7de92d"
     }
   ],
   "metadataHistory": [
@@ -2782,6 +2787,11 @@
       "package": "pi-herdsman",
       "inspectedVersion": "0.19.1",
       "mode": "split agent_* API"
+    },
+    {
+      "package": "pi-herdsman",
+      "inspectedVersion": "0.25.1",
+      "mode": "nine canonical managed-agent tools"
     }
   ]
 }
