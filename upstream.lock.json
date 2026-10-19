@@ -10,9 +10,9 @@
     "license": "MIT"
   },
   "reviewedUpstream": {
-    "version": "0.15.25",
-    "pstackChangeCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
-    "scope": "Reviewed all .21-to-.25 pstack paths and reconciled the selected .17-to-.21 carry-over. Adapted new explicit in-your-own-words/sharpen skills, final Ketchup/help, root-cause signal proposal, bounded owner/stack/shipping guidance, gh PR-base frontier, review ACTION_REQUIRED gates and audit safeguards. Preserved original lineage, profile synchronization/catalog history, model pins, hidden invocation, full-swarm changed-patch verification and authorization. Origin frontier is explicitly unavailable without verified completeness/repository identity; audit falls back to verified gh or holds unknown. Excludes dynamic model/effort/speed selection, Cursor discovery/install/cloud/loops, new upstream unit tests and make-bot-ui. Not full or byte-for-byte parity; see docs/upstream-alignment-0.15.25.md and VALIDATION.md."
+    "version": "0.15.26",
+    "pstackChangeCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+    "scope": "Reviewed all 196 relevant .25-to-.26 canonical, generated and root paths. Selectively adapted explicit formal verification, complete Ketchup decisions, premise/root-cause/idempotence/behavior-test semantics, lead judgment, brand guard examples and local docs/name checks. Preserved lineage and adaptation history, substantive migration/type-system rules, profiles/model pins, runtime authorization and full-swarm verification. Excludes Claude generated distribution, Cursor manifests, make-bot-ui and weaker post-push verification. Not full parity. See docs/upstream-alignment-0.15.26.md and VALIDATION.md."
   },
   "intermediates": {
     "zenspc": {
@@ -74,6 +74,11 @@
       "version": "0.15.21",
       "pstackChangeCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
       "scope": "Selective carry-over from local commit c6c572656c4120878de92e01b16358dae805df1e, reviewed against exact supplied 0.15.21 snapshot; not complete or byte-for-byte parity and not a 0.15.25 upstream review. Ports review-thread pagination, Markdown fences, configurable worktree base, empty-data verification readiness, Pi explorer tool names and evidence-backed ketchup visuals. Preserves newer local profile synchronization/catalog/refresh history, model pins, status/help behavior and host compatibility fixes. Retains local Babysit/worktree safety, principle and Why source guidance, authorization and hidden skills. Excludes Cursor manifests, tools, selectors, model defaults and Cursor global profile updater. Prior 0.15.17 review preserved in reviewHistory. See docs/upstream-alignment-0.15.17.md and VALIDATION.md."
+    },
+    {
+      "version": "0.15.25",
+      "pstackChangeCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+      "scope": "Reviewed all .21-to-.25 pstack paths and reconciled the selected .17-to-.21 carry-over. Adapted new explicit in-your-own-words/sharpen skills, final Ketchup/help, root-cause signal proposal, bounded owner/stack/shipping guidance, gh PR-base frontier, review ACTION_REQUIRED gates and audit safeguards. Preserved original lineage, profile synchronization/catalog history, model pins, hidden invocation, full-swarm changed-patch verification and authorization. Origin frontier is explicitly unavailable without verified completeness/repository identity; audit falls back to verified gh or holds unknown. Excludes dynamic model/effort/speed selection, Cursor discovery/install/cloud/loops, new upstream unit tests and make-bot-ui. Not full or byte-for-byte parity; see docs/upstream-alignment-0.15.25.md and VALIDATION.md."
     }
   ]
 }
