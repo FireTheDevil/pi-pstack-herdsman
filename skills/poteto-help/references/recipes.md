@@ -47,3 +47,11 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 - `/poteto-mode autopilot these changes but stack them, don't ship. i'll land the stack.`
 - `/skill:reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.
 - `/skill:bro` restates the last reply in plain words.
+
+## Formal property verification
+
+For a race or invariant that tests miss, explicitly invoke [create-formal-verification-skill](../../create-formal-verification-skill/SKILL.md).
+
+- `/skill:create-formal-verification-skill model-check this retry race within the authorized project scope. Use isolated disposable scratch state, preserve findings, and report missing tool authority instead of installing anything.`
+
+This creates one formal-property check, not an app-driving skill or feature-map maintenance loop.

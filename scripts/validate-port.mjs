@@ -10,7 +10,7 @@ checkProfiles(root);
 const inventory = packageInventory(root, manifest);
 const resources = inventory.resources;
 const skills = resources.filter(path => path.endsWith('/SKILL.md'));
-assert.equal(skills.length, 54);
+assert.equal(skills.length, 55);
 assert.equal(resources.filter(path => path.includes('/playbooks/') && path.endsWith('.md')).length, 23);
 for (const path of skills) {
   const text = readFileSync(join(root, path), 'utf8');
@@ -18,6 +18,7 @@ for (const path of skills) {
   assert.ok(fm, path);
   assert.match(fm[1], /^disable-model-invocation: true$/m, path);
   assert.match(fm[1], /^name: [a-z0-9-]+$/m, path);
+  assert.equal(fm[1].match(/^name: (.+)$/m)[1], dirname(path).split('/').at(-1), 'Skill name matches directory: ' + path);
 }
 for (const path of resources.filter(path => path.endsWith('.md'))) {
   const text = readFileSync(join(root, path), 'utf8');
@@ -30,6 +31,16 @@ for (const path of resources.filter(path => path.endsWith('.md'))) {
     assert.ok(!rel.startsWith('..') && !isAbsolute(rel), 'Link escapes: ' + path);
     assert.ok(existsSync(target), 'Broken link: ' + path + ' -> ' + href);
   }
+}
+const readme = readFileSync(join(root, 'README.md'), 'utf8');
+assert.equal(Number(readme.match(/(\d+) hidden explicitly callable skills/)?.[1]), skills.length, 'README skill count matches inventory');
+for (const [path, link] of [
+  ['README.md', 'skills/create-formal-verification-skill/SKILL.md'],
+  ['skills/poteto-help/SKILL.md', '../create-formal-verification-skill/SKILL.md']
+]) {
+  const text = readFileSync(join(root, path), 'utf8');
+  assert.ok(text.includes('`/skill:create-formal-verification-skill`'), 'Formal invocation route: ' + path);
+  assert.ok(text.includes('](' + link + ')'), 'Formal skill source link: ' + path);
 }
 const lock = JSON.parse(readFileSync(join(root, 'upstream.lock.json'), 'utf8'));
 assert.deepEqual(manifest.upstream, lock, 'Current upstream metadata matches lock');

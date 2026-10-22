@@ -9,15 +9,21 @@ Brand primitives so they can't be mixed up. Validate once at the boundary. Downs
 ```ts
 type AgentId = string & { readonly __brand: "AgentId" };
 
+function isAgentId(input: string): input is AgentId {
+  return isUUID(input);
+}
+
 function parseAgentId(input: string): AgentId {
-  if (!isUUID(input)) throw new Error(`Invalid agent id: ${input}`);
-  return input as AgentId;
+  if (!isAgentId(input)) throw new Error(`Invalid agent id: ${input}`);
+  return input;
 }
 
 function focusAgent(id: AgentId): void {
   /* input is trusted */
 }
 ```
+
+The predicate must validate the actual input. TypeScript trusts its annotation and does not prove its implementation correct.
 
 Match the `readonly __brand: 'X'` shape. Don't invent a new convention.
 
