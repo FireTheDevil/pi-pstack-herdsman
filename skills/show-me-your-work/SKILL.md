@@ -45,7 +45,7 @@ A run is one Pi session conversation, including later turns and summaries. A pic
 
 ## Where it lives
 
-By default the log is a working artifact, not committed. Keep it at `decisions.tsv` in the work dir, or `.audit/<task-slug>.tsv` when several efforts run at once, and leave it out of git.
+Read [artifact locations](../../config/artifact-locations.md) and use its resolved decision-log path, or its concurrent task decision-log path when several efforts run at once. Honor explicit paths and existing adequate artifacts. By default the log is a working artifact, not committed; leave it out of git and preserve approved permanent audits.
 
 Commit it only when the work is ambitious enough that a reviewer needs the trail to trust the result.
 

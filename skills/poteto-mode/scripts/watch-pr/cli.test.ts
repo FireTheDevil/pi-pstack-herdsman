@@ -278,7 +278,7 @@ if (args[0] === "pr" && args[1] === "view") {
   result = [{ name: "ci", state: pending ? "PENDING" : "SUCCESS", description: "", link: "", workflow: "", bucket: pending ? "pending" : "pass" }];
 } else if (args[0] === "api" && args[1] === "graphql") {
   result = args.some(a => a.includes("ReviewThreads"))
-    ? { data: { repository: { pullRequest: { reviewThreads: { nodes: [] } } } } }
+    ? { data: { repository: { pullRequest: { reviewThreads: { nodes: [], pageInfo: { hasNextPage: false, endCursor: null } } } } } }
     : { data: { repository: { pullRequest: { commits: { nodes: [{ commit: { oid: "head", statusCheckRollup: { state: "SUCCESS" } } }] } } } } };
 } else { throw new Error("Forbidden forge operation: " + args.join(" ")); }
 console.log(JSON.stringify(result));

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 
@@ -100,7 +100,7 @@ test('invalid membership fails before writing', t => {
 
 test('npm tarball exactly matches approved files; extracted checks never call Git', t => {
   const dir = fixture(t);
-  assert.equal(approved.length, 155);
+  assert.equal(approved.length, 166);
   assert.deepEqual(JSON.parse(readFileSync(join(dir, 'package.json'))).files, approved);
   for (const path of ['definitions/custom.md', '.pi/config', 'scripts/private.md']) {
     mkdirSync(dirname(join(dir, path)), { recursive: true });
@@ -117,14 +117,24 @@ test('npm tarball exactly matches approved files; extracted checks never call Gi
   const noGit = join(isolated, 'bin');
   mkdirSync(noGit);
   symlinkSync(process.execPath, join(noGit, 'node'));
-  const npm = execFileSync('which', ['npm'], { encoding: 'utf8' }).trim();
+  const npmCandidates = [
+    process.env.npm_execpath,
+    join(dirname(process.execPath), '..', 'lib/node_modules/npm/bin/npm-cli.js'),
+    join(execFileSync('npm', ['root', '--global'], { encoding: 'utf8' }).trim(), 'npm/bin/npm-cli.js'),
+  ];
+  const npmCli = npmCandidates.filter(path => path && existsSync(path)).map(path => realpathSync(path)).find(path => {
+    if (basename(path) !== 'npm-cli.js') return false;
+    const pkg = join(dirname(path), '..', 'package.json');
+    return existsSync(pkg) && JSON.parse(readFileSync(pkg)).name === 'npm';
+  });
+  assert.ok(npmCli, 'Installed npm JavaScript CLI must be available before restricting PATH');
   for (const name of ['outside', 'unrelated']) {
     const target = join(isolated, name);
     mkdirSync(target);
     if (name === 'unrelated') execFileSync('git', ['init', '--quiet'], { cwd: target });
     execFileSync('tar', ['-xzf', join(dir, packed.filename), '-C', target]);
     const cwd = join(target, 'package');
-    const result = spawnSync(npm, ['run', 'check', '--script-shell=/bin/sh'], { cwd, encoding: 'utf8', env: { ...process.env, PATH: noGit } });
+    const result = spawnSync(process.execPath, [npmCli, 'run', 'check', '--script-shell=/bin/sh'], { cwd, encoding: 'utf8', env: { ...process.env, PATH: noGit } });
     assert.equal(result.status, 0, result.stderr + result.stdout);
     assert.equal(existsSync(join(cwd, '.git')), false);
     for (const path of [manifest.resources[0].destination, 'README.md']) {

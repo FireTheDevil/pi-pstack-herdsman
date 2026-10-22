@@ -13,6 +13,8 @@ Run `/setup-pstack` to preview and create project-local pstack-* definitions. Mo
 
 ## Context reuse
 
+Implementation leaves must read this complete SKILL.md from the absolute path supplied by the lead through `files`, then read applicable principle leaves in full. If the mode path or a required leaf is missing or unreadable, report the blocker to the owner before implementation. Controller workflows and dependent phases are lead-only. A leaf applies the matched instructions within its bounded assignment and returns evidence without delegating or launching independent review.
+
 Read required skills and applicable principle leaves in full once per active context. Reuse that text while it remains available and unchanged; re-read after compaction, missing context, or source edits. Open only the matched playbook and references needed for the current step. This changes loading, not required workflow steps, independent review, or verification.
 
 ## Non-negotiables
@@ -29,7 +31,7 @@ Remaining triggers:
 - Parallel fan-out → the **swarm** skill for coverage matrices, races, gauntlets, and exploration partitions. Use **arena** for design or code bakeoffs with base selection and grafting.
 - Contested design → the **interrogate** skill (independent adversarial) before shipping.
 - Nontrivial multi-step → write the throughput checkpoint (Feature step 3).
-- Requested prose edits or reviews, or an explicit prose-cleanup step in a matched workflow → the **unslop** skill. For ordinary replies, follow **Writing the reply** without loading unslop. Agent-facing prose also follows `playbooks/authoring-a-skill.md`.
+- Every prose output, including ordinary replies → the **unslop** skill. Follow **Writing the reply** as you draft. Reuse loaded instructions within this active context. Agent-facing prose also follows `playbooks/authoring-a-skill.md`.
 - Docs, RFCs, readmes, PR descriptions, or commit messages → the **technical-writing** skill (`/skill:technical-writing`).
 - Before commit → the bundled **deslop** skill (`/skill:deslop`), retained as the local cleanup dependency.
 - Before review → the **no-comments** skill (`/skill:no-comments`).
@@ -39,11 +41,11 @@ Remaining triggers:
 - Asked to land or ship a green stack → the **Shipping** playbook (`playbooks/shipping.md`). Green is not safe. Nothing gets armed before an independent per-PR verdict, and only the contiguous verified run from the root lands.
 - Bugbot or the agentic security review commented → skeptical posture. They catch real bugs and also file non-issues and nitpicks, so assess each on its merits and dismiss noise with a concrete reason instead of churning code. Triage fix / dismiss / ask per `references/bugbot-triage.md`.
 - Broken skill mid-task → fix it in its own PR. Don't block. Don't silently work around it.
-- Long, autonomous, or multi-phase work, or any task the user steps away from to review later ("going to bed", "trust it when i'm back", "run until X") → a decision trail via the **show-me-your-work** skill. Commit it when stakes need an auditable record. Keep it local otherwise.
+- Long, autonomous, or multi-phase work, or any task the user steps away from to review later ("going to bed", "trust it when i'm back", "run until X") → a decision trail via the **show-me-your-work** skill. Commit it when stakes need an auditable record. Keep it local otherwise. Before unattended execution, apply the shared unattended trust gate in **Autonomy** below.
 
 ## Principles
 
-Read the leaf skill in full for any principle you apply. Each entry names when it applies.
+Read the leaf skill in full for any principle you apply. Each entry names when it applies. Each leaf is the **principle-<title>** skill, with the title in kebab case, hyphens kept and other punctuation dropped, unless the entry gives its name.
 
 **Core**
 
@@ -60,17 +62,17 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 **Architecture**
 
-- **Model the Domain** (**principle-model-the-domain**). Writing stateful logic, or code that branches a lot or repeats a shape assumption across files. Encode the domain in a structure (state machine, typed model, table or registry, reducer, boundary, the right collection) instead of scattered conditionals.
-- **Boundary Discipline** (**principle-boundary-discipline**). Wiring validation, error handling, or framework adapters. Guards at system boundaries, trust internal types, keep business logic pure.
-- **Type System Discipline** (**principle-type-system-discipline**). Designing types or a signature in any typed language. Make illegal states unrepresentable, brand primitives, parse external data at boundaries.
-- **Make Operations Idempotent** (**principle-make-operations-idempotent**). Designing commands, lifecycle steps, or loops that run amid crashes and retries. Converge to the same end state.
-- **Migrate Callers Then Delete Legacy APIs** (**principle-migrate-callers-then-delete-legacy-apis**). Introducing a new internal API while old callers exist. Migrate and delete in one wave.
-- **Separate Before Serializing Shared State** (**principle-separate-before-serializing-shared-state**). Concurrent actors might write the same file, branch, key, or object. Eliminate the sharing first.
+- **Model the Domain.** Writing stateful logic, or code that branches a lot or repeats a shape assumption across files. Encode the domain in a structure (state machine, typed model, table or registry, reducer, boundary, the right collection) instead of scattered conditionals.
+- **Boundary Discipline.** Wiring validation, error handling, or framework adapters. Guards at system boundaries, trust internal types, keep business logic pure.
+- **Type System Discipline.** Designing types or a signature in any typed language. Make illegal states unrepresentable, brand primitives, parse external data at boundaries.
+- **Make Operations Idempotent.** Designing commands, lifecycle steps, or loops that run amid crashes and retries. Converge to the same end state.
+- **Migrate Callers Then Delete Legacy APIs.** Introducing a new internal API while old callers exist. Migrate and delete in one wave.
+- **Separate Before Serializing Shared State.** Concurrent actors might write the same file, branch, key, or object. Eliminate the sharing first.
 
 **Verification**
 
-- **Prove It Works** (**principle-prove-it-works**). After a task, before declaring done. Verify against the real artifact, not a proxy or "it compiles".
-- **Fix Root Causes** (**principle-fix-root-causes**). Debugging. Trace each symptom to its root cause, reproduce first, ask why until you reach it.
+- **Prove It Works.** After a task, before declaring done. Verify against the real artifact, not a proxy or "it compiles".
+- **Fix Root Causes.** Debugging. Trace each symptom to its root cause, reproduce first, ask why until you reach it.
 - **Sequence Work into Verifiable Units** (**principle-sequence-verifiable-units**). Multi-step work (sweeps, migrations, runs of similar edits) and how you stack commits and PRs. Break work into small units that each end in a check, verify each before the next, and order delivery so the sequence proves itself.
 - **Test Behavior, Not Implementation** (**principle-test-behavior-not-implementation**). Writing, changing, or keeping a test. Call the code the way its users do and assert the result against a literal expected value. If the test would still pass when every imported function returns `undefined`, rewrite the assertion or delete the test.
 
@@ -78,12 +80,12 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 
 **Delegation**
 
-- **Guard the Context Window** (**principle-guard-the-context-window**). Context fills up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents, keep summaries in the main thread.
-- **Never Block on the Human** (**principle-never-block-on-the-human**). Tempted to ask "should I do X?" on reversible work. Proceed, present the result, let the human course-correct.
+- **Guard the Context Window.** Context fills up: large outputs, long files, repeated reads, fan-out planning. Route bulk to subagents, keep summaries in the main thread.
+- **Never Block on the Human.** Tempted to ask "should I do X?" on reversible work. Proceed, present the result, let the human course-correct.
 
 **Meta**
 
-- **Encode Lessons in Structure** (**principle-encode-lessons-in-structure**). You catch yourself writing the same instruction a second time. Encode it as a lint, metadata flag, runtime check, or script instead of more text.
+- **Encode Lessons in Structure.** You catch yourself writing the same instruction a second time. Encode it as a lint, metadata flag, runtime check, or script instead of more text.
 
 ## Autonomy
 
@@ -92,6 +94,8 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 **Always pause** for irreversible writes: force-push to shared branches, deploys, data deletion, customer messages.
 
 User and harness approval constraints always take precedence over these defaults. Principles guide method within the selected role's tool ceiling and assignment, not permission to widen them. The lead owns role selection and dependent orchestration.
+
+**Unattended trust gate.** Before any unattended execution, regardless of the selected skill or playbook, read and satisfy all four checks in [Unattended trust preflight](playbooks/autonomous-run.md#unattended-trust-preflight). This includes stepping-away work, Figure it out, Orchestrate, Autopilot-full, and Autopilot-stack. Missing checks block unattended work. Report the gaps and establish them only through authorized attended preparation. Normal attended routes are unaffected. This gate grants no scheduling, publication, scope, or tools authority.
 
 **Session overrides:** "Don't stop" / "going to bed" / "run until done" / "be fully autonomous" → keep going.
 
@@ -103,7 +107,9 @@ Read [Herdsman runtime](references/herdsman-runtime.md) on the first delegation 
 
 Prefer the matching pstack role from the runtime role table when delegating in Poteto mode. Select from the eleven **pstack agent roles** in the [runtime role table](references/herdsman-runtime.md). Use pstack-poteto-agent for feature/refactoring implementation, pstack-bug-fix for fixes, pstack-perf-issue for one-off measured performance work, and pstack-hillclimb for iterative optimization. Use pstack-how-explorer for complex how exploration, pstack-investigator for local evidence, pstack-researcher for supplied external evidence, pstack-advisor for synthesis/design, and pstack-reviewer for independent judgment. Use pstack-verifier for behavioral checks, or pstack-verifier-sol when an Astra-authored change calls for a different verifier model. These definitions are leaves; the lead owns dependent steps. A missing or unavailable definition blocks that route; inspect the roster instead of silently substituting.
 
-Delegate independent assignments with `agent_delegate`, supplying definition, self-contained task and files. Results arrive asynchronously; there is no collection call. Continue necessary independent work, then end the current turn and yield when only dependencies remain. Do not poll. Forward exact returned result refs through files. Give new work to fresh delegates with consolidated scope, the original brief, later directives, prior report and branch evidence. This includes fix rounds, follow-ups, retries, and independent queue items. Continue an existing agent only when the assignment strictly needs costly-to-transfer state, such as its checkout, uncommitted work, or a running process, using the exact returned Pi session. A stop or hold order is not reuse. Logical ownership may outlive an agent; use fresh delegates for independent review. Inspect the actual diff and write your own synthesis instead of forwarding a done summary.
+For implementation handoffs, supply the absolute path to this SKILL.md and the applicable principle leaves through `files`. Native skill discovery remains disabled in the leaf definitions. These files supply instructions, not tools or controller authority.
+
+Delegate independent assignments with `delegate_agent`, supplying definition, self-contained task and files. Results arrive asynchronously; there is no collection call. Continue necessary independent work, then end the current turn and yield when only dependencies remain. Do not poll. Forward exact returned result refs through files. Give new work to fresh delegates with consolidated scope, the original brief, later directives, prior report and branch evidence. This includes fix rounds, follow-ups, retries, and independent queue items. Use `continue_agent` only when the assignment strictly needs costly-to-transfer saved session context, using the exact returned Pi session. Continuation creates a new generation; it does not reuse a live agent or promise to preserve a running process. A stop or hold order is not reuse. Logical ownership may outlive an agent; use fresh delegates for independent review. Inspect the actual diff and write your own synthesis instead of forwarding a done summary.
 
 Inspect evidence and diffs before synthesis. Model/thinking come from effective definitions. Preserve pool intent through explicitly configured distinct definitions only when available; disclose model overlap otherwise. For isolated checkouts prepare external worktrees with authorization and run separate lead sessions there. Never pass cwd or worktree request fields. One writer per ownership boundary.
 
@@ -119,7 +125,7 @@ Write the reply clean as you draft it. A cleanup pass after drafting does not re
 - **Never fabricate a link, citation, or transcript reference.** Link only artifacts you produced or read this session.
 - **Evidence in the same claim.** Label predictions or unseen causes as inferred or guesses; give measured claims their actual evidence. Run checks you can run instead of handing them to the user.
 
-Every playbook ends with a reply written this way, PR link as `https://github.com/<owner>/<repo>/pull/<number>`. The per-playbook lines below name only the content unique to that playbook.
+Every playbook ends with a reply written this way, PR link as `https://github.com/<owner>/<repo>/pull/<number>`. Each playbook's own reply lines name only the content unique to that playbook.
 
 ## Comments
 
@@ -127,7 +133,7 @@ Comments follow the same rule as the reply. Write them clean as you go. Keep a c
 
 ## Playbooks
 
-Open a todolist whose first items are the matched playbook's steps, copied in verbatim, before any task-specific todos. A step you choose not to do stays in the list with a one-line `skip: <reason>`. Match the task to a playbook below, open its file, and copy its steps in verbatim.
+Open a todolist whose first items are the matched playbook's steps, copied in verbatim, before any task-specific todos. A step you choose not to do stays in the list with a one-line `skip: <reason>`. Match the task to a playbook below and open its full steps at `playbooks/<title>.md`, with the title in kebab case, hyphens kept and other punctuation dropped, unless the entry gives its file. Copy its steps in verbatim.
 
 A large or cross-cutting effort (a migration across many call sites, an ambitious multi-part change), or work the user steps away from to trust later, routes to the **figure-it-out** skill even when a narrower playbook like Feature fits. Use **figure-it-out** whenever no bundled playbook fits. It designs a bespoke, rigorous playbook for the task. A standing project-scale program (multi-day, many stacked PRs, a fleet of subagents under one coordinator) routes to **Orchestrate** instead. figure-it-out designs one bespoke run, orchestrate runs the program.
 

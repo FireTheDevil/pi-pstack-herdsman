@@ -2,14 +2,15 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { hash, packageInventory } from './manifest.mjs';
+import { hash, packageInventory, checkProfiles } from './manifest.mjs';
 import { staleBackend } from './backend-contract.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(readFileSync(join(root, 'PORT-MANIFEST.json'), 'utf8'));
+checkProfiles(root);
 const inventory = packageInventory(root, manifest);
 const resources = inventory.resources;
 const skills = resources.filter(path => path.endsWith('/SKILL.md'));
-assert.equal(skills.length, 50);
+assert.equal(skills.length, 54);
 assert.equal(resources.filter(path => path.includes('/playbooks/') && path.endsWith('.md')).length, 23);
 for (const path of skills) {
   const text = readFileSync(join(root, path), 'utf8');
@@ -42,7 +43,7 @@ for (const name of ['benchmark-checklist', 'correct', 'principle-explain-the-num
   assert.match(text, /gap|inconclusive/i, 'Missing evidence gate: ' + path);
   const record = manifest.resources.find(r => r.destination === path);
   assert.equal(record.sourceRepository, lock.originalUpstream.repository, path);
-  assert.equal(record.sourceCommit, lock.reviewedUpstream.pstackChangeCommit, path);
+  assert.ok([lock.reviewedUpstream, ...lock.reviewHistory].some(review => review.pstackChangeCommit === record.sourceCommit), 'Recorded source belongs to reviewed history: ' + path);
   assert.match(record.sourceSha256, /^[a-f0-9]{64}$/, path);
 }
 assert.ok(!resources.some(path => path.startsWith('skills/make-bot-ui/')), 'User excluded make-bot-ui');
@@ -57,7 +58,7 @@ for (const path of inventory.paths.filter(path => /\.(?:ts|mjs)$/.test(path) && 
   const text = readFileSync(join(root, path), 'utf8');
   assert.ok(!/(?:from\s+|import\s*\()["'][^"']*\.\.\/pi-pstack/.test(text), path);
 }
-assert.match(readFileSync(join(root, 'skills/poteto-mode/SKILL.md'), 'utf8'), /ordinary replies.*without loading unslop/i);
+assert.match(readFileSync(join(root, 'skills/poteto-mode/SKILL.md'), 'utf8'), /Every prose output, including ordinary replies.*unslop/i);
 assert.match(readFileSync(join(root, 'skills/poteto-mode/SKILL.md'), 'utf8'), /Reuse that text/);
 assert.match(readFileSync(join(root, 'skills/typescript-best-practices/SKILL.md'), 'utf8'), /writing|modifying/i);
 const runtime = readFileSync(join(root, 'skills/poteto-mode/references/herdsman-runtime.md'), 'utf8');

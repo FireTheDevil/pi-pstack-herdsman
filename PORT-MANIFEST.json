@@ -13,9 +13,9 @@
       "license": "MIT"
     },
     "reviewedUpstream": {
-      "version": "0.15.9",
-      "pstackChangeCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "scope": "Assessed all supplied 0.15.5 to 0.15.9 skill delta hunks; semantically adapted for Pi/Herdsman. Added only benchmark-checklist, correct, principle-explain-the-number. make-bot-ui excluded by user and unavailable capabilities. Existing skill descriptions preserved pending separate owner review."
+      "version": "0.15.25",
+      "pstackChangeCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+      "scope": "Reviewed all .21-to-.25 pstack paths and reconciled the selected .17-to-.21 carry-over. Adapted new explicit in-your-own-words/sharpen skills, final Ketchup/help, root-cause signal proposal, bounded owner/stack/shipping guidance, gh PR-base frontier, review ACTION_REQUIRED gates and audit safeguards. Preserved original lineage, profile synchronization/catalog history, model pins, hidden invocation, full-swarm changed-patch verification and authorization. Origin frontier is explicitly unavailable without verified completeness/repository identity; audit falls back to verified gh or holds unknown. Excludes dynamic model/effort/speed selection, Cursor discovery/install/cloud/loops, new upstream unit tests and make-bot-ui. Not full or byte-for-byte parity; see docs/upstream-alignment-0.15.25.md and VALIDATION.md."
     },
     "intermediates": {
       "zenspc": {
@@ -37,12 +37,24 @@
     },
     "backend": {
       "package": "pi-herdsman",
-      "inspectedVersion": "0.19.1",
+      "inspectedVersion": "0.29.0",
       "license": "Apache-2.0"
     },
+    "backendHistory": [
+      {
+        "package": "pi-herdsman",
+        "inspectedVersion": "0.19.1",
+        "license": "Apache-2.0"
+      },
+      {
+        "package": "pi-herdsman",
+        "inspectedVersion": "0.25.1",
+        "license": "Apache-2.0"
+      }
+    ],
     "policy": {
       "pinsInheritedFromAudit": true,
-      "remoteReverification": false,
+      "remoteReverification": true,
       "movePinOnlyAfterReview": true
     },
     "reviewHistory": [
@@ -50,13 +62,28 @@
         "version": "0.15.5",
         "pstackChangeCommit": "12d587dfb20741cafc376c42c696c5f6e2a64487",
         "scope": "Reviewed instruction changes since originalUpstream.commit; adapted applicable behavior for Pi/Herdsman, not a byte-for-byte resource import"
+      },
+      {
+        "version": "0.15.9",
+        "pstackChangeCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "scope": "Assessed all supplied 0.15.5 to 0.15.9 skill delta hunks; semantically adapted for Pi/Herdsman. Added only benchmark-checklist, correct, principle-explain-the-number. make-bot-ui excluded by user and unavailable capabilities. Existing skill descriptions preserved pending separate owner review."
+      },
+      {
+        "version": "0.15.17",
+        "pstackChangeCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "scope": "Reviewed portable 0.15.9 to 0.15.17 Markdown delta and adapted 0.15.16 distillation, all-prose unslop, ketchup/poteto-help with guide material, unattended-run trust checks and commit hygiene. Pi model policy, runtime capabilities, authorization and hidden invocation preserved; Cursor-only behavior and make-bot-ui excluded. PR entry authorization strengthened while preserving existing worktree/reset safety; Reflect Backlog authorization inconsistency corrected. See docs/upstream-alignment-0.15.17.md for changes and verification limits."
+      },
+      {
+        "version": "0.15.21",
+        "pstackChangeCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "scope": "Selective carry-over from local commit c6c572656c4120878de92e01b16358dae805df1e, reviewed against exact supplied 0.15.21 snapshot; not complete or byte-for-byte parity and not a 0.15.25 upstream review. Ports review-thread pagination, Markdown fences, configurable worktree base, empty-data verification readiness, Pi explorer tool names and evidence-backed ketchup visuals. Preserves newer local profile synchronization/catalog/refresh history, model pins, status/help behavior and host compatibility fixes. Retains local Babysit/worktree safety, principle and Why source guidance, authorization and hidden skills. Excludes Cursor manifests, tools, selectors, model defaults and Cursor global profile updater. Prior 0.15.17 review preserved in reviewHistory. See docs/upstream-alignment-0.15.17.md and VALIDATION.md."
       }
     ]
   },
   "backend": {
     "package": "pi-herdsman",
-    "inspectedVersion": "0.19.1",
-    "mode": "split agent_* API"
+    "inspectedVersion": "0.29.0",
+    "mode": "nine canonical managed-agent tools"
   },
   "resources": [
     {
@@ -70,15 +97,24 @@
         "disposition": "adapted"
       },
       "destination": "skills/architect/SKILL.md",
-      "destinationSha256": "8b422b38d92663eaa097071e2b89d4d1578c7008215d3df45faef5d8dbdecc47",
+      "destinationSha256": "3207cecfbc51b2bf710e787ad733f9593be1bd569b7c403d9b55f94f554c0d91",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
         "sourcePath": "pstack/skills/architect/SKILL.md",
-        "sourceSha256": "741901140ee382ebf93263a7ed03c6ee3719e578416d81afcd195876fa16c496",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "31f8e97a52bfa5432edd61f68ade2a8632ef0bacbc2d2a6802d7a0e6821944ac",
+        "scope": "Compressed design prose; authorized disjoint writers/read-only result artifacts and model-overlap disclosure retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/architect/SKILL.md",
+          "sourceSha256": "741901140ee382ebf93263a7ed03c6ee3719e578416d81afcd195876fa16c496",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        }
+      ]
     },
     {
       "sourcePath": "skills/architect/references/design-red-flags.md",
@@ -126,7 +162,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/architect/references/runner-prompt.md",
-      "destinationSha256": "c94770f548d173298753e034e6d1d20647e86fb17dcd1a723c173dd1ec157e0d",
+      "destinationSha256": "560de0bcbd8d221ca490ab11cd514c9d1f597fd301f1799813b920968563746c",
       "disposition": "adapted"
     },
     {
@@ -140,8 +176,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/arena/SKILL.md",
-      "destinationSha256": "89f056af87330d18e6c0a955ab796bedfc6c98d38c0bf0cf80dc3e50d38f1adf",
-      "disposition": "adapted"
+      "destinationSha256": "106e0cd85e16a49e4cd115f158334dc866eae0205c9835e1b4590480efc64282",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/arena/SKILL.md",
+        "sourceSha256": "f15524f216c1c63804b89edb4ff8e53bb21a7b8ed367368dedeb9468eeec6a92",
+        "scope": "Compressed judging/grafting; Pi role/model, isolation and artifact-write gates retained."
+      }
     },
     {
       "sourcePath": "skills/automate-me/SKILL.md",
@@ -156,6 +199,22 @@
       "destination": "skills/automate-me/SKILL.md",
       "destinationSha256": "b8bc4a1932b81d08301138952a8ee018478bb0c5b3ff846114475dce27ff8876",
       "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "sourcePath": "pstack/skills/benchmark-checklist/SKILL.md",
+      "sourceSha256": "6a767e788a60428fa14e645ee10fe2e49896e514ff654f668b1d824deb9038e8",
+      "destination": "skills/benchmark-checklist/SKILL.md",
+      "destinationSha256": "8cf2fb85655c72a10722a24eb7080d1681b35c33f337b67b3979e7d7129c1bc1",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/benchmark-checklist/SKILL.md",
+        "sourceSha256": "ba109e96c8f6c1c391baccf19e5d11e14370df7b3f2605e1572cd565a6c0fca0",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/blast-radius/SKILL.md",
@@ -186,6 +245,15 @@
       "disposition": "adopted"
     },
     {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "sourcePath": "pstack/skills/correct/SKILL.md",
+      "sourceSha256": "bf482bacc972b3f124a4af8bf9364b4b3e280cb5845e44c326ea4f4565e5c904",
+      "destination": "skills/correct/SKILL.md",
+      "destinationSha256": "7cfff08ea1ccae5b853e71e276488d624693574185159feb9f17d261f9559f62",
+      "disposition": "adapted"
+    },
+    {
       "sourcePath": "skills/create-verification-skill/SKILL.md",
       "sourceSha256": "919bbf44692f95eaafe52cd78d2ef14e77bc9be5da677fcd189d7d88ff49b059",
       "priorLineage": {
@@ -196,8 +264,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/create-verification-skill/SKILL.md",
-      "destinationSha256": "919bbf44692f95eaafe52cd78d2ef14e77bc9be5da677fcd189d7d88ff49b059",
-      "disposition": "adopted"
+      "destinationSha256": "fca7256056b229b384de3b9b967429742eeb5501921fbc93c0e6ce4e1ceb6e9d",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "sourcePath": "pstack/skills/create-verification-skill/SKILL.md",
+        "sourceSha256": "d353973547bf8ad8977eca645f4cd4feaed0d32f4b43d1448f906b0a76c4d694",
+        "scope": "Empty-data readiness, mapped journey preconditions and honest stand-in limitations; Pi paths retained."
+      }
     },
     {
       "sourcePath": "skills/create-verification-skill/references/feature-map-example/README.md",
@@ -266,8 +341,31 @@
         "disposition": "adopted"
       },
       "destination": "skills/figure-it-out/SKILL.md",
-      "destinationSha256": "10f279818c226ca3b46a0cb5b5969c37a34a315d608d1dea4265473ae908118f",
-      "disposition": "adopted"
+      "destinationSha256": "d57a64db6680befa63be2cea83a766af675b9fdf545b0672ed8d99182432715f",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/figure-it-out/SKILL.md",
+        "sourceSha256": "d9574cc24929773d5c23f40626ae1e09660afddd7de48e08dd6494d9fff9bbf0",
+        "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
+        "additionalSources": [
+          {
+            "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+            "sourcePath": "pstack/docs/guide/07-overnight.md",
+            "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
+          }
+        ]
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/figure-it-out/SKILL.md",
+          "sourceSha256": "d9574cc24929773d5c23f40626ae1e09660afddd7de48e08dd6494d9fff9bbf0",
+          "scope": "Upstream compression applied; hidden invocation retained."
+        }
+      ]
     },
     {
       "sourcePath": "skills/how/SKILL.md",
@@ -280,8 +378,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/how/SKILL.md",
-      "destinationSha256": "48343ce47a9124e7b9ab432312496c939c361671a402babc3507ffbae1c7ea27",
-      "disposition": "adapted"
+      "destinationSha256": "d2e2a9a1c29fa64d0f15e1739a2058c01e786be616a243aeb699f0592ae6b7de",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/how/SKILL.md",
+        "sourceSha256": "47cfe3e6fe55c49c3bdf8ad1b645dcd5fece8f0c36fd22d2e7221f9faa71f648",
+        "scope": "Compact simple/explore/synthesize/present flow; Pi definitions and exact asynchronous refs replace Task config."
+      }
     },
     {
       "sourcePath": "skills/how/references/explainer-prompt.md",
@@ -308,8 +413,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/how/references/explorer-prompt.md",
-      "destinationSha256": "3a6965276d23be7d8da6c305bfd5d7bf29d2aef09e5dae4119463ac72022a02d",
-      "disposition": "adopted"
+      "destinationSha256": "aa760ad9d3597fbe57957d02e27e1477943fb010914a662a5d8eb0f1ad1d3014",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "sourcePath": "pstack/skills/how/references/explorer-prompt.md",
+        "sourceSha256": "6300128385ee940fd42ecb84b0e623435440a2dc283eae54ee4a52ba56947ba1",
+        "scope": "Role-available Pi tool names and concise tracing; local tracing checklist and uncertainty rule retained."
+      }
     },
     {
       "sourcePath": "skills/interrogate/SKILL.md",
@@ -322,8 +434,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/interrogate/SKILL.md",
-      "destinationSha256": "efab8d0d0c77ee1786e65ebde5a9a45e97614e360e6ba86723fbe043d56b12d8",
-      "disposition": "adapted"
+      "destinationSha256": "95bb6218615fe9f5a5dca0a7f2c23267055619f1f44fd9d12975594b35d2bfb0",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/interrogate/SKILL.md",
+        "sourceSha256": "25341c393f515c1e1fa9bce668b7551e9f98c195113a460ff524d3c1f7f50cd9",
+        "scope": "Compact synthesis/judgment; actual reviewer identities and frozen-scope fresh read-only delegates retained."
+      }
     },
     {
       "sourcePath": "skills/interrogate/references/code-quality-review.md",
@@ -364,8 +483,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/interrogate/references/reviewer-prompt.md",
-      "destinationSha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
-      "disposition": "adopted"
+      "destinationSha256": "16278fe4873c95c8e4ef4a44c7bfed60568dbb5d5da59fe2cd7f54b553dcd5bb",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/interrogate/references/reviewer-prompt.md",
+        "sourceSha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25",
+        "scope": "Compact concrete evidence rules; reachable-path and no-rewrite safety retained."
+      }
     },
     {
       "sourcePath": "skills/interrogate/references/rubric.md",
@@ -378,8 +504,47 @@
         "disposition": "adopted"
       },
       "destination": "skills/interrogate/references/rubric.md",
-      "destinationSha256": "59e9b7cc4556e735e1b859a7dd1f7637b013a2426a84825ac1c51979942c158a",
-      "disposition": "adopted"
+      "destinationSha256": "a44b0d9af114689f975206e868fbe73c481c2f27b500c672289f085ed35202cd",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/interrogate/references/rubric.md",
+        "sourceSha256": "0f9c6bdb0b96e26dbde5f6407f417e0c02f54080e7a1268d8994f3c3ec6c5ac0",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
+    },
+    {
+      "sourcePath": "pstack/skills/ketchup/SKILL.md",
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+      "sourceSha256": "f460a861cf2179808abc24b5588c94709f8cc3e58d4da2e44baf89556f53b587",
+      "destination": "skills/ketchup/SKILL.md",
+      "destinationSha256": "688aeb526c95936de25a7813b2be695574785fdf0330dc12a1a1417851d3243c",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/ketchup/SKILL.md",
+        "sourceSha256": "47b3fb0d5626a40fcb3bd016e68f1cb3d2d313351183e8f6c05d4c7abd76e665",
+        "scope": "Final .25 short picture-first outcomes and human decisions; read-only evidence, uncertainty and material-blocker exceptions retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/ketchup/SKILL.md",
+          "sourceSha256": "f460a861cf2179808abc24b5588c94709f8cc3e58d4da2e44baf89556f53b587",
+          "scope": "New current-chat read-only catch-up; arrived evidence only, no polling/session mining."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+          "sourcePath": "pstack/skills/ketchup/SKILL.md",
+          "sourceSha256": "3b00c552fdb236ecfce85184000814bf62d7c518aac3acd1ba7ea8e02d8f2196",
+          "scope": "Selective .21 evidence-backed catch-up visuals; read-only and no-fabrication boundaries retained."
+        }
+      ]
     },
     {
       "sourcePath": "skills/maintain-verification-skill/SKILL.md",
@@ -424,6 +589,72 @@
       "disposition": "adopted"
     },
     {
+      "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+      "sourceSha256": "3fe669c7c3b8f52c18b7c68ecce01c8691e844b9d2b41a8a6ff6432341451986",
+      "destination": "skills/poteto-help/SKILL.md",
+      "destinationSha256": "6a20b6814d8bab0030ce0cadae9f3a904cfcc300bc5b731954fc3bc9e547e4f8",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+        "sourceSha256": "1b0645c25200a19e5863583e117bad684b1b79ba8434823ebf4f6bbcc61e8a75",
+        "scope": "Route both new skills and updated catch-up; current Pi status/profile guidance retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+          "sourceSha256": "3fe669c7c3b8f52c18b7c68ecce01c8691e844b9d2b41a8a6ff6432341451986",
+          "scope": "New Pi question-only help/references; runtime, scope and scheduling rewritten; no Cursor-only features."
+        }
+      ]
+    },
+    {
+      "sourcePath": "pstack/skills/poteto-help/references/prompting.md",
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+      "sourceSha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
+      "destination": "skills/poteto-help/references/prompting.md",
+      "destinationSha256": "440dc68d7910624cffeb21178558476c1b2fe371658048d8170dc08da11640b2",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/poteto-help/references/prompting.md",
+        "sourceSha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
+        "scope": "New Pi question-only help/references; runtime, scope and scheduling rewritten; no Cursor-only features."
+      }
+    },
+    {
+      "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+      "sourceSha256": "1872323419a3e5c7783b1933f7a180ca26c25a6e1f4ec83bd65e091ebbfb812b",
+      "destination": "skills/poteto-help/references/recipes.md",
+      "destinationSha256": "3e3f21cb1d881096b2a2c40110202381597ae2089d6d187ea9208a99679f6547",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
+        "sourceSha256": "5fb97a805976a82db0aba5cc8943e88d0cb38b17a0d6b8e89a44633677febb1a",
+        "scope": "New prompting examples with scope and nonexecution boundaries."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
+          "sourceSha256": "1872323419a3e5c7783b1933f7a180ca26c25a6e1f4ec83bd65e091ebbfb812b",
+          "scope": "New Pi question-only help/references; runtime, scope and scheduling rewritten; no Cursor-only features."
+        }
+      ]
+    },
+    {
       "sourcePath": "skills/poteto-mode/SKILL.md",
       "sourceSha256": "d8e7098e5c3922b0119129cbec29209d1782edc95a0a13a2b5021fddab2de0ff",
       "priorLineage": {
@@ -434,15 +665,38 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "e6b72455e2eab7941c4bd1e5760fd8ccb11ac9e331117ed793b069f346f5e37a",
+      "destinationSha256": "fa6e651bcaa184ce5b8135aa2cc7a09fe5b1f54dbc88581bbc3128a91768d483",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
         "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
-        "sourceSha256": "404c0ef4a78e93451b2ab555ca532e7197b5cf87de29205b6f7109dbee5d9c4d",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "03d61d15c5a0f7abc2c558c7323ff3c360dedc2915ebadf3c76c9e872f41cb64",
+        "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
+        "additionalSources": [
+          {
+            "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+            "sourcePath": "pstack/docs/guide/07-overnight.md",
+            "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
+          }
+        ]
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
+          "sourceSha256": "404c0ef4a78e93451b2ab555ca532e7197b5cf87de29205b6f7109dbee5d9c4d",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
+          "sourceSha256": "03d61d15c5a0f7abc2c558c7323ff3c360dedc2915ebadf3c76c9e872f41cb64",
+          "scope": "All-prose unslop; context reuse, explicit paths, permission/tool boundaries and Pi roles retained."
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/authoring-a-skill.md",
@@ -469,8 +723,22 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autonomous-run.md",
-      "destinationSha256": "5ed1f6796c0bf061618c185e5a646c310a3ac878347135b502d78587ae58c4db",
-      "disposition": "adapted"
+      "destinationSha256": "93f4d1f48ff3b85c8169a9a1957f01105d13d1c142708fd8625f95fb40d59ab2",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
+        "sourceSha256": "15e54ad3ac92565613980772d8708de6e19cc4690bfd4bb3fb8836522407377b",
+        "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
+        "additionalSources": [
+          {
+            "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+            "sourcePath": "pstack/docs/guide/07-overnight.md",
+            "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
+          }
+        ]
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/autopilot-full.md",
@@ -483,15 +751,38 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-full.md",
-      "destinationSha256": "f45efa464e870b69a7a02655688865c32ffaa3351c16841d19204466319d88b7",
+      "destinationSha256": "f9c435a4a4c8af0129ca04fe87a3e9938ca8a8d202ac9b7a6feb8a70ad7db589",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
-        "sourceSha256": "05ca30a16242c19d0c78ba1e88cca66f858d75252cb154fd740099fe292de802",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "acf4f4a58c11045f9d3e8807d907a877e61ca6432b079f1087d7d30fc931566f",
+        "scope": "Durable bounded handoffs, SHA leases, merge-result and gate checks, third-rebase hold and Ketchup; stronger full-swarm, authority and Herdsman controls retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+          "sourceSha256": "05ca30a16242c19d0c78ba1e88cca66f858d75252cb154fd740099fe292de802",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+          "sourceSha256": "05ca30a16242c19d0c78ba1e88cca66f858d75252cb154fd740099fe292de802",
+          "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
+          "additionalSources": [
+            {
+              "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+              "sourcePath": "pstack/docs/guide/07-overnight.md",
+              "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
+            }
+          ]
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/autopilot-stack.md",
@@ -504,15 +795,38 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-stack.md",
-      "destinationSha256": "eae0dc99d44280091ba4f7b678412617a18c224f29fd94cf9c60a009d7b8b3d0",
+      "destinationSha256": "0b8b3802d163411252e505258e5a94a1c25a67dd064c6c3658dbaf6045d1caf7",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
-        "sourceSha256": "007c0a3b12011954a224f54773ef4ad7b75918be0a311914c1b51ad4e794c1e5",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "c6bcb18b2ce605e77a2a2225854590a4b9a687911f79331746d91a4fe9a52e60",
+        "scope": "Single topology writer, owner rebase/retarget bans, dependency branches and landing freeze; full-swarm and operator authority retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+          "sourceSha256": "007c0a3b12011954a224f54773ef4ad7b75918be0a311914c1b51ad4e794c1e5",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+          "sourceSha256": "007c0a3b12011954a224f54773ef4ad7b75918be0a311914c1b51ad4e794c1e5",
+          "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
+          "additionalSources": [
+            {
+              "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+              "sourcePath": "pstack/docs/guide/07-overnight.md",
+              "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
+            }
+          ]
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/babysit.md",
@@ -616,15 +930,24 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "destinationSha256": "221a8ef4db9b98a714415fd088b63721c64df0d6bb7d36289fe48becd5af74fa",
+      "destinationSha256": "df616c86f759ea270afe9ab7e7528b77c285a73ba42b56eb23a7875214432aa3",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
-        "sourceSha256": "27d310e3fc3937a60b8fcbe1318f9d249a7477a722907bf85b3e4eb3dc436b11",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "5f239457bfdec3345c92caa06c59bf0257c662b89353f25a1c02ea942dcd00b1",
+        "scope": "Coherent leases, gate approval, merge-result checks and Ketchup; keep full-swarm changed-patch cadence rather than upstream single-verifier reduction."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
+          "sourceSha256": "27d310e3fc3937a60b8fcbe1318f9d249a7477a722907bf85b3e4eb3dc436b11",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/opening-a-pr.md",
@@ -637,15 +960,31 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/opening-a-pr.md",
-      "destinationSha256": "3925d22877ed3530d11ed09b0c5cbe2b5258337c2b2652748755eda3cc8f05ec",
+      "destinationSha256": "2c29e4c36ce50d9d8f14d1762eb26fb2bde8e9d454eb211ede9875442e208651",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
-        "sourceSha256": "ab40de7163c1c6e274f46ee559b2e53ef45673703f601f13f4931c199e6fb90f",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "a5aef646de8b651306c2d10974623650e4a013a245aec1c00525bbe0e31bfa76",
+        "scope": "Post-parent-merge child move via sole authorized topology writer and Shipping safeguards."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+          "sourceSha256": "ab40de7163c1c6e274f46ee559b2e53ef45673703f601f13f4931c199e6fb90f",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+          "sourceSha256": "931070f5674e81a191277253d4e02b1c45d091b223f93bf506d3896a428a5967",
+          "scope": "Condensed outline; no automatic worktrees/hard reset; status/ownership/authorization gate, lead-owned review and commit-body hygiene."
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/orchestrate.md",
@@ -658,8 +997,31 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/orchestrate.md",
-      "destinationSha256": "efc902e6806f1c4e7e68dfe4dee34bd1cad29adde6dd688d4cb6a9e7516c49fe",
-      "disposition": "adapted"
+      "destinationSha256": "c53f2ff94e5d09ba4e556950fe7faa3a51e28af14ad50ab681fa507d61761e19",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
+        "sourceSha256": "08dce6c9e7be1d13bc6944ab9b51665f935c531437f5e088bc53d2a62099ef05",
+        "scope": "Forge-base-chain frontier and single topology writer; current implementation uses verified gh contract and explicitly refuses unverified Origin discovery."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
+          "sourceSha256": "d42b4375f1bd4ce23da0b575a198571a2117df7eea10c3c9fc6d92ae1053f7be",
+          "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
+          "additionalSources": [
+            {
+              "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+              "sourcePath": "pstack/docs/guide/07-overnight.md",
+              "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
+            }
+          ]
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/pause-safely.md",
@@ -672,7 +1034,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/pause-safely.md",
-      "destinationSha256": "d57cee65d8240146d6d70e5564ec25d342a50250c412c4d05ab5d4de5c41a11a",
+      "destinationSha256": "cfd76e54a88a0ca46bfc774ef44e67fedf3de3cbe81b7f7903ebbd15f486ae14",
       "disposition": "adapted"
     },
     {
@@ -763,15 +1125,24 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/shipping.md",
-      "destinationSha256": "9541d03b79f287baddbbba5b25f0793c3f5a251c6af9fec88258bec33fe2999f",
+      "destinationSha256": "d25a21b4e8c3500bb7dba213f3afa2f2b52c3eb8c309faa1d4dd58a8acebd10e",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/shipping.md",
-        "sourceSha256": "19f3f6803a7bbe9ff04f624b03e3b55f07ac0a05e991aa00d5fe51239b920b2a",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "bf56339bdf7e0223bcff5abf4e8599e3f5b547b3fcc3b4ce9475e6e7dda14a9f",
+        "scope": "Verified bottom-only shipping, confirmed merge readback and leased child move; stop before touching descendants beyond verified ceiling; stronger patch-id/proof/authority checks retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/shipping.md",
+          "sourceSha256": "19f3f6803a7bbe9ff04f624b03e3b55f07ac0a05e991aa00d5fe51239b920b2a",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/trace-forensics.md",
@@ -784,8 +1155,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/trace-forensics.md",
-      "destinationSha256": "137ce3984fb96e45971fdff4d3c79fa4ccc647c5b30ae4945783b9fb23f8cec7",
-      "disposition": "adopted"
+      "destinationSha256": "e8a671fd5511a894f90c933bca75815e7a1d730cb53333075a80b0927e81acfc",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/trace-forensics.md",
+        "sourceSha256": "e8a671fd5511a894f90c933bca75815e7a1d730cb53333075a80b0927e81acfc",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/visual-parity.md",
@@ -812,8 +1190,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "destinationSha256": "04fd66e298ba3d511016b35d098c038c0509a62125036faab55df953d52e988d",
-      "disposition": "adapted"
+      "destinationSha256": "4158961119a588048d209cd24930a324b613deb2e0019e1be59feef595356306",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
+        "sourceSha256": "ffecceb6d2fa7e07ca5703c968f4b7c5947309ed695d51fc73a55c3da5906480",
+        "scope": "Configurable audit bases with validation and reporting; Pi cleanup authority and pinned-work safety retained."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/references/bugbot-triage.md",
@@ -840,7 +1225,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "29861b1ca27e8ec0633d475848960fa053152a1d231b65b0d1a9972ed8518911",
+      "destinationSha256": "176c4c5c8250b3189b49387c8b38157312416cd7b511d1753fca4cfffb96901d",
       "disposition": "adapted"
     },
     {
@@ -896,15 +1281,24 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/check-plan.mjs",
-      "destinationSha256": "5ddfe9fbab95da6dd80c3aa8b49f771829fe99f57d5b9de295f4267aa348287b",
+      "destinationSha256": "57cb86cf43b0fbc572661af3bacedc2418ddb8b34d59fb648a6dd566e674fb16",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
         "sourcePath": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
-        "sourceSha256": "4f9432d9989880b6afc2bdda503d5b12a9d07d357ecf31936b7ab5e83bc80523",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "e58c3d871b09d477be00628d69dd23ffa6c2e3a1728f5b867a841baa8e90278b",
+        "scope": "Markdown fence character/length and opener/closer handling; existing plan gates retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
+          "sourceSha256": "4f9432d9989880b6afc2bdda503d5b12a9d07d357ecf31936b7ab5e83bc80523",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/check-plan.test.mjs",
@@ -931,8 +1325,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/orch/orch.test.ts",
-      "destinationSha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
-      "disposition": "adopted"
+      "destinationSha256": "4f8b85a1703c980922ce3327a6c9d1c36cb5e90609fa40aaee6b70f8a629d33d",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/orch.test.ts",
+        "sourceSha256": "5e80b416bdcd68e4067690ce857345852fd2e0db3dcf3e25607999cd55b963d2",
+        "scope": "Maintain existing frontier fixtures/assertions for gh contract without adding cases; do not import upstream expanded unit tests."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/orch/orch.ts",
@@ -945,8 +1346,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/orch/orch.ts",
-      "destinationSha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
-      "disposition": "adopted"
+      "destinationSha256": "47c92c57e8276616d8de94665a126bd832e748036afa8d0ffdbacb7946decb5c",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/orch.ts",
+        "sourceSha256": "47c92c57e8276616d8de94665a126bd832e748036afa8d0ffdbacb7946decb5c",
+        "scope": "Forge selector for PR-base-chain discovery; explicit local store contract retained."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/orch/store.ts",
@@ -959,8 +1367,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/orch/store.ts",
-      "destinationSha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
-      "disposition": "adopted"
+      "destinationSha256": "579c46b8fb3e33675328d6d396b6b3447069eac05f4d7c9c315f25dcea5b61bc",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/store.ts",
+        "sourceSha256": "558cfda533e1ebe7c8d7842604f07e0be7618759cf129b4c2397a8e29516ecea",
+        "scope": "Replace Graphite with gh PR-base-chain discovery; strict completeness/identity/ref/cycle/fork checks and preserved store generation/pins; Origin refuses unverified contract."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/package.json",
@@ -987,8 +1402,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/cli.test.ts",
-      "destinationSha256": "f7bad6e2665c58952bf2ccf7b471ea1a897c8617676e3430d5dfc1a9dd5e9546",
-      "disposition": "adapted"
+      "destinationSha256": "52c2bc70640b99fdbc3b882bd2f926c6fceca364f1b8c3ce123cd5782244843b",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/cli.test.ts",
+        "sourceSha256": "a35592b4c6da96caf8d47987e9cd503fab6c7774ab87d11a43f24b4b5df2a9d1",
+        "scope": "Local maintenance of existing executable fixture pageInfo for .21 reader contract; no new cases or upstream test expansion."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/cli.ts",
@@ -1043,8 +1465,24 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/github.ts",
-      "destinationSha256": "d1bbbafbe8e2c703c84da2029de7f2c4011412512f8cf65a42100f46bcb92c8a",
-      "disposition": "adopted"
+      "destinationSha256": "d6fce29be4f7abb9e583476b3b275cc5ded9bcd1509fab8ff17bf092380210e5",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/github.ts",
+        "sourceSha256": "a605b8531468dbe4c07b93663c0993a9c11dc7e9179adde970f5c740396451d9",
+        "scope": "Owner Code Review Gate ACTION_REQUIRED maps to gate on fast/rollup paths; ordinary failure and .21 pagination hardening retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/github.ts",
+          "sourceSha256": "9ea8de77e019de19929fbe4a86bc88492ffbecd89d6816d9857ed49db904c151",
+          "scope": "Exhaust review-thread pages within existing full-list reader API; reject missing or repeated cursors; queued frontier-ready preserved."
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/policy.test.ts",
@@ -1127,8 +1565,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/types.ts",
-      "destinationSha256": "4f8174f13426ba7d59fa1a2612bbdf87e3dafb025a2c152286f227a0994999d9",
-      "disposition": "adapted"
+      "destinationSha256": "1a971a9e8012a25a5895bd8c122c27e1055b526a2e89c53e44857a020635cb1a",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/types.ts",
+        "sourceSha256": "0cac435294dc85ce1ba755e8e67f6c5ab163dfa252f2722d6e3a2d68c58fec59",
+        "scope": "Raw review-thread/page types adapted to existing complete-list reader API."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/watch-pr",
@@ -1155,8 +1600,24 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/worktree-audit.sh",
-      "destinationSha256": "9d065d837a711280504734cca5eb6acfbcaf926b71dd070e354806981b5d5ac6",
-      "disposition": "adopted"
+      "destinationSha256": "a4020a94510a71b18680e94b1d10c9aac072872f4c5177900d4e804aacda551b",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
+        "sourceSha256": "e0a94e5e5b1ff60638916e440600e15851f7b79bc1a1d1f602fde05d465e2ec0",
+        "scope": "Origin evidence remains unverified; fall back to bounded validated gh or hold unknown. Protect open/draft, failed dirty reads, Pi transcript scope and paths with spaces."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
+          "sourceSha256": "9faa9a2534ad64069dec67ac5b5ce1dc23b8fe635ecfd7f6557b1e3ada61fd2f",
+          "scope": "Explicit audit base, fallback/ref validation and reporting; Pi transcript scoping and path handling retained."
+        }
+      ]
     },
     {
       "sourcePath": "skills/principle-attack-the-premise/SKILL.md",
@@ -1197,8 +1658,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-build-the-lever/SKILL.md",
-      "destinationSha256": "3435ebe733c66367fba373ede67af3c90508aa11d20303b277739c02bfd5b807",
-      "disposition": "adapted"
+      "destinationSha256": "6856a398c02a829dd943f8a609ae37ab069515c03003ea93a4c94ac925570e5a",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-build-the-lever/SKILL.md",
+        "sourceSha256": "3434b0ad0c640c6f1d7960be7a8986c3bcdc14e26060360dec29903df60074ff",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/principle-encode-lessons-in-structure/SKILL.md",
@@ -1211,8 +1679,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-encode-lessons-in-structure/SKILL.md",
-      "destinationSha256": "77044c83a9ac6df78fc643887ea5f1f11f082adaf14b717c060cdaed03cce863",
-      "disposition": "adopted"
+      "destinationSha256": "ad12c26209770c52f632d9480c048ac5334ce8e5d6297f83ade59652a56cb3ef",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+        "sourceSha256": "ad12c26209770c52f632d9480c048ac5334ce8e5d6297f83ade59652a56cb3ef",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/principle-exhaust-the-design-space/SKILL.md",
@@ -1243,6 +1718,22 @@
       "disposition": "adopted"
     },
     {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+      "sourcePath": "pstack/skills/principle-explain-the-number/SKILL.md",
+      "sourceSha256": "5aac99e7ce0bb1b37e2579acf4fe88c32a1456d9d46afd4a57cfe1df9092e89c",
+      "destination": "skills/principle-explain-the-number/SKILL.md",
+      "destinationSha256": "82f1615ce8afcc025ffd1462c954af1792f205af3f08c0791498918c011afad6",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-explain-the-number/SKILL.md",
+        "sourceSha256": "cd5a25f9e7cf023627ccb470dc5faa97542f29b4319496a32b839a8e1e988047",
+        "scope": "Compressed evidence/limiter guidance; authorized runners and honest missing-run gaps retained."
+      }
+    },
+    {
       "sourcePath": "skills/principle-fix-root-causes/SKILL.md",
       "sourceSha256": "ba4cd38da1dcc8fe5432feb64457cba95594736a9b21b2ebf8f8c52aee068707",
       "priorLineage": {
@@ -1253,8 +1744,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-fix-root-causes/SKILL.md",
-      "destinationSha256": "ba4cd38da1dcc8fe5432feb64457cba95594736a9b21b2ebf8f8c52aee068707",
-      "disposition": "adopted"
+      "destinationSha256": "8369ba3cf232916eb76cab7516e08a5f86f2696d8c6c6eb2742699f6528d3595",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/principle-fix-root-causes/SKILL.md",
+        "sourceSha256": "2131069d285d82fb799458494f2e4ac8759c9c6a60f9e300828c17874f514c6e",
+        "scope": "Propose cheap diagnostic signals; proposal does not authorize telemetry or scope expansion."
+      }
     },
     {
       "sourcePath": "skills/principle-foundational-thinking/SKILL.md",
@@ -1337,8 +1835,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-minimize-reader-load/SKILL.md",
-      "destinationSha256": "42551c5dc74cd578163c148da552db3ff67d29b78600ef216bfd311fb828fe69",
-      "disposition": "adopted"
+      "destinationSha256": "1ea2b7fef2391cae5844c4efdbd59031f775e8a52d06b7495d707229a200dcca",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-minimize-reader-load/SKILL.md",
+        "sourceSha256": "1ea2b7fef2391cae5844c4efdbd59031f775e8a52d06b7495d707229a200dcca",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/principle-model-the-domain/SKILL.md",
@@ -1351,8 +1856,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-model-the-domain/SKILL.md",
-      "destinationSha256": "bbadbb9a723fac3f76e782ae45665eb94058ec10993e4bae36d4dc6b0e4eac07",
-      "disposition": "adopted"
+      "destinationSha256": "52c0d85e0c3827c41c18299b642657d7b47eaf77b7b31609e42e0df42b84c75f",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-model-the-domain/SKILL.md",
+        "sourceSha256": "52c0d85e0c3827c41c18299b642657d7b47eaf77b7b31609e42e0df42b84c75f",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/principle-never-block-on-the-human/SKILL.md",
@@ -1365,8 +1877,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-never-block-on-the-human/SKILL.md",
-      "destinationSha256": "332af89f9401492ee542ed09e02cef94fbc73a1b304e637e08b51f9b195d5bac",
-      "disposition": "adapted"
+      "destinationSha256": "9dee2f345588a72abdd241c0bd4d0d23971b191f855d02b303d32e81789c73c4",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
+        "sourceSha256": "05030a7a083c337676f793881b4e93cd218e8f1dd676529f56e6ac1d3efb8d1f",
+        "scope": "Compact procedure with irreversible/reversible authority and tool ceiling gates."
+      }
     },
     {
       "sourcePath": "skills/principle-outcome-oriented-execution/SKILL.md",
@@ -1407,8 +1926,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-redesign-from-first-principles/SKILL.md",
-      "destinationSha256": "a1c7fd0a96b40e12a74bceb0e6bb20a9666dd844dcabfb624acb27da23b929fe",
-      "disposition": "adopted"
+      "destinationSha256": "170e0a658783e43fee8ec5a8c2422a4abb8f69cef621dd1819a95910b8207034",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
+        "sourceSha256": "170e0a658783e43fee8ec5a8c2422a4abb8f69cef621dd1819a95910b8207034",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/principle-separate-before-serializing-shared-state/SKILL.md",
@@ -1449,8 +1975,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-subtract-before-you-add/SKILL.md",
-      "destinationSha256": "a983a50e732c1ed315eba7aaf47a61329e31c4794eb1ab9d25d9945265b31e03",
-      "disposition": "adopted"
+      "destinationSha256": "8c93bb9d1a7f38e2ef37655d93f0e790fa59903105af3d500cc8a663ebe45f3f",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
+        "sourceSha256": "8c93bb9d1a7f38e2ef37655d93f0e790fa59903105af3d500cc8a663ebe45f3f",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/principle-test-behavior-not-implementation/SKILL.md",
@@ -1463,8 +1996,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-test-behavior-not-implementation/SKILL.md",
-      "destinationSha256": "87e40efe4e486f7ea639d2ed1fc0abe6c93b8fd0e89a81218086909d2470a52e",
-      "disposition": "adopted"
+      "destinationSha256": "b2b73ba42920f9c3174ecdf808ec6e4591b3a9266ada9a05814f386004266d3a",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
+        "sourceSha256": "b2b73ba42920f9c3174ecdf808ec6e4591b3a9266ada9a05814f386004266d3a",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/principle-type-system-discipline/SKILL.md",
@@ -1477,8 +2017,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-type-system-discipline/SKILL.md",
-      "destinationSha256": "803eef0ff74507a040f896a1c3169fba7ee0298ae28d292f9821c941705f8769",
-      "disposition": "adopted"
+      "destinationSha256": "2e492cef34bb25a20b9115df61f9ef3a9837e3fda144ffda8079e5f45a1b72e8",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/principle-type-system-discipline/SKILL.md",
+        "sourceSha256": "2e492cef34bb25a20b9115df61f9ef3a9837e3fda144ffda8079e5f45a1b72e8",
+        "scope": "Wholesale final upstream body; deleted language examples/checklist removed. Local invocation frontmatter retained."
+      }
     },
     {
       "sourcePath": "skills/recall/SKILL.md",
@@ -1505,8 +2052,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/reflect/SKILL.md",
-      "destinationSha256": "c19c68ce800d1dab53c6d81a29d467be706ccdfcf3ad9658fce24a7ef1c1fc56",
-      "disposition": "adapted"
+      "destinationSha256": "b613cc1efcf4c73f9e6d9aeffeb63f289d51777ef9ad23574b481d00346face1",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/reflect/SKILL.md",
+        "sourceSha256": "f5e9200f37e2a4567c0eeb0ba244fde66c1b3f35e3b7a883de2f85b3bda7365a",
+        "scope": "Pi transcript scope, approval and async handoff retained. Backlog recommendations/drafts by default; external writes need authority/tools."
+      }
     },
     {
       "sourcePath": "skills/reflect/references/divergent-reviewer.md",
@@ -1519,8 +2073,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/divergent-reviewer.md",
-      "destinationSha256": "156e311f30d86b0572dc754a4d4c1a952b1a4882f81c0975004203758a3338f5",
-      "disposition": "adapted"
+      "destinationSha256": "1894d49f7fa68784cf23190d435799cd24e24e0db7f3c2330b5b313175fdac43",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/reflect/references/divergent-reviewer.md",
+        "sourceSha256": "f6030d88e20e906ef5e2d9ba44cb013ce610c49c2fe2ef74c377d32e0dc9e939",
+        "scope": "Distilled findings; Pi transcript paths and explicit-invocation limits replace Cursor trigger assumptions; no automatic writes."
+      }
     },
     {
       "sourcePath": "skills/reflect/references/judgment-reviewer.md",
@@ -1533,8 +2094,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/judgment-reviewer.md",
-      "destinationSha256": "d73f46a882a53bdb8475ec090217aa088e02249999f2ab6e28025cbed36f75ae",
-      "disposition": "adapted"
+      "destinationSha256": "84edd37d53f2addd646b692f5448f8a8681d6f8fc69e006731b27a886e53dfb8",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/reflect/references/judgment-reviewer.md",
+        "sourceSha256": "38f917619fbf346062d643e0ad6b12fc952d58678dfcbbf42ffcf6d8b9c08307",
+        "scope": "Distilled findings; Pi transcript paths and explicit-invocation limits replace Cursor trigger assumptions; no automatic writes."
+      }
     },
     {
       "sourcePath": "skills/reflect/references/synthesizer.md",
@@ -1547,8 +2115,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/synthesizer.md",
-      "destinationSha256": "1b248370445a27deda451a1b3734b8300ab560f633fcb7f2398c5c84aa47bc53",
-      "disposition": "adopted"
+      "destinationSha256": "baa692e9bd140b8d50bd651314c6c1bfb26f00db0c8a0ca9370e79b11eaf3c5c",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/reflect/references/synthesizer.md",
+        "sourceSha256": "6af816963de74d1a1aef4070273c1ff533d2072732e488e159ddc0b299fec3cd",
+        "scope": "Distilled findings; Pi transcript paths and explicit-invocation limits replace Cursor trigger assumptions; no automatic writes."
+      }
     },
     {
       "sourcePath": "skills/reflect/references/tooling-reviewer.md",
@@ -1561,8 +2136,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/tooling-reviewer.md",
-      "destinationSha256": "ad9263912bbab4598c5d565fd32664e0f46a12e1b5204a1aa65e022a0b345cff",
-      "disposition": "adapted"
+      "destinationSha256": "68c830184f30a1b139ce4c764e11d4983cc744325815bf1b64360b9be63acd0a",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/reflect/references/tooling-reviewer.md",
+        "sourceSha256": "f81b8697e7366fbbc18feba52c6e3253a101f751091364ebc4396a1d9b5753b4",
+        "scope": "Distilled findings; Pi transcript paths and explicit-invocation limits replace Cursor trigger assumptions; no automatic writes."
+      }
     },
     {
       "sourcePath": "skills/setup-pstack/SKILL.md",
@@ -1575,7 +2157,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/setup-pstack/SKILL.md",
-      "destinationSha256": "6f75255fba1c560f0ec964927ed2db0c99663eda88a63a0d0e82104ef0e712d7",
+      "destinationSha256": "3477f3eaffea918cb2e0951df9a0721681cd0a3afde192ef893976c1fa2f2e53",
       "disposition": "adapted"
     },
     {
@@ -1589,7 +2171,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/show-me-your-work/SKILL.md",
-      "destinationSha256": "df3a89b079fc2e705a77b3e419fdfbbd23188a6106800b819c404945c4629094",
+      "destinationSha256": "5969bf6f251e922a5976f3b7aa7edece303e1cb1e43b1908938b2f31c3f006ac",
       "disposition": "adapted"
     },
     {
@@ -1631,7 +2213,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/swarm/SKILL.md",
-      "destinationSha256": "0ebf19dbd5c687217a7f59602093498cb1c3e797949ad90efb771b19a8e36556",
+      "destinationSha256": "3640efc527f28b38ca6d2063433d4f320315f8a8fc6ceeb76b6251ff23249a4c",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1680,15 +2262,24 @@
         "disposition": "adopted"
       },
       "destination": "skills/technical-writing/SKILL.md",
-      "destinationSha256": "d3b9323c7654ba43c267b346fb196ce7e5e0915e668bdb8d3610927e281a6431",
+      "destinationSha256": "7aa6585cfdaa9bbd4f8a387781e48ae8a534eadeb8fdc4b88df1a0c3086d94e2",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
         "sourcePath": "pstack/skills/technical-writing/SKILL.md",
-        "sourceSha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb",
-        "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
-      }
+        "sourceSha256": "61fe9c424a798ebf36ad94941f87be049cb8827bdf86d21474a0dde37b513c43",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
+          "sourcePath": "pstack/skills/technical-writing/SKILL.md",
+          "sourceSha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb",
+          "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        }
+      ]
     },
     {
       "sourcePath": "skills/typescript-best-practices/SKILL.md",
@@ -1736,8 +2327,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/unslop/SKILL.md",
-      "destinationSha256": "ad5c30adb3e5649992db025c50b4bd130884383550c5cabc21aba00fc4ba8333",
-      "disposition": "adopted"
+      "destinationSha256": "9a6b608ba22ff4883e4155c02aace5dddd9e656af969d2e255e48633728dadc2",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/unslop/SKILL.md",
+        "sourceSha256": "3126b9e2cf46022f5e0c332e84be5e17a9730669cb3d6ac0a7e5e7e94b1e24fa",
+        "scope": "All-prose trigger; upstream-deleted self-audit removed; stable rule IDs retained."
+      }
     },
     {
       "sourcePath": "skills/why/SKILL.md",
@@ -1750,8 +2348,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/why/SKILL.md",
-      "destinationSha256": "d7b5dcbe5a05fdeccb06ba5a208b2def542429c914637cc6c56bd602ba3fe210",
-      "disposition": "adapted"
+      "destinationSha256": "6d0c3c3a3aee1a6158027dc0248d2a91d9d6f872ad025d92cdec79f0045d2eac",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/why/SKILL.md",
+        "sourceSha256": "fa1d1e9dec14b15381c1ccccad74044d6b6ea3b4af56821f59ba2d8e59b07545",
+        "scope": "Compact code anchor/roster; available-source and capability gates retained; supplied history rather than assumed child shell."
+      }
     },
     {
       "sourcePath": "skills/why/references/epistemics.md",
@@ -1764,8 +2369,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/epistemics.md",
-      "destinationSha256": "fcc0f559c072832c869a5ada72434b4849320a637ae63c09e8ee14f7ad787059",
-      "disposition": "adopted"
+      "destinationSha256": "d54a2361b2d5973bc3fe2edf62f446d87935974d4b40d47f23b9529f956ca758",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/why/references/epistemics.md",
+        "sourceSha256": "d54a2361b2d5973bc3fe2edf62f446d87935974d4b40d47f23b9529f956ca758",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/why/references/investigator-prompt.md",
@@ -1778,8 +2390,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/investigator-prompt.md",
-      "destinationSha256": "6892956a7ab0b5ee6c4babaf4f793703abe89b350ea7cb9463b4a56eea1c8266",
-      "disposition": "adopted"
+      "destinationSha256": "0162a251acb4b30fb89e22c8e76a6cb96635daeadc25a4564ac9acd55f832be4",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/why/references/investigator-prompt.md",
+        "sourceSha256": "c44afba186f899094f3694e6c9d6de5d14ff7c4ce28b787a9f50fc789c9a7fc3",
+        "scope": "Full-record and counterfactual checks retained once; partial unavailable evidence and gather-only requirement explicit."
+      }
     },
     {
       "sourcePath": "skills/why/references/source-playbook.md",
@@ -1806,8 +2425,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/sources/code-archaeology.md",
-      "destinationSha256": "8c14aa382f0de40829b2668d43e3f54814480bb93a486c9282ada4003f6b9dbd",
-      "disposition": "adopted"
+      "destinationSha256": "f6b5c4c3dd4ddc31da446bbbe4d88806e2201f15a76b97b3e44ce25c5862e321",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/why/references/sources/code-archaeology.md",
+        "sourceSha256": "f6b5c4c3dd4ddc31da446bbbe4d88806e2201f15a76b97b3e44ce25c5862e321",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/why/references/sources/databricks.md",
@@ -1834,8 +2460,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/sources/datadog.md",
-      "destinationSha256": "ebe9c07bac28e47757ee7f16fb93b0c01d427a08c501957d047f395a2f37b7e7",
-      "disposition": "adopted"
+      "destinationSha256": "b139faac5dc11b8f26c8255dce6033c1a6ac143b038d3dd103f2034c5dbec9cd",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/why/references/sources/datadog.md",
+        "sourceSha256": "b139faac5dc11b8f26c8255dce6033c1a6ac143b038d3dd103f2034c5dbec9cd",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/why/references/sources/incident-postmortem.md",
@@ -1890,8 +2523,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/sources/sentry.md",
-      "destinationSha256": "6f292bc4fb1548e956f95e1900b9481abf5134254419f1cd9edec95428c82d73",
-      "disposition": "adopted"
+      "destinationSha256": "e0ed11e474c3d248bc5ac16d37ca1439b2db0253a3413252194556643cf8328a",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/why/references/sources/sentry.md",
+        "sourceSha256": "e0ed11e474c3d248bc5ac16d37ca1439b2db0253a3413252194556643cf8328a",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     },
     {
       "sourcePath": "skills/why/references/sources/slack.md",
@@ -1918,34 +2558,46 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/synthesizer-prompt.md",
-      "destinationSha256": "7aaac1b431ff63885aa4994307ec6cff7468b27a90d00c727f199d1138764a61",
+      "destinationSha256": "e2c33e7443f468f563708b9f7a166b8ad3cbac25466327fa08418bc8d3178bd7",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/why/references/synthesizer-prompt.md",
+        "sourceSha256": "11c62671aa7b7a6e3d36929ffe2b59bf95e6ca664eee4d93e6ee527dd3390ddb",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
+    },
+    {
+      "sourcePath": "pstack/skills/in-your-own-words/SKILL.md",
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+      "sourceSha256": "fa8ba74e27d7be371dc270ec78bbf816411477d0dfab185356c861ac8dd413ad",
+      "destination": "skills/in-your-own-words/SKILL.md",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/in-your-own-words/SKILL.md",
+        "sourceSha256": "fa8ba74e27d7be371dc270ec78bbf816411477d0dfab185356c861ac8dd413ad",
+        "scope": "New explicit hidden restatement skill; no execution approval or unnecessary confirmation."
+      },
+      "destinationSha256": "90586add6f837f5b24fcd4f6048a2f5f5cb5d72ff63ef55604c8745e84b00baa",
       "disposition": "adapted"
     },
     {
+      "sourcePath": "pstack/skills/sharpen/SKILL.md",
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "sourcePath": "pstack/skills/benchmark-checklist/SKILL.md",
-      "sourceSha256": "6a767e788a60428fa14e645ee10fe2e49896e514ff654f668b1d824deb9038e8",
-      "destination": "skills/benchmark-checklist/SKILL.md",
-      "destinationSha256": "c7b25e0587a7fb9102c2174cf35dd8ef749a609722fef3634f04793cdeb18b21",
-      "disposition": "adapted"
-    },
-    {
-      "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "sourcePath": "pstack/skills/correct/SKILL.md",
-      "sourceSha256": "bf482bacc972b3f124a4af8bf9364b4b3e280cb5845e44c326ea4f4565e5c904",
-      "destination": "skills/correct/SKILL.md",
-      "destinationSha256": "7cfff08ea1ccae5b853e71e276488d624693574185159feb9f17d261f9559f62",
-      "disposition": "adapted"
-    },
-    {
-      "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "e43c7ee26e0038c6c1fa8380dd34ce86ff94cb2a",
-      "sourcePath": "pstack/skills/principle-explain-the-number/SKILL.md",
-      "sourceSha256": "5aac99e7ce0bb1b37e2579acf4fe88c32a1456d9d46afd4a57cfe1df9092e89c",
-      "destination": "skills/principle-explain-the-number/SKILL.md",
-      "destinationSha256": "19a3ed803e1e4021026c9b715c77a977ba1057f2d07bed9f4426328db942a8e5",
+      "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+      "sourceSha256": "6bcd73916696eb9c5b79b6f960983760c34bcc28937c11142dd8d86b5107aa46",
+      "destination": "skills/sharpen/SKILL.md",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/sharpen/SKILL.md",
+        "sourceSha256": "6bcd73916696eb9c5b79b6f960983760c34bcc28937c11142dd8d86b5107aa46",
+        "scope": "New explicit hidden approach-improvement skill; preserve user constraints, authority, safety and authorized capabilities."
+      },
+      "destinationSha256": "303cb6f40418f3f1107448fcc35318fb2620ea5e90307c7572036581e997cdf3",
       "disposition": "adapted"
     }
   ],
@@ -1956,15 +2608,19 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "55f197c49013d344fb4bb032be552671edd08a49ee033313f153b5e53ef01281"
+      "sha256": "a98f774f548005916b90ce0d3aae95a623a15edfd0fe78ea9dc2ee5d13ad12f2"
     },
     {
       "path": "README.md",
-      "sha256": "e368d5e2ef2ecc1c277f0636d28a2d25704a6949736830dc100581d4658bf2db"
+      "sha256": "a22b368aa965eb0fcb5a371af6f709343db23281e3cea26fe84fd08750de5e6f"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "982b986d3f7ad708bbdb9b83b1c9222a68f8245be8508cca569ead088059325b"
+      "sha256": "91876ba4537503432d0904b7e7b4a206531400edc0cdba93ea3d9a1ab111af74"
+    },
+    {
+      "path": "config/artifact-locations.md",
+      "sha256": "a355eca0e5787cda4522a8635a9bfb394313d7b547caf77e2a621d6c5ac1416c"
     },
     {
       "path": "definitions/pstack-advisor.md",
@@ -1992,11 +2648,11 @@
     },
     {
       "path": "definitions/pstack-poteto-agent.md",
-      "sha256": "dc3eb37dfad71e3253687fc1aad23435192b840db0d9a9f2e9ffad5ec9fed579"
+      "sha256": "9869e47e17c1d28b8cd262b378abf651579abcbb21a0ccf1f35e00f3b9317a88"
     },
     {
       "path": "definitions/pstack-researcher.md",
-      "sha256": "087c379df19dfa261abacfac6dc5303dd651315202d78e084b06d0befcf84c7d"
+      "sha256": "abf6b73d92cde50ade58f18e4a2b93e9fd6272f1e586082796d08fb0fa160d85"
     },
     {
       "path": "definitions/pstack-reviewer.md",
@@ -2011,8 +2667,16 @@
       "sha256": "da11d6b040bdd77e322a1d2be11d0c15221e671a577b0463e2ee5e52b8ef4ab8"
     },
     {
+      "path": "docs/upstream-alignment-0.15.17.md",
+      "sha256": "c31049e0483dcd81f61e7f88ca75117316c64c9e520b600d9c1a6e36c6fb493d"
+    },
+    {
+      "path": "docs/upstream-alignment-0.15.25.md",
+      "sha256": "2a286637cd1c33ae506f8efea90129d5b3f303e484a593da7cda9e5385e348a8"
+    },
+    {
       "path": "extensions/pstack-herdsman/index.ts",
-      "sha256": "4ae128ba74bbf6b36428a26ab917b13b49fbb46571f21e8127b31e28477d65a2"
+      "sha256": "bfc474477c8f6f763d5390acf686dcc5fa41f29297f0ced9af38cd0777b1a909"
     },
     {
       "path": "extensions/pstack-herdsman/skill-strip.ts",
@@ -2020,35 +2684,43 @@
     },
     {
       "path": "package.json",
-      "sha256": "7b7f6ddb5e07491a14ae27b58cdc5912ad53c772f117cd7ac2dce2117cce820c"
+      "sha256": "a607f275603047e3ca18f0b8fa619188acd0905e561f5bfb8101eeaf68aba6a4"
     },
     {
       "path": "scripts/backend-contract.mjs",
-      "sha256": "09983478f5307f62c56292eee6a5b85699934128905a6a9313c1080fe29b9071"
+      "sha256": "ed6c4cc04434e1a1558fbb9d834d1abc6888a5d9cce0428b5b111b559bb27dc7"
     },
     {
       "path": "scripts/check-host.mjs",
-      "sha256": "24c6debca0905b7932d4950a2725ef3715f089b88427ce13c9dd5c922909f867"
+      "sha256": "6db2a8cba398be12c9d46dbb5db2db2778c4f0bb0e06954b353a7de021c3ec92"
     },
     {
       "path": "scripts/manifest.mjs",
-      "sha256": "1ad817b992438d1d7cdcf34c5405505928003da6968bc72ca8e2e8dd5067c44d"
+      "sha256": "84d9b47167576e7debc9fe8c68a016ca7b947a94e7d800dc015356fcdc8ff9ab"
+    },
+    {
+      "path": "scripts/profile-history.json",
+      "sha256": "704beabc40231874121da3eac33d47b29342d0042fd9944b298c19fe67266b8b"
+    },
+    {
+      "path": "scripts/profile-sync.mjs",
+      "sha256": "b8e4c4100df3dff4e1f7d9c3b66c5fd147beb55928c8ff5096929dd1d3313d13"
     },
     {
       "path": "scripts/setup.mjs",
-      "sha256": "ac6ab337a9c0e94ef05ed2fa6f9b677471cd8d032dfff7c4f9ed52484a8f99d4"
+      "sha256": "209bd3e37f100ee1249cb170ca34321dda8e61c7db9fae0911282f82d7803b81"
     },
     {
       "path": "scripts/update-manifest.mjs",
-      "sha256": "3e2c9bca51de6f3071a03785ee3114774887561e03ac82c9695db47f603fa9b9"
+      "sha256": "b0748a68dcce72634daab5573a040c0ed4ac990cb36b859cd77eb319a71aabc1"
     },
     {
       "path": "scripts/validate-port.mjs",
-      "sha256": "e3f6b8a06ae5e3577bab79dbbc816b60077e92205175a6199a0959e8899b7fbb"
+      "sha256": "6ac49acb7bb3fbceee7f2965ba3c1dd170d6fe1147b53aa9898f8cb4a808e6da"
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "8ba16e1977c379c495cf6f25e0c13d207521ce8c0686f769172d9a1fd9443d68"
+      "sha256": "ee22c9b4254fe035771a659adc95a24e82dee23a0ce06a68fbdbe611fb7de92d"
     }
   ],
   "metadataHistory": [
@@ -2108,6 +2780,18 @@
     {
       "path": ".pi-herdsman/adapter-handoff.md",
       "sha256": "1c0c848c95e497ac3c5d08a00962bfae587c39fe38075c68a2d117861675a571"
+    }
+  ],
+  "backendHistory": [
+    {
+      "package": "pi-herdsman",
+      "inspectedVersion": "0.19.1",
+      "mode": "split agent_* API"
+    },
+    {
+      "package": "pi-herdsman",
+      "inspectedVersion": "0.25.1",
+      "mode": "nine canonical managed-agent tools"
     }
   ]
 }

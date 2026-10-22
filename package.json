@@ -14,6 +14,7 @@
     "PORT-MANIFEST.json",
     "README.md",
     "VALIDATION.md",
+    "config/artifact-locations.md",
     "definitions/pstack-advisor.md",
     "definitions/pstack-bug-fix.md",
     "definitions/pstack-hillclimb.md",
@@ -25,12 +26,16 @@
     "definitions/pstack-reviewer.md",
     "definitions/pstack-verifier-sol.md",
     "definitions/pstack-verifier.md",
+    "docs/upstream-alignment-0.15.17.md",
+    "docs/upstream-alignment-0.15.25.md",
     "extensions/pstack-herdsman/index.ts",
     "extensions/pstack-herdsman/skill-strip.ts",
     "package.json",
     "scripts/backend-contract.mjs",
     "scripts/check-host.mjs",
     "scripts/manifest.mjs",
+    "scripts/profile-history.json",
+    "scripts/profile-sync.mjs",
     "scripts/setup.mjs",
     "scripts/update-manifest.mjs",
     "scripts/validate-port.mjs",
@@ -53,14 +58,19 @@
     "skills/how/SKILL.md",
     "skills/how/references/explainer-prompt.md",
     "skills/how/references/explorer-prompt.md",
+    "skills/in-your-own-words/SKILL.md",
     "skills/interrogate/SKILL.md",
     "skills/interrogate/references/code-quality-review.md",
     "skills/interrogate/references/lead-judgment.md",
     "skills/interrogate/references/reviewer-prompt.md",
     "skills/interrogate/references/rubric.md",
+    "skills/ketchup/SKILL.md",
     "skills/maintain-verification-skill/SKILL.md",
     "skills/no-comments/SKILL.md",
     "skills/no-comments/references/comment-reviewer.md",
+    "skills/poteto-help/SKILL.md",
+    "skills/poteto-help/references/prompting.md",
+    "skills/poteto-help/references/recipes.md",
     "skills/poteto-mode/SKILL.md",
     "skills/poteto-mode/playbooks/authoring-a-skill.md",
     "skills/poteto-mode/playbooks/autonomous-run.md",
@@ -140,6 +150,7 @@
     "skills/reflect/references/synthesizer.md",
     "skills/reflect/references/tooling-reviewer.md",
     "skills/setup-pstack/SKILL.md",
+    "skills/sharpen/SKILL.md",
     "skills/show-me-your-work/SKILL.md",
     "skills/show-me-your-work/references/decision-log-template.tsv",
     "skills/show-me-your-work/scripts/log.sh",
@@ -166,8 +177,8 @@
     "upstream.lock.json"
   ],
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": ">=1.0.2 <1.1.0",
-    "pi-herdsman": ">=0.19.1 <0.20.0"
+    "@earendil-works/pi-coding-agent": ">=1.1.0 <1.4.0",
+    "pi-herdsman": ">=0.25.1 <0.30.0"
   },
   "pi": {
     "extensions": [
@@ -179,6 +190,7 @@
   },
   "scripts": {
     "test": "node --experimental-strip-types --test test/*.test.mjs skills/poteto-mode/scripts/check-plan.test.mjs",
-    "check": "node --experimental-strip-types --check extensions/pstack-herdsman/index.ts && node scripts/validate-port.mjs"
+    "check": "node --experimental-strip-types --check extensions/pstack-herdsman/index.ts && node scripts/validate-port.mjs",
+    "profiles:refresh": "node scripts/update-manifest.mjs --profiles"
   }
 }
