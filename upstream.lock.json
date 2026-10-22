@@ -12,7 +12,7 @@
   "reviewedUpstream": {
     "version": "0.15.26",
     "pstackChangeCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
-    "scope": "Reviewed all 196 relevant .25-to-.26 canonical, generated and root paths. Selectively adapted explicit formal verification, complete Ketchup decisions, premise/root-cause/idempotence/behavior-test semantics, lead judgment, brand guard examples and local docs/name checks. Preserved lineage and adaptation history, substantive migration/type-system rules, profiles/model pins, runtime authorization and full-swarm verification. Excludes Claude generated distribution, Cursor manifests, make-bot-ui and weaker post-push verification. Not full parity. See docs/upstream-alignment-0.15.26.md and VALIDATION.md."
+    "scope": "Reviewed all 196 relevant .25-to-.26 canonical, generated and root paths. Selectively adapted explicit formal verification, complete Ketchup decisions, premise/root-cause/idempotence/behavior-test semantics, lead judgment, brand guard examples and local docs/name checks. Scoped follow-up adopts exact upstream migration/type-system files including descriptions, code-ready/major-change full-swarm cadence, single independent verifier follow-ups and Shipping lane-result reuse. Preserved lineage and adaptation history, profiles/model pins, runtime authorization, current-head CI, SHA/base evidence, leases and verified landing ceiling. Excludes Claude generated distribution, Cursor manifests and make-bot-ui. Not full parity. See docs/upstream-alignment-0.15.26.md and VALIDATION.md."
   },
   "intermediates": {
     "zenspc": {
@@ -79,6 +79,11 @@
       "version": "0.15.25",
       "pstackChangeCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
       "scope": "Reviewed all .21-to-.25 pstack paths and reconciled the selected .17-to-.21 carry-over. Adapted new explicit in-your-own-words/sharpen skills, final Ketchup/help, root-cause signal proposal, bounded owner/stack/shipping guidance, gh PR-base frontier, review ACTION_REQUIRED gates and audit safeguards. Preserved original lineage, profile synchronization/catalog history, model pins, hidden invocation, full-swarm changed-patch verification and authorization. Origin frontier is explicitly unavailable without verified completeness/repository identity; audit falls back to verified gh or holds unknown. Excludes dynamic model/effort/speed selection, Cursor discovery/install/cloud/loops, new upstream unit tests and make-bot-ui. Not full or byte-for-byte parity; see docs/upstream-alignment-0.15.25.md and VALIDATION.md."
+    },
+    {
+      "version": "0.15.26",
+      "pstackChangeCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+      "scope": "Reviewed all 196 relevant .25-to-.26 canonical, generated and root paths. Selectively adapted explicit formal verification, complete Ketchup decisions, premise/root-cause/idempotence/behavior-test semantics, lead judgment, brand guard examples and local docs/name checks. Preserved lineage and adaptation history, substantive migration/type-system rules, profiles/model pins, runtime authorization and full-swarm verification. Excludes Claude generated distribution, Cursor manifests, make-bot-ui and weaker post-push verification. Not full parity. See docs/upstream-alignment-0.15.26.md and VALIDATION.md."
     }
   ]
 }

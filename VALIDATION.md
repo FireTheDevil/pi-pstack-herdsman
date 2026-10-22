@@ -1,6 +1,16 @@
 # Validation boundaries
 
-## Current selective 0.15.26 port
+## Current scoped 0.15.26 alignment
+
+The authorized follow-up adopts the exact upstream migration and type-system files, including descriptions, and upstream verification cadence and Shipping lane-result reuse. Pi authority, SHA/base evidence, current-head CI/mergeability, patch-id retention, leases, findings and landing ceiling remain intact. The [alignment report](docs/upstream-alignment-0.15.26.md) records the scope and instruction walkthroughs.
+
+Fresh `node scripts/update-manifest.mjs`, `npm run check`, `npm test` and `git diff --check` pass. All 37 existing tests pass, including package/extraction checks. No unit tests were added. The validator checks metadata, links, inventory and refreshed hashes. The seven relevant snapshot files match immutable local Git objects and pinned GitHub raw bytes at `0b8e952052d482ee6de06deebf14d590d77b1b34`. Both principle files match upstream byte-for-byte, including hidden invocation.
+
+Source-level checks cover full-swarm triggers, single independent verifier follow-ups, unchanged patch-id, build-equivalent tests/docs/lint-only lane reuse, noise accounting, fresh changed-material checks/review, no-output lane reruns and stack drift per link. Logs, rerunnable comparisons, case table and checkpoint are under `.pi-herdsman/scoped-alignment/`. These prove source structure, not prompt efficacy or real program execution. No new installed-host, solver, inference or live forge check ran. Definitions, profiles, models, runtime, compatibility and executable helpers are unchanged. No installs, commits, pushes or PRs ran. Independent review remains lead-owned.
+
+## Earlier selective 0.15.26 port
+
+These records describe the earlier integration snapshot, not fresh verification of the scoped follow-up.
 
 The [0.15.26 alignment report](docs/upstream-alignment-0.15.26.md) records the exact pins, complete path inventory, selected adaptations, deliberate differences, and formal-safety/Ketchup acceptance walkthroughs. The new formal skill is hidden and explicitly invoked. No solver, model trial, or product verification was run for this source-only port.
 

@@ -25,7 +25,11 @@ The read-only inventory classified all 196 relevant changed paths, comprising 30
 
 Do not import the generated Claude distribution, Claude/Cursor manifests, host adapter, marketplaces, guide tree, or generator. The excluded make-bot-ui skill stays absent. No separate docs checker, full README catalog, or anchor validator is introduced.
 
-Retain substantive local migration and type-system principles despite upstream slimming. Retain Swarm's explicit worker count, report table, all required results, pinned models, asynchronous delivery, no polling, and single-writer controls. Retain full independent swarm verification after patch changes rather than upstream's weaker single-verifier cadence.
+The authorized scoped follow-up adopts the exact upstream migration and type-system files, including the type-system description. Both files retain hidden invocation, which already matches upstream. The earlier local rule retention is superseded.
+
+Adopt upstream verification cadence in Multi-phase plan, Autopilot-full, Autopilot-stack and Shipping. A full swarm runs once at code-ready and again only for new behavior, a redesign or a large new diff. A rebase, merge-conflict resolution or minor fix gets one independent verifier at the new head. The mode's routing summary follows the same cadence. Retain Swarm's explicit worker count, report table, all required results, pinned models, asynchronous delivery, no polling and single-writer controls.
+
+Shipping also adopts upstream lane-result reuse for tests, docs or lint-config-only patch differences. What a lane ran must build identically at both SHAs except demonstrated noise. Noise must recur between two builds of the verdict SHA or be an embedded commit SHA. Report each noise category and its files. Changed material still receives fresh checks and review. Lanes without build output rerun. Preserve the unchanged stable patch-id exception, exact verdict head/base evidence and fresh current-head CI and mergeability. Leases, merge authority, findings handling and the verified landing ceiling remain unchanged.
 
 Retain authorization for instrumentation, proposal-only diagnostic signals, and persistent-state restart caution. Stale evidence grants no cleanup authority. Global profiles, catalog/history/synchronizer, model settings, host ranges, runtime controls, extension commands, and executable helpers remain unchanged except the host skill-count assertion.
 
@@ -41,7 +45,16 @@ Each property must fail on an intentional broken variant, and the generated skil
 
 Thirty pending PRs require thirty independently decidable entries. Two items remain concise. History stays under 100 words, while approximate per-item guidance never limits completeness. Shared recommendations appear once, with per-item exceptions only when different. Risks remain explicit even when low. Options carry gain, cost, and current state without a duplicate risk line. Delay consequences appear only for material costs beyond delay. Missing links are omitted and needed unknown facts are literal unknowns. Older unresolved human calls remain, while actionable agent work stays with the agent. Empty state stops. Visuals use existing facts and artifacts without writing files, polling, inventing screens, or drawing action-item diagrams.
 
-## Verification
+## Scoped follow-up verification
+
+The seven relevant snapshot files match both immutable local Git objects and pinned GitHub raw bytes at the target commit. Both local principle files match their complete upstream files byte-for-byte. Source-level cadence and reuse checks cover code-ready, major changes, rebases, conflict resolution, minor fixes, unchanged patch-id, build equivalence, noise, changed-material checks, no-output lanes and per-link stack drift. These checks inspect instructions, not model behavior.
+
+Fresh `npm run check`, `npm test` and `git diff --check` pass after the scoped edits and manifest refresh. All 37 existing tests pass. No tests were added. Local commands, logs, source comparisons, case table and review-ready diff are under `.pi-herdsman/scoped-alignment/`. Independent review remains lead-owned. No live execution program, model trial, new installed-host check, solver, publication or profile/runtime change is claimed.
+
+## Earlier selective-port verification
+
+These results describe the earlier .26 integration bytes. They are retained as history, not fresh validation of the scoped follow-up.
+
 
 Post-integration `npm run check` and all 37 existing root tests pass, including npm tarball and extracted-package checks. The inventory contains 55 hidden skills, 23 playbooks, 136 resources, and 168 shipped files. The installed Pi 1.3.0/Herdsman 0.29.0 checker loads all 55 hidden skills without diagnostics and passes extension and documentation contracts.
 
