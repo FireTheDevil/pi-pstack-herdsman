@@ -16,7 +16,7 @@ Read [setup-pstack](../setup-pstack/SKILL.md) and [Herdsman runtime](../poteto-m
 
 When effective definitions or availability are unknown and matter to the answer, mention that uncertainty. At most once per chat, ask whether the user wants setup guidance now or later. Do not inspect agents as a progress poll or change configuration from help. For cost questions, explain the cost of independent exploration and review, not nonexistent budget menus.
 
-For verification questions, identify whether a matching project verification skill or actual app tool is available. If none is known, say so and route to [create-verification-skill](../create-verification-skill/SKILL.md). For a formal property, race, or invariant beyond test reach, route to [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md), explicitly invoked with `/skill:create-formal-verification-skill`. It produces one project-local formal check, not app-driving verification or a feature-map maintenance loop. A green build does not prove behavior.
+For verification questions, identify whether a matching project verification skill or actual app tool is available. If none is known, say so and route to [create-verification-skill](../create-verification-skill/SKILL.md). For a formal property, race, or invariant beyond test reach with no existing formal check, route to [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md), explicitly invoked with `/skill:create-formal-verification-skill`. It produces one project-local formal check, not app-driving verification or a feature-map maintenance loop. If a formal check already exists and its covered code changed after its recorded sync commit, recommend `/skill:maintain-formal-verification-skill` and read the [maintenance skill](../maintain-formal-verification-skill/SKILL.md). Do not offer creation again. Missing sync history is a maintenance uncertainty, not evidence that the old pass proves current code. For a reader-visible checked chart, recommend `/skill:statechart` and read [Statechart](../statechart/SKILL.md). Explain its scratch, trusted-map, tool, and PNG approval gates. Help does not run checks, install tools, or mutate definitions. A green build does not prove behavior.
 
 ## Start and select
 
@@ -29,7 +29,7 @@ For verification questions, identify whether a matching project verification ski
 | Historical reasons or a number's origin | [why](../why/SKILL.md) |
 | Plain explanation | [teach](../teach/SKILL.md) |
 | Restate the goals and underlying problem without starting work | [in-your-own-words](../in-your-own-words/SKILL.md) |
-| Sharpen an authorized task without expanding it | [sharpen](../sharpen/SKILL.md) |
+| Rewrite a prompt deeper, not bigger, without doing the task | [sharpen](../sharpen/SKILL.md) |
 | Recent cross-session context on a topic | [recall](../recall/SKILL.md) |
 | Current-chat outcomes, real visuals, and every self-contained human decision | [ketchup](../ketchup/SKILL.md) |
 | Breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
@@ -39,7 +39,9 @@ For verification questions, identify whether a matching project verification ski
 | Independent adversarial review | [interrogate](../interrogate/SKILL.md) |
 | Prose cleanup or document structure | [unslop](../unslop/SKILL.md), [technical-writing](../technical-writing/SKILL.md) |
 | Reusable app proof or drift maintenance | [create-verification-skill](../create-verification-skill/SKILL.md), [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
-| Formal properties beyond test reach | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
+| Formal properties beyond test reach, with no existing check | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
+| Existing formal checks after covered-code changes | [maintain-formal-verification-skill](../maintain-formal-verification-skill/SKILL.md) |
+| Reader-visible statecharts, agreed-chart skeletons, or code-to-spec comparison | [statechart](../statechart/SKILL.md) |
 | Performance measurement rigor | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
 | A bespoke rigorous run | [figure-it-out](../figure-it-out/SKILL.md) |
 | Decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |
