@@ -12,7 +12,7 @@
   "reviewedUpstream": {
     "version": "0.15.34",
     "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
-    "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Excludes ketchup-video skill/install/offers/routing, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+    "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Separately authorized follow-up after f9a9fe7 adds pinned instruction-only ketchup-video, explicit Pi invocation, authorized outside-repository output, separate installation/external-effect approval and file-link/external-player fallback. No renderer or dependencies are bundled. Excludes automatic video offers/installation, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
   },
   "intermediates": {
     "zenspc": {
@@ -94,6 +94,11 @@
       "version": "0.15.30",
       "pstackChangeCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
       "scope": "Reviewed all 114 .26-to-.30 repository delta paths. Selectively adapts rewrite-only Sharpen, TLA+ tool selection and coverage/sync records, hidden formal maintenance and Statechart, skill-only optional generation offers and help. Preserves eight Statechart helper/model resources byte-for-byte. Excludes upstream test-tree shipment, generated Claude distribution, Cursor manifests/model wizard, guide tree and unrelated third-party/catalog changes. Preserves scoped .26 principles, code-ready/major-change swarm cadence, Shipping lane-result reuse, profiles/models, runtime authority, APIs and compatibility ranges. No full-parity, live-runtime, TLC or PNG certification. See docs/upstream-alignment-0.15.30.md and VALIDATION.md."
+    },
+    {
+      "version": "0.15.34",
+      "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Excludes ketchup-video skill/install/offers/routing, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
     }
   ]
 }

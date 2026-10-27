@@ -32,6 +32,7 @@ For verification questions, identify whether a matching project verification ski
 | Rewrite a prompt deeper, not bigger, without doing the task | [sharpen](../sharpen/SKILL.md) |
 | Recent cross-session context on a topic | [recall](../recall/SKILL.md) |
 | Current-chat outcomes, real visuals, and every self-contained human decision | [ketchup](../ketchup/SKILL.md) |
+| Explicitly requested silent slide-video catch-up, with human calls in text | [ketchup-video](../ketchup-video/SKILL.md) |
 | Breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
 | Types and module design | [architect](../architect/SKILL.md) |
 | Same brief, competing candidates and synthesis | [arena](../arena/SKILL.md) |
@@ -56,7 +57,7 @@ Playbooks are files selected inside poteto-mode, not standalone commands. Read t
 
 - How explains mechanics; Why investigates reasons; Teach explains the evidence plainly.
 - Arena compares the same brief; Swarm partitions checks. Neither creates automatic worktrees or cloud isolation. One writer owns each boundary. External worktrees need authorization and separate lead sessions.
-- Recall reconstructs recent topic context; Ketchup summarizes this chat. A specific old branch or session routes to [Session pickup](../poteto-mode/playbooks/session-pickup.md).
+- Recall reconstructs recent topic context; Ketchup summarizes this chat. Only an explicit `/skill:ketchup-video` request routes to video. Read that skill before recommending it: it bundles no renderer, requires authorized output outside the repository and separate approval for installations or external effects, and does not assume native video generation or Pi inline playback. Unsupported or unverified playback uses an absolute `file://` output link for an external player; missing tools or failed rendering/inspection returns a one-line explanation and text calls only. Help never renders or installs anything. A specific old branch or session routes to [Session pickup](../poteto-mode/playbooks/session-pickup.md).
 - For a plan-only deliverable, use [Multi-phase plan](../poteto-mode/playbooks/multi-phase-plan.md). For unsettled design, use [Prototype](../poteto-mode/playbooks/prototype.md) or Architect first. State a checkpoint when implementation needs approval.
 - PR status or babysitting routes to [Babysit](../poteto-mode/playbooks/babysit.md). Status does not authorize fixes or merge. Landing routes to [Shipping](../poteto-mode/playbooks/shipping.md) with explicit authority and independent verification.
 - One task to a predicate routes to [Autonomous run](../poteto-mode/playbooks/autonomous-run.md). A multi-day program routes to [Orchestrate](../poteto-mode/playbooks/orchestrate.md). Neither grants scheduling or broader authority.

@@ -131,7 +131,7 @@ export function packageInventory(root, manifest) {
   const resources = exactPaths(manifest.resources.map(record => record.destination), 'resource destinations');
   const recordedGenerated = exactPaths(manifest.generated.map(record => record.path), 'generated paths');
   assert.deepEqual(resources, paths.filter(path => path.startsWith('skills/')), 'Shipped resource provenance');
-  assert.deepEqual(resources, files(root, 'skills'), 'Physical resource provenance');
+  assert.deepEqual(resources, files(root, 'skills').sort(), 'Physical resource provenance');
   for (const path of recordedGenerated) assert.ok(path !== 'PORT-MANIFEST.json' && !resources.includes(path), 'Overlapping manifest category: ' + path);
   const generated = paths.filter(path => path !== 'PORT-MANIFEST.json' && !resources.includes(path));
   return { paths, resources, generated };

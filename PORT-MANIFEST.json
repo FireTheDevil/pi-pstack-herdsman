@@ -15,7 +15,7 @@
     "reviewedUpstream": {
       "version": "0.15.34",
       "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
-      "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Excludes ketchup-video skill/install/offers/routing, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+      "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Separately authorized follow-up after f9a9fe7 adds pinned instruction-only ketchup-video, explicit Pi invocation, authorized outside-repository output, separate installation/external-effect approval and file-link/external-player fallback. No renderer or dependencies are bundled. Excludes automatic video offers/installation, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
     },
     "intermediates": {
       "zenspc": {
@@ -97,6 +97,11 @@
         "version": "0.15.30",
         "pstackChangeCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
         "scope": "Reviewed all 114 .26-to-.30 repository delta paths. Selectively adapts rewrite-only Sharpen, TLA+ tool selection and coverage/sync records, hidden formal maintenance and Statechart, skill-only optional generation offers and help. Preserves eight Statechart helper/model resources byte-for-byte. Excludes upstream test-tree shipment, generated Claude distribution, Cursor manifests/model wizard, guide tree and unrelated third-party/catalog changes. Preserves scoped .26 principles, code-ready/major-change swarm cadence, Shipping lane-result reuse, profiles/models, runtime authority, APIs and compatibility ranges. No full-parity, live-runtime, TLC or PNG certification. See docs/upstream-alignment-0.15.30.md and VALIDATION.md."
+      },
+      {
+        "version": "0.15.34",
+        "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Excludes ketchup-video skill/install/offers/routing, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
       }
     ]
   },
@@ -692,14 +697,14 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "3fe669c7c3b8f52c18b7c68ecce01c8691e844b9d2b41a8a6ff6432341451986",
       "destination": "skills/poteto-help/SKILL.md",
-      "destinationSha256": "e4f6ad940b91fd8523544c47247acae98d40b33a5f2121f55015845c070e61c3",
+      "destinationSha256": "d2ad6ad3949ca9d7e40bb726dc05cb3b5a9e5622f25956c7b577ebcb8807d255",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
         "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-help/SKILL.md",
         "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
-        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+        "scope": "Separately authorized Ketchup-video help route after f9a9fe7: explicit Pi invocation only, no rendering from help, authorized output and tool/effect gates, honest playback fallback. Other .34 help behavior preserved."
       },
       "adaptationHistory": [
         {
@@ -729,6 +734,13 @@
           "sourcePath": "pstack/skills/poteto-help/SKILL.md",
           "sourceSha256": "7022e2cd0d65d5964151444c4efa82a34792a6644210a0ba60d7d6cfa69c72b8",
           "scope": "Read-only routes for rewrite-only Sharpen, formal creation versus maintenance, and gated Statechart."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+          "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+          "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
+          "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
         }
       ]
     },
@@ -3209,6 +3221,15 @@
         "sourceSha256": "11c62671aa7b7a6e3d36929ffe2b59bf95e6ca664eee4d93e6ee527dd3390ddb",
         "scope": "Upstream compression applied; hidden invocation retained."
       }
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/ketchup-video/SKILL.md",
+      "sourceSha256": "74f1b9e61f8479e2be5b91a4f53136f6ad8e144fd950c9848de6aa1cdbb7645c",
+      "destination": "skills/ketchup-video/SKILL.md",
+      "destinationSha256": "145b0a52f386cecbb754ad9bfed6a05735352b166469a4f710d158d8c0328ac4",
+      "disposition": "adapted"
     }
   ],
   "generated": [
@@ -3218,15 +3239,15 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "0231a6f56312a7aeee51cbc7b3bd5f6bd9087e9f690094177e17735eb36034bd"
+      "sha256": "65175bb9ea600f0532521a2fe1b41cba4c976528d4bc5a48413ed8522209736b"
     },
     {
       "path": "README.md",
-      "sha256": "171a3dbca1dd21988a738c221d31568c9ed2d32fa9d509d748832af51125e269"
+      "sha256": "33afcb6340025ae2ab257cb404fc6ae3ddfd86ff8627d34ea9beba25d68a0cde"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "e8cd5ba222b65dbd221a2cbe515411d75f08afe8d846f07b77e6bdc7f3bb888e"
+      "sha256": "4bae46573a7e92ef499b0d94894eaa9c697865462cef72240b966062f428af1c"
     },
     {
       "path": "config/artifact-locations.md",
@@ -3294,7 +3315,7 @@
     },
     {
       "path": "docs/upstream-alignment-0.15.34.md",
-      "sha256": "21505551f45821a0b094b7aac6f04bbd4e12e943af576b513105d328e18e8e50"
+      "sha256": "37d04fc4f4585a5b278d6dc89dd5fe972b52ec932e661bff77777cbad2210e28"
     },
     {
       "path": "extensions/pstack-herdsman/index.ts",
@@ -3306,7 +3327,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "2949e945859cb4981eef94354bc14da1f5cfad9bfdadd45308ed7461d105c905"
+      "sha256": "c513a31d106c57b4d2eaf9021fad31f4b4af312f61d4b16d0b97d00274326c85"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -3318,7 +3339,7 @@
     },
     {
       "path": "scripts/manifest.mjs",
-      "sha256": "84d9b47167576e7debc9fe8c68a016ca7b947a94e7d800dc015356fcdc8ff9ab"
+      "sha256": "f2c7a5b902368e7217128a6ae833b7b6b5c44e52aa72940844bc5b40571ae0d2"
     },
     {
       "path": "scripts/profile-history.json",
@@ -3338,11 +3359,11 @@
     },
     {
       "path": "scripts/validate-port.mjs",
-      "sha256": "576b743e68be0d244fefa99dc9ba535a871ebd63c6b61b95ce24f0d242a6791a"
+      "sha256": "ede95c3dfe937d8f8d16d8c13222adc8c49e27b4ebb5421afc52f24d2f3a1cdf"
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "2560b7e59f3131e4daef02c1ad9a3935efbd57f1e6ce21fc6150490e4c23f776"
+      "sha256": "b0cf87754cb5d31dc8fc0d604e041cf0a8cee8a172851acf007e346caecda6a8"
     }
   ],
   "metadataHistory": [

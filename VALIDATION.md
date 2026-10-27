@@ -1,6 +1,14 @@
 # Validation boundaries
 
-## Current selective 0.15.34 alignment
+## Current Ketchup-video follow-up
+
+The separately authorized addition after committed baseline `f9a9fe7` adapts only the pinned `519d36aa98955bf680db01bcde5fdfba686dc901` Ketchup-video instructions and integrates README, help, provenance and package inventory. The original exclusion below is historical and superseded for this instruction-only skill. No renderer, dependencies, runtime commands or automatic offers are added. Existing Ketchup, Statechart dependencies, profiles and host ranges remain unchanged.
+
+Source walkthroughs cover explicit-only invocation; last-actual-user-message boundaries; factual slides (at most ten); silent video from rendered frames rather than screen capture; inspection and readability timing in the final file; self-contained text calls; missing tools/authority and render/inspection-failure fallback; and absolute `file://` output links/external-player guidance when inline playback is unsupported or unverified. These are instruction checks, not measured model behavior. No video rendering, frame inspection, native video generation, inline playback, live-host operation or tools installation was attempted. Installations and external effects still need separate explicit approval at use time.
+
+`node scripts/update-manifest.mjs`, `npm run check`, all 37 existing `npm test` cases and `git diff --check` pass for this follow-up. Inventory is 58 hidden skills, 23 playbooks, 167 resources, 33 generated records and 201 shipped files. Existing package tests verify actual tarball membership and extracted-package checks; no unit tests were authored, and only the existing skill/file inventory assertions changed. The new sibling directory exposed a depth-first-versus-full-path ordering mismatch in physical resource validation; the comparison now sorts both full-path lists without weakening membership checks. The first metadata/test runs caught this and the exact package-file ordering; both were corrected before the successful rerun. Earlier validation records retain their original snapshot boundaries.
+
+## Committed baseline selective 0.15.34 alignment
 
 The [alignment report](docs/upstream-alignment-0.15.34.md) records the complete 925-path review, adopted changes, user-approved Statechart architecture replacement, CLI migration and exclusions. The immutable target is `519d36aa98955bf680db01bcde5fdfba686dc901`, manifest 0.15.34. Ketchup-video, its installation/offers/routing, generated Claude/host distributions and unrelated integrations are excluded. No dependencies were installed or unit tests authored.
 
