@@ -47,6 +47,14 @@ origin/*) git fetch origin "+refs/heads/${base#origin/}:refs/remotes/$base" --qu
 esac
 git rev-parse --verify --quiet "$base^{commit}" >/dev/null 2>&1 || { echo "error: base ref not found: $base" >&2; exit 1; }
 
+# GNU stat/date use different flags from BSD; select once without fallback
+# output from an incompatible invocation contaminating transcript evidence.
+if stat -c %Y / >/dev/null 2>&1; then
+	stat_fmt=(-c '%Y %n'); fmt_day() { date -d "@$1" '+%Y-%m-%d'; }
+else
+	stat_fmt=(-f '%m %N'); fmt_day() { date -r "$1" '+%Y-%m-%d'; }
+fi
+
 # Origin's upstream list fields lack a verified completeness/repository-identity
 # contract. Try its read-only lookup first, but never use that as cleanup proof.
 # Until that contract is documented, fall back to gh's bounded, explicit read.
@@ -152,10 +160,10 @@ git worktree list --porcelain | sed -n 's/^worktree //p' | while IFS= read -r wt
 			find "$candidate_transcripts" -type f -name '*.jsonl' 2>/dev/null
 		} \
 			| while IFS= read -r file; do
-				stat -c '%Y %n' "$file" 2>/dev/null || stat -f '%m %N' "$file" 2>/dev/null
+				stat "${stat_fmt[@]}" "$file" 2>/dev/null
 			done | sort -rn | head -1)
 		if [ -n "$f" ]; then last_ts=$(echo "$f" | awk '{print $1}')
-			last=$(date -d "@$last_ts" '+%Y-%m-%d' 2>/dev/null || date -r "$last_ts" '+%Y-%m-%d' 2>/dev/null); fi
+			last=$(fmt_day "$last_ts" 2>/dev/null); fi
 	fi
 	recent=$([ "$last_ts" -gt 0 ] 2>/dev/null && [ $(( (now - last_ts) / 86400 )) -le 4 ] && echo yes || echo no)
 

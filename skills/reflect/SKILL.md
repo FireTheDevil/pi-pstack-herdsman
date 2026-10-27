@@ -44,6 +44,8 @@ Before applying any Accepted edit, present the synthesizer's full Accepted, Reje
 
 Return Backlog recommendations or drafts by default. File or update external items only when the current request explicitly authorizes it and the required tools are available. Report missing authority or tools as a limitation.
 
+Never edit a skill in an installed package or cache. Before approval, show the exact proposed destination, `.pi/skills/<skill>/` or `~/.pi/agent/skills/<skill>/`. After approval for that destination and its writes, copy the skill folder there and edit the copy. Do not overwrite existing user work without explicit approval. Do not open a PR or push as part of Reflect.
+
 Follow each approved row's Routing exactly:
 
 - Trivial existing-skill edit such as a one-line bullet or stale fact correction. The parent does it directly.
