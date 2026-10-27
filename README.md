@@ -37,6 +37,17 @@ With Java and TLC available, Statechart can check a bounded TLA+ model and produ
 
 The bundled TypeScript runs with Node >=24 without npm dependencies for checking. Use the Git installation above or a local checkout: Node's built-in TypeScript stripping does not execute these sources beneath `node_modules`. The current port has not verified real TLC execution, Pele rendering or live Pi/Herdsman operation; see [validation limits](VALIDATION.md).
 
+## Ketchup-video required capabilities
+
+To produce and verify a video, `/skill:ketchup-video` needs available, authorized tools that can:
+
+- Render slides into image frames, including motion between slides, without recording a screen.
+- Encode those frames as a silent landscape video with controlled slide durations.
+- Extract frames from the finished video and read its timing.
+- Show extracted frames to an image-capable model or inspection tool to check every slide's readability.
+
+Viewing the result also requires supported inline playback or an external video player. Native AI video generation is not required. This package supplies no rendering tools and installs nothing automatically; output writes and external effects remain subject to the [skill's approval requirements](skills/ketchup-video/SKILL.md).
+
 ## Try a local checkout
 
 From a trusted target project, load this local package for one invocation alongside your existing Herdsman setup:
