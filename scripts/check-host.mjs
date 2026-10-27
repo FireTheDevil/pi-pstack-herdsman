@@ -60,7 +60,7 @@ try {
   assert.equal(loaded.extensions.length, 1);
   assert.deepEqual([...loaded.extensions[0].commands.keys()].sort(), ['poteto-mode', 'pstack-status', 'setup-pstack']);
   const skills = loadSkillsFromDir({ dir: join(root, 'skills'), source: 'local' });
-  assert.equal(skills.skills.length, 54);
+  assert.equal(skills.skills.length, 55);
   assert.deepEqual(skills.diagnostics, []);
   assert.ok(skills.skills.every(s => s.disableModelInvocation));
   console.log(JSON.stringify({ piVersion, herdsmanVersion: version, extensionLoad: 'passed', skillsLoaded: skills.skills.length, backendDocumentationContracts: 'passed', liveDelegation: false, definitionDiscoveryRuntime: 'not exercised' }));
