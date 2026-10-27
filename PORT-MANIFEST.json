@@ -13,9 +13,9 @@
       "license": "MIT"
     },
     "reviewedUpstream": {
-      "version": "0.15.30",
-      "pstackChangeCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "scope": "Reviewed all 114 .26-to-.30 repository delta paths. Selectively adapts rewrite-only Sharpen, TLA+ tool selection and coverage/sync records, hidden formal maintenance and Statechart, skill-only optional generation offers and help. Preserves eight Statechart helper/model resources byte-for-byte. Excludes upstream test-tree shipment, generated Claude distribution, Cursor manifests/model wizard, guide tree and unrelated third-party/catalog changes. Preserves scoped .26 principles, code-ready/major-change swarm cadence, Shipping lane-result reuse, profiles/models, runtime authority, APIs and compatibility ranges. No full-parity, live-runtime, TLC or PNG certification. See docs/upstream-alignment-0.15.30.md and VALIDATION.md."
+      "version": "0.15.34",
+      "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Separately authorized follow-up after f9a9fe7 adds pinned instruction-only ketchup-video, explicit Pi invocation, authorized outside-repository output, separate installation/external-effect approval and file-link/external-player fallback. No renderer or dependencies are bundled. Excludes automatic video offers/installation, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
     },
     "intermediates": {
       "zenspc": {
@@ -92,6 +92,16 @@
         "version": "0.15.26",
         "pstackChangeCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
         "scope": "Reviewed all 196 relevant .25-to-.26 canonical, generated and root paths. Selectively adapted explicit formal verification, complete Ketchup decisions, premise/root-cause/idempotence/behavior-test semantics, lead judgment, brand guard examples and local docs/name checks. Scoped follow-up adopts exact upstream migration/type-system files including descriptions, code-ready/major-change full-swarm cadence, single independent verifier follow-ups and Shipping lane-result reuse. Preserved lineage and adaptation history, profiles/model pins, runtime authorization, current-head CI, SHA/base evidence, leases and verified landing ceiling. Excludes Claude generated distribution, Cursor manifests and make-bot-ui. Not full parity. See docs/upstream-alignment-0.15.26.md and VALIDATION.md."
+      },
+      {
+        "version": "0.15.30",
+        "pstackChangeCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+        "scope": "Reviewed all 114 .26-to-.30 repository delta paths. Selectively adapts rewrite-only Sharpen, TLA+ tool selection and coverage/sync records, hidden formal maintenance and Statechart, skill-only optional generation offers and help. Preserves eight Statechart helper/model resources byte-for-byte. Excludes upstream test-tree shipment, generated Claude distribution, Cursor manifests/model wizard, guide tree and unrelated third-party/catalog changes. Preserves scoped .26 principles, code-ready/major-change swarm cadence, Shipping lane-result reuse, profiles/models, runtime authority, APIs and compatibility ranges. No full-parity, live-runtime, TLC or PNG certification. See docs/upstream-alignment-0.15.30.md and VALIDATION.md."
+      },
+      {
+        "version": "0.15.34",
+        "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Excludes ketchup-video skill/install/offers/routing, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
       }
     ]
   },
@@ -281,15 +291,24 @@
       "sourcePath": "pstack/skills/create-formal-verification-skill/SKILL.md",
       "sourceSha256": "5f5c08d6f5787ce18ffc9f018113e9cc6e7ddcc7878aa7ae94ef56978978497b",
       "destination": "skills/create-formal-verification-skill/SKILL.md",
-      "destinationSha256": "cc0194af4310ce77308b9d26e05a274712ba4f9b94cddafe0cc31136a56f82e8",
+      "destinationSha256": "54dcb4696b72c9569748aaff8285b3ee0c441f13a6c9e55b34456c8659ac58ab",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/create-formal-verification-skill/SKILL.md",
-        "sourceSha256": "6c934cd15a9583533ff9b7a9cad62775d7e80402d26d3ba7f74f79ea21a1d8eb",
-        "scope": "TLA+ event-ordering default, real-code fallback, covered-code and sync-commit record; preserve generation authority."
-      }
+        "sourceSha256": "30ef0ac27612ecd16fdc081112113221d673053cef3f8603db11932193861211",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+          "sourcePath": "pstack/skills/create-formal-verification-skill/SKILL.md",
+          "sourceSha256": "6c934cd15a9583533ff9b7a9cad62775d7e80402d26d3ba7f74f79ea21a1d8eb",
+          "scope": "TLA+ event-ordering default, real-code fallback, covered-code and sync-commit record; preserve generation authority."
+        }
+      ]
     },
     {
       "sourcePath": "skills/create-verification-skill/SKILL.md",
@@ -678,14 +697,14 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "3fe669c7c3b8f52c18b7c68ecce01c8691e844b9d2b41a8a6ff6432341451986",
       "destination": "skills/poteto-help/SKILL.md",
-      "destinationSha256": "48f39f4dede0240b5da9af30fc0e5eec3258129da146a60d555b80d0d406aad4",
+      "destinationSha256": "d2ad6ad3949ca9d7e40bb726dc05cb3b5a9e5622f25956c7b577ebcb8807d255",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-help/SKILL.md",
-        "sourceSha256": "7022e2cd0d65d5964151444c4efa82a34792a6644210a0ba60d7d6cfa69c72b8",
-        "scope": "Read-only routes for rewrite-only Sharpen, formal creation versus maintenance, and gated Statechart."
+        "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
+        "scope": "Separately authorized Ketchup-video help route after f9a9fe7: explicit Pi invocation only, no rendering from help, authorized output and tool/effect gates, honest playback fallback. Other .34 help behavior preserved."
       },
       "adaptationHistory": [
         {
@@ -708,6 +727,20 @@
           "sourcePath": "pstack/skills/poteto-help/SKILL.md",
           "sourceSha256": "ef80c5480b4e9403635036282a9f90d9c3e79ca65e5fb74f96583f320c00c029",
           "scope": "Formal route distinct from app verification and complete Ketchup decisions in compact Pi help."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+          "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+          "sourceSha256": "7022e2cd0d65d5964151444c4efa82a34792a6644210a0ba60d7d6cfa69c72b8",
+          "scope": "Read-only routes for rewrite-only Sharpen, formal creation versus maintenance, and gated Statechart."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+          "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+          "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
+          "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
         }
       ]
     },
@@ -733,14 +766,14 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "1872323419a3e5c7783b1933f7a180ca26c25a6e1f4ec83bd65e091ebbfb812b",
       "destination": "skills/poteto-help/references/recipes.md",
-      "destinationSha256": "144f1383d9b4266fb2a691bc4a2a2a0a1b5350dff2cf1b5fdc68933e8fd551d2",
+      "destinationSha256": "d0378abb7e5723f186b289a0e026527e7d20f9d7b5d38fac862448d62522e0e5",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
         "sourceSha256": "f2d573014f72f7c798b1998b45f4360a8a83e7b8026c4ed9074e56c5a9d49338",
-        "scope": "Pi prompts for rewrite-only Sharpen, formal maintenance and gated Statechart."
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
       },
       "adaptationHistory": [
         {
@@ -763,6 +796,13 @@
           "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
           "sourceSha256": "5fb97a805976a82db0aba5cc8943e88d0cb38b17a0d6b8e89a44633677febb1a",
           "scope": "Local explicit formal-property recipe; no import of Cursor commands or workflows."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+          "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
+          "sourceSha256": "f2d573014f72f7c798b1998b45f4360a8a83e7b8026c4ed9074e56c5a9d49338",
+          "scope": "Pi prompts for rewrite-only Sharpen, formal maintenance and gated Statechart."
         }
       ]
     },
@@ -1435,14 +1475,14 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/check-plan.mjs",
-      "destinationSha256": "57cb86cf43b0fbc572661af3bacedc2418ddb8b34d59fb648a6dd566e674fb16",
+      "destinationSha256": "c21faea1f51049598967d4baf5e4b6466ba9545590c80cb58eee05194c9b9269",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
-        "sourceSha256": "e58c3d871b09d477be00628d69dd23ffa6c2e3a1728f5b867a841baa8e90278b",
-        "scope": "Markdown fence character/length and opener/closer handling; existing plan gates retained."
+        "sourceSha256": "e3d4e9ca638c6fb4a2b52c434c17c7af30da4fdd44605ccfe9906f82fe37b555",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
       },
       "adaptationHistory": [
         {
@@ -1451,6 +1491,13 @@
           "sourcePath": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
           "sourceSha256": "4f9432d9989880b6afc2bdda503d5b12a9d07d357ecf31936b7ab5e83bc80523",
           "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/check-plan.mjs",
+          "sourceSha256": "e58c3d871b09d477be00628d69dd23ffa6c2e3a1728f5b867a841baa8e90278b",
+          "scope": "Markdown fence character/length and opener/closer handling; existing plan gates retained."
         }
       ]
     },
@@ -1521,15 +1568,24 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/orch/store.ts",
-      "destinationSha256": "579c46b8fb3e33675328d6d396b6b3447069eac05f4d7c9c315f25dcea5b61bc",
+      "destinationSha256": "a6d0b3e1edaaf267f9033a3a9132e923c6ad1764a2dd901350187ddf162df456",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-mode/scripts/orch/store.ts",
-        "sourceSha256": "558cfda533e1ebe7c8d7842604f07e0be7618759cf129b4c2397a8e29516ecea",
-        "scope": "Replace Graphite with gh PR-base-chain discovery; strict completeness/identity/ref/cycle/fork checks and preserved store generation/pins; Origin refuses unverified contract."
-      }
+        "sourceSha256": "bf0ed29c44093ee3b333aa10b138612f773c81eda73df7dc5337c59713f35a97",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/orch/store.ts",
+          "sourceSha256": "558cfda533e1ebe7c8d7842604f07e0be7618759cf129b4c2397a8e29516ecea",
+          "scope": "Replace Graphite with gh PR-base-chain discovery; strict completeness/identity/ref/cycle/fork checks and preserved store generation/pins; Origin refuses unverified contract."
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/package.json",
@@ -1605,8 +1661,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/github.test.ts",
-      "destinationSha256": "0cbce011050522938523e36bb42a260e92b812dcd2076930fa681672ad316b24",
-      "disposition": "adopted"
+      "destinationSha256": "95eca7e60b50457636729ce5987eb610b2d864b19a04f59931ace2ee84c0bcd3",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/github.test.ts",
+        "sourceSha256": "9d9f644388f3516364d47f5eb96c1f977dd6f560bd6005b660d90d3b367cf4b9",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/github.ts",
@@ -1619,14 +1682,14 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/github.ts",
-      "destinationSha256": "d6fce29be4f7abb9e583476b3b275cc5ded9bcd1509fab8ff17bf092380210e5",
+      "destinationSha256": "744a708eba4fcc19cd33342ff271638db57d0ffe2f1b1da7638055e5d470d9d5",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/github.ts",
-        "sourceSha256": "a605b8531468dbe4c07b93663c0993a9c11dc7e9179adde970f5c740396451d9",
-        "scope": "Owner Code Review Gate ACTION_REQUIRED maps to gate on fast/rollup paths; ordinary failure and .21 pagination hardening retained."
+        "sourceSha256": "7ba193190d488c8ce0982c85234ebea026e9a595703e99a3c3df0fcd640ddd18",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
       },
       "adaptationHistory": [
         {
@@ -1635,6 +1698,13 @@
           "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/github.ts",
           "sourceSha256": "9ea8de77e019de19929fbe4a86bc88492ffbecd89d6816d9857ed49db904c151",
           "scope": "Exhaust review-thread pages within existing full-list reader API; reject missing or repeated cursors; queued frontier-ready preserved."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/github.ts",
+          "sourceSha256": "a605b8531468dbe4c07b93663c0993a9c11dc7e9179adde970f5c740396451d9",
+          "scope": "Owner Code Review Gate ACTION_REQUIRED maps to gate on fast/rollup paths; ordinary failure and .21 pagination hardening retained."
         }
       ]
     },
@@ -1663,8 +1733,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/policy.ts",
-      "destinationSha256": "e92981ba357cac9a4eae35b0b7a236d8e84b82aba6c4d42b162ae589254840bd",
-      "disposition": "adapted"
+      "destinationSha256": "b7bfc25be4b84dd92df77253fa88b2019def67fa45a6a701d0fa18f52d4212e5",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/policy.ts",
+        "sourceSha256": "2d4823aeea788acab258ec60eb52e7b9e3a23a6649850af128d6ada5c33d7778",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/render.ts",
@@ -1719,15 +1796,24 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/types.ts",
-      "destinationSha256": "1a971a9e8012a25a5895bd8c122c27e1055b526a2e89c53e44857a020635cb1a",
+      "destinationSha256": "41e47dc2bfe9f27e42dcb1bf78c8037503f019d2aad8d671007bc00ed80fdd83",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/types.ts",
-        "sourceSha256": "0cac435294dc85ce1ba755e8e67f6c5ab163dfa252f2722d6e3a2d68c58fec59",
-        "scope": "Raw review-thread/page types adapted to existing complete-list reader API."
-      }
+        "sourceSha256": "daa66c56220bae084c18cc6d3b0a2c66c0e72206d298e40973b44ee085ce16d2",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/types.ts",
+          "sourceSha256": "0cac435294dc85ce1ba755e8e67f6c5ab163dfa252f2722d6e3a2d68c58fec59",
+          "scope": "Raw review-thread/page types adapted to existing complete-list reader API."
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/watch-pr",
@@ -1754,14 +1840,14 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/worktree-audit.sh",
-      "destinationSha256": "a4020a94510a71b18680e94b1d10c9aac072872f4c5177900d4e804aacda551b",
+      "destinationSha256": "bcd3ee09025eea0840f55524453e03d6462f4e07799705d8ee2de4adc2af9e81",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
-        "sourceSha256": "e0a94e5e5b1ff60638916e440600e15851f7b79bc1a1d1f602fde05d465e2ec0",
-        "scope": "Origin evidence remains unverified; fall back to bounded validated gh or hold unknown. Protect open/draft, failed dirty reads, Pi transcript scope and paths with spaces."
+        "sourceSha256": "06be04b38346ded24ce761d373726f98cd9b9737f20ec98214e88b5f08f521b8",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
       },
       "adaptationHistory": [
         {
@@ -1770,6 +1856,13 @@
           "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
           "sourceSha256": "9faa9a2534ad64069dec67ac5b5ce1dc23b8fe635ecfd7f6557b1e3ada61fd2f",
           "scope": "Explicit audit base, fallback/ref validation and reporting; Pi transcript scoping and path handling retained."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
+          "sourceSha256": "e0a94e5e5b1ff60638916e440600e15851f7b79bc1a1d1f602fde05d465e2ec0",
+          "scope": "Origin evidence remains unverified; fall back to bounded validated gh or hold unknown. Protect open/draft, failed dirty reads, Pi transcript scope and paths with spaces."
         }
       ]
     },
@@ -2270,15 +2363,24 @@
         "disposition": "adapted"
       },
       "destination": "skills/reflect/SKILL.md",
-      "destinationSha256": "b613cc1efcf4c73f9e6d9aeffeb63f289d51777ef9ad23574b481d00346face1",
+      "destinationSha256": "077ceaaf1a9ed14f1e099af4971d5653d0a5679e3490f9b1b6f5d63212b44b3f",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/reflect/SKILL.md",
-        "sourceSha256": "f5e9200f37e2a4567c0eeb0ba244fde66c1b3f35e3b7a883de2f85b3bda7365a",
-        "scope": "Pi transcript scope, approval and async handoff retained. Backlog recommendations/drafts by default; external writes need authority/tools."
-      }
+        "sourceSha256": "9648df23cabaae99b78ed59cd93b6f35ebbf02105d228e3d0b5c3a3b3419d753",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/reflect/SKILL.md",
+          "sourceSha256": "f5e9200f37e2a4567c0eeb0ba244fde66c1b3f35e3b7a883de2f85b3bda7365a",
+          "scope": "Pi transcript scope, approval and async handoff retained. Backlog recommendations/drafts by default; external writes need authority/tools."
+        }
+      ]
     },
     {
       "sourcePath": "skills/reflect/references/divergent-reviewer.md",
@@ -2460,84 +2562,273 @@
       "destination": "skills/statechart/SKILL.md",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "sourcePath": "pstack/skills/statechart/SKILL.md",
-        "sourceSha256": "ad01133b5578a6e1949edeee7ccd49f918c0a37c980e9b8adc1ca27c28fbd959",
-        "scope": "Pi invocation, authority, isolated scratch and dependency gates for portable upstream behavior."
+        "sourceSha256": "010b7b4532406739b1c3a426d1a45f02bb618a42561fc96b3976e064a7f8384d",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
       },
-      "destinationSha256": "2e64708dc0f6971e254c0ff00f8d052b6bb9e1c8342eba53f07d62ddefa1f634",
+      "destinationSha256": "c24d457f8bda373b0e0de24cd75ad732209771410cdcc57ca96a78b29daee489",
+      "disposition": "adapted",
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+          "sourcePath": "pstack/skills/statechart/SKILL.md",
+          "sourceSha256": "ad01133b5578a6e1949edeee7ccd49f918c0a37c980e9b8adc1ca27c28fbd959",
+          "scope": "Pi invocation, authority, isolated scratch and dependency gates for portable upstream behavior."
+        }
+      ]
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/references/render.md",
+      "sourceSha256": "8cca446eb0c8f87f2ef7b97c4b149f59aacdc153134b4217c4bcde09b10ac3c4",
+      "destination": "skills/statechart/references/render.md",
+      "destinationSha256": "5b657b256368f3d52f357640e01e4ba697567cf1676b8f61d9572202fccd3ea0",
       "disposition": "adapted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/chart-to-tla.mjs",
-      "sourceSha256": "9f794e273d0729ae874d68a67bfa1df4ebddc12420b7ab5081fdf58dceb729e4",
-      "destination": "skills/statechart/scripts/chart-to-tla.mjs",
-      "destinationSha256": "9f794e273d0729ae874d68a67bfa1df4ebddc12420b7ab5081fdf58dceb729e4",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/backends/cfg.ts",
+      "sourceSha256": "aea4d8766d214e7fa08f4881f1037319655e75eb56652e1b6d5d4f13a162e3e1",
+      "destination": "skills/statechart/scripts/backends/cfg.ts",
+      "destinationSha256": "aea4d8766d214e7fa08f4881f1037319655e75eb56652e1b6d5d4f13a162e3e1",
       "disposition": "adopted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/compare-charts.mjs",
-      "sourceSha256": "12f4dc4700093156978ef1785b92739c8cf1e8375b8d13201fcdc2006a20c43b",
-      "destination": "skills/statechart/scripts/compare-charts.mjs",
-      "destinationSha256": "12f4dc4700093156978ef1785b92739c8cf1e8375b8d13201fcdc2006a20c43b",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/backends/mermaid.ts",
+      "sourceSha256": "75704b2704a9399a39479ff704a580d5b9a1d0fede01fe771df28bf799b434b6",
+      "destination": "skills/statechart/scripts/backends/mermaid.ts",
+      "destinationSha256": "75704b2704a9399a39479ff704a580d5b9a1d0fede01fe771df28bf799b434b6",
       "disposition": "adopted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/lib.mjs",
-      "sourceSha256": "47731d9dba3fd831bb81b739af31f2dd80b7a25dd6fa6786ee3c0d531e1ab781",
-      "destination": "skills/statechart/scripts/lib.mjs",
-      "destinationSha256": "47731d9dba3fd831bb81b739af31f2dd80b7a25dd6fa6786ee3c0d531e1ab781",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/backends/plain-text.ts",
+      "sourceSha256": "e2bedb855eb3806ec3fe7a7bfa49baa309fb4cf0da425b5fe1e0686268ce255a",
+      "destination": "skills/statechart/scripts/backends/plain-text.ts",
+      "destinationSha256": "e2bedb855eb3806ec3fe7a7bfa49baa309fb4cf0da425b5fe1e0686268ce255a",
       "disposition": "adopted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/model/OutputFolder.cfg",
-      "sourceSha256": "8b9662ab7d51de9d54f84abab02888822da9c01ce4f1b86a6453a8a513773995",
-      "destination": "skills/statechart/scripts/model/OutputFolder.cfg",
-      "destinationSha256": "8b9662ab7d51de9d54f84abab02888822da9c01ce4f1b86a6453a8a513773995",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/backends/report.ts",
+      "sourceSha256": "730b4048578ab0468e1581f16fec60b246e321161effb68e481efb373f0f2501",
+      "destination": "skills/statechart/scripts/backends/report.ts",
+      "destinationSha256": "730b4048578ab0468e1581f16fec60b246e321161effb68e481efb373f0f2501",
       "disposition": "adopted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/model/OutputFolder.map.mjs",
-      "sourceSha256": "33f2ef1c2ba397573206640843fffbc228d066e53fe5ced779d82f99600f3fd8",
-      "destination": "skills/statechart/scripts/model/OutputFolder.map.mjs",
-      "destinationSha256": "33f2ef1c2ba397573206640843fffbc228d066e53fe5ced779d82f99600f3fd8",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/config.ts",
+      "sourceSha256": "5eeab1e755f20a2c83b408c6503fdc9c6b10c971d8dedad3f912bd15f9763daf",
+      "destination": "skills/statechart/scripts/frontends/config.ts",
+      "destinationSha256": "5eeab1e755f20a2c83b408c6503fdc9c6b10c971d8dedad3f912bd15f9763daf",
       "disposition": "adopted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/model/OutputFolder.tla",
-      "sourceSha256": "75bef6811d9a8e56bd702fd8d782e52101918c8dc05c6cc9dc43d02b9fe1b56f",
-      "destination": "skills/statechart/scripts/model/OutputFolder.tla",
-      "destinationSha256": "75bef6811d9a8e56bd702fd8d782e52101918c8dc05c6cc9dc43d02b9fe1b56f",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/dot.ts",
+      "sourceSha256": "4eef9ec848557dcd01ca8dbbec75b71c0653c1b73583108bafbb6f559f6d677b",
+      "destination": "skills/statechart/scripts/frontends/dot.ts",
+      "destinationSha256": "4eef9ec848557dcd01ca8dbbec75b71c0653c1b73583108bafbb6f559f6d677b",
       "disposition": "adopted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/statechart.mjs",
-      "sourceSha256": "d352ca68fb05cef8673ce1b86ea516cc619ff6c1f4faea70233de59bcdf7a9b7",
-      "destination": "skills/statechart/scripts/statechart.mjs",
-      "destinationSha256": "d352ca68fb05cef8673ce1b86ea516cc619ff6c1f4faea70233de59bcdf7a9b7",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/marks.ts",
+      "sourceSha256": "eb0120e61a4004a435c7b7c46916da9dc8b2fa8696ed0d3eb64dc953fed3ab11",
+      "destination": "skills/statechart/scripts/frontends/marks.ts",
+      "destinationSha256": "eb0120e61a4004a435c7b7c46916da9dc8b2fa8696ed0d3eb64dc953fed3ab11",
       "disposition": "adopted"
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
-      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
-      "sourcePath": "pstack/skills/statechart/scripts/tlc-to-chart.mjs",
-      "sourceSha256": "ce41082fbc7aac05f135ccfd1e80705c60e5b38364187dd22fb1e27fdb017cd6",
-      "destination": "skills/statechart/scripts/tlc-to-chart.mjs",
-      "destinationSha256": "ce41082fbc7aac05f135ccfd1e80705c60e5b38364187dd22fb1e27fdb017cd6",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/messages.ts",
+      "sourceSha256": "36bfc6fb3ffa86897661efb2aa67bd95b55a4da9a3e952831f6e0668826b4b92",
+      "destination": "skills/statechart/scripts/frontends/messages.ts",
+      "destinationSha256": "36bfc6fb3ffa86897661efb2aa67bd95b55a4da9a3e952831f6e0668826b4b92",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/spec.ts",
+      "sourceSha256": "450cdfc8d0577a96818ca3697efebbbf70b530a4ba7e3eee03cf1ba8d3f1a0fd",
+      "destination": "skills/statechart/scripts/frontends/spec.ts",
+      "destinationSha256": "450cdfc8d0577a96818ca3697efebbbf70b530a4ba7e3eee03cf1ba8d3f1a0fd",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/trace.ts",
+      "sourceSha256": "7d083cf89b81c41556fc3fd5f07019886e0f6783c632475e7181ac4b81887367",
+      "destination": "skills/statechart/scripts/frontends/trace.ts",
+      "destinationSha256": "7d083cf89b81c41556fc3fd5f07019886e0f6783c632475e7181ac4b81887367",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/value.ts",
+      "sourceSha256": "7c54be394b7a10f60591858a0f08fb1e8dc0941df1f38ede07fbe7719ff56da0",
+      "destination": "skills/statechart/scripts/frontends/value.ts",
+      "destinationSha256": "7c54be394b7a10f60591858a0f08fb1e8dc0941df1f38ede07fbe7719ff56da0",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/verdict.ts",
+      "sourceSha256": "0d0a9d6b6d6da5a7c48851b86d9d041f22982404dda6288795a1715138d7008b",
+      "destination": "skills/statechart/scripts/frontends/verdict.ts",
+      "destinationSha256": "0d0a9d6b6d6da5a7c48851b86d9d041f22982404dda6288795a1715138d7008b",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/frontends/view.ts",
+      "sourceSha256": "2c0af8939321c5aaed4b6ecac8ce6a98d0e6774d8bd15d4b02fe4f406b8c9620",
+      "destination": "skills/statechart/scripts/frontends/view.ts",
+      "destinationSha256": "2c0af8939321c5aaed4b6ecac8ce6a98d0e6774d8bd15d4b02fe4f406b8c9620",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/ir.ts",
+      "sourceSha256": "5602beca4e4ac08421cfa07e4da989f0e75439f1d136cc923226909e771dc7ff",
+      "destination": "skills/statechart/scripts/ir.ts",
+      "destinationSha256": "5602beca4e4ac08421cfa07e4da989f0e75439f1d136cc923226909e771dc7ff",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/annotate.ts",
+      "sourceSha256": "dc8eeee09c3a9a0c060f32fb1d554e01bd80e5265751cdeb041ef3e19561b92a",
+      "destination": "skills/statechart/scripts/passes/annotate.ts",
+      "destinationSha256": "dc8eeee09c3a9a0c060f32fb1d554e01bd80e5265751cdeb041ef3e19561b92a",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/label.ts",
+      "sourceSha256": "b5ef402369c5e7846be1fd39165e95cbfe715fc36eb9331a0401b26523c539c9",
+      "destination": "skills/statechart/scripts/passes/label.ts",
+      "destinationSha256": "b5ef402369c5e7846be1fd39165e95cbfe715fc36eb9331a0401b26523c539c9",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/lift.ts",
+      "sourceSha256": "8977dddc6c93bb2e3914d5b50760eb66876107ba51e2b8cf9e18611b4c40c89c",
+      "destination": "skills/statechart/scripts/passes/lift.ts",
+      "destinationSha256": "8977dddc6c93bb2e3914d5b50760eb66876107ba51e2b8cf9e18611b4c40c89c",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/loop-check.ts",
+      "sourceSha256": "07d459385849aa35834040bf34e279c39baba68244ec9da17c57703a6ee8e2d4",
+      "destination": "skills/statechart/scripts/passes/loop-check.ts",
+      "destinationSha256": "07d459385849aa35834040bf34e279c39baba68244ec9da17c57703a6ee8e2d4",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/paths.ts",
+      "sourceSha256": "9af1066b007ef86cb05c5e278eef09f090f1e46eb91d356e5146edbd4fee4ec7",
+      "destination": "skills/statechart/scripts/passes/paths.ts",
+      "destinationSha256": "9af1066b007ef86cb05c5e278eef09f090f1e46eb91d356e5146edbd4fee4ec7",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/reach.ts",
+      "sourceSha256": "b52b38f926814937b733221b40bd31075a69a2fb91ecbce2164752a8684bc5d6",
+      "destination": "skills/statechart/scripts/passes/reach.ts",
+      "destinationSha256": "b52b38f926814937b733221b40bd31075a69a2fb91ecbce2164752a8684bc5d6",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/region-check.ts",
+      "sourceSha256": "8a6e0618740a14bb7048f6563b4324958177f4685d4d6d90364cc6245b1498b4",
+      "destination": "skills/statechart/scripts/passes/region-check.ts",
+      "destinationSha256": "8a6e0618740a14bb7048f6563b4324958177f4685d4d6d90364cc6245b1498b4",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/passes/regions.ts",
+      "sourceSha256": "d740ebfdbb5ec7b4984412a635a596b43af7a77b8bcb49a1463c8afa75299f72",
+      "destination": "skills/statechart/scripts/passes/regions.ts",
+      "destinationSha256": "d740ebfdbb5ec7b4984412a635a596b43af7a77b8bcb49a1463c8afa75299f72",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/pipeline.ts",
+      "sourceSha256": "8aa8d9295ab6762f7f2ffae91a0aee98b1a1314747c875edba4598fdab8ed543",
+      "destination": "skills/statechart/scripts/pipeline.ts",
+      "destinationSha256": "8aa8d9295ab6762f7f2ffae91a0aee98b1a1314747c875edba4598fdab8ed543",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/run.ts",
+      "sourceSha256": "f330e0a3b0a9f8181c2e52252c4a47db3f0a64f79a7cca5490263e33a5f13c72",
+      "destination": "skills/statechart/scripts/run.ts",
+      "destinationSha256": "a0b67d581ab58e580c2180d971ebc9c0cab0d62f52582185199666cac6b5b977",
+      "disposition": "adapted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/statechart",
+      "sourceSha256": "aeffb7077850fd4c225e3d18049ca6ed7b988cf48e88cd8463526a7feaa74d13",
+      "destination": "skills/statechart/scripts/statechart",
+      "destinationSha256": "aeffb7077850fd4c225e3d18049ca6ed7b988cf48e88cd8463526a7feaa74d13",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/statechart.ts",
+      "sourceSha256": "1c653f05d0cd0f3298455701f36e3d7d1f837f93e6e642f7c20afb5d613c2d12",
+      "destination": "skills/statechart/scripts/statechart.ts",
+      "destinationSha256": "1c653f05d0cd0f3298455701f36e3d7d1f837f93e6e642f7c20afb5d613c2d12",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/statechart/scripts/worker.ts",
+      "sourceSha256": "1f18ed5ef806982e05e8a40fc217e88257700b28b63cb4acbd647872f85f782b",
+      "destination": "skills/statechart/scripts/worker.ts",
+      "destinationSha256": "1f18ed5ef806982e05e8a40fc217e88257700b28b63cb4acbd647872f85f782b",
       "disposition": "adopted"
     },
     {
@@ -2930,6 +3221,15 @@
         "sourceSha256": "11c62671aa7b7a6e3d36929ffe2b59bf95e6ca664eee4d93e6ee527dd3390ddb",
         "scope": "Upstream compression applied; hidden invocation retained."
       }
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "sourcePath": "pstack/skills/ketchup-video/SKILL.md",
+      "sourceSha256": "74f1b9e61f8479e2be5b91a4f53136f6ad8e144fd950c9848de6aa1cdbb7645c",
+      "destination": "skills/ketchup-video/SKILL.md",
+      "destinationSha256": "145b0a52f386cecbb754ad9bfed6a05735352b166469a4f710d158d8c0328ac4",
+      "disposition": "adapted"
     }
   ],
   "generated": [
@@ -2939,15 +3239,15 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "0231a6f56312a7aeee51cbc7b3bd5f6bd9087e9f690094177e17735eb36034bd"
+      "sha256": "65175bb9ea600f0532521a2fe1b41cba4c976528d4bc5a48413ed8522209736b"
     },
     {
       "path": "README.md",
-      "sha256": "34b89e33a3455e4f36db5cb14679cd295517056eff5cf9a286b144ea8fb25dc9"
+      "sha256": "dcfd64b505761eb75e004fafd0f60c89a113e5ea64122b1110a860ce6028b65a"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "b9c9f7a18daf95fb0e90e5b3c62d994ed655ddaf553947ca8cda33d1fbc506c1"
+      "sha256": "4bae46573a7e92ef499b0d94894eaa9c697865462cef72240b966062f428af1c"
     },
     {
       "path": "config/artifact-locations.md",
@@ -3014,6 +3314,10 @@
       "sha256": "42af975a20c67c7fd3cf5bc3b4f8da65da3d72f3a0c078610f2bfe5c13ef68ee"
     },
     {
+      "path": "docs/upstream-alignment-0.15.34.md",
+      "sha256": "37d04fc4f4585a5b278d6dc89dd5fe972b52ec932e661bff77777cbad2210e28"
+    },
+    {
       "path": "extensions/pstack-herdsman/index.ts",
       "sha256": "bfc474477c8f6f763d5390acf686dcc5fa41f29297f0ced9af38cd0777b1a909"
     },
@@ -3023,7 +3327,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "39d38b1e14caaed43a6e83ab190ecbdcb7c57da4c29231a658b5f09973a6524c"
+      "sha256": "c513a31d106c57b4d2eaf9021fad31f4b4af312f61d4b16d0b97d00274326c85"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -3035,7 +3339,7 @@
     },
     {
       "path": "scripts/manifest.mjs",
-      "sha256": "84d9b47167576e7debc9fe8c68a016ca7b947a94e7d800dc015356fcdc8ff9ab"
+      "sha256": "f2c7a5b902368e7217128a6ae833b7b6b5c44e52aa72940844bc5b40571ae0d2"
     },
     {
       "path": "scripts/profile-history.json",
@@ -3055,11 +3359,11 @@
     },
     {
       "path": "scripts/validate-port.mjs",
-      "sha256": "576b743e68be0d244fefa99dc9ba535a871ebd63c6b61b95ce24f0d242a6791a"
+      "sha256": "ede95c3dfe937d8f8d16d8c13222adc8c49e27b4ebb5421afc52f24d2f3a1cdf"
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "ddfea721443e901af2088ebba203d8eb4b28decd70b675c37e1ed9dec2754538"
+      "sha256": "b0cf87754cb5d31dc8fc0d604e041cf0a8cee8a172851acf007e346caecda6a8"
     }
   ],
   "metadataHistory": [
@@ -3131,6 +3435,80 @@
       "package": "pi-herdsman",
       "inspectedVersion": "0.25.1",
       "mode": "nine canonical managed-agent tools"
+    }
+  ],
+  "resourceHistory": [
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/chart-to-tla.mjs",
+      "sourceSha256": "9f794e273d0729ae874d68a67bfa1df4ebddc12420b7ab5081fdf58dceb729e4",
+      "destination": "skills/statechart/scripts/chart-to-tla.mjs",
+      "destinationSha256": "9f794e273d0729ae874d68a67bfa1df4ebddc12420b7ab5081fdf58dceb729e4",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/compare-charts.mjs",
+      "sourceSha256": "12f4dc4700093156978ef1785b92739c8cf1e8375b8d13201fcdc2006a20c43b",
+      "destination": "skills/statechart/scripts/compare-charts.mjs",
+      "destinationSha256": "12f4dc4700093156978ef1785b92739c8cf1e8375b8d13201fcdc2006a20c43b",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/lib.mjs",
+      "sourceSha256": "47731d9dba3fd831bb81b739af31f2dd80b7a25dd6fa6786ee3c0d531e1ab781",
+      "destination": "skills/statechart/scripts/lib.mjs",
+      "destinationSha256": "47731d9dba3fd831bb81b739af31f2dd80b7a25dd6fa6786ee3c0d531e1ab781",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/model/OutputFolder.cfg",
+      "sourceSha256": "8b9662ab7d51de9d54f84abab02888822da9c01ce4f1b86a6453a8a513773995",
+      "destination": "skills/statechart/scripts/model/OutputFolder.cfg",
+      "destinationSha256": "8b9662ab7d51de9d54f84abab02888822da9c01ce4f1b86a6453a8a513773995",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/model/OutputFolder.map.mjs",
+      "sourceSha256": "33f2ef1c2ba397573206640843fffbc228d066e53fe5ced779d82f99600f3fd8",
+      "destination": "skills/statechart/scripts/model/OutputFolder.map.mjs",
+      "destinationSha256": "33f2ef1c2ba397573206640843fffbc228d066e53fe5ced779d82f99600f3fd8",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/model/OutputFolder.tla",
+      "sourceSha256": "75bef6811d9a8e56bd702fd8d782e52101918c8dc05c6cc9dc43d02b9fe1b56f",
+      "destination": "skills/statechart/scripts/model/OutputFolder.tla",
+      "destinationSha256": "75bef6811d9a8e56bd702fd8d782e52101918c8dc05c6cc9dc43d02b9fe1b56f",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/statechart.mjs",
+      "sourceSha256": "d352ca68fb05cef8673ce1b86ea516cc619ff6c1f4faea70233de59bcdf7a9b7",
+      "destination": "skills/statechart/scripts/statechart.mjs",
+      "destinationSha256": "d352ca68fb05cef8673ce1b86ea516cc619ff6c1f4faea70233de59bcdf7a9b7",
+      "disposition": "adopted"
+    },
+    {
+      "sourceRepository": "https://github.com/cursor/plugins.git",
+      "sourceCommit": "eb4db2b55b2b7dec3d9282754cddf0a56bf4ff10",
+      "sourcePath": "pstack/skills/statechart/scripts/tlc-to-chart.mjs",
+      "sourceSha256": "ce41082fbc7aac05f135ccfd1e80705c60e5b38364187dd22fb1e27fdb017cd6",
+      "destination": "skills/statechart/scripts/tlc-to-chart.mjs",
+      "destinationSha256": "ce41082fbc7aac05f135ccfd1e80705c60e5b38364187dd22fb1e27fdb017cd6",
+      "disposition": "adopted"
     }
   ]
 }

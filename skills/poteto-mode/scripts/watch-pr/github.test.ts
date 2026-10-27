@@ -288,16 +288,19 @@ describe("context and stack discovery", () => {
       {
         number: parsePrNumber(41),
         headRefName: "base-feature",
+        isCrossRepository: false,
         baseRefName: "main",
       },
       {
         number: context.number,
         headRefName: "feature",
+        isCrossRepository: false,
         baseRefName: "base-feature",
       },
       {
         number: parsePrNumber(43),
         headRefName: "upstack",
+        isCrossRepository: false,
         baseRefName: "feature",
       },
     ]);

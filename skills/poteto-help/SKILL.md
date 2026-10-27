@@ -16,7 +16,7 @@ Read [setup-pstack](../setup-pstack/SKILL.md) and [Herdsman runtime](../poteto-m
 
 When effective definitions or availability are unknown and matter to the answer, mention that uncertainty. At most once per chat, ask whether the user wants setup guidance now or later. Do not inspect agents as a progress poll or change configuration from help. For cost questions, explain the cost of independent exploration and review, not nonexistent budget menus.
 
-For verification questions, identify whether a matching project verification skill or actual app tool is available. If none is known, say so and route to [create-verification-skill](../create-verification-skill/SKILL.md). For a formal property, race, or invariant beyond test reach with no existing formal check, route to [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md), explicitly invoked with `/skill:create-formal-verification-skill`. It produces one project-local formal check, not app-driving verification or a feature-map maintenance loop. If a formal check already exists and its covered code changed after its recorded sync commit, recommend `/skill:maintain-formal-verification-skill` and read the [maintenance skill](../maintain-formal-verification-skill/SKILL.md). Do not offer creation again. Missing sync history is a maintenance uncertainty, not evidence that the old pass proves current code. For a reader-visible checked chart, recommend `/skill:statechart` and read [Statechart](../statechart/SKILL.md). Explain its scratch, trusted-map, tool, and PNG approval gates. Help does not run checks, install tools, or mutate definitions. A green build does not prove behavior.
+For verification questions, identify whether a matching project verification skill or actual app tool is available. If none is known, say so and route to [create-verification-skill](../create-verification-skill/SKILL.md). For a formal property, race, or invariant beyond test reach with no existing formal check, route to [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md), explicitly invoked with `/skill:create-formal-verification-skill`. It produces one project-local formal check, not app-driving verification or a feature-map maintenance loop. If a formal check already exists and its covered code changed after its recorded sync commit, recommend `/skill:maintain-formal-verification-skill` and read the [maintenance skill](../maintain-formal-verification-skill/SKILL.md). Do not offer creation again. Missing sync history is a maintenance uncertainty, not evidence that the old pass proves current code. For a reader-visible checked chart, recommend `/skill:statechart` and read [Statechart](../statechart/SKILL.md). Explain its isolated scratch, trusted executable view, separately provisioned Java/TLC, owned new or empty output, and separate Pele rendering approval gates. Help does not run checks, install tools, or mutate definitions. A green build does not prove behavior.
 
 ## Start and select
 
@@ -32,6 +32,7 @@ For verification questions, identify whether a matching project verification ski
 | Rewrite a prompt deeper, not bigger, without doing the task | [sharpen](../sharpen/SKILL.md) |
 | Recent cross-session context on a topic | [recall](../recall/SKILL.md) |
 | Current-chat outcomes, real visuals, and every self-contained human decision | [ketchup](../ketchup/SKILL.md) |
+| Explicitly requested silent slide-video catch-up, with human calls in text | [ketchup-video](../ketchup-video/SKILL.md) |
 | Breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
 | Types and module design | [architect](../architect/SKILL.md) |
 | Same brief, competing candidates and synthesis | [arena](../arena/SKILL.md) |
@@ -41,7 +42,7 @@ For verification questions, identify whether a matching project verification ski
 | Reusable app proof or drift maintenance | [create-verification-skill](../create-verification-skill/SKILL.md), [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
 | Formal properties beyond test reach, with no existing check | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
 | Existing formal checks after covered-code changes | [maintain-formal-verification-skill](../maintain-formal-verification-skill/SKILL.md) |
-| Reader-visible statecharts, agreed-chart skeletons, or code-to-spec comparison | [statechart](../statechart/SKILL.md) |
+| TLA+ checks with reader-visible statecharts and shortest violation paths | [statechart](../statechart/SKILL.md) |
 | Performance measurement rigor | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
 | A bespoke rigorous run | [figure-it-out](../figure-it-out/SKILL.md) |
 | Decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |
@@ -56,7 +57,7 @@ Playbooks are files selected inside poteto-mode, not standalone commands. Read t
 
 - How explains mechanics; Why investigates reasons; Teach explains the evidence plainly.
 - Arena compares the same brief; Swarm partitions checks. Neither creates automatic worktrees or cloud isolation. One writer owns each boundary. External worktrees need authorization and separate lead sessions.
-- Recall reconstructs recent topic context; Ketchup summarizes this chat. A specific old branch or session routes to [Session pickup](../poteto-mode/playbooks/session-pickup.md).
+- Recall reconstructs recent topic context; Ketchup summarizes this chat. Only an explicit `/skill:ketchup-video` request routes to video. Read that skill before recommending it: it bundles no renderer, requires authorized output outside the repository and separate approval for installations or external effects, and does not assume native video generation or Pi inline playback. Unsupported or unverified playback uses an absolute `file://` output link for an external player; missing tools or failed rendering/inspection returns a one-line explanation and text calls only. Help never renders or installs anything. A specific old branch or session routes to [Session pickup](../poteto-mode/playbooks/session-pickup.md).
 - For a plan-only deliverable, use [Multi-phase plan](../poteto-mode/playbooks/multi-phase-plan.md). For unsettled design, use [Prototype](../poteto-mode/playbooks/prototype.md) or Architect first. State a checkpoint when implementation needs approval.
 - PR status or babysitting routes to [Babysit](../poteto-mode/playbooks/babysit.md). Status does not authorize fixes or merge. Landing routes to [Shipping](../poteto-mode/playbooks/shipping.md) with explicit authority and independent verification.
 - One task to a predicate routes to [Autonomous run](../poteto-mode/playbooks/autonomous-run.md). A multi-day program routes to [Orchestrate](../poteto-mode/playbooks/orchestrate.md). Neither grants scheduling or broader authority.

@@ -57,6 +57,6 @@ For a race or invariant that tests miss, explicitly invoke [create-formal-verifi
 This creates one formal-property check, not an app-driving skill or feature-map maintenance loop. TLA+ is the default for event-ordering questions in any implementation language. Each check records covered code and a last-confirmed sync commit.
 
 - `/skill:maintain-formal-verification-skill the covered code changed after the recorded sync commit. update only the verification, show that it can still catch a break in isolated scratch, and distinguish drift from product bugs.`
-- `/skill:statechart show what the user sees when <behavior>. use trusted copied inputs in authorized isolated scratch and a dedicated owned output folder. do not install tools or run --png without separate approval.`
+- `/skill:statechart show what the user sees when <behavior>. use a TLA+ model and trusted executable view copied into authorized isolated scratch, with a dedicated new or empty output folder. report missing Java/TLC as blocked. give Mermaid source; do not install tools or execute Pele without separate approval.`
 
-If no formal verify skill exists, maintenance stops and points to creation. Statechart can start from a TLA+ model or an agreed Mermaid chart. A skeleton without a TLC run is not checked behavior.
+If no formal verify skill exists, maintenance stops and points to creation. Statechart checks a TLA+ model and draws its results. An unrun model is a draft, not checked behavior.
