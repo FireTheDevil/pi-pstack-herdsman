@@ -5,7 +5,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 ## Understand
 
 - `/skill:in-your-own-words restate my goals and the problem in <thread>. don't start implementation.`
-- `/skill:sharpen <task>. use expert sources and an independent check within the tools and scope already authorized. leave my product choices open.`
+- `/skill:sharpen <the prompt I am about to send>. return only a deeper rewritten prompt with expert sources, methods, and an outside check. leave my choices open. do not do the task.`
 
 - `/poteto-mode read <thread>. restate the underlying issue in your own words, in plain english.`
 - `/poteto-mode investigate why <symptom>. give me what we know, what data you used, and your best hypotheses. don't change any code yet.`
@@ -54,4 +54,9 @@ For a race or invariant that tests miss, explicitly invoke [create-formal-verifi
 
 - `/skill:create-formal-verification-skill model-check this retry race within the authorized project scope. Use isolated disposable scratch state, preserve findings, and report missing tool authority instead of installing anything.`
 
-This creates one formal-property check, not an app-driving skill or feature-map maintenance loop.
+This creates one formal-property check, not an app-driving skill or feature-map maintenance loop. TLA+ is the default for event-ordering questions in any implementation language. Each check records covered code and a last-confirmed sync commit.
+
+- `/skill:maintain-formal-verification-skill the covered code changed after the recorded sync commit. update only the verification, show that it can still catch a break in isolated scratch, and distinguish drift from product bugs.`
+- `/skill:statechart show what the user sees when <behavior>. use trusted copied inputs in authorized isolated scratch and a dedicated owned output folder. do not install tools or run --png without separate approval.`
+
+If no formal verify skill exists, maintenance stops and points to creation. Statechart can start from a TLA+ model or an agreed Mermaid chart. A skeleton without a TLC run is not checked behavior.
