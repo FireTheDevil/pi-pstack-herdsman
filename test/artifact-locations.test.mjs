@@ -25,9 +25,9 @@ test('three workflows read one shared configuration without duplicating its root
   }
   const orchestrate = read(consumers[0]);
   assert.doesNotMatch(orchestrate, /current agent's store \(path in the system prompt\)/);
-  assert.match(orchestrate, /CLI still requires `--store <resolved-store-path>` or `ORCH_STORE`/);
-  assert.match(orchestrate, /chosen absolute path on every invocation/);
-  assert.match(orchestrate, /does not read the configuration/);
+  assert.match(orchestrate, /tracker.*standing orders.*PR links.*current heads/s);
+  assert.match(orchestrate, /No `ORCH_STORE` setting or CLI initialization is required/);
+  assert.doesNotMatch(orchestrate, /scripts\/orch\/|orch init|orch frontier/);
   assert.doesNotMatch(read(consumers[1]), /\/tmp\//);
   assert.doesNotMatch(read(consumers[2]), /\.audit\/|`decisions.tsv` in the work dir/);
 });

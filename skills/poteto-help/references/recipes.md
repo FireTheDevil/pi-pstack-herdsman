@@ -33,7 +33,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 ## Review and ship
 
-- `/skill:interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the dismissals too.
+- `/skill:interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the Dropped list too.
 - `/skill:swarm check every package under <dir> against its check script. one worker per package. one report.`
 - `/poteto-mode open the pr. small ordered commits, evidence in the description.`
 - `/poteto-mode babysit this pr. get it green.` For status only: `/poteto-mode check on pr <number>. anything outstanding?`
@@ -44,7 +44,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 - `/poteto-mode I am stepping away. <goal> within <scope>. I authorize a fresh external worktree off <base> and local commits, but no push or merge. Done means <checks>. Complete the trust preflight, keep a decision log, and stop with evidence if blocked. No periodic scheduler is authorized.`
 - `/skill:show-me-your-work catch me up on what you did last night.` Read its Attention section first.
 - `/poteto-mode full autopilot on this queue. each item is independent.`
-- `/poteto-mode autopilot these changes but stack them, don't ship. i'll land the stack.`
+- `/poteto-mode autopilot these changes but autopilot, don't merge. i'll land the stack.`
 - `/skill:reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.
 - `/skill:bro` restates the last reply in plain words.
 

@@ -6,7 +6,7 @@ Pstack workflow and command adapter for [Pi](https://github.com/earendil-works/p
 
 The skills originate in [Cursor's pstack plugin](https://github.com/cursor/plugins/tree/main/pstack), authored by Lauren Tan. The repository preserves the upstream MIT license and copyright notice. This extension uses [zenspc's pi-pstack port](https://github.com/zenspc/pi-extensions/tree/main/packages/pi-pstack) as its starting point and adapts it for pi-herdsman. See [NOTICE](NOTICE.md), [version pins](upstream.lock.json), and the [resource inventory](PORT-MANIFEST.json).
 
-The resource lineage retains its original upstream pin. Selected portable changes through Cursor pstack 0.15.34 are adapted for Pi/Herdsman, not copied as full upstream parity. This pass replaces Statechart with the TypeScript compiler/runtime and adopts selected watcher, orchestration, audit, plan-lint, formal-verification and Reflect updates. A separately approved follow-up adds the explicit-only, instruction-only Ketchup-video skill; it bundles no renderer or dependencies. Optional verification offers are setup skill guidance, not a runtime command change. The [0.15.34 alignment report](docs/upstream-alignment-0.15.34.md) records selected paths, exclusions, risks, and validation limits. The [0.15.30 report](docs/upstream-alignment-0.15.30.md), [0.15.26 report](docs/upstream-alignment-0.15.26.md), [0.15.25 report](docs/upstream-alignment-0.15.25.md), and [earlier report](docs/upstream-alignment-0.15.17.md) preserve prior work. Scoped .26 principle, verification cadence, and Shipping result-reuse policies remain intact. Cursor model rules do not configure Pi. The [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes tasks to the unchanged eleven Herdsman profiles.
+The resource lineage retains its original upstream pin. Selected portable changes through Cursor pstack 0.15.36 are adapted for Pi/Herdsman, not copied as full upstream parity. This pass adds goal framing, execution-backed Interrogate, dependency-only Autopilot stacks, agentic orchestration without the retired orch scripts, subtitled Ketchup-video and decision-before-measurement guidance. Runtime helpers never install missing dependencies. Worktree cleanup holds unknown session history. Instructions use actual available tools without widening profiles. The [0.15.36 alignment report](docs/upstream-alignment-0.15.36.md) records adaptations, exclusions and validation limits. The [0.15.34 report](docs/upstream-alignment-0.15.34.md) and earlier reports preserve prior work. Profiles, model pins, approval gates, asynchronous ownership and Shipping result-reuse policy remain intact. Cursor model rules do not configure Pi. The [runtime role table](skills/poteto-mode/references/herdsman-runtime.md) routes work to the unchanged eleven profiles.
 
 ## Install
 
@@ -37,13 +37,31 @@ With Java and TLC available, Statechart can check a bounded TLA+ model and produ
 
 The bundled TypeScript runs with Node >=24 without npm dependencies for checking. Use the Git installation above or a local checkout: Node's built-in TypeScript stripping does not execute these sources beneath `node_modules`. The current port has not verified real TLC execution, Pele rendering or live Pi/Herdsman operation; see [validation limits](VALIDATION.md).
 
+## Watcher helper setup
+
+All watcher entry points, including `--status-only` and bounded frontier checks, require already provisioned dependencies. Missing or stale dependencies fail before forge reads. No runtime entry point installs packages, writes an install marker or restarts itself. The orch CLI is retired. Orchestrate uses authorized tracker files instead.
+
+Only after separate explicit approval for dependency installation and its network/cache/filesystem effects, provision the helpers in `skills/poteto-mode/scripts` with `bun install --frozen-lockfile`. Then write the install key there with the following setup command. This is a setup operation, not a watcher invocation.
+
+```sh
+bun -e 'const {createHash}=require("node:crypto"); const {readFileSync,writeFileSync}=require("node:fs"); writeFileSync("node_modules/.poteto-mode-tools-install-key",createHash("sha256").update(readFileSync("package.json")).update("\0").update(readFileSync("bun.lock")).digest("hex")+"\n")'
+```
+
+Runtime checks compare the pinned Commander version and the package/lock install key. They do not authenticate dependencies or sandbox commands. No setup command was run for this port. Existing retained dependencies were reused only in disposable validation scratch.
+
+## Session history and cleanup
+
+[Session history resolution](skills/poteto-mode/references/session-history.md) prefers exact runtime or supplied paths and respects configured custom storage. Transcript instructions validate workspace headers before reading messages. They do not assume the prompt names a sessions directory or search unrelated project messages.
+
+The read-only worktree audit accepts `--session-dir <absolute-dir>` or `PI_CODING_AGENT_SESSION_DIR`. Missing, unreadable, malformed or old history produces `hold-unknown-history`, not an inactivity-based safe suggestion. Recent matching history requires manual review. The audit cannot prove full storage coverage and therefore no longer labels candidates safe from absent history. Pinned work, live ownership and explicit deletion approval remain separate requirements.
+
 ## Ketchup-video required capabilities
 
 To produce and verify a video, `/skill:ketchup-video` needs available, authorized tools that can:
 
 - Render slides into image frames, including motion between slides, without recording a screen.
-- Encode those frames as a silent landscape video with controlled slide durations.
-- Extract frames from the finished video and read its timing.
+- Encode those frames as a silent landscape video with burned-in subtitles and controlled slide durations.
+- Extract frames from the finished video and measure fully visible slide holds, excluding transitions.
 - Show extracted frames to an image-capable model or inspection tool to check every slide's readability.
 
 Viewing the result also requires supported inline playback or an external video player. Native AI video generation is not required. This package supplies no rendering tools and installs nothing automatically; output writes and external effects remain subject to the [skill's approval requirements](skills/ketchup-video/SKILL.md).
@@ -62,7 +80,7 @@ No global Pi package installation is needed. Loading the extension (including fr
 - `/pstack-status` takes no arguments and reports Poteto Mode and bundled skill visibility without changing session state. Bundled skills stay hidden by frontmatter and remain directly callable with `/skill:<name>`. The old `/pstack` catalog toggle is removed; historical catalog-filter decisions are ignored.
 - `/setup-pstack [role]` remains an optional, project-only template preview/copy command. It checks model availability and requires confirmation; cancellation and headless *command execution* write nothing. A same-name global profile installed on session start takes precedence, so edit that global profile if you need to customize the effective role.
 - `/skill:poteto-help <question>` explains setup, skill selection, or prompt wording without executing the workflow. `/skill:ketchup` gives a read-only catch-up with evidence-backed visuals and every pending human decision, each with enough evidence and risk to decide from the reply alone.
-- `/skill:ketchup-video` gives the same catch-up window and human calls, with a short silent slide video when authorized tools are available. The [video skill](skills/ketchup-video/SKILL.md) requires approved output outside the repository and separate approval for installs or external effects. It supplies no renderer and does not assume model video generation or inline Pi playback; unsupported or unverified playback uses an absolute `file://` output link for an external player. Rendering or inspection failure gives only the text calls with a one-line explanation.
+- `/skill:ketchup-video` gives the same catch-up window and human calls, with a short subtitled slide video when authorized tools are available. The [video skill](skills/ketchup-video/SKILL.md) requires approved output outside the repository and separate approval for installs or external effects. It supplies no renderer and does not assume model video generation or inline Pi playback; unsupported or unverified playback uses an absolute `file://` output link for an external player. Rendering or inspection failure gives only the text calls with a one-line explanation.
 - `/skill:create-formal-verification-skill` generates one project-local formal-property verification skill for code where harm is high and tests reach poorly. The [formal skill](skills/create-formal-verification-skill/SKILL.md) requires authorized tools and isolated scratch checks. Unrun output remains a draft. This is separate from app-driving verification and feature-map maintenance.
 - `/skill:maintain-formal-verification-skill` updates existing formal checks after covered-code changes. The [maintenance skill](skills/maintain-formal-verification-skill/SKILL.md) records alignment separately from the result, preserves product findings, and edits only verification files.
 - `/skill:statechart` checks a TLA+ model and projects it into reader-visible Mermaid states and numbered bug paths. The [Statechart skill](skills/statechart/SKILL.md) requires trusted executable views, copied inputs in authorized isolated scratch, and a dedicated new or empty output folder. Checking requires separately installed Java and TLC; optional Pele rendering needs separate approval. See [Statechart dependencies](#statechart-dependencies). No tools install automatically through skill invocation.
@@ -123,7 +141,7 @@ Read the [runtime contract](skills/poteto-mode/references/herdsman-runtime.md) b
 - Model/thinking selection lives in actual definitions. No automatic task model pools or per-request model fields. Record model overlap; distinct-model reviews require explicitly prepared distinct definitions.
 - Results arrive asynchronously. No wait/join/collection calls or progress polling. End the turn when only dependent work remains. Forward exact result refs in files. Continue related work by exact returned session, never a live label.
 - No managed worktree/cwd option. Prepare external worktrees explicitly and start separate lead sessions for isolated checkout work. Otherwise use genuinely disjoint output paths and one writer per boundary.
-- Reporting rubrics are preserved, not backend-enforced JSON schemas.
+- Workflow output contracts are guidance, not backend-enforced JSON schemas.
 - Managed-agent controller suppression uses Herdsman's documented active_agent system-prompt metadata via Pi getSystemPrompt, not user text or a guessed environment variable.
 - Long-program playbooks retain their intent, but leaf phases return to the lead for dependent review. External schedulers require separate authorization.
 

@@ -57,7 +57,7 @@ Commit it only when the work is ambitious enough that a reviewer needs the trail
 
 ## Audit the log against the transcript
 
-At the end of the run, before handing back, check the log told the truth. Read this run's transcript under the active workspace's `sessions/` directory (the system prompt names the path). Don't glob across `~/.pi/agent/sessions/*/`. That reads unrelated private chats. Walk only this run's stretches against what actually happened. Each stretch begins at this run's `start` row, or the first row if this run created the log, and ends at the next `start` row belonging to another run:
+At the end of the run, before handing back, check the log told the truth. Read [session history resolution](../poteto-mode/references/session-history.md) and resolve this run's exact transcript. Do not assume a prompt-named directory or search unrelated projects. Report unavailable transcript coverage instead of claiming the audit ran. Walk only this run's stretches against what actually happened. Each stretch begins at this run's `start` row, or the first row if this run created the log, and ends at the next `start` row belonging to another run:
 
 - Every row in this run's stretches maps to a real decision or action. Supersede invented or aspirational entries with a new corrective row.
 - Each row's evidence resolves and shows what the row claims.

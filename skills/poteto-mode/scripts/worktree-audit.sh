@@ -4,7 +4,7 @@
 # operated in it. Emits a table sorted by size with a suggested bucket. Never
 # deletes anything; deletion stays a human-gated step in the playbook.
 #
-# Usage: worktree-audit.sh [-b|--base <ref>] [repo-path]
+# Usage: worktree-audit.sh [-b|--base <ref>] [--session-dir <absolute-dir>] [repo-path]
 #   repo-path defaults to the current repo.
 #   -b sets the ref the MERGED column checks against (e.g. origin/integration).
 #   Without it the base is origin/HEAD, then origin/main, then origin/master.
@@ -13,14 +13,20 @@
 set -u
 
 base=""
+session_dir="${PI_CODING_AGENT_SESSION_DIR:-}"
 while [ $# -gt 0 ]; do
 	case "$1" in
+	--session-dir) [ $# -ge 2 ] || { echo "error: $1 needs a directory" >&2; exit 2; }; session_dir="$2"; shift 2 ;;
 	-b|--base) [ $# -ge 2 ] || { echo "error: $1 needs a ref" >&2; exit 2; }; base="$2"; shift 2 ;;
 	-h|--help) sed -n '2,/^set -u/p' "$0" | sed '$d; s/^# \{0,1\}//'; exit 0 ;;
 	-*) echo "error: unknown option: $1" >&2; exit 2 ;;
 	*) break ;;
 	esac
 done
+
+case "$session_dir" in
+""|/*) ;; *) echo "error: session directory must be absolute" >&2; exit 2 ;;
+esac
 
 repo="${1:-$(git rev-parse --show-toplevel 2>/dev/null)}"
 [ -z "$repo" ] && { echo "not in a git repo; pass a repo path" >&2; exit 1; }
@@ -149,30 +155,33 @@ git worktree list --porcelain | sed -n 's/^worktree //p' | while IFS= read -r wt
 		'.[] | select(.headRefName==$b) | "#\(.number)/\(.state | ascii_downcase)"' "$prs" 2>/dev/null | head -1)
 	[ -z "$pr" ] && pr="-"
 
-	# Most recent chat whose transcript operated in this worktree. Match path
-	# followed by "/" or a quote so glint-482 does not match glint-482-r37.
-	last="-"; last_ts=0
+	last="-"; last_ts=0; recent=unknown
 	candidate_slug=$(printf '%s' "$wt" | sed 's#^[/\\]##; s#[/\\:]#-#g')
 	candidate_transcripts="${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/sessions/--$candidate_slug--"
-	if [ -d "$transcripts" ] || [ -d "$candidate_transcripts" ]; then
-		f=$( { rg -l -F -e "${wt}/" -e "${wt}\"" "$transcripts" 2>/dev/null
-			# Exact cwd directory is itself evidence, even without a path in messages.
-			find "$candidate_transcripts" -type f -name '*.jsonl' 2>/dev/null
-		} \
-			| while IFS= read -r file; do
-				stat "${stat_fmt[@]}" "$file" 2>/dev/null
-			done | sort -rn | head -1)
-		if [ -n "$f" ]; then last_ts=$(echo "$f" | awk '{print $1}')
-			last=$(fmt_day "$last_ts" 2>/dev/null); fi
+	if [ -n "$session_dir" ]; then
+		history_dirs=("$session_dir")
+	else
+		history_dirs=("$transcripts" "$candidate_transcripts")
 	fi
-	recent=$([ "$last_ts" -gt 0 ] 2>/dev/null && [ $(( (now - last_ts) / 86400 )) -le 4 ] && echo yes || echo no)
+	f=$(for directory in "${history_dirs[@]}"; do
+		[ -d "$directory" ] && find "$directory" -maxdepth 1 -type f -name '*.jsonl' -print
+	done | while IFS= read -r file; do
+		header_cwd=$(head -n 1 "$file" 2>/dev/null | jq -er 'select(.type == "session") | .cwd | select(type == "string")' 2>/dev/null) || continue
+		if [ "$header_cwd" = "$wt" ] || { [ "$header_cwd" = "$main_wt" ] && rg -q -F -e "${wt}/" -e "${wt}\"" "$file" 2>/dev/null; }; then
+			stat "${stat_fmt[@]}" "$file" 2>/dev/null
+		fi
+	done | sort -rn | head -1)
+	if [ -n "$f" ]; then
+		last_ts=${f%% *}
+		last=$(fmt_day "$last_ts" 2>/dev/null)
+		if [ "$last_ts" -gt 0 ] 2>/dev/null && [ $(( (now - last_ts) / 86400 )) -le 4 ]; then recent=yes; fi
+	fi
 
 	case "$dirty" in unknown) bucket=hold-unknown-state ;; wip:*) bucket=hold-wip ;; *)
 		if [ "$forge_known" != yes ]; then bucket=hold-unknown-pr
 		else case "$pr" in */open|*/draft) bucket=hold-open-pr ;; *)
 			if [ "$recent" = yes ]; then bucket=verify-recent-chat
-			elif [ "$merged" = YES ] || [[ "$pr" == */merged ]]; then bucket=safe
-			else bucket=review; fi ;;
+			else bucket=hold-unknown-history; fi ;;
 		esac; fi ;;
 	esac
 

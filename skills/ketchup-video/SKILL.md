@@ -1,12 +1,12 @@
 ---
 name: ketchup-video
-description: "Catch the user up like /skill:ketchup, with a short silent video of slides for what happened and the waiting calls as text under it. Use only for explicit /skill:ketchup-video."
+description: "Catch the user up like /skill:ketchup, with a short subtitled video of slides for what happened and the waiting calls as text under it. Use only for explicit /skill:ketchup-video."
 disable-model-invocation: true
 ---
 
 # Ketchup video
 
-Follow [Ketchup](../ketchup/SKILL.md), but show what happened in a short silent video instead of its summary and visuals. Invoke only when the user explicitly requests `/skill:ketchup-video`; do not switch ordinary Ketchup or other catch-ups to video automatically. Its window starts at the last actual user message before this invocation, not before any earlier `/skill:ketchup`. Notifications and agent results do not reset that boundary. Include older unanswered human calls as Ketchup requires.
+Follow [Ketchup](../ketchup/SKILL.md), but show what happened in a short subtitled video instead of its summary and visuals. Invoke only when the user explicitly requests `/skill:ketchup-video`; do not switch ordinary Ketchup or other catch-ups to video automatically. Its window starts at the last actual user message before this invocation, not before any earlier `/skill:ketchup`. Notifications and agent results do not reset that boundary. Include older unanswered human calls as Ketchup requires.
 
 Writing slides, frames and the video to a user-authorized output directory outside the repository is the only exception to Ketchup's read-only rule. Confirm the destination and authority before writing; preserve existing files and use a new or empty owned directory. Do not continue the underlying task or manufacture new app evidence. Use only available, authorized rendering and frame-inspection tools. This instruction-only skill bundles no renderer or dependencies and assumes neither native model video generation nor working inline Pi video playback. Installation, downloads, network/cache effects, uploads, app launches or other external effects need separate explicit approval; invocation alone does not authorize them. If tools or authority are missing, report video creation blocked in one line and give only the human calls, including any approval actually needed. Do not install or substitute unverified output.
 
@@ -22,6 +22,12 @@ Keep text to the minimum. Put each label on the thing it names, in plain words a
 
 Show what came of each thing the user asked for, and whether it is done, still running, failed, or not checked. Never show something done that still waits on the user. Show any bug found and fixed on the way. If a visible change has no screenshot, say so on its slide and name what changed on screen. Draw only from facts you have. Never invent a number, and never draw a screen you did not capture.
 
+## Subtitles
+
+Give each slide one short subtitle line, about ten words, that says its point the way you would tell the user, from only what that slide shows. Say what the picture means rather than read out its labels. Put the subtitle in a strip below the slide, the same height on every slide and empty except for the subtitle, so it never covers the slide. Set it small, but readable when the video plays at chat size.
+
 ## Render
 
-Render one silent landscape video, such as an mp4, with motion between slides. Every frame is the slide itself, edge to edge. Make the frames from the slides, never by recording a screen. Hold each slide long enough to read its words, at least one second for each three words it adds. Words inside a screenshot do not count. Before you deliver the video, use an available authorized inspection tool to look at one frame from each slide in the rendered file, and count the words it adds against its hold in that file. Fix any slide you cannot read in that time, render again, and check again.
+Render one silent landscape video, such as an mp4, with motion between slides. Every frame is the slide itself, edge to edge, above its subtitle strip. Make the frames from the slides, never by recording a screen, and burn each subtitle into its slide's frames so it stays on screen for the slide's whole hold. The hold is the time a slide is fully on screen, not counting the motion into or out of it. Hold each slide long enough to read the words it adds, at least one second for each three words. A slide adds its subtitle and each word that was not on the slide before it, including a label it changes. The first slide adds all its words. Words inside a screenshot do not count.
+
+Before you deliver the video, use available authorized inspection tools to check the rendered file. Look at one frame from each slide at chat size, and check that its subtitle is readable and covers nothing. Measure each hold by matching the file's frames to the slide, not with a still-frame detector, which counts the faint ends of a fade as still. Count the words each slide adds against its measured hold. Fix any slide you cannot read in that time, render again, and check again.

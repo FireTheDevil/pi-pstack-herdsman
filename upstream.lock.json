@@ -10,9 +10,9 @@
     "license": "MIT"
   },
   "reviewedUpstream": {
-    "version": "0.15.34",
-    "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
-    "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Separately authorized follow-up after f9a9fe7 adds pinned instruction-only ketchup-video, explicit Pi invocation, authorized outside-repository output, separate installation/external-effect approval and file-link/external-player fallback. No renderer or dependencies are bundled. Excludes automatic video offers/installation, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+    "version": "0.15.36",
+    "pstackChangeCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+    "scope": "Reviewed complete 66-path .34-to-.36 delta and intermediate .35. Selectively ports goal framing, async steering intent, autopilot workflow and dependency-only stacks, execution-backed Interrogate, different-family Arena judge selection, subtitled measured-duration Ketchup-video and decision-before-measurement. Replaces orch CLI with agentic tracker workflow and retires callers/resources coherently. Fixes issues #7-9 with non-installing helper gates, scoped session resolution and unknown-history holds, and actual Pi tool names. Preserves profiles/models, asynchronous ownership, tool ceilings, explicit approvals, hidden invocation, Shipping evidence and compatibility ranges. Excludes Cursor model rules/Task/cloud capabilities, generated distributions and unrelated integrations. No installs, new unit tests or full-parity/live-host/rendering certification. See docs/upstream-alignment-0.15.36.md and VALIDATION.md."
   },
   "intermediates": {
     "zenspc": {
@@ -99,6 +99,16 @@
       "version": "0.15.34",
       "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
       "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Excludes ketchup-video skill/install/offers/routing, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+    },
+    {
+      "version": "0.15.34",
+      "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+      "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Separately authorized follow-up after f9a9fe7 adds pinned instruction-only ketchup-video, explicit Pi invocation, authorized outside-repository output, separate installation/external-effect approval and file-link/external-player fallback. No renderer or dependencies are bundled. Excludes automatic video offers/installation, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+    },
+    {
+      "version": "0.15.35",
+      "pstackChangeCommit": "ab1f702ce8e8b6557edb56b09f52cde8bfb83f17",
+      "scope": "Reviewed as intermediate for selective .36 port. Goal framing, async steering intent, autopilot dependency/rebase/verification policy, execution-backed interrogate, judge selection, subtitles and decision-before-measurement. See .36 alignment report for Pi adaptations and exclusions."
     }
   ]
 }

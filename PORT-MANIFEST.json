@@ -13,9 +13,9 @@
       "license": "MIT"
     },
     "reviewedUpstream": {
-      "version": "0.15.34",
-      "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
-      "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Separately authorized follow-up after f9a9fe7 adds pinned instruction-only ketchup-video, explicit Pi invocation, authorized outside-repository output, separate installation/external-effect approval and file-link/external-player fallback. No renderer or dependencies are bundled. Excludes automatic video offers/installation, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+      "version": "0.15.36",
+      "pstackChangeCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+      "scope": "Reviewed complete 66-path .34-to-.36 delta and intermediate .35. Selectively ports goal framing, async steering intent, autopilot workflow and dependency-only stacks, execution-backed Interrogate, different-family Arena judge selection, subtitled measured-duration Ketchup-video and decision-before-measurement. Replaces orch CLI with agentic tracker workflow and retires callers/resources coherently. Fixes issues #7-9 with non-installing helper gates, scoped session resolution and unknown-history holds, and actual Pi tool names. Preserves profiles/models, asynchronous ownership, tool ceilings, explicit approvals, hidden invocation, Shipping evidence and compatibility ranges. Excludes Cursor model rules/Task/cloud capabilities, generated distributions and unrelated integrations. No installs, new unit tests or full-parity/live-host/rendering certification. See docs/upstream-alignment-0.15.36.md and VALIDATION.md."
     },
     "intermediates": {
       "zenspc": {
@@ -102,6 +102,16 @@
         "version": "0.15.34",
         "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
         "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Excludes ketchup-video skill/install/offers/routing, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+      },
+      {
+        "version": "0.15.34",
+        "pstackChangeCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "scope": "Reviewed complete .30-to-.34 repository delta. Selectively ports approved Statechart TS compiler/runtime replacement, trace and rendering guidance, formal Statechart references, fork-safe watching and deadline sleeps, active-PR preference, GNU audit portability, Reflect and Swarm fixes. Removes automatic tool provisioning; rendering requires separate approval. Separately authorized follow-up after f9a9fe7 adds pinned instruction-only ketchup-video, explicit Pi invocation, authorized outside-repository output, separate installation/external-effect approval and file-link/external-player fallback. No renderer or dependencies are bundled. Excludes automatic video offers/installation, generated Claude/host distributions, test-tree shipment and unrelated plugins. Preserves Pi/Herdsman adaptations, profiles/models, authority, hidden semantics, verification cadence, compatibility ranges and provenance history. Not full parity or live-host/TLC/rendering certification. See docs/upstream-alignment-0.15.34.md and VALIDATION.md."
+      },
+      {
+        "version": "0.15.35",
+        "pstackChangeCommit": "ab1f702ce8e8b6557edb56b09f52cde8bfb83f17",
+        "scope": "Reviewed as intermediate for selective .36 port. Goal framing, async steering intent, autopilot dependency/rebase/verification policy, execution-backed interrogate, judge selection, subtitles and decision-before-measurement. See .36 alignment report for Pi adaptations and exclusions."
       }
     ]
   },
@@ -201,15 +211,24 @@
         "disposition": "adapted"
       },
       "destination": "skills/arena/SKILL.md",
-      "destinationSha256": "106e0cd85e16a49e4cd115f158334dc866eae0205c9835e1b4590480efc64282",
+      "destinationSha256": "4cadf55f05df9cbe241471d3e980a1050454f0bf544689ce6de41036cb2b2594",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/arena/SKILL.md",
-        "sourceSha256": "f15524f216c1c63804b89edb4ff8e53bb21a7b8ed367368dedeb9468eeec6a92",
-        "scope": "Compressed judging/grafting; Pi role/model, isolation and artifact-write gates retained."
-      }
+        "sourceSha256": "d0adeca6c9b19d43d90ed8f0484f0ddd362f05006d628b8f4cc6c9b55fa4d2b3",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/arena/SKILL.md",
+          "sourceSha256": "f15524f216c1c63804b89edb4ff8e53bb21a7b8ed367368dedeb9468eeec6a92",
+          "scope": "Compressed judging/grafting; Pi role/model, isolation and artifact-write gates retained."
+        }
+      ]
     },
     {
       "sourcePath": "skills/automate-me/SKILL.md",
@@ -222,8 +241,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/automate-me/SKILL.md",
-      "destinationSha256": "b8bc4a1932b81d08301138952a8ee018478bb0c5b3ff846114475dce27ff8876",
-      "disposition": "adopted"
+      "destinationSha256": "5616ae68839ffe9b1f7e9c5c784fca3a6ca1a6ddfc3e81adba8a246c9de7e408",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/automate-me/SKILL.md",
+        "sourceSha256": "30b35f3628c4fd8c11af0ada06d14cdc3b28901810caca2480f627d4d21acfbe",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -456,8 +482,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/how/references/explainer-prompt.md",
-      "destinationSha256": "ddb89cebefc24e2b54517a331aedfe045b6971e101f45c71b8cef4cccff45bff",
-      "disposition": "adopted"
+      "destinationSha256": "6c88978d5312a88d9abdc272e01827ff90cc81f50ead04cf1d83c9c5b01a29c6",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/how/references/explainer-prompt.md",
+        "sourceSha256": "ddb89cebefc24e2b54517a331aedfe045b6971e101f45c71b8cef4cccff45bff",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/how/references/explorer-prompt.md",
@@ -507,92 +540,24 @@
         "disposition": "adapted"
       },
       "destination": "skills/interrogate/SKILL.md",
-      "destinationSha256": "95bb6218615fe9f5a5dca0a7f2c23267055619f1f44fd9d12975594b35d2bfb0",
+      "destinationSha256": "d139c058533c981d29f98f8266d7bd587c8566d78ff4d7046f9a0252608d055c",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/interrogate/SKILL.md",
-        "sourceSha256": "25341c393f515c1e1fa9bce668b7551e9f98c195113a460ff524d3c1f7f50cd9",
-        "scope": "Compact synthesis/judgment; actual reviewer identities and frozen-scope fresh read-only delegates retained."
-      }
-    },
-    {
-      "sourcePath": "skills/interrogate/references/code-quality-review.md",
-      "sourceSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
-      "priorLineage": {
-        "sourcePath": "skills/interrogate/references/code-quality-review.md",
-        "sourceSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
-        "destination": "skills/interrogate/references/code-quality-review.md",
-        "destinationSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
-        "disposition": "adopted"
+        "sourceSha256": "3f3c2e9b8cf6b180dba9f32a4aff85e5691b09805232468e37a0ba45437a9984",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
-      "destination": "skills/interrogate/references/code-quality-review.md",
-      "destinationSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
-      "disposition": "adopted"
-    },
-    {
-      "sourcePath": "skills/interrogate/references/lead-judgment.md",
-      "sourceSha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
-      "priorLineage": {
-        "sourcePath": "skills/interrogate/references/lead-judgment.md",
-        "sourceSha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
-        "destination": "skills/interrogate/references/lead-judgment.md",
-        "destinationSha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
-        "disposition": "adopted"
-      },
-      "destination": "skills/interrogate/references/lead-judgment.md",
-      "destinationSha256": "c207177f07b188b0c2a382dd31d5e6c02830a5b5ff24635dac689ddfe0b65748",
-      "disposition": "adapted",
-      "reviewedAdaptation": {
-        "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
-        "sourcePath": "pstack/skills/interrogate/references/lead-judgment.md",
-        "sourceSha256": "355f5195a76bc75a655125292369f2a8231a2b61fabe5188d8f1386060922b87",
-        "scope": "Slim context scaffolding and remove arbitrary finding cap; retain contextual judgment and visible act/dismiss reasons."
-      }
-    },
-    {
-      "sourcePath": "skills/interrogate/references/reviewer-prompt.md",
-      "sourceSha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
-      "priorLineage": {
-        "sourcePath": "skills/interrogate/references/reviewer-prompt.md",
-        "sourceSha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
-        "destination": "skills/interrogate/references/reviewer-prompt.md",
-        "destinationSha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
-        "disposition": "adopted"
-      },
-      "destination": "skills/interrogate/references/reviewer-prompt.md",
-      "destinationSha256": "16278fe4873c95c8e4ef4a44c7bfed60568dbb5d5da59fe2cd7f54b553dcd5bb",
-      "disposition": "adapted",
-      "reviewedAdaptation": {
-        "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
-        "sourcePath": "pstack/skills/interrogate/references/reviewer-prompt.md",
-        "sourceSha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25",
-        "scope": "Compact concrete evidence rules; reachable-path and no-rewrite safety retained."
-      }
-    },
-    {
-      "sourcePath": "skills/interrogate/references/rubric.md",
-      "sourceSha256": "59e9b7cc4556e735e1b859a7dd1f7637b013a2426a84825ac1c51979942c158a",
-      "priorLineage": {
-        "sourcePath": "skills/interrogate/references/rubric.md",
-        "sourceSha256": "59e9b7cc4556e735e1b859a7dd1f7637b013a2426a84825ac1c51979942c158a",
-        "destination": "skills/interrogate/references/rubric.md",
-        "destinationSha256": "59e9b7cc4556e735e1b859a7dd1f7637b013a2426a84825ac1c51979942c158a",
-        "disposition": "adopted"
-      },
-      "destination": "skills/interrogate/references/rubric.md",
-      "destinationSha256": "a44b0d9af114689f975206e868fbe73c481c2f27b500c672289f085ed35202cd",
-      "disposition": "adapted",
-      "reviewedAdaptation": {
-        "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
-        "sourcePath": "pstack/skills/interrogate/references/rubric.md",
-        "sourceSha256": "0f9c6bdb0b96e26dbde5f6407f417e0c02f54080e7a1268d8994f3c3ec6c5ac0",
-        "scope": "Upstream compression applied; hidden invocation retained."
-      }
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/interrogate/SKILL.md",
+          "sourceSha256": "25341c393f515c1e1fa9bce668b7551e9f98c195113a460ff524d3c1f7f50cd9",
+          "scope": "Compact synthesis/judgment; actual reviewer identities and frozen-scope fresh read-only delegates retained."
+        }
+      ]
     },
     {
       "sourcePath": "pstack/skills/ketchup/SKILL.md",
@@ -697,14 +662,14 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "3fe669c7c3b8f52c18b7c68ecce01c8691e844b9d2b41a8a6ff6432341451986",
       "destination": "skills/poteto-help/SKILL.md",
-      "destinationSha256": "d2ad6ad3949ca9d7e40bb726dc05cb3b5a9e5622f25956c7b577ebcb8807d255",
+      "destinationSha256": "195ccfb369ae92ad7fe81f23518a3580d49b8e1c2d5663c750a55fd7d47c30f4",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-help/SKILL.md",
-        "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
-        "scope": "Separately authorized Ketchup-video help route after f9a9fe7: explicit Pi invocation only, no rendering from help, authorized output and tool/effect gates, honest playback fallback. Other .34 help behavior preserved."
+        "sourceSha256": "768368881379d688c4e3bbdae55dd2d7874fde98a258324d3527de1bf09f9bd1",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -741,6 +706,13 @@
           "sourcePath": "pstack/skills/poteto-help/SKILL.md",
           "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
           "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+          "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+          "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
+          "scope": "Separately authorized Ketchup-video help route after f9a9fe7: explicit Pi invocation only, no rendering from help, authorized output and tool/effect gates, honest playback fallback. Other .34 help behavior preserved."
         }
       ]
     },
@@ -766,14 +738,14 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "1872323419a3e5c7783b1933f7a180ca26c25a6e1f4ec83bd65e091ebbfb812b",
       "destination": "skills/poteto-help/references/recipes.md",
-      "destinationSha256": "d0378abb7e5723f186b289a0e026527e7d20f9d7b5d38fac862448d62522e0e5",
+      "destinationSha256": "b093c2773ba99a660791a42d9c416c0c0319e2d87d5d956bcc54a0d1c640e954",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
-        "sourceSha256": "f2d573014f72f7c798b1998b45f4360a8a83e7b8026c4ed9074e56c5a9d49338",
-        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+        "sourceSha256": "5323aca73a39a3b607c2bb22cd33551fe893563dfd4b104df838da010e9fc702",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -803,6 +775,13 @@
           "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
           "sourceSha256": "f2d573014f72f7c798b1998b45f4360a8a83e7b8026c4ed9074e56c5a9d49338",
           "scope": "Pi prompts for rewrite-only Sharpen, formal maintenance and gated Statechart."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+          "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
+          "sourceSha256": "f2d573014f72f7c798b1998b45f4360a8a83e7b8026c4ed9074e56c5a9d49338",
+          "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
         }
       ]
     },
@@ -817,14 +796,14 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "50156b724a14b93a677146bcc768a916c485b7d570aeb1b892c1ce6dfc1a7979",
+      "destinationSha256": "0aff4ea5d0d2925122e302b9355ab9a6d09504066525813116cf0bee18b3675b",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
-        "sourceSha256": "2755f102e7a6d0496b429d1031a22fb353e1f3d523543367caeaae5c4ed6f544",
-        "scope": "Scoped Autopilot-full routing-summary correction to match upstream verification cadence. Preserve all other Pi/Herdsman mode instructions, authority and discovery policy."
+        "sourceSha256": "ee1848c973a112026f09ba12ea7a13c1654006e7bf170d1c34bf5d5816bc439b",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -861,6 +840,13 @@
           "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
           "sourceSha256": "2755f102e7a6d0496b429d1031a22fb353e1f3d523543367caeaae5c4ed6f544",
           "scope": "Three principle index summaries only; local runtime/controller/model and full-swarm rules retained."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+          "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
+          "sourceSha256": "2755f102e7a6d0496b429d1031a22fb353e1f3d523543367caeaae5c4ed6f544",
+          "scope": "Scoped Autopilot-full routing-summary correction to match upstream verification cadence. Preserve all other Pi/Herdsman mode instructions, authority and discovery policy."
         }
       ]
     },
@@ -889,22 +875,31 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autonomous-run.md",
-      "destinationSha256": "93f4d1f48ff3b85c8169a9a1957f01105d13d1c142708fd8625f95fb40d59ab2",
+      "destinationSha256": "3a31814c07a9125554408b23ab315e80b8785b54896d9da18f09dc830d709104",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
-        "sourceSha256": "15e54ad3ac92565613980772d8708de6e19cc4690bfd4bb3fb8836522407377b",
-        "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
-        "additionalSources": [
-          {
-            "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
-            "sourcePath": "pstack/docs/guide/07-overnight.md",
-            "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
-          }
-        ]
-      }
+        "sourceSha256": "e74323411b5a760ffa7393d908d07fed420c68f8dc2aed1267505eaeadf130f2",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
+          "sourceSha256": "15e54ad3ac92565613980772d8708de6e19cc4690bfd4bb3fb8836522407377b",
+          "scope": "Portable instruction adaptation with shared unattended trust gate and canonical preflight reference; Pi runtime and authorization preserved; unrelated artifact-location edits remain outside this commit.",
+          "additionalSources": [
+            {
+              "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+              "sourcePath": "pstack/docs/guide/07-overnight.md",
+              "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
+            }
+          ]
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/autopilot-full.md",
@@ -917,14 +912,14 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-full.md",
-      "destinationSha256": "0b4a3d940bbb014d64ec0ff7b7f32c6324df9851e2187a8fd2f7b96a82d2ff8d",
+      "destinationSha256": "db0dce2c58530c57addb2cf5a09d2c47322cc1c46aa056d8ebdd43d2a814adc1",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
-        "sourceSha256": "acf4f4a58c11045f9d3e8807d907a877e61ca6432b079f1087d7d30fc931566f",
-        "scope": "Exact upstream full-swarm triggers and single independent verifier follow-ups; lane-result reuse through Shipping. Preserve bounded handoffs, SHA leases, findings, live proof, receipt audits, merge-result/gate checks, third-rebase hold and Herdsman authority."
+        "sourceSha256": "2da35982565c6cf1dbe25f7a05ccae28f7729389aefc6dbb3e010eb883abdd19",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -954,6 +949,13 @@
           "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
           "sourceSha256": "acf4f4a58c11045f9d3e8807d907a877e61ca6432b079f1087d7d30fc931566f",
           "scope": "Durable bounded handoffs, SHA leases, merge-result and gate checks, third-rebase hold and Ketchup; stronger full-swarm, authority and Herdsman controls retained."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+          "sourceSha256": "acf4f4a58c11045f9d3e8807d907a877e61ca6432b079f1087d7d30fc931566f",
+          "scope": "Exact upstream full-swarm triggers and single independent verifier follow-ups; lane-result reuse through Shipping. Preserve bounded handoffs, SHA leases, findings, live proof, receipt audits, merge-result/gate checks, third-rebase hold and Herdsman authority."
         }
       ]
     },
@@ -968,14 +970,14 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-stack.md",
-      "destinationSha256": "6ee380aa385dddee7af178ec7bdaf1165b3a95d0d3bd6ac961ec1fdd327defa9",
+      "destinationSha256": "c1fb6bc81836534b62b2429ac86f98efbb378e9f260609063eb6689262b67544",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
-        "sourceSha256": "c6bcb18b2ce605e77a2a2225854590a4b9a687911f79331746d91a4fe9a52e60",
-        "scope": "Inherit exact upstream verification cadence and per-link Shipping result reuse. Preserve single topology writer, owner rebase/retarget bans, dependency branches, leases, current CI/mergeability and operator landing authority."
+        "sourceSha256": "34de4bb101dd56524d8067c73bba5988ead6f93d3ab8f96ac13a6adcb43696cb",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -1005,6 +1007,13 @@
           "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
           "sourceSha256": "c6bcb18b2ce605e77a2a2225854590a4b9a687911f79331746d91a4fe9a52e60",
           "scope": "Single topology writer, owner rebase/retarget bans, dependency branches and landing freeze; full-swarm and operator authority retained."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+          "sourceSha256": "c6bcb18b2ce605e77a2a2225854590a4b9a687911f79331746d91a4fe9a52e60",
+          "scope": "Inherit exact upstream verification cadence and per-link Shipping result reuse. Preserve single topology writer, owner rebase/retarget bans, dependency branches, leases, current CI/mergeability and operator landing authority."
         }
       ]
     },
@@ -1019,8 +1028,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/babysit.md",
-      "destinationSha256": "8d994842917698d5efc3e470835344f3d21a51b77bb9b921f5db24b599c79bd4",
-      "disposition": "adapted"
+      "destinationSha256": "32171693f37025bec98b22db7450839ff1f76c383f6280428f700465cb0551cd",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/babysit.md",
+        "sourceSha256": "d546a937ed800abe1d29aae8a689fb57212280fdde62fae1fc1dc7f2efd9d904",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/bug-fix.md",
@@ -1047,8 +1063,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/eval.md",
-      "destinationSha256": "253361636d4d14202a06d25a9ccf7c6831c3cc372ab5f150761a3f70c5d7efda",
-      "disposition": "adapted"
+      "destinationSha256": "8c7b9593a50dbf565ebb196c7345e87fbf7a64eb280a59abb5d936fc49f0e6c9",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/eval.md",
+        "sourceSha256": "a93d449a908236afa6645179651844094b1547dbab4e484cffcdda630e4b90bf",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/feature.md",
@@ -1110,14 +1133,14 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "destinationSha256": "e36d25c1a1599a07b411534fff4238c2f5070075b19473c4d20123503ce7cbbf",
+      "destinationSha256": "7c624a815869bc0b931c10ddb7a02e65d876f189a7529f8a7734cdc1dc1df285",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
-        "sourceSha256": "5f239457bfdec3345c92caa06c59bf0257c662b89353f25a1c02ea942dcd00b1",
-        "scope": "Exact upstream code-ready/major-change full-swarm cadence, single independent verifier follow-ups and Shipping result reuse. Preserve ten live scenario inventory, findings, leases, gate approval and merge-result checks."
+        "sourceSha256": "2b4fbb547e5ccfe46d1279d714eb0199d28e995f06bdc4eda4afbca9221fbbe6",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -1133,6 +1156,13 @@
           "sourcePath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
           "sourceSha256": "5f239457bfdec3345c92caa06c59bf0257c662b89353f25a1c02ea942dcd00b1",
           "scope": "Coherent leases, gate approval, merge-result checks and Ketchup; keep full-swarm changed-patch cadence rather than upstream single-verifier reduction."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
+          "sourceSha256": "5f239457bfdec3345c92caa06c59bf0257c662b89353f25a1c02ea942dcd00b1",
+          "scope": "Exact upstream code-ready/major-change full-swarm cadence, single independent verifier follow-ups and Shipping result reuse. Preserve ten live scenario inventory, findings, leases, gate approval and merge-result checks."
         }
       ]
     },
@@ -1147,14 +1177,14 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/opening-a-pr.md",
-      "destinationSha256": "2c29e4c36ce50d9d8f14d1762eb26fb2bde8e9d454eb211ede9875442e208651",
+      "destinationSha256": "8c7b68fc919f3b87b177aa4b4f1d0ea1ed2b29a62471c232d3c8f27465ebdd5b",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
-        "sourceSha256": "a5aef646de8b651306c2d10974623650e4a013a245aec1c00525bbe0e31bfa76",
-        "scope": "Post-parent-merge child move via sole authorized topology writer and Shipping safeguards."
+        "sourceSha256": "b22b7ad7cd102b99d334f4399ae1dba78e0aaf4bee2d5241fda71753c7ce48f9",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -1170,6 +1200,13 @@
           "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
           "sourceSha256": "931070f5674e81a191277253d4e02b1c45d091b223f93bf506d3896a428a5967",
           "scope": "Condensed outline; no automatic worktrees/hard reset; status/ownership/authorization gate, lead-owned review and commit-body hygiene."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+          "sourceSha256": "a5aef646de8b651306c2d10974623650e4a013a245aec1c00525bbe0e31bfa76",
+          "scope": "Post-parent-merge child move via sole authorized topology writer and Shipping safeguards."
         }
       ]
     },
@@ -1184,14 +1221,14 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/orchestrate.md",
-      "destinationSha256": "c53f2ff94e5d09ba4e556950fe7faa3a51e28af14ad50ab681fa507d61761e19",
+      "destinationSha256": "654bb5357c7bdbf671111f7e39356640f5f2af6917d5e6479b1373967b7b0bf8",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
-        "sourceSha256": "08dce6c9e7be1d13bc6944ab9b51665f935c531437f5e088bc53d2a62099ef05",
-        "scope": "Forge-base-chain frontier and single topology writer; current implementation uses verified gh contract and explicitly refuses unverified Origin discovery."
+        "sourceSha256": "dfd7e53e7ef844ae11394672b2f8e22ced47b977ff6e947fef837953cc95bb86",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -1207,6 +1244,13 @@
               "sourceSha256": "d7bd33a3d880768688dff4c1c2b5481ca9f0f194f5d97e44b65c9f96624d3ff0"
             }
           ]
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/orchestrate.md",
+          "sourceSha256": "08dce6c9e7be1d13bc6944ab9b51665f935c531437f5e088bc53d2a62099ef05",
+          "scope": "Forge-base-chain frontier and single topology writer; current implementation uses verified gh contract and explicitly refuses unverified Origin discovery."
         }
       ]
     },
@@ -1298,8 +1342,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/session-pickup.md",
-      "destinationSha256": "a0dd9b97f2d0da961491ecfed2974d6512ada7c9696e0165c7398383a0fa309d",
-      "disposition": "adopted"
+      "destinationSha256": "1a992084fc35cb1d700adcadf87424b49801690f673047554e81578b494757fe",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/session-pickup.md",
+        "sourceSha256": "d194f2a7ef392c1598ef3f0e3b561370ca25c2c7a78308007af4aa46ada8ee12",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/shipping.md",
@@ -1384,15 +1435,24 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/worktree-cleanup.md",
-      "destinationSha256": "4158961119a588048d209cd24930a324b613deb2e0019e1be59feef595356306",
+      "destinationSha256": "72c163a06d011c4bcd534cba4ba5ef69ed47bee1955fbdf6b11e4236aea34e36",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
-        "sourceSha256": "ffecceb6d2fa7e07ca5703c968f4b7c5947309ed695d51fc73a55c3da5906480",
-        "scope": "Configurable audit bases with validation and reporting; Pi cleanup authority and pinned-work safety retained."
-      }
+        "sourceSha256": "be04ae0afe19d4a4da5bcc4e94455f68dbebd1cda6eb0f456ca0d358ecf76c00",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "1dcc2bacde73ddd284803b7af28164d0436198fc",
+          "sourcePath": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
+          "sourceSha256": "ffecceb6d2fa7e07ca5703c968f4b7c5947309ed695d51fc73a55c3da5906480",
+          "scope": "Configurable audit bases with validation and reporting; Pi cleanup authority and pinned-work safety retained."
+        }
+      ]
     },
     {
       "sourcePath": "skills/poteto-mode/references/bugbot-triage.md",
@@ -1447,8 +1507,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/bootstrap.ts",
-      "destinationSha256": "6b0e051f7eb6a4cb360a158cbc3f657da0d5293f4cac948ded98323f5e17025f",
-      "disposition": "adapted"
+      "destinationSha256": "c6134cd00f7428db9efc75cc33e1761db2254f8255eb8eecf86417add064087d",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/bootstrap.ts",
+        "sourceSha256": "ccd2ed08fd9da9d0d942e5f2491cfc74bb92d8a08fa51755e0da1ac8de287361",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/bun.lock",
@@ -1516,78 +1583,6 @@
       "disposition": "adapted"
     },
     {
-      "sourcePath": "skills/poteto-mode/scripts/orch/orch.test.ts",
-      "sourceSha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
-      "priorLineage": {
-        "sourcePath": "skills/poteto-mode/scripts/orch/orch.test.ts",
-        "sourceSha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
-        "destination": "skills/poteto-mode/scripts/orch/orch.test.ts",
-        "destinationSha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
-        "disposition": "adopted"
-      },
-      "destination": "skills/poteto-mode/scripts/orch/orch.test.ts",
-      "destinationSha256": "4f8b85a1703c980922ce3327a6c9d1c36cb5e90609fa40aaee6b70f8a629d33d",
-      "disposition": "adapted",
-      "reviewedAdaptation": {
-        "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
-        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/orch.test.ts",
-        "sourceSha256": "5e80b416bdcd68e4067690ce857345852fd2e0db3dcf3e25607999cd55b963d2",
-        "scope": "Maintain existing frontier fixtures/assertions for gh contract without adding cases; do not import upstream expanded unit tests."
-      }
-    },
-    {
-      "sourcePath": "skills/poteto-mode/scripts/orch/orch.ts",
-      "sourceSha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
-      "priorLineage": {
-        "sourcePath": "skills/poteto-mode/scripts/orch/orch.ts",
-        "sourceSha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
-        "destination": "skills/poteto-mode/scripts/orch/orch.ts",
-        "destinationSha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
-        "disposition": "adopted"
-      },
-      "destination": "skills/poteto-mode/scripts/orch/orch.ts",
-      "destinationSha256": "47c92c57e8276616d8de94665a126bd832e748036afa8d0ffdbacb7946decb5c",
-      "disposition": "adapted",
-      "reviewedAdaptation": {
-        "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
-        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/orch.ts",
-        "sourceSha256": "47c92c57e8276616d8de94665a126bd832e748036afa8d0ffdbacb7946decb5c",
-        "scope": "Forge selector for PR-base-chain discovery; explicit local store contract retained."
-      }
-    },
-    {
-      "sourcePath": "skills/poteto-mode/scripts/orch/store.ts",
-      "sourceSha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
-      "priorLineage": {
-        "sourcePath": "skills/poteto-mode/scripts/orch/store.ts",
-        "sourceSha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
-        "destination": "skills/poteto-mode/scripts/orch/store.ts",
-        "destinationSha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
-        "disposition": "adopted"
-      },
-      "destination": "skills/poteto-mode/scripts/orch/store.ts",
-      "destinationSha256": "a6d0b3e1edaaf267f9033a3a9132e923c6ad1764a2dd901350187ddf162df456",
-      "disposition": "adapted",
-      "reviewedAdaptation": {
-        "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
-        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/store.ts",
-        "sourceSha256": "bf0ed29c44093ee3b333aa10b138612f773c81eda73df7dc5337c59713f35a97",
-        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
-      },
-      "adaptationHistory": [
-        {
-          "sourceRepository": "https://github.com/cursor/plugins.git",
-          "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
-          "sourcePath": "pstack/skills/poteto-mode/scripts/orch/store.ts",
-          "sourceSha256": "558cfda533e1ebe7c8d7842604f07e0be7618759cf129b4c2397a8e29516ecea",
-          "scope": "Replace Graphite with gh PR-base-chain discovery; strict completeness/identity/ref/cycle/fork checks and preserved store generation/pins; Origin refuses unverified contract."
-        }
-      ]
-    },
-    {
       "sourcePath": "skills/poteto-mode/scripts/package.json",
       "sourceSha256": "7d07b55cd6450ce07873053d88951ac5727db415285203a8547346cb4dea159a",
       "priorLineage": {
@@ -1598,8 +1593,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/package.json",
-      "destinationSha256": "7d07b55cd6450ce07873053d88951ac5727db415285203a8547346cb4dea159a",
-      "disposition": "adopted"
+      "destinationSha256": "523b172e45f294285f72b4349ecbbc4411633e791c9526feefbcfa52aa0bd7d7",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/package.json",
+        "sourceSha256": "c9db6bb9362c6e319e395b358b113ebc72ab06b6c5e3a095093f6ebfdafe1c57",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/watch-pr/cli.test.ts",
@@ -1826,8 +1828,15 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/watch-pr/watch-pr",
-      "destinationSha256": "e0f5e566c7486039b9ffaa9a20290c50f18cbaca9daa5fa025eb7e7fc60e753b",
-      "disposition": "adapted"
+      "destinationSha256": "e1f7e6118d5120b687d50ab6cc50c806a8b6453463894e9424394f3edf0e4eb1",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/watch-pr/watch-pr",
+        "sourceSha256": "d955603be6cc0e8b8ffcec722f635192b2261410b1f2929abea94480e47eb5d4",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/scripts/worktree-audit.sh",
@@ -1840,14 +1849,14 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/scripts/worktree-audit.sh",
-      "destinationSha256": "bcd3ee09025eea0840f55524453e03d6462f4e07799705d8ee2de4adc2af9e81",
+      "destinationSha256": "50545a2416289938039a4cacaec6dfc796c3323ebe5e06abebe416dba2b219ba",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
         "sourceSha256": "06be04b38346ded24ce761d373726f98cd9b9737f20ec98214e88b5f08f521b8",
-        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -1863,6 +1872,13 @@
           "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
           "sourceSha256": "e0a94e5e5b1ff60638916e440600e15851f7b79bc1a1d1f602fde05d465e2ec0",
           "scope": "Origin evidence remains unverified; fall back to bounded validated gh or hold unknown. Protect open/draft, failed dirty reads, Pi transcript scope and paths with spaces."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/worktree-audit.sh",
+          "sourceSha256": "06be04b38346ded24ce761d373726f98cd9b9737f20ec98214e88b5f08f521b8",
+          "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
         }
       ]
     },
@@ -1977,15 +1993,24 @@
       "sourcePath": "pstack/skills/principle-explain-the-number/SKILL.md",
       "sourceSha256": "5aac99e7ce0bb1b37e2579acf4fe88c32a1456d9d46afd4a57cfe1df9092e89c",
       "destination": "skills/principle-explain-the-number/SKILL.md",
-      "destinationSha256": "82f1615ce8afcc025ffd1462c954af1792f205af3f08c0791498918c011afad6",
+      "destinationSha256": "f4edf575fcd1edba997ece7a03701f63c4e7217fcf7bbdadf37ad03d72c08191",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/principle-explain-the-number/SKILL.md",
-        "sourceSha256": "cd5a25f9e7cf023627ccb470dc5faa97542f29b4319496a32b839a8e1e988047",
-        "scope": "Compressed evidence/limiter guidance; authorized runners and honest missing-run gaps retained."
-      }
+        "sourceSha256": "3c84fbf9a7d9842abcfcd134010782b32092ac3d3fb4aaf9ed5732dca83aa58c",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+          "sourcePath": "pstack/skills/principle-explain-the-number/SKILL.md",
+          "sourceSha256": "cd5a25f9e7cf023627ccb470dc5faa97542f29b4319496a32b839a8e1e988047",
+          "scope": "Compressed evidence/limiter guidance; authorized runners and honest missing-run gaps retained."
+        }
+      ]
     },
     {
       "sourcePath": "skills/principle-fix-root-causes/SKILL.md",
@@ -2349,8 +2374,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/recall/SKILL.md",
-      "destinationSha256": "198653699cab9afbfd2b6b4b0b5ccd62f1f793c70ab00ccde40cb864a0545564",
-      "disposition": "adapted"
+      "destinationSha256": "4ac5cc40e9c39796f9e55b72dda50b5c6a1e5d504f310e6ac10bcbdf76c9978a",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/recall/SKILL.md",
+        "sourceSha256": "b0ceb996259c3404532f61e4b010df4e3d80d7ddbed85b3c302895723eb62a89",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/reflect/SKILL.md",
@@ -2363,14 +2395,14 @@
         "disposition": "adapted"
       },
       "destination": "skills/reflect/SKILL.md",
-      "destinationSha256": "077ceaaf1a9ed14f1e099af4971d5653d0a5679e3490f9b1b6f5d63212b44b3f",
+      "destinationSha256": "dad5c40c57f90eb0718b405d7a43c3047973269a57231febbc4ba812556c234f",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
-        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
         "sourcePath": "pstack/skills/reflect/SKILL.md",
         "sourceSha256": "9648df23cabaae99b78ed59cd93b6f35ebbf02105d228e3d0b5c3a3b3419d753",
-        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
       },
       "adaptationHistory": [
         {
@@ -2379,6 +2411,13 @@
           "sourcePath": "pstack/skills/reflect/SKILL.md",
           "sourceSha256": "f5e9200f37e2a4567c0eeb0ba244fde66c1b3f35e3b7a883de2f85b3bda7365a",
           "scope": "Pi transcript scope, approval and async handoff retained. Backlog recommendations/drafts by default; external writes need authority/tools."
+        },
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+          "sourcePath": "pstack/skills/reflect/SKILL.md",
+          "sourceSha256": "9648df23cabaae99b78ed59cd93b6f35ebbf02105d228e3d0b5c3a3b3419d753",
+          "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
         }
       ]
     },
@@ -2523,8 +2562,15 @@
         "disposition": "adapted"
       },
       "destination": "skills/show-me-your-work/SKILL.md",
-      "destinationSha256": "5969bf6f251e922a5976f3b7aa7edece303e1cb1e43b1908938b2f31c3f006ac",
-      "disposition": "adapted"
+      "destinationSha256": "9b11de7a4003dac2cd8cfab2d5e9e9d0d866a581b9865c5b57fa3e159a442ad3",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/show-me-your-work/SKILL.md",
+        "sourceSha256": "920a8217cbb62f92a2222fb81fc9eab17ecd554a0277e444a95a927195139bd1",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
     },
     {
       "sourcePath": "skills/show-me-your-work/references/decision-log-template.tsv",
@@ -3228,8 +3274,23 @@
       "sourcePath": "pstack/skills/ketchup-video/SKILL.md",
       "sourceSha256": "74f1b9e61f8479e2be5b91a4f53136f6ad8e144fd950c9848de6aa1cdbb7645c",
       "destination": "skills/ketchup-video/SKILL.md",
-      "destinationSha256": "145b0a52f386cecbb754ad9bfed6a05735352b166469a4f710d158d8c0328ac4",
-      "disposition": "adapted"
+      "destinationSha256": "8326ec134df5f8a133e72e726d0f0d5dcf66083bc435f7554020affc098ddbfc",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/ketchup-video/SKILL.md",
+        "sourceSha256": "027aed9a01adf208aeac3a134f47d12f7c1e42d6fea03095aedc2bae58cdcfd1",
+        "scope": "Selective .35/.36 intent with Pi ownership, authority and tool ceilings; see docs/upstream-alignment-0.15.36.md."
+      }
+    },
+    {
+      "sourcePath": "skills/poteto-mode/references/session-history.md",
+      "sourceSha256": "371d9369c4b2e2da448845c170d8cc4b44f4cb50b1351ea8219264836c00e1b5",
+      "destination": "skills/poteto-mode/references/session-history.md",
+      "sourceOrigin": "Local Pi session storage adaptation for issue #8",
+      "destinationSha256": "371d9369c4b2e2da448845c170d8cc4b44f4cb50b1351ea8219264836c00e1b5",
+      "disposition": "adopted"
     }
   ],
   "generated": [
@@ -3239,15 +3300,15 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "65175bb9ea600f0532521a2fe1b41cba4c976528d4bc5a48413ed8522209736b"
+      "sha256": "ba11ecc987b6f85f82488bde365a9fdcc6f32428b040267ea4827eac596d16e5"
     },
     {
       "path": "README.md",
-      "sha256": "dcfd64b505761eb75e004fafd0f60c89a113e5ea64122b1110a860ce6028b65a"
+      "sha256": "d790ec56dc416f891872db500ee62da09af7f4f093e269d221cafb3f21f6cea0"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "4bae46573a7e92ef499b0d94894eaa9c697865462cef72240b966062f428af1c"
+      "sha256": "439fcde6bdf742cdab8a85d8b417e7e0bcf0660c699d9913f431f2e3cf15311d"
     },
     {
       "path": "config/artifact-locations.md",
@@ -3318,6 +3379,10 @@
       "sha256": "37d04fc4f4585a5b278d6dc89dd5fe972b52ec932e661bff77777cbad2210e28"
     },
     {
+      "path": "docs/upstream-alignment-0.15.36.md",
+      "sha256": "d7fea0d7d6161af84452c2a7722e52485aa46af83073fb63d128fa148b10cc47"
+    },
+    {
       "path": "extensions/pstack-herdsman/index.ts",
       "sha256": "bfc474477c8f6f763d5390acf686dcc5fa41f29297f0ced9af38cd0777b1a909"
     },
@@ -3327,7 +3392,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "c513a31d106c57b4d2eaf9021fad31f4b4af312f61d4b16d0b97d00274326c85"
+      "sha256": "8c4a53620ae0e96ca7b7d90b7e45489203516ab5f177fa59d200e49be1ac6f12"
     },
     {
       "path": "scripts/backend-contract.mjs",
@@ -3363,7 +3428,7 @@
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "b0cf87754cb5d31dc8fc0d604e041cf0a8cee8a172851acf007e346caecda6a8"
+      "sha256": "f80ef6d5b59da098a80b59ed8b42e47465dd9f018682177c375582d1d78c4fdd"
     }
   ],
   "metadataHistory": [
@@ -3509,6 +3574,155 @@
       "destination": "skills/statechart/scripts/tlc-to-chart.mjs",
       "destinationSha256": "ce41082fbc7aac05f135ccfd1e80705c60e5b38364187dd22fb1e27fdb017cd6",
       "disposition": "adopted"
+    },
+    {
+      "sourcePath": "skills/poteto-mode/scripts/orch/orch.test.ts",
+      "sourceSha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
+      "priorLineage": {
+        "sourcePath": "skills/poteto-mode/scripts/orch/orch.test.ts",
+        "sourceSha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
+        "destination": "skills/poteto-mode/scripts/orch/orch.test.ts",
+        "destinationSha256": "174b86d21ff51ccd28d1a8c938cb2e0c6fa287b209d4ca6c03932fcb1b53372e",
+        "disposition": "adopted"
+      },
+      "destination": "skills/poteto-mode/scripts/orch/orch.test.ts",
+      "destinationSha256": "4f8b85a1703c980922ce3327a6c9d1c36cb5e90609fa40aaee6b70f8a629d33d",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/orch.test.ts",
+        "sourceSha256": "5e80b416bdcd68e4067690ce857345852fd2e0db3dcf3e25607999cd55b963d2",
+        "scope": "Maintain existing frontier fixtures/assertions for gh contract without adding cases; do not import upstream expanded unit tests."
+      }
+    },
+    {
+      "sourcePath": "skills/poteto-mode/scripts/orch/orch.ts",
+      "sourceSha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
+      "priorLineage": {
+        "sourcePath": "skills/poteto-mode/scripts/orch/orch.ts",
+        "sourceSha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
+        "destination": "skills/poteto-mode/scripts/orch/orch.ts",
+        "destinationSha256": "f091687df627a0b75fabd54af58945a9cd6c7039ef0622012ac9ed60cd8ec434",
+        "disposition": "adopted"
+      },
+      "destination": "skills/poteto-mode/scripts/orch/orch.ts",
+      "destinationSha256": "47c92c57e8276616d8de94665a126bd832e748036afa8d0ffdbacb7946decb5c",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/orch.ts",
+        "sourceSha256": "47c92c57e8276616d8de94665a126bd832e748036afa8d0ffdbacb7946decb5c",
+        "scope": "Forge selector for PR-base-chain discovery; explicit local store contract retained."
+      }
+    },
+    {
+      "sourcePath": "skills/poteto-mode/scripts/orch/store.ts",
+      "sourceSha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
+      "priorLineage": {
+        "sourcePath": "skills/poteto-mode/scripts/orch/store.ts",
+        "sourceSha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
+        "destination": "skills/poteto-mode/scripts/orch/store.ts",
+        "destinationSha256": "0eae7cf69282e827b1227166f2e32cee3560f2f3e65b3f1f2faf6fb83d3b4c5b",
+        "disposition": "adopted"
+      },
+      "destination": "skills/poteto-mode/scripts/orch/store.ts",
+      "destinationSha256": "a6d0b3e1edaaf267f9033a3a9132e923c6ad1764a2dd901350187ddf162df456",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "519d36aa98955bf680db01bcde5fdfba686dc901",
+        "sourcePath": "pstack/skills/poteto-mode/scripts/orch/store.ts",
+        "sourceSha256": "bf0ed29c44093ee3b333aa10b138612f773c81eda73df7dc5337c59713f35a97",
+        "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
+      },
+      "adaptationHistory": [
+        {
+          "sourceRepository": "https://github.com/cursor/plugins.git",
+          "sourceCommit": "6ce45c59b9301a638c1fe1a7b8dc2a82b650898f",
+          "sourcePath": "pstack/skills/poteto-mode/scripts/orch/store.ts",
+          "sourceSha256": "558cfda533e1ebe7c8d7842604f07e0be7618759cf129b4c2397a8e29516ecea",
+          "scope": "Replace Graphite with gh PR-base-chain discovery; strict completeness/identity/ref/cycle/fork checks and preserved store generation/pins; Origin refuses unverified contract."
+        }
+      ]
+    },
+    {
+      "sourcePath": "skills/interrogate/references/code-quality-review.md",
+      "sourceSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
+      "priorLineage": {
+        "sourcePath": "skills/interrogate/references/code-quality-review.md",
+        "sourceSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
+        "destination": "skills/interrogate/references/code-quality-review.md",
+        "destinationSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
+        "disposition": "adopted"
+      },
+      "destination": "skills/interrogate/references/code-quality-review.md",
+      "destinationSha256": "623d3d8122d075c303b562783b471a732992e84166b318f85ab6d6c118b13304",
+      "disposition": "adopted"
+    },
+    {
+      "sourcePath": "skills/interrogate/references/lead-judgment.md",
+      "sourceSha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
+      "priorLineage": {
+        "sourcePath": "skills/interrogate/references/lead-judgment.md",
+        "sourceSha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
+        "destination": "skills/interrogate/references/lead-judgment.md",
+        "destinationSha256": "6e5bdf5670eb34017692e9b6c546f36ac7552e6bb9f3f2f3429164fcc46a9361",
+        "disposition": "adopted"
+      },
+      "destination": "skills/interrogate/references/lead-judgment.md",
+      "destinationSha256": "c207177f07b188b0c2a382dd31d5e6c02830a5b5ff24635dac689ddfe0b65748",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "0b8e952052d482ee6de06deebf14d590d77b1b34",
+        "sourcePath": "pstack/skills/interrogate/references/lead-judgment.md",
+        "sourceSha256": "355f5195a76bc75a655125292369f2a8231a2b61fabe5188d8f1386060922b87",
+        "scope": "Slim context scaffolding and remove arbitrary finding cap; retain contextual judgment and visible act/dismiss reasons."
+      }
+    },
+    {
+      "sourcePath": "skills/interrogate/references/reviewer-prompt.md",
+      "sourceSha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
+      "priorLineage": {
+        "sourcePath": "skills/interrogate/references/reviewer-prompt.md",
+        "sourceSha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
+        "destination": "skills/interrogate/references/reviewer-prompt.md",
+        "destinationSha256": "a397cc61102add709803d917fb23d726920525bf23e7c06dc4ed0b5cbeb00e54",
+        "disposition": "adopted"
+      },
+      "destination": "skills/interrogate/references/reviewer-prompt.md",
+      "destinationSha256": "16278fe4873c95c8e4ef4a44c7bfed60568dbb5d5da59fe2cd7f54b553dcd5bb",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/interrogate/references/reviewer-prompt.md",
+        "sourceSha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25",
+        "scope": "Compact concrete evidence rules; reachable-path and no-rewrite safety retained."
+      }
+    },
+    {
+      "sourcePath": "skills/interrogate/references/rubric.md",
+      "sourceSha256": "59e9b7cc4556e735e1b859a7dd1f7637b013a2426a84825ac1c51979942c158a",
+      "priorLineage": {
+        "sourcePath": "skills/interrogate/references/rubric.md",
+        "sourceSha256": "59e9b7cc4556e735e1b859a7dd1f7637b013a2426a84825ac1c51979942c158a",
+        "destination": "skills/interrogate/references/rubric.md",
+        "destinationSha256": "59e9b7cc4556e735e1b859a7dd1f7637b013a2426a84825ac1c51979942c158a",
+        "disposition": "adopted"
+      },
+      "destination": "skills/interrogate/references/rubric.md",
+      "destinationSha256": "a44b0d9af114689f975206e868fbe73c481c2f27b500c672289f085ed35202cd",
+      "disposition": "adapted",
+      "reviewedAdaptation": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
+        "sourcePath": "pstack/skills/interrogate/references/rubric.md",
+        "sourceSha256": "0f9c6bdb0b96e26dbde5f6407f417e0c02f54080e7a1268d8994f3c3ec6c5ac0",
+        "scope": "Upstream compression applied; hidden invocation retained."
+      }
     }
   ]
 }

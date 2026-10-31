@@ -32,12 +32,12 @@ For verification questions, identify whether a matching project verification ski
 | Rewrite a prompt deeper, not bigger, without doing the task | [sharpen](../sharpen/SKILL.md) |
 | Recent cross-session context on a topic | [recall](../recall/SKILL.md) |
 | Current-chat outcomes, real visuals, and every self-contained human decision | [ketchup](../ketchup/SKILL.md) |
-| Explicitly requested silent slide-video catch-up, with human calls in text | [ketchup-video](../ketchup-video/SKILL.md) |
+| Explicitly requested subtitled slide-video catch-up, with human calls in text | [ketchup-video](../ketchup-video/SKILL.md) |
 | Breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
 | Types and module design | [architect](../architect/SKILL.md) |
 | Same brief, competing candidates and synthesis | [arena](../arena/SKILL.md) |
 | Partitioned coverage or races | [swarm](../swarm/SKILL.md) |
-| Independent adversarial review | [interrogate](../interrogate/SKILL.md) |
+| Execution-backed independent adversarial review | [interrogate](../interrogate/SKILL.md) |
 | Prose cleanup or document structure | [unslop](../unslop/SKILL.md), [technical-writing](../technical-writing/SKILL.md) |
 | Reusable app proof or drift maintenance | [create-verification-skill](../create-verification-skill/SKILL.md), [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
 | Formal properties beyond test reach, with no existing check | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
@@ -60,6 +60,7 @@ Playbooks are files selected inside poteto-mode, not standalone commands. Read t
 - Recall reconstructs recent topic context; Ketchup summarizes this chat. Only an explicit `/skill:ketchup-video` request routes to video. Read that skill before recommending it: it bundles no renderer, requires authorized output outside the repository and separate approval for installations or external effects, and does not assume native video generation or Pi inline playback. Unsupported or unverified playback uses an absolute `file://` output link for an external player; missing tools or failed rendering/inspection returns a one-line explanation and text calls only. Help never renders or installs anything. A specific old branch or session routes to [Session pickup](../poteto-mode/playbooks/session-pickup.md).
 - For a plan-only deliverable, use [Multi-phase plan](../poteto-mode/playbooks/multi-phase-plan.md). For unsettled design, use [Prototype](../poteto-mode/playbooks/prototype.md) or Architect first. State a checkpoint when implementation needs approval.
 - PR status or babysitting routes to [Babysit](../poteto-mode/playbooks/babysit.md). Status does not authorize fixes or merge. Landing routes to [Shipping](../poteto-mode/playbooks/shipping.md) with explicit authority and independent verification.
+- Autopilot-full delivers merged independent PRs only with merge authority. Autopilot-stack delivers verified PRs without merging. Stack only real dependencies.
 - One task to a predicate routes to [Autonomous run](../poteto-mode/playbooks/autonomous-run.md). A multi-day program routes to [Orchestrate](../poteto-mode/playbooks/orchestrate.md). Neither grants scheduling or broader authority.
 - Pausing routes to [Pause safely](../poteto-mode/playbooks/pause-safely.md). Skill edits use [Authoring a skill](../poteto-mode/playbooks/authoring-a-skill.md); evaluations require an authorized available runner.
 

@@ -14,7 +14,7 @@ Invoke when the user says "reflect" or "/skill:reflect". Skip when the conversat
 
 ## 1. Locate the active transcript
 
-The parent finds its own transcript file before fanning out. Use the exact active session path exposed by the runtime when available; do not assume an environment variable or guess the session identity. For earlier sessions, use only `~/.pi/agent/sessions/--<cwd>--/`, where `<cwd>` is the resolved absolute cwd with its leading separator removed and each remaining slash, backslash, or colon replaced by `-`. Never glob other working-directory folders. That crosses project boundaries and reads unrelated private chats.
+The parent reads [session history resolution](../poteto-mode/references/session-history.md) and resolves its own exact transcript before fan-out. Respect custom storage and validate workspace headers. Never guess identity or glob other workspaces.
 
 For each candidate, inspect the session header for its cwd, then locate the first user message record and match its text to the conversation's opening prompt. Take the matching path. If no path resolves, write a tight digest of the session and pass that instead.
 

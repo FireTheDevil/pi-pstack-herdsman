@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const scriptsDirectory = import.meta.dir;
@@ -46,45 +46,6 @@ export function assertDependenciesInstalled(): void {
     !existsSync(installKeyPath) ||
     readFileSync(installKeyPath, "utf8").trim() !== currentInstallKey()
   ) {
-    throw new Error("Bounded watcher requires current installed dependencies; no installation or restart was attempted");
+    throw new Error("Watcher requires pre-provisioned dependencies and a current install key. See README helper setup; no installation or restart was attempted");
   }
-}
-
-export function ensureDependenciesInstalled(): void {
-  const installKey = currentInstallKey();
-  if (
-    existsSync(commanderPackagePath) &&
-    existsSync(installKeyPath) &&
-    readFileSync(installKeyPath, "utf8").trim() === installKey
-  ) {
-    return;
-  }
-
-  const result = Bun.spawnSync(
-    [process.execPath, "install", "--frozen-lockfile"],
-    { cwd: scriptsDirectory }
-  );
-  if (result.exitCode !== 0) {
-    process.stdout.write(result.stdout);
-    process.stderr.write(result.stderr);
-    throw new Error(
-      `bun install --frozen-lockfile exited with status ${result.exitCode}`
-    );
-  }
-  if (!existsSync(commanderPackagePath)) {
-    throw new Error(
-      "bun install --frozen-lockfile completed without installing commander"
-    );
-  }
-
-  writeFileSync(installKeyPath, `${installKey}\n`);
-
-  const restarted = Bun.spawnSync([process.execPath, ...process.argv.slice(1)], {
-    cwd: process.cwd(),
-    env: process.env,
-    stdin: "inherit",
-    stdout: "inherit",
-    stderr: "inherit",
-  });
-  process.exit(restarted.exitCode ?? 1);
 }
