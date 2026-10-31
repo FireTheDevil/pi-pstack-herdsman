@@ -738,7 +738,7 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "1872323419a3e5c7783b1933f7a180ca26c25a6e1f4ec83bd65e091ebbfb812b",
       "destination": "skills/poteto-help/references/recipes.md",
-      "destinationSha256": "b093c2773ba99a660791a42d9c416c0c0319e2d87d5d956bcc54a0d1c640e954",
+      "destinationSha256": "6a5e4fae2b1be1a91f6dee6c11d85b5841772839dff8ea2eb7ab203ceb49c571",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",

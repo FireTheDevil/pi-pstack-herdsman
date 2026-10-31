@@ -44,7 +44,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 - `/poteto-mode I am stepping away. <goal> within <scope>. I authorize a fresh external worktree off <base> and local commits, but no push or merge. Done means <checks>. Complete the trust preflight, keep a decision log, and stop with evidence if blocked. No periodic scheduler is authorized.`
 - `/skill:show-me-your-work catch me up on what you did last night.` Read its Attention section first.
 - `/poteto-mode full autopilot on this queue. each item is independent.`
-- `/poteto-mode autopilot these changes but autopilot, don't merge. i'll land the stack.`
+- `/poteto-mode autopilot these changes, but don't merge. i'll land them.`
 - `/skill:reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.
 - `/skill:bro` restates the last reply in plain words.
 
