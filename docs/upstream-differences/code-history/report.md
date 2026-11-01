@@ -17,6 +17,12 @@ Local `scripts/check-host.mjs:63` asserts `skills.skills.length === 57`. Current
 
 Evidence: read actual checker lines 57–65, compare current 58 SKILL.md paths and validator; fresh `npm run check` passes with 58. Recommended owner correction: update/derive the current expected count while keeping diagnostics/hidden-skill checks. No supported-host execution was performed, and no loader failure is inferred.
 
+## C-001 resolution
+
+The owner approved updating the expected count to 58. `scripts/check-host.mjs` now asserts 58 skills and retains the diagnostics and explicit-only checks. The frozen audit evidence above and its path hashes remain unchanged.
+
+A focused run of installed Pi 1.4.0's actual `loadSkillsFromDir` against this repository loaded 58 skills, reported no diagnostics, and confirmed that every skill disables model invocation. The old assertion of 57 failed against that result; the new assertion of 58 passed. This verifies the corrected inventory expectation, not a full supported-host check. Compatibility ranges remain unchanged, and no live delegation or supported-host certification is claimed. The resolution is recorded by the Git commit that adds this section.
+
 ## Current source comparison and decisions
 
 - **Statechart:** every bundled executable except `skills/statechart/scripts/run.ts` is exact .36 bytes (also pinned .34 bytes). Exact per-path SHA256 evidence is in coverage. run.ts diff only removes execFile/mise dependency provisioning, requires approved absolute JAVA/TLA2TOOLS regular-file paths plus executable Java, and annotates exitClass's existing 0/1/2 union. This matches the .34 documented adaptation; it is not accidental compiler drift. Missing dependencies fail closed. Path checks do not authenticate tools or sandbox views/imports. No real TLC/Java/rendering execution was attempted.

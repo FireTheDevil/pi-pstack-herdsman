@@ -3400,7 +3400,7 @@
     },
     {
       "path": "scripts/check-host.mjs",
-      "sha256": "93f00e37dce582d32ecb682c5fb63d6d4f0e10807ac1444e40d67caf2f10d9ed"
+      "sha256": "030465d071d95fbdb2d4f2414bc29512acc79fc797e5c65f2bc5a5cbe74b70e0"
     },
     {
       "path": "scripts/manifest.mjs",

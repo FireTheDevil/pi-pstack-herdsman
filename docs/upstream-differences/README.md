@@ -13,7 +13,7 @@ The three audit lanes compared actual .36 source contracts, including unchanged 
 
 ## Findings that need decisions
 
-All findings except R-001 remain open pending owner decision. The IDs stay stable across later versions. Lane-local F numbers are namespaced below.
+R-001 and C-001 are resolved. The remaining 17 findings stay open pending owner decision. The IDs stay stable across later versions. Lane-local F numbers are namespaced below.
 
 | ID | Priority | Difference and effect | Category | Evidence |
 | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@ All findings except R-001 remain open pending owner decision. The IDs stay stabl
 | S-001 | P2 | Arena candidate rationales no longer require alternatives and rejections. | Unexplained drift | Skills F1 in [report](skills/report.md) |
 | S-002 | P2 | Arena and Architect require a user request for extra attempts. | Unexplained drift | Skills F2 in [report](skills/report.md) |
 | S-003 | P2 | Sharpen suppresses the four visible framing judgments and returns only a rewrite. | Recorded local presentation choice, rationale/approval unverified | Skills F3 in [report](skills/report.md) |
-| C-001 | P2 | Host checker expects 57 skills although the tree has 58. A supported-host run can falsely fail. | Local adapter defect | Code F1 in [report](code-history/report.md) |
+| C-001 | Resolved after frozen snapshot | Host checker now expects 58 skills, including Ketchup-video. | Resolved local adapter defect | [Resolution and verification](code-history/report.md#c-001-resolution) |
 | S-004 | P2/P3 | TypeScript guidance excludes ordinary reading and explanation. | Unconfirmed local reading-cost policy | Skills F4 in [report](skills/report.md) |
 | S-005 | P3 | Build-the-Lever makes the shared skill contract conditional on reuse. | Unexplained artifact-policy drift | Skills F5 in [report](skills/report.md) |
 | S-006 | P3 | Seventeen files retain instruction expansions absent from the target, including upstream-pruned guidance. | Recorded retention, specific owner rationale unverified | Skills F6 and per-path [coverage](skills/coverage.tsv) |
