@@ -113,7 +113,14 @@
         "pstackChangeCommit": "ab1f702ce8e8b6557edb56b09f52cde8bfb83f17",
         "scope": "Reviewed as intermediate for selective .36 port. Goal framing, async steering intent, autopilot dependency/rebase/verification policy, execution-backed interrogate, judge selection, subtitles and decision-before-measurement. See .36 alignment report for Pi adaptations and exclusions."
       }
-    ]
+    ],
+    "fidelityResolution": {
+      "baselineLocalCommit": "bdad3a95984d029ee7857b324e3cd78e57c2b22b",
+      "upstreamCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+      "decisionRecord": "docs/upstream-differences/current/README.md",
+      "authorityRecord": "docs/upstream-differences/current/approved-decisions.md",
+      "scope": "Implements W-001 through W-010 and S-001 through S-007. W-006 and S-004 are approved local TypeScript reading-cost policy. Removes all 17 S-006 expansions, preserving enumerated host/safety deltas. Historical records and unknown source attestations remain unchanged; no model efficacy or live-host certification."
+    }
   },
   "backend": {
     "package": "pi-herdsman",
@@ -132,7 +139,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/architect/SKILL.md",
-      "destinationSha256": "3207cecfbc51b2bf710e787ad733f9593be1bd569b7c403d9b55f94f554c0d91",
+      "destinationSha256": "586084f51b99592532a5e0f342528215233967a3f991d9119c4ab211577a5b81",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -149,7 +156,16 @@
           "sourceSha256": "741901140ee382ebf93263a7ed03c6ee3719e578416d81afcd195876fa16c496",
           "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/architect/SKILL.md",
+        "sourceSha256": "31f8e97a52bfa5432edd61f68ade2a8632ef0bacbc2d2a6802d7a0e6821944ac",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/architect/references/design-red-flags.md",
@@ -211,7 +227,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/arena/SKILL.md",
-      "destinationSha256": "4cadf55f05df9cbe241471d3e980a1050454f0bf544689ce6de41036cb2b2594",
+      "destinationSha256": "bbfc3006f9805ca91d57235f8ed33b98ebbfe3dc2d8b3adba0660b8884eadd7c",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -228,7 +244,16 @@
           "sourceSha256": "f15524f216c1c63804b89edb4ff8e53bb21a7b8ed367368dedeb9468eeec6a92",
           "scope": "Compressed judging/grafting; Pi role/model, isolation and artifact-write gates retained."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/arena/SKILL.md",
+        "sourceSha256": "d0adeca6c9b19d43d90ed8f0484f0ddd362f05006d628b8f4cc6c9b55fa4d2b3",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/automate-me/SKILL.md",
@@ -278,8 +303,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/blast-radius/SKILL.md",
-      "destinationSha256": "fcee9586ca0a1d2e878977c4b0cdf27f7f5c927fac23acceb465bb226789cbe1",
-      "disposition": "adopted"
+      "destinationSha256": "53b1b9b8aad7e17995673074fb77547a10ef8a93ef19a4aca2428ebfc7f07c1d",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/blast-radius/SKILL.md",
+        "sourceSha256": "2e10745b97f5862323dcda3b29ca60d56b5c3c98e37020085d26b48efbe0a436",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/bro/SKILL.md",
@@ -424,7 +458,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/figure-it-out/SKILL.md",
-      "destinationSha256": "d57a64db6680befa63be2cea83a766af675b9fdf545b0672ed8d99182432715f",
+      "destinationSha256": "7b853a95834cc92178bb63c40bed7df606947a1dcac09682f5a0d27329e40e96",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -448,7 +482,16 @@
           "sourceSha256": "d9574cc24929773d5c23f40626ae1e09660afddd7de48e08dd6494d9fff9bbf0",
           "scope": "Upstream compression applied; hidden invocation retained."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/figure-it-out/SKILL.md",
+        "sourceSha256": "bdb23cdbd82a1e6af094b495691c832a6f7f3ab9706ba9edbeb664ef51a726e1",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/how/SKILL.md",
@@ -503,7 +546,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/how/references/explorer-prompt.md",
-      "destinationSha256": "aa760ad9d3597fbe57957d02e27e1477943fb010914a662a5d8eb0f1ad1d3014",
+      "destinationSha256": "6300128385ee940fd42ecb84b0e623435440a2dc283eae54ee4a52ba56947ba1",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -511,6 +554,15 @@
         "sourcePath": "pstack/skills/how/references/explorer-prompt.md",
         "sourceSha256": "6300128385ee940fd42ecb84b0e623435440a2dc283eae54ee4a52ba56947ba1",
         "scope": "Role-available Pi tool names and concise tracing; local tracing checklist and uncertainty rule retained."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/how/references/explorer-prompt.md",
+        "sourceSha256": "6300128385ee940fd42ecb84b0e623435440a2dc283eae54ee4a52ba56947ba1",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -662,7 +714,7 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "3fe669c7c3b8f52c18b7c68ecce01c8691e844b9d2b41a8a6ff6432341451986",
       "destination": "skills/poteto-help/SKILL.md",
-      "destinationSha256": "195ccfb369ae92ad7fe81f23518a3580d49b8e1c2d5663c750a55fd7d47c30f4",
+      "destinationSha256": "6ca8dcdcf4b8b01f45ae62b09ecddaf393947ab8125f85d698d7dac4120fe21b",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -714,7 +766,16 @@
           "sourceSha256": "75751c04546aa8150673f7c83ad5cd87eaeb44fb59d40f9262591ba8066d2c24",
           "scope": "Separately authorized Ketchup-video help route after f9a9fe7: explicit Pi invocation only, no rendering from help, authorized output and tool/effect gates, honest playback fallback. Other .34 help behavior preserved."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-help/SKILL.md",
+        "sourceSha256": "768368881379d688c4e3bbdae55dd2d7874fde98a258324d3527de1bf09f9bd1",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "pstack/skills/poteto-help/references/prompting.md",
@@ -722,7 +783,7 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
       "destination": "skills/poteto-help/references/prompting.md",
-      "destinationSha256": "440dc68d7910624cffeb21178558476c1b2fe371658048d8170dc08da11640b2",
+      "destinationSha256": "6427214388901f1a1f79d422e6240f2f3a525c76bc1a5468715c96b4a4e8ffd5",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -730,6 +791,15 @@
         "sourcePath": "pstack/skills/poteto-help/references/prompting.md",
         "sourceSha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
         "scope": "New Pi question-only help/references; runtime, scope and scheduling rewritten; no Cursor-only features."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-help/references/prompting.md",
+        "sourceSha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -738,7 +808,7 @@
       "sourceCommit": "978ca6e9c0e012047cd5058b8e829240336e704e",
       "sourceSha256": "1872323419a3e5c7783b1933f7a180ca26c25a6e1f4ec83bd65e091ebbfb812b",
       "destination": "skills/poteto-help/references/recipes.md",
-      "destinationSha256": "6a5e4fae2b1be1a91f6dee6c11d85b5841772839dff8ea2eb7ab203ceb49c571",
+      "destinationSha256": "625a34a4648c124b9670cd793e5e685cf98389434cb7b1e68c4fbd8fb848f80a",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -783,7 +853,16 @@
           "sourceSha256": "f2d573014f72f7c798b1998b45f4360a8a83e7b8026c4ed9074e56c5a9d49338",
           "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-help/references/recipes.md",
+        "sourceSha256": "5323aca73a39a3b607c2bb22cd33551fe893563dfd4b104df838da010e9fc702",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/SKILL.md",
@@ -796,7 +875,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/SKILL.md",
-      "destinationSha256": "0aff4ea5d0d2925122e302b9355ab9a6d09504066525813116cf0bee18b3675b",
+      "destinationSha256": "20fd4bfef9cc897a63708b5804f5898c3b0b075661a6e262a65ecf8fbde40b7c",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -848,7 +927,16 @@
           "sourceSha256": "2755f102e7a6d0496b429d1031a22fb353e1f3d523543367caeaae5c4ed6f544",
           "scope": "Scoped Autopilot-full routing-summary correction to match upstream verification cadence. Preserve all other Pi/Herdsman mode instructions, authority and discovery policy."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/SKILL.md",
+        "sourceSha256": "ee1848c973a112026f09ba12ea7a13c1654006e7bf170d1c34bf5d5816bc439b",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/authoring-a-skill.md",
@@ -912,7 +1000,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/autopilot-full.md",
-      "destinationSha256": "db0dce2c58530c57addb2cf5a09d2c47322cc1c46aa056d8ebdd43d2a814adc1",
+      "destinationSha256": "cd093253f79410da27f1ebafac083c97a672545bbd9fceb3989b964cdc82c5a1",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -957,7 +1045,16 @@
           "sourceSha256": "acf4f4a58c11045f9d3e8807d907a877e61ca6432b079f1087d7d30fc931566f",
           "scope": "Exact upstream full-swarm triggers and single independent verifier follow-ups; lane-result reuse through Shipping. Preserve bounded handoffs, SHA leases, findings, live proof, receipt audits, merge-result/gate checks, third-rebase hold and Herdsman authority."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+        "sourceSha256": "2da35982565c6cf1dbe25f7a05ccae28f7729389aefc6dbb3e010eb883abdd19",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/autopilot-stack.md",
@@ -1133,7 +1230,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/playbooks/multi-phase-plan.md",
-      "destinationSha256": "7c624a815869bc0b931c10ddb7a02e65d876f189a7529f8a7734cdc1dc1df285",
+      "destinationSha256": "b7ce9e97b36e42e9f07b752091c5534c53996068062bf2493a5a54ed2820cccc",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1164,7 +1261,16 @@
           "sourceSha256": "5f239457bfdec3345c92caa06c59bf0257c662b89353f25a1c02ea942dcd00b1",
           "scope": "Exact upstream code-ready/major-change full-swarm cadence, single independent verifier follow-ups and Shipping result reuse. Preserve ten live scenario inventory, findings, leases, gate approval and merge-result checks."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
+        "sourceSha256": "2b4fbb547e5ccfe46d1279d714eb0199d28e995f06bdc4eda4afbca9221fbbe6",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/opening-a-pr.md",
@@ -1177,7 +1283,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/opening-a-pr.md",
-      "destinationSha256": "8c7b68fc919f3b87b177aa4b4f1d0ea1ed2b29a62471c232d3c8f27465ebdd5b",
+      "destinationSha256": "29d9c3e989c16b8baee950778ad54cc1de4ab218de4f91691c0f1dc48cfa9290",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1208,7 +1314,16 @@
           "sourceSha256": "a5aef646de8b651306c2d10974623650e4a013a245aec1c00525bbe0e31bfa76",
           "scope": "Post-parent-merge child move via sole authorized topology writer and Shipping safeguards."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+        "sourceSha256": "b22b7ad7cd102b99d334f4399ae1dba78e0aaf4bee2d5241fda71753c7ce48f9",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/orchestrate.md",
@@ -1265,8 +1380,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/poteto-mode/playbooks/pause-safely.md",
-      "destinationSha256": "cfd76e54a88a0ca46bfc774ef44e67fedf3de3cbe81b7f7903ebbd15f486ae14",
-      "disposition": "adapted"
+      "destinationSha256": "794636f89dffc763c388956ae49ec4e8ed156fd2597c14b5902f451f8c7bd469",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
+        "sourceSha256": "77968cfe5f4a71a8cd33e0ae8ffcdbd88dd693a212c240457773e6c40c96c21d",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/poteto-mode/playbooks/perf-issue.md",
@@ -1928,7 +2052,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-build-the-lever/SKILL.md",
-      "destinationSha256": "6856a398c02a829dd943f8a609ae37ab069515c03003ea93a4c94ac925570e5a",
+      "destinationSha256": "1af168e7633c216a9c1159e19534895d77bfc88963aecb5448fa919f6bd0b1fe",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1936,6 +2060,15 @@
         "sourcePath": "pstack/skills/principle-build-the-lever/SKILL.md",
         "sourceSha256": "3434b0ad0c640c6f1d7960be7a8986c3bcdc14e26060360dec29903df60074ff",
         "scope": "Upstream compression applied; hidden invocation retained."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-build-the-lever/SKILL.md",
+        "sourceSha256": "3434b0ad0c640c6f1d7960be7a8986c3bcdc14e26060360dec29903df60074ff",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -1949,7 +2082,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-encode-lessons-in-structure/SKILL.md",
-      "destinationSha256": "ad12c26209770c52f632d9480c048ac5334ce8e5d6297f83ade59652a56cb3ef",
+      "destinationSha256": "228963799189f481827d6f28065f278bc2008ffa37030b1234cbd5814d36b9e9",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -1957,6 +2090,15 @@
         "sourcePath": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
         "sourceSha256": "ad12c26209770c52f632d9480c048ac5334ce8e5d6297f83ade59652a56cb3ef",
         "scope": "Upstream compression applied; hidden invocation retained."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+        "sourceSha256": "228963799189f481827d6f28065f278bc2008ffa37030b1234cbd5814d36b9e9",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -1970,8 +2112,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-exhaust-the-design-space/SKILL.md",
-      "destinationSha256": "8583310d7297b7823d75494faa57b003564d436807febecdecbd8321abe5cf6e",
-      "disposition": "adopted"
+      "destinationSha256": "2de83d99f93f60ec6313455b0bc9aa9f0bfb93dd59f414f403691322db00d4db",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
+        "sourceSha256": "2de83d99f93f60ec6313455b0bc9aa9f0bfb93dd59f414f403691322db00d4db",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/principle-experience-first/SKILL.md",
@@ -2067,8 +2218,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-guard-the-context-window/SKILL.md",
-      "destinationSha256": "9f60e2c79b35f865cb103462f9128c6760b70f603475d1e535e5930f61840f66",
-      "disposition": "adopted"
+      "destinationSha256": "af0b9dd70b43628ce4a59a4d332e9d9ad055084e460f430e7a757495c627e81a",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-guard-the-context-window/SKILL.md",
+        "sourceSha256": "af0b9dd70b43628ce4a59a4d332e9d9ad055084e460f430e7a757495c627e81a",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/principle-laziness-protocol/SKILL.md",
@@ -2081,8 +2241,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-laziness-protocol/SKILL.md",
-      "destinationSha256": "9006579e9e3f33955d17569733db688ae65f22577dc3b21803d219a5a8445aff",
-      "disposition": "adopted"
+      "destinationSha256": "1be6e7a435f26a75a76eb848b9c3d611b9977d0f5822361753244da25ca3ca45",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-laziness-protocol/SKILL.md",
+        "sourceSha256": "1be6e7a435f26a75a76eb848b9c3d611b9977d0f5822361753244da25ca3ca45",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/principle-make-operations-idempotent/SKILL.md",
@@ -2209,8 +2378,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-outcome-oriented-execution/SKILL.md",
-      "destinationSha256": "beedcaed75572a6a1662d47f16da203c2bd2c9dbffbbd678d4ba187d67b7e670",
-      "disposition": "adopted"
+      "destinationSha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
+        "sourceSha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/principle-prove-it-works/SKILL.md",
@@ -2223,8 +2401,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-prove-it-works/SKILL.md",
-      "destinationSha256": "ae13d287984a5864312b6286899d4ee2b60f8272b5e5e8fcc586a7c3ea51020b",
-      "disposition": "adopted"
+      "destinationSha256": "ec79a15025bac8d33d62011c54f3b612733fd2a024e623b531b3637aa75070e2",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-prove-it-works/SKILL.md",
+        "sourceSha256": "ec79a15025bac8d33d62011c54f3b612733fd2a024e623b531b3637aa75070e2",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/principle-redesign-from-first-principles/SKILL.md",
@@ -2272,8 +2459,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/principle-sequence-verifiable-units/SKILL.md",
-      "destinationSha256": "761390804ee36c32f5338d8db47ec54463d40ff96dbb296dfafabcd5f2593eec",
-      "disposition": "adopted"
+      "destinationSha256": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
+        "sourceSha256": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/principle-subtract-before-you-add/SKILL.md",
@@ -2395,7 +2591,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/reflect/SKILL.md",
-      "destinationSha256": "dad5c40c57f90eb0718b405d7a43c3047973269a57231febbc4ba812556c234f",
+      "destinationSha256": "a2c57556d1d029ad60edcedf97a3faec4401122558d706abdb08962603deed08",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -2419,7 +2615,16 @@
           "sourceSha256": "9648df23cabaae99b78ed59cd93b6f35ebbf02105d228e3d0b5c3a3b3419d753",
           "scope": "Selective .34 portable behavior; preserves existing Pi authority, hidden invocation and local runtime adaptations. See alignment report."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/reflect/SKILL.md",
+        "sourceSha256": "9648df23cabaae99b78ed59cd93b6f35ebbf02105d228e3d0b5c3a3b3419d753",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/reflect/references/divergent-reviewer.md",
@@ -2474,7 +2679,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/reflect/references/synthesizer.md",
-      "destinationSha256": "baa692e9bd140b8d50bd651314c6c1bfb26f00db0c8a0ca9370e79b11eaf3c5c",
+      "destinationSha256": "b055a70a8bf6adaf75906a88bee5696cb56b0392f352d0a6eb3f91ba23aec818",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -2482,6 +2687,15 @@
         "sourcePath": "pstack/skills/reflect/references/synthesizer.md",
         "sourceSha256": "6af816963de74d1a1aef4070273c1ff533d2072732e488e159ddc0b299fec3cd",
         "scope": "Distilled findings; Pi transcript paths and explicit-invocation limits replace Cursor trigger assumptions; no automatic writes."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/reflect/references/synthesizer.md",
+        "sourceSha256": "6af816963de74d1a1aef4070273c1ff533d2072732e488e159ddc0b299fec3cd",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -2539,7 +2753,7 @@
         "sourceSha256": "563dfc460c605d311e650726288e2f1cbd61eab817db178d6e7e29643e07e7a2",
         "scope": "Final rewrite-only semantics with user-owned choices and Pi authority preserved."
       },
-      "destinationSha256": "c0fdd81b151d2196dab8dd90ccb4291bc9c03a0f57e99e5d9dcb4e020414776f",
+      "destinationSha256": "8e2854dff9d3f9972f4d60ce4cc81a951428c1ea20fb1c5d4bf53830e627d7e5",
       "disposition": "adapted",
       "adaptationHistory": [
         {
@@ -2549,7 +2763,16 @@
           "sourceSha256": "6bcd73916696eb9c5b79b6f960983760c34bcc28937c11142dd8d86b5107aa46",
           "scope": "New explicit hidden approach-improvement skill; preserve user constraints, authority, safety and authorized capabilities."
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/sharpen/SKILL.md",
+        "sourceSha256": "563dfc460c605d311e650726288e2f1cbd61eab817db178d6e7e29643e07e7a2",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/show-me-your-work/SKILL.md",
@@ -2918,8 +3141,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/tdd/SKILL.md",
-      "destinationSha256": "011cab0ecc04a3632121efb493ae4d60aa282a9b72c66de74dd8ad7e4313e05a",
-      "disposition": "adopted"
+      "destinationSha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/tdd/SKILL.md",
+        "sourceSha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/teach/SKILL.md",
@@ -2946,7 +3178,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/technical-writing/SKILL.md",
-      "destinationSha256": "7aa6585cfdaa9bbd4f8a387781e48ae8a534eadeb8fdc4b88df1a0c3086d94e2",
+      "destinationSha256": "56375eaa53ea48d589598942bb2b3ea9f490392029242ef9477720e14cdd1c37",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -2963,7 +3195,16 @@
           "sourceSha256": "f5c512ffeec70bc4e0dee50f7bb4c26742e1be77967a6e8b15d1921e1c209ceb",
           "scope": "Body/resource delta review; existing frontmatter descriptions preserved"
         }
-      ]
+      ],
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/technical-writing/SKILL.md",
+        "sourceSha256": "61fe9c424a798ebf36ad94941f87be049cb8827bdf86d21474a0dde37b513c43",
+        "comparison": "adapted",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/typescript-best-practices/SKILL.md",
@@ -3027,7 +3268,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/unslop/SKILL.md",
-      "destinationSha256": "9a6b608ba22ff4883e4155c02aace5dddd9e656af969d2e255e48633728dadc2",
+      "destinationSha256": "ccab208e315ce05e2fab8eeee2f7879f1289b5c6844840b2d307adf31c79144f",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -3035,6 +3276,15 @@
         "sourcePath": "pstack/skills/unslop/SKILL.md",
         "sourceSha256": "3126b9e2cf46022f5e0c332e84be5e17a9730669cb3d6ac0a7e5e7e94b1e24fa",
         "scope": "All-prose trigger; upstream-deleted self-audit removed; stable rule IDs retained."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/unslop/SKILL.md",
+        "sourceSha256": "ccab208e315ce05e2fab8eeee2f7879f1289b5c6844840b2d307adf31c79144f",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -3125,7 +3375,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/sources/code-archaeology.md",
-      "destinationSha256": "f6b5c4c3dd4ddc31da446bbbe4d88806e2201f15a76b97b3e44ce25c5862e321",
+      "destinationSha256": "a4a3970e9db448054aed676f3f7feeee667b4b69f0bd57c8fd72b751be687cc7",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -3133,6 +3383,15 @@
         "sourcePath": "pstack/skills/why/references/sources/code-archaeology.md",
         "sourceSha256": "f6b5c4c3dd4ddc31da446bbbe4d88806e2201f15a76b97b3e44ce25c5862e321",
         "scope": "Upstream compression applied; hidden invocation retained."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/why/references/sources/code-archaeology.md",
+        "sourceSha256": "a4a3970e9db448054aed676f3f7feeee667b4b69f0bd57c8fd72b751be687cc7",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -3181,8 +3440,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/sources/incident-postmortem.md",
-      "destinationSha256": "a899470f05f86029630a13a2696491cc708ca7b56a6e822a69ff6e954d6ff8cf",
-      "disposition": "adopted"
+      "destinationSha256": "bf2661f1a81c37700884a45b77d6289be0c802b065febced31990e6564510839",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/why/references/sources/incident-postmortem.md",
+        "sourceSha256": "bf2661f1a81c37700884a45b77d6289be0c802b065febced31990e6564510839",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/why/references/sources/linear.md",
@@ -3223,7 +3491,7 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/sources/sentry.md",
-      "destinationSha256": "e0ed11e474c3d248bc5ac16d37ca1439b2db0253a3413252194556643cf8328a",
+      "destinationSha256": "2d4f83048eac1df530b399e2aed75dd7c9c18577b7665420aaeb96d0ceb0b702",
       "disposition": "adapted",
       "reviewedAdaptation": {
         "sourceRepository": "https://github.com/cursor/plugins.git",
@@ -3231,6 +3499,15 @@
         "sourcePath": "pstack/skills/why/references/sources/sentry.md",
         "sourceSha256": "e0ed11e474c3d248bc5ac16d37ca1439b2db0253a3413252194556643cf8328a",
         "scope": "Upstream compression applied; hidden invocation retained."
+      },
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/why/references/sources/sentry.md",
+        "sourceSha256": "2d4f83048eac1df530b399e2aed75dd7c9c18577b7665420aaeb96d0ceb0b702",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
       }
     },
     {
@@ -3244,8 +3521,17 @@
         "disposition": "adopted"
       },
       "destination": "skills/why/references/sources/slack.md",
-      "destinationSha256": "58fee61d024b3700b407e7acbed367944720ff05adfddb6954d36c88368f3ba7",
-      "disposition": "adopted"
+      "destinationSha256": "3bc6309f5c7b26ace3b919dbd7f7b048861dd2020f910fe24f656cc74b3b661c",
+      "disposition": "adapted",
+      "fidelityResolution": {
+        "sourceRepository": "https://github.com/cursor/plugins.git",
+        "sourceCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+        "sourcePath": "pstack/skills/why/references/sources/slack.md",
+        "sourceSha256": "3bc6309f5c7b26ace3b919dbd7f7b048861dd2020f910fe24f656cc74b3b661c",
+        "comparison": "exact",
+        "decisionRecord": "docs/upstream-differences/current/README.md",
+        "scope": "Approved questionnaire dispositions from bdad3a9; prior lineage and review history preserved. Source checks only."
+      }
     },
     {
       "sourcePath": "skills/why/references/synthesizer-prompt.md",
@@ -3304,7 +3590,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "1941079b56dfac42ac5f040ae2b65358ae9ec2e96c3ff0b29b49353b01b66d5f"
+      "sha256": "67760191225e9d03bde4d3bad57a323e33f0102207eea9097729f503a7431476"
     },
     {
       "path": "VALIDATION.md",
@@ -3428,7 +3714,7 @@
     },
     {
       "path": "upstream.lock.json",
-      "sha256": "f80ef6d5b59da098a80b59ed8b42e47465dd9f018682177c375582d1d78c4fdd"
+      "sha256": "f968078eb443f825ca7036af1f73d405ecbaed9fe4104e83e092144edf8c553f"
     }
   ],
   "metadataHistory": [

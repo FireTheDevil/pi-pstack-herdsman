@@ -67,14 +67,14 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
 
 ### Verdict and merge, for every PR
 
-- [ ] A full swarm runs once, at the code-ready head. Another full swarm runs only for new behavior, a redesign, or a large new diff. A rebase, a merge-conflict resolution, or a minor fix gets a single independent verifier at the new head. A wording-only change gets none. Run each full swarm per `skills/swarm/SKILL.md`. One gates lane. The ten live lanes from the PR's **Verify, live** block. The perf lane from its **Verify, perf** block. Two focused audit lanes read the diff and receipts rather than trusting the PR body. The root checks the receipts again at merge-ready.
+- [ ] A full swarm runs once, at the code-ready head. Another full swarm runs only for new behavior, a redesign, or a large new diff. A rebase, a merge-conflict resolution, or a minor fix gets a single independent verifier at the new head. A wording-only change gets none. Run each full swarm per `skills/swarm/SKILL.md`. One gates lane. The ten live lanes from the PR's **Verify, live** block. The perf lane from its **Verify, perf** block. At least two focused audit lanes read the diff and receipts rather than trusting the PR body. Justify extra lanes by distinct coverage. The root checks the receipts again at merge-ready.
 - [ ] Judge findings by the execution playbook's blocking rule. A defect already on the base, whether trunk or a parent PR, is recorded there and does not gate unless copied or newly reached by the PR. Only a demonstrated user-visible bug, a failed gate or a wrong shipped doc blocks. Record other concerns as follow-ups. Clean only when every required PR-owned lane is `PASS`. The lead sends every blocking finding to the owner in one fix-forward. A behavior defect filed as a note is a finding. Require a red test across every site with the same defect, or a reproduction receipt when no test can demonstrate it. Carry each defect into the next review brief. A new head gets a fresh verdict, except for results that stay valid under Shipping's patch-id and lane-result reuse rule. Require fresh current-head CI and mergeability; record the new head and proof.
 - [ ] <The merge or handoff rule from the execution playbook, with the patch-id rule from `playbooks/shipping.md`.>
 - [ ] Preserve single-writer topology and explicit SHA-pinned leases. Any new gate, budget or allowlist loosening needs independent proof and an authorized countersign, or the operator's approval outside that grant. Never disable or soft-fail checks or bypass forge approvals.
 
 ### Boot recipe, for every live lane
 
-Each live lane requiring isolation runs in an explicitly prepared external worktree with a separate lead session at the PR head. Delegation does not provision worktrees or select cwd. A worktree does not isolate processes, ports, databases, or credentials. Assign separate resources for each lane before launch. Drive through the project's verification skill or harness.
+Each live lane requiring isolation runs in an explicitly prepared external worktree with a separate lead session at the PR head. Delegation does not provision worktrees or select cwd. Worktrees isolate files, not processes or security boundaries. They do not isolate ports, databases, or credentials. Disclose the actual isolation limits and assign separate resources for each lane before launch. Require stronger isolation only when the task needs it. Drive through the project's verification skill or harness.
 
 - [ ] `git fetch origin <head-branch> && git checkout <head SHA>`.
 - [ ] <Start the backend and the surface. Wait for ready.>
@@ -126,7 +126,7 @@ Each live lane requiring isolation runs in an explicitly prepared external workt
 **Review gate.** The operator reviews before merge.
 
 - [ ] Copy lane <n> screenshots into `<media path>/<pr-id>-review-<slug>.png`.
-- [ ] Record a 30 to 60 second video of the change on a lane VM. Save it as `<media path>/<pr-id>-review.mp4`.
+- [ ] Record a 30 to 60 second video of the change in the actual authorized prepared verification environment. Report unavailable recording capability rather than inventing a video. Save it as `<media path>/<pr-id>-review.mp4`.
 - [ ] Post the screenshots and the video in chat. Stop at merge-ready. Wait for the operator's click.
 
 **Merge.**

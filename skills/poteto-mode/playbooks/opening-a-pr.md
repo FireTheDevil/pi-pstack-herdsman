@@ -16,10 +16,10 @@ Use `##` headings in this order. Scope is mandatory. Omit empty optional section
 
 - `## Why` opens with the user's goal, then gives the problem and approach in one to three short sentences. No SHAs or rebase genealogy.
 - `## What changed` has one to three short bullets. Name real paths or symbols only when they carry the change. Name both sides of a rename.
-- `## Scope` gives one to three items on what is covered and deliberately excluded. No file-by-file essay.
+- `## Scope` gives one to three items on what is covered and deliberately excluded. No symbols, paths, or file-by-file essay.
 - `## Tradeoffs` names rejected alternatives a reviewer would otherwise ask about.
 - `## Blast Radius` gives one or two sentences on affected users or code and the risk. If main is red, state the cost.
-- `## Verification` gives one to three actual run paths and outcomes. For performance, give one primary before-and-after number with its unit, and link detailed evidence.
+- `## Verification` gives one to three actual run paths and outcomes. For performance, give one primary before-and-after number with its unit, and link detailed evidence. No sample-size methodology, swarm recitals, or metric tables.
 
 Attach screenshots or videos when they prove a claim. Link logs, metric tables, SHAs, and detailed checklists instead of pasting them.
 

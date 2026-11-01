@@ -1,6 +1,6 @@
 ---
 name: sharpen
-description: "Rewrite a prompt deeper, not bigger, with expert sources, methods, and an outside check. Return the prompt without doing the task. Use for /skill:sharpen."
+description: "Rewrite a prompt deeper, not bigger, with expert sources, methods, and an outside check. Show concise four-part framing, then a separate rewritten prompt without doing the task. Use for /skill:sharpen."
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Rewrite the supplied prompt. Do not execute the task.
 
-Before rewriting, work through these four questions:
+Before rewriting, show concise answers to these four questions:
 
 1. What would a top professional in this field do here that the prompt does not ask for?
 2. What raw material would they start from instead of an already digested account?
@@ -17,4 +17,4 @@ Before rewriting, work through these four questions:
 
 Use the answers to make the task deeper, not bigger. Challenge irrelevant self-imposed assumptions, not the user's requirements, scope, safety rules, authority, architecture, security, protocol, or acceptance criteria. Leave user-owned choices open. Keep the outside check within available authorized tools or supplied evidence. State missing capability as a constraint in the rewrite, not invented access or results.
 
-Return only the rewritten prompt. Do not narrate the framing, answer the task, start implementation, or treat the rewrite as execution approval. A plan-only or read-only request stays that way.
+After the four-part framing, return the rewritten prompt in a clearly separated section. Do not answer the task, start implementation, or treat the rewrite as execution approval. A plan-only or read-only request stays that way.

@@ -1,19 +1,12 @@
 ---
 name: unslop
-description: "Remove AI writing patterns from every prose output, including ordinary replies, docs, and agent instructions. Use for /skill:unslop or prose writing and cleanup."
+description: Cut AI tells from any writing.
 disable-model-invocation: true
 ---
 
 # Unslop
 
-Edit text to remove AI patterns.
-
-Apply this skill to every prose output, including ordinary replies. Write cleanly as you draft; a separate editing task is not required for each reply. Read once per active context and reuse while the instructions remain available and unchanged.
-
-## Process
-
-1. Scan for the patterns below.
-2. Rewrite. Preserve meaning, match intended tone.
+Edit text to remove AI patterns. Scan for the patterns below, then rewrite. Preserve meaning and match the intended tone.
 
 ## Patterns to detect and fix
 

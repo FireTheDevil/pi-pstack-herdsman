@@ -6,7 +6,7 @@ Before unattended execution, read and satisfy all four checks in [Unattended tru
 
 Use [Herdsman runtime](../references/herdsman-runtime.md) for supported launch, wake, isolation, and stop semantics. A written goal or cadence is not a running scheduler.
 
-**You own the verdicts, never the PRs. One owner runs each PR from build to merge, and nothing merges until your independent verifiers have proven the code that lands.** For "autopilot this queue", "full autopilot", and one-owner-per-PR programs. Orchestrate runs a standing program whose coordinator lands verified work itself and whose workers never merge. Here each PR's owner carries the whole lifecycle through the merge, and the root keeps verification, countersigns, and audits.
+**You own the verdicts, never the PRs. One owner runs each PR from build to merge, and nothing merges until your independent verifiers have proven the code that lands.** For "autopilot this queue", "full autopilot", and one-owner-per-PR programs. Orchestrate runs a standing program. Here each PR's logical owner carries the lifecycle through an explicitly authorized merge phase, and the root keeps independent verification, countersigns, and audits. Current ownership and approval rules govern every phase; this comparison grants no merge authority.
 
 A verdict covers one patch and green CI covers one head. Step 4 runs a full swarm once, and again only for a major change. Shipping's patch-id and lane-result reuse rule can carry a lane's result, and every new head needs its own green CI.
 

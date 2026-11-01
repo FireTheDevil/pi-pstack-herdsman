@@ -110,5 +110,12 @@
       "pstackChangeCommit": "ab1f702ce8e8b6557edb56b09f52cde8bfb83f17",
       "scope": "Reviewed as intermediate for selective .36 port. Goal framing, async steering intent, autopilot dependency/rebase/verification policy, execution-backed interrogate, judge selection, subtitles and decision-before-measurement. See .36 alignment report for Pi adaptations and exclusions."
     }
-  ]
+  ],
+  "fidelityResolution": {
+    "baselineLocalCommit": "bdad3a95984d029ee7857b324e3cd78e57c2b22b",
+    "upstreamCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+    "decisionRecord": "docs/upstream-differences/current/README.md",
+    "authorityRecord": "docs/upstream-differences/current/approved-decisions.md",
+    "scope": "Implements W-001 through W-010 and S-001 through S-007. W-006 and S-004 are approved local TypeScript reading-cost policy. Removes all 17 S-006 expansions, preserving enumerated host/safety deltas. Historical records and unknown source attestations remain unchanged; no model efficacy or live-host certification."
+  }
 }

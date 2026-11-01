@@ -60,7 +60,7 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 - **Outcome-Oriented Execution** (**principle-outcome-oriented-execution**). Planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture, don't preserve throwaway compatibility states.
 - **Experience First** (**principle-experience-first**). Product, UX, or feature-scope tradeoffs. Choose user delight over implementation convenience.
 - **Exhaust the Design Space** (**principle-exhaust-the-design-space**). A novel interaction or architectural decision with no precedent. Build 2-3 competing prototypes and compare before committing.
-- **Build the Lever** (**principle-build-the-lever**). Non-trivial work with an authorized write scope. Build the smallest tool that does or proves it when a rerunnable tool earns its cost. Read-only roles return evidence, not files.
+- **Build the Lever** (**principle-build-the-lever**). Non-trivial work with an authorized write scope. Build the smallest tool that does or proves it. Exempt trivial work only. Read-only roles return evidence, not files.
 
 **Architecture**
 

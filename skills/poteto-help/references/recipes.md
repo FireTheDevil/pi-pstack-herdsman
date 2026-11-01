@@ -5,7 +5,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 ## Understand
 
 - `/skill:in-your-own-words restate my goals and the problem in <thread>. don't start implementation.`
-- `/skill:sharpen <the prompt I am about to send>. return only a deeper rewritten prompt with expert sources, methods, and an outside check. leave my choices open. do not do the task.`
+- `/skill:sharpen <the prompt I am about to send>. show concise four-part framing, then a separate deeper rewritten prompt with expert sources, methods, and an outside check. leave my choices open. do not do the task.`
 
 - `/poteto-mode read <thread>. restate the underlying issue in your own words, in plain english.`
 - `/poteto-mode investigate why <symptom>. give me what we know, what data you used, and your best hypotheses. don't change any code yet.`
@@ -18,6 +18,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 - Bug: `/poteto-mode <symptom>. repro first, then fix and verify.`
 - Bug in an app: `/poteto-mode repro this with /skill:verify-<app>. if it repros on main, fix it and show me a video as proof.`
+- Bug with a cheap test: `/poteto-mode repro <bug> first. if there's a cheap test path and the user's testing policy permits it, /skill:tdd it. then fix and rerun.` No new unit tests are authorized by this example.
 - Feature: `/poteto-mode add <behavior>. <current output> stays byte-identical. verify both.`
 - Refactor: `/poteto-mode move <code> into one module, zero behavior change. record the current output first and prove it's unchanged after.`
 - Perf: `/poteto-mode <operation> takes <time> on <fixture>. trace it, fix the measured cause, show me before and after.`
@@ -43,6 +44,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 - `/poteto-mode I am stepping away. <goal> within <scope>. I authorize a fresh external worktree off <base> and local commits, but no push or merge. Done means <checks>. Complete the trust preflight, keep a decision log, and stop with evidence if blocked. No periodic scheduler is authorized.`
 - `/skill:show-me-your-work catch me up on what you did last night.` Read its Attention section first.
+- `/skill:ketchup` catches you up on this chat since your last message and lists every call that waits on you.
 - `/poteto-mode full autopilot on this queue. each item is independent.`
 - `/poteto-mode autopilot these changes, but don't merge. i'll land them.`
 - `/skill:reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.

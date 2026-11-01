@@ -50,7 +50,7 @@ Follow each approved row's Routing exactly:
 
 - Trivial existing-skill edit such as a one-line bullet or stale fact correction. The parent does it directly.
 - Substantive existing-skill edit such as a new section or pattern table. Use `../poteto-mode/playbooks/authoring-a-skill.md` and `/skill:unslop` for the draft, test, and iterate loop.
-- `tune description: <skill path>`. Narrow the description to the phrases that should trigger it. Do not add unknown frontmatter keys.
+- `tune description: <skill path>`. Follow the case table, description validation, revision, and held-out-case loop in [Pi skill authoring procedure](../poteto-mode/references/skill-authoring.md), steps 4 through 6. Hidden skills remain explicit-only. If no authorized model-evaluation runner is available, report that limitation and the source walkthrough separately, not a successful model evaluation. Do not add unknown frontmatter keys.
 - `new skill: <kebab-name>`. Use `../poteto-mode/playbooks/authoring-a-skill.md` and `/skill:unslop`. Do not invent the shape ad hoc.
 
 If the environment ships a SKILL.md validator, run it on every touched skill before declaring done. Skip this step if it does not.

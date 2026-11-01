@@ -14,22 +14,7 @@ Other explorers are investigating different slices of the same subsystem in para
 
 {EXPLORATION_ANGLE}
 
-## Exploration Instructions
-
-Use Pi's `find` and `ls` to locate files, `grep` to find symbols, and `read` to inspect implementations. Use only tools available to your role. Trace code rather than guessing from names.
-
-Follow this pattern:
-1. **Find the entry point.** What triggers this behavior? A user action, an API call, a scheduled job? Find where it starts.
-2. **Trace the flow.** Follow the call chain from the entry point. Read each function. Understand what data flows through and how it transforms.
-3. **Map the key abstractions.** What types, interfaces, services, or classes are central? Read their definitions. Understand what they represent and why they exist.
-4. **Find the boundaries.** Where does this subsystem interface with others? What goes in, what comes out?
-5. **Look for the non-obvious.** Anything surprising? Anything that looks like a historical artifact? Anything a newcomer would misunderstand?
-
-Report any connection you cannot trace as an open question. Do not invent missing steps.
-
 ## Output
-
-Return your findings in this structure. Be factual and specific. Reference exact file paths, function names, type names, and line numbers where relevant.
 
 ### Components Found
 The key types, services, classes, and abstractions. For each: name, file path, and a one-sentence description of what it does.
