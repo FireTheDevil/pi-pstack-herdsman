@@ -68,6 +68,34 @@ To produce and verify a video, `/skill:ketchup-video` needs available, authorize
 
 Viewing the result also requires supported inline playback or an external video player. Native AI video generation is not required. This package supplies no rendering tools and installs nothing automatically; output writes and external effects remain subject to the [skill's approval requirements](skills/ketchup-video/SKILL.md).
 
+### Suggested local video toolchain
+
+One candidate is Python 3.12 with Pillow 12.x, plus FFmpeg 8.x and its matching `ffprobe`. These are example version families, not tested compatibility ranges or mandatory dependencies. Choose maintained patch releases and record the exact versions and FFmpeg build used. Other tools are acceptable if they provide the required capabilities.
+
+| Component | Purpose and requirements |
+| --- | --- |
+| Python and [Pillow](https://pillow.readthedocs.io/en/stable/installation/python-support.html) | Draw slide images and a fixed-height subtitle strip into PNG frames. Use Pillow's [text drawing](https://pillow.readthedocs.io/en/stable/reference/ImageDraw.html) with FreeType support and an explicitly selected local TrueType or OpenType font. The font must cover the text's characters and permit the intended use. |
+| FFmpeg | Encode a silent H.264 MP4 using a build with [`libx264`](https://ffmpeg.org/ffmpeg-codecs.html#libx264_002c-libx264rgb). Use `yuv420p` for broad player compatibility and even image dimensions. For slide transitions, the [`xfade`](https://ffmpeg.org/ffmpeg-filters.html#xfade) filter requires constant frame rate and matching resolution, pixel format, frame rate, and time base on both inputs. |
+| [`ffprobe`](https://ffmpeg.org/ffprobe.html) and FFmpeg frame extraction | Inspect the finished video's streams and frame timestamps, and decode frames for comparison with the slide images. A duration reported by `ffprobe` alone does not prove a readable slide hold. |
+| Image inspection and playback | An authorized image-capable model or inspection tool must inspect an extracted frame from every slide. Use a compatible external MP4 player when inline playback is unavailable. Do not launch it without approval. |
+
+After separately approved provisioning, these commands inspect the installed capabilities without installing anything:
+
+```sh
+python3 --version
+python3 -c 'import PIL; from PIL import features; print("Pillow", PIL.__version__); print("FreeType", features.check("freetype2"))'
+ffmpeg -version
+ffprobe -version
+ffmpeg -hide_banner -encoders
+ffmpeg -hide_banner -filters
+```
+
+Confirm that FreeType is available, the encoder list includes `libx264`, and the filter list includes `xfade`. Validate the chosen font and glyph coverage with an actual rendered slide. A version string alone does not establish those capabilities. Provision Python packages in a dedicated environment outside this repository, only with approval; this package does not create that environment or install system tools or fonts.
+
+The pipeline is slide PNGs with subtitles already drawn into the images, then normalized constant-rate clips, then transitions and a silent MP4. Drawing subtitles into each frame avoids a separate subtitle renderer such as libass. The implementation must calculate slide holds separately from transition durations. Match decoded final-file frames to the source slides, allowing for lossy encoding, and use their timestamps to measure fully visible holds. Each hold must allow at least one second per three added words, including the subtitle and changed labels. Inspect readability at chat size before delivery. Neither a still-frame detector nor a planned timeline proves the final holds.
+
+No ready-made rendering script is bundled. Capability listings are preflight checks, not an end-to-end render test. This candidate toolchain has not been installed or exercised for this port, and its output has not been visually verified. Missing rendering or inspection tools keep video creation blocked; return the text calls instead. Use only a confirmed new or empty owned output directory outside the repository.
+
 ## Try a local checkout
 
 From a trusted target project, load this local package for one invocation alongside your existing Herdsman setup:
