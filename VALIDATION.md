@@ -1,5 +1,22 @@
 # Validation boundaries
 
+## Live-host compatibility update for Pi 1.4.0 and Herdsman 0.36.3
+
+This scoped update starts from clean repository commit `0a039688c7c3d38cc62897ea320265dfea9ee90f`. `package.json` remains the source of truth for declared compatibility. Pi now accepts `>=1.1.0 <1.5.0`, and pi-herdsman now accepts `>=0.25.1 <0.37.0`. Lower bounds and the existing range format are unchanged. Prereleases remain excluded. These ranges declare compatibility, not verification of every included release.
+
+The exact installed roots used for inspection and execution are:
+
+- Pi 1.4.0 at `/home/alex/.pi/agent/install/releases/1.4.0/node_modules/@earendil-works/pi-coding-agent`.
+- Herdsman 0.36.3 at `/home/alex/.pi/agent/npm/node_modules/pi-herdsman`.
+
+The original `node scripts/check-host.mjs <pi-root> <herdsman-root>` exits 1 at the Herdsman version gate because 0.36.3 is outside the old `>=0.25.1 <0.30.0` range. Pi 1.4.0 is also outside its old range. After the declaration updates, the same command passes without any checker or assertion changes. Under Node 24.22.1, the actual installed Pi loader loads the extension without errors and registers `poteto-mode`, `pstack-status`, and `setup-pstack`. The installed skill loader loads all 58 skills without diagnostics and confirms that every skill disables model invocation.
+
+Installed Herdsman inspection covers `docs/reference/agent-definition-schema.md`, `docs/reference/agent.md`, and the built `dist/index.js` launcher. The existing assertions still pass for the nine canonical coordination tools, strict request fields, continuation generations, terminal delivery, definition precedence, unknown-field rejection, tool exclusions, and the appended `<active_agent>` marker. Installed Pi extension declarations retain the consumed command, event, prompt, UI-mode, status, message, and session-entry interfaces. Its public frontmatter parser export and hidden-skill behavior remain present. No broader API adaptation is required.
+
+Both original and updated `npm test` runs pass all 37 existing cases, including package membership and extracted-package checks. `npm run check`, manifest refresh/idempotence, historical-evidence preservation, and `git diff --check` pass. No tests are added or changed. The manifest refresh changes only current hashes for the updated declarations, guidance, and this record. Historical validation text, frozen audit reports, old hash ledgers, backend inspection metadata, upstream pins, definitions, and models remain unchanged. The retained backend inspection version 0.29.0 describes its earlier snapshot, not this live-host check.
+
+This is installed-loader execution plus documentation and source inspection, not a full running Pi or Herdsman session. The host check does not emit `session_start`, execute commands, synchronize profiles, exercise runtime definition discovery or live delegation, contact Herdr, or verify provider/model availability or prompt efficacy. No host installation, global configuration, profile changes, dependency installation, commits, pushes, or publication run. Task-owned loader scratch is removed by the checker. Original and final logs, installed-contract excerpts, and the rerunnable preservation check are under ignored `.pi-herdsman/host-compat-update/`.
+
 ## Statechart live TLC smoke test
 
 At repository commit `abce56c`, the bundled Statechart CLI ran against real Java and TLC using Node 24.22.1, OpenJDK 25.0.4.1, and TLA+ tools 1.7.4. The jar identifies its TLC engine as version 2.19.

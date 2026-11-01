@@ -12,7 +12,7 @@ The [upstream differences audit](docs/upstream-differences/README.md) records im
 
 ## Install
 
-Requires Node >=24, Pi >=1.1.0 <1.4.0, and pi-herdsman >=0.25.1 <0.30.0 with its Herdr prerequisites. Follow the [Herdsman setup guide](https://github.com/boadij/pi-herdsman/blob/main/docs/getting-started.md) to install Herdr and its Pi integration. These are declared compatibility ranges, not certification of every release. Prereleases are excluded. This package does not install or configure its host dependencies.
+Requires Node >=24, Pi >=1.1.0 <1.5.0, and pi-herdsman >=0.25.1 <0.37.0 with its Herdr prerequisites. Follow the [Herdsman setup guide](https://github.com/boadij/pi-herdsman/blob/main/docs/getting-started.md) to install Herdr and its Pi integration. These are declared compatibility ranges, not certification of every release. Prereleases are excluded. This package does not install or configure its host dependencies.
 
 If you already manage Pi and Herdr yourself, install the extensions:
 

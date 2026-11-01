@@ -1603,7 +1603,7 @@
         "disposition": "adapted"
       },
       "destination": "skills/poteto-mode/references/herdsman-runtime.md",
-      "destinationSha256": "176c4c5c8250b3189b49387c8b38157312416cd7b511d1753fca4cfffb96901d",
+      "destinationSha256": "78eb06af322752f85ace40f8fabd1789eaa2b5d23f1b170a4820c9c5148009e2",
       "disposition": "adapted"
     },
     {
@@ -3590,11 +3590,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "bfbfb893c686eb613bd2eb13a34ba211e3387f4a60c7dbf9238d5f31ced6029b"
+      "sha256": "6afb9f60a975e1b5a400e39eab5c104e2b5088552729f55db81651b84752dfc3"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "db3d674548cc992d284582e542a28dfbe0ae0be79f16d403adc23d585727e071"
+      "sha256": "335fae2c3de5a7c4806acf809edc6be051edb00ea20c8d06bd9700daa2512cb9"
     },
     {
       "path": "config/artifact-locations.md",
@@ -3678,7 +3678,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "8c4a53620ae0e96ca7b7d90b7e45489203516ab5f177fa59d200e49be1ac6f12"
+      "sha256": "160deed565fd96cea5563663cda33fb437a17f4bad65d5d2f16e32d1a45724c4"
     },
     {
       "path": "scripts/backend-contract.mjs",
