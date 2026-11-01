@@ -3590,11 +3590,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "4b5d29454576d0bae39be19b66e25e373d1d1a5ea02fe76cee5df67bea39ed44"
+      "sha256": "bfbfb893c686eb613bd2eb13a34ba211e3387f4a60c7dbf9238d5f31ced6029b"
     },
     {
       "path": "VALIDATION.md",
-      "sha256": "439fcde6bdf742cdab8a85d8b417e7e0bcf0660c699d9913f431f2e3cf15311d"
+      "sha256": "db3d674548cc992d284582e542a28dfbe0ae0be79f16d403adc23d585727e071"
     },
     {
       "path": "config/artifact-locations.md",

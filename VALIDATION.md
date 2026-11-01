@@ -1,5 +1,15 @@
 # Validation boundaries
 
+## Statechart live TLC smoke test
+
+At repository commit `abce56c`, the bundled Statechart CLI ran against real Java and TLC using Node 24.22.1, OpenJDK 25.0.4.1, and TLA+ tools 1.7.4. The jar identifies its TLC engine as version 2.19.
+
+The bounded counter model explored three states, from 0 through 2. The passing configuration exited 0, with `WithinBounds` and `NoDeadlock` holding. The intentionally failing configuration exited 1 and reported the shortest path violating `NeverTwo`: counter 0, counter 1, counter 2.
+
+Both runs generated reports, TLC logs, and Mermaid source, which were inspected. The chart omitted the terminal self-loop, as disclosed in each report. TLC's recommendation to use `-XX:+UseParallelGC` did not prevent either expected result.
+
+This verifies basic finite-model CLI checking and counterexample generation. It does not verify Pele rendering, the full TLC-dependent test suite, liveness properties, or supported Pi/Herdsman operation. The records below describe their original validation phases, not the current machine's dependency state.
+
 ## Current selective 0.15.36 alignment and issues #7, #8 and #9
 
 The [alignment report](docs/upstream-alignment-0.15.36.md) records the full 66-path review from `519d36aa98955bf680db01bcde5fdfba686dc901`, through `ab1f702ce8e8b6557edb56b09f52cde8bfb83f17`, to immutable target `c742dd61706fbacc1b95f1a20b7b988cf096ce6c`. Both canonical target manifests report 0.15.36. Git ancestry and object connectivity checks pass. This is selective intent alignment, not full parity or signed-source attestation. Generated distributions, Cursor model rules and Task/cloud capabilities, unrelated integrations and automatic provisioning remain excluded.

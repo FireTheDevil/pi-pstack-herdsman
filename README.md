@@ -37,7 +37,7 @@ Statechart is not fully usable out of the box. Model checking requires separatel
 
 With Java and TLC available, Statechart can check a bounded TLA+ model and produce a report and Mermaid chart source, subject to the documented chart-size limits. **Pele is optional:** it renders the Mermaid source as SVG and is not needed for checking. Rendering uses separately provisioned `pele@1.9.0` and requires explicit approval for execution and any installation, network or cache effects. See the [Statechart skill](skills/statechart/SKILL.md) and [rendering instructions](skills/statechart/references/render.md).
 
-The bundled TypeScript runs with Node >=24 without npm dependencies for checking. Use the Git installation above or a local checkout: Node's built-in TypeScript stripping does not execute these sources beneath `node_modules`. The current port has not verified real TLC execution, Pele rendering or live Pi/Herdsman operation; see [validation limits](VALIDATION.md).
+The bundled TypeScript runs with Node >=24 without npm dependencies for checking. Use the Git installation above or a local checkout: Node's built-in TypeScript stripping does not execute these sources beneath `node_modules`. A bounded Statechart CLI smoke test passed with Node 24.22.1, OpenJDK 25.0.4.1, and the TLA+ tools 1.7.4 jar. It verified a passing invariant and detection of an intentionally violated invariant, with reports and Mermaid chart source. Pele rendering and supported Pi/Herdsman operation remain unverified; see [validation limits](VALIDATION.md).
 
 ## Watcher helper setup
 
