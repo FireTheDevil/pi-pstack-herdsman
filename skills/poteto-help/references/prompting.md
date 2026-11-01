@@ -43,12 +43,6 @@ Use the Autonomous run trust preflight: demonstrate one successful run, provide 
 
 Keep a decision trail for later audit. If genuinely blocked, stop with evidence rather than silently widening scope.
 
-## Make verification reusable
-
-Use inspectable artifacts: actual command output, stored values, screenshots, videos, or profiles. Link them and distinguish checked behavior from assumptions. Build reusable verification only within write authority, and run it before calling it complete.
-
-Design control CLIs with discoverable help, `--dry-run`, machine-readable output, and errors that say what to fix. Use repeatable seeded development state and known reset steps so another engineer can reproduce the proof. Keep evidence through cleanup and respect data-deletion approvals.
-
 ## Steer in one line
 
 - "The goal is to reproduce. Do not fix yet."

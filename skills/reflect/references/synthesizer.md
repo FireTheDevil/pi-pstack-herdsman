@@ -18,7 +18,7 @@ Apply each criterion to every finding:
 - Convergence: findings echoed by 2+ reviewers carry higher confidence. Singletons must clear a higher bar on the other criteria.
 - Decision-changing: a future agent does something different because of the edit, not just reads more text.
 - Structural-mechanism check: route to Backlog when a lint rule, script, metadata flag, or runtime check already enforces the rule or could enforce it cheaply. Skill prose is for things mechanisms cannot enforce.
-- Skill-was-used: accept only findings that route to a skill, tool, or MCP the parent invoked in the transcript. If the skill wasn't used but should have been, route to `tune description: <skill path>`. If neither, reject as `skill-not-used`.
+- Skill-was-used: accept only findings that route to a skill, tool, or MCP the parent invoked in the transcript. If the skill was visible in the catalog but should have been selected, route to `tune description: <skill path>` for validation through the authoring procedure. Hidden skills remain explicit-only; tuning does not enable automatic invocation. If neither, reject as `skill-not-used`.
 - Already-covered: read the target skill before accepting any body-edit row. If the proposal duplicates clear, well-placed existing guidance, reject as `already-covered`, because the issue is execution, not the skill. If the existing guidance is buried, weak, or easy to skip past, accept the row but reframe the proposal as a wording / placement improvement that makes it fire (not a duplicate addition).
 
 Drop (implementation details that drift):
@@ -31,7 +31,7 @@ Keep (durable patterns):
 - "closed regex enums for trigger detection are brittle. Prefer schema-validated structures"
 - "skill descriptions front-load trigger keywords (60/40 trigger-vs-action)"
 - "skill-bundled scripts run under bun with own lockfile, not pnpm workspace"
-- "path-shaped triggers belong in `paths:`, not description prose"
+- "description changes need representative requests and nearby non-matches, with only supported frontmatter keys"
 
 Output exactly the format below. No preamble, no narration. One sentence per cell. A reviewer should read each Problem/Proposal pair in 5 seconds.
 
@@ -40,7 +40,7 @@ Output exactly the format below. No preamble, no narration. One sentence per cel
 | Problem | Proposal | Routing |
 |---|---|---|
 | <failure mode in a skill the parent used> | <change to that skill's body> | <skill path + section> |
-| <skill existed but didn't trigger> | <tune the skill's description so it fires next time> | <tune description: <skill path>> |
+| <visible skill was not selected when appropriate> | <validate and iterate the description through the authoring procedure> | <tune description: <skill path>> |
 | <new pattern, no existing skill is a real home> | <draft a new skill via the authoring playbook> | <new skill: <kebab-name>> |
 
 One row per finding. The user approves row by row.

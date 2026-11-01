@@ -14,12 +14,12 @@ Prepare a PR only within current implementation authority. Read-only investigati
 
 Use `##` headings in this order. Scope is mandatory. Omit empty optional sections.
 
-- `## Why` gives the problem and approach in one to three short sentences. No SHAs or rebase genealogy.
+- `## Why` opens with the user's goal, then gives the problem and approach in one to three short sentences. No SHAs or rebase genealogy.
 - `## What changed` has one to three short bullets. Name real paths or symbols only when they carry the change. Name both sides of a rename.
-- `## Scope` gives one to three items on what is covered and deliberately excluded. No file-by-file essay.
+- `## Scope` gives one to three items on what is covered and deliberately excluded. No symbols, paths, or file-by-file essay.
 - `## Tradeoffs` names rejected alternatives a reviewer would otherwise ask about.
 - `## Blast Radius` gives one or two sentences on affected users or code and the risk. If main is red, state the cost.
-- `## Verification` gives one to three actual run paths and outcomes. For performance, give one primary before-and-after number with its unit, and link detailed evidence.
+- `## Verification` gives one to three actual run paths and outcomes. For performance, give one primary before-and-after number with its unit, and link detailed evidence. No sample-size methodology, swarm recitals, or metric tables.
 
 Attach screenshots or videos when they prove a claim. Link logs, metric tables, SHAs, and detailed checklists instead of pasting them.
 
@@ -33,4 +33,4 @@ Attach screenshots or videos when they prove a claim. Link logs, metric tables, 
 
 **Babysit.** Opening a PR does not start a babysit. Post the URL and keep building. Finish the phase or stack first. Run a separate Babysit playbook (`playbooks/babysit.md`) pass only when the user asks for one after the whole stack exists. A babysit for each new PR stalls the build and spends checks on commits later waves restart. Push back when feedback drifts from intent.
 
-**Lead-owned review.** The selected implementation leaf (poteto-agent, bug-fix, perf-issue or hillclimb) implements only its authorized scope and returns the diff, validation evidence and exact completion ref to the lead. It does not launch reviewers. After the implementation handoff, the lead runs `/skill:no-comments` and `/skill:interrogate`, supplying the required review skills/rubrics explicitly through files when the reviewer definition does not already provide them. Forward the exact implementation result ref through files and keep the reviewed scope frozen. Integrate asynchronous review results before authorizing follow-up edits or PR opening; end the turn and yield when only dependencies remain. Supply any needed deslop, technical-writing and unslop instructions as explicit evidence to a leaf assigned local cleanup or PR preparation. A leaf explicitly authorized to open the reviewed PR returns the URL and evidence, then returns to its owner without starting a babysit or nested review.
+**Lead-owned review.** The selected implementation leaf (poteto-agent, bug-fix, perf-issue or hillclimb) implements only its authorized scope and returns the diff, validation evidence and exact completion ref to the lead. It does not launch reviewers. After the implementation handoff, the lead runs `/skill:no-comments` and `/skill:interrogate`, supplying the required review skills and execution briefs explicitly through files when the reviewer definition does not already provide them. Forward the exact implementation result ref through files and keep the reviewed scope frozen. Integrate asynchronous review results before authorizing follow-up edits or PR opening; end the turn and yield when only dependencies remain. Supply any needed deslop, technical-writing and unslop instructions as explicit evidence to a leaf assigned local cleanup or PR preparation. A leaf explicitly authorized to open the reviewed PR returns the URL and evidence, then returns to its owner without starting a babysit or nested review.

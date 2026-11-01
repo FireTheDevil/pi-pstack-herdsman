@@ -1,0 +1,258 @@
+[
+  {
+    "id": "W-001",
+    "path": "skills/poteto-help/SKILL.md",
+    "includes": [
+      "without requiring another invocation",
+      "Ordinary questions stay read-only."
+    ],
+    "excludes": [
+      "let the user invoke it",
+      "question-only"
+    ]
+  },
+  {
+    "id": "W-002",
+    "path": "skills/poteto-mode/SKILL.md",
+    "includes": [
+      "Non-trivial work with an authorized write scope",
+      "Exempt trivial work only",
+      "Read-only roles return evidence, not files"
+    ],
+    "excludes": [
+      "earns its cost"
+    ]
+  },
+  {
+    "id": "W-003",
+    "path": "skills/poteto-mode/playbooks/autopilot-full.md",
+    "includes": [
+      "Current ownership and approval rules govern every phase; this comparison grants no merge authority."
+    ],
+    "excludes": [
+      "whose coordinator lands verified work itself",
+      "whose workers never merge"
+    ]
+  },
+  {
+    "id": "W-004",
+    "path": "skills/poteto-help/references/prompting.md",
+    "includes": [
+      "A request to keep going does not waive approval gates."
+    ],
+    "excludes": [
+      "## Make verification reusable",
+      "--dry-run",
+      "machine-readable",
+      "seeded development state",
+      "known reset steps"
+    ]
+  },
+  {
+    "id": "W-005",
+    "path": "skills/poteto-mode/playbooks/opening-a-pr.md",
+    "includes": [
+      "No symbols, paths, or file-by-file essay.",
+      "No sample-size methodology, swarm recitals, or metric tables.",
+      "link detailed evidence"
+    ],
+    "excludes": []
+  },
+  {
+    "id": "W-006/S-004",
+    "path": "skills/poteto-mode/SKILL.md",
+    "includes": [
+      "Writing or modifying TypeScript code, or explicitly reviewing TypeScript type-system correctness",
+      "Ordinary read-only navigation or explanation does not trigger it."
+    ],
+    "excludes": []
+  },
+  {
+    "id": "S-004",
+    "path": "skills/typescript-best-practices/SKILL.md",
+    "includes": [
+      "Not for ordinary read-only navigation or explanation.",
+      "does not trigger this skill"
+    ],
+    "excludes": []
+  },
+  {
+    "id": "W-007",
+    "path": "skills/poteto-help/SKILL.md",
+    "includes": [
+      "[tdd](../tdd/SKILL.md)",
+      "[typescript-best-practices](../typescript-best-practices/SKILL.md)",
+      "[no-comments](../no-comments/SKILL.md)",
+      "[bro](../bro/SKILL.md)",
+      "subject to the user's testing policy"
+    ],
+    "excludes": [
+      "[make-bot-ui]"
+    ]
+  },
+  {
+    "id": "W-007",
+    "path": "skills/poteto-help/references/recipes.md",
+    "includes": [
+      "/skill:ketchup",
+      "/skill:tdd",
+      "the user's testing policy permits it",
+      "No new unit tests are authorized by this example."
+    ],
+    "excludes": []
+  },
+  {
+    "id": "W-008",
+    "path": "skills/poteto-mode/playbooks/multi-phase-plan.md",
+    "includes": [
+      "actual authorized prepared verification environment",
+      "Report unavailable recording capability",
+      "Worktrees isolate files, not processes or security boundaries.",
+      "Require stronger isolation only when the task needs it.",
+      "30 to 60 second video"
+    ],
+    "excludes": [
+      "lane VM"
+    ]
+  },
+  {
+    "id": "W-009",
+    "path": "skills/poteto-mode/playbooks/multi-phase-plan.md",
+    "includes": [
+      "At least two focused audit lanes",
+      "Justify extra lanes by distinct coverage."
+    ],
+    "excludes": []
+  },
+  {
+    "id": "W-010",
+    "path": "skills/poteto-mode/playbooks/pause-safely.md",
+    "includes": [
+      "Stop authority wins.",
+      "stop editing immediately",
+      "report any unresolved broken state",
+      "only when permitted",
+      "Only when current authority permits further writes and commits",
+      "report state without further file writes"
+    ],
+    "excludes": [
+      "Never stop mid-edit"
+    ]
+  },
+  {
+    "id": "S-001",
+    "path": "skills/arena/SKILL.md",
+    "includes": [
+      "Require a short rationale naming the alternatives considered and the options rejected."
+    ],
+    "excludes": []
+  },
+  {
+    "id": "S-002",
+    "path": "skills/arena/SKILL.md",
+    "includes": [
+      "normal starting point",
+      "Add justified attempts for distinct design directions within task authority and resource limits, without requiring another request."
+    ],
+    "excludes": [
+      "Expand the attempt count only when explicitly requested."
+    ]
+  },
+  {
+    "id": "S-002",
+    "path": "skills/architect/SKILL.md",
+    "includes": [
+      "normal starting point",
+      "Add justified attempts for distinct design directions within task authority and resource limits, without requiring another request."
+    ],
+    "excludes": [
+      "Expand the attempt count only when explicitly requested."
+    ]
+  },
+  {
+    "id": "S-003",
+    "path": "skills/sharpen/SKILL.md",
+    "includes": [
+      "show concise answers",
+      "clearly separated section",
+      "Do not execute the task.",
+      "A plan-only or read-only request stays that way."
+    ],
+    "excludes": [
+      "Return only the rewritten prompt",
+      "Do not narrate the framing"
+    ]
+  },
+  {
+    "id": "S-003 callsites",
+    "path": "README.md",
+    "includes": [
+      "four-part framing",
+      "separate deeper rewritten prompt"
+    ],
+    "excludes": [
+      "returns only a deeper rewritten prompt",
+      "return only a deeper rewritten prompt"
+    ]
+  },
+  {
+    "id": "S-003 callsites",
+    "path": "skills/poteto-help/references/recipes.md",
+    "includes": [
+      "four-part framing",
+      "separate deeper rewritten prompt"
+    ],
+    "excludes": [
+      "returns only a deeper rewritten prompt",
+      "return only a deeper rewritten prompt"
+    ]
+  },
+  {
+    "id": "S-005",
+    "path": "skills/principle-build-the-lever/SKILL.md",
+    "includes": [
+      "an authorized writer creates one shared skill they all read, even for one-off work",
+      "the recipe, the verification contract, and the do-not-touch fences in one artifact",
+      "This does not change leaf tools or permissions.",
+      "Read-only roles cannot create one"
+    ],
+    "excludes": [
+      "only if the recipe is reusable"
+    ]
+  },
+  {
+    "id": "S-007",
+    "path": "skills/reflect/SKILL.md",
+    "includes": [
+      "case table, description validation, revision, and held-out-case loop",
+      "steps 4 through 6",
+      "Hidden skills remain explicit-only.",
+      "report that limitation",
+      "not a successful model evaluation"
+    ],
+    "excludes": []
+  },
+  {
+    "id": "S-007 procedure",
+    "path": "skills/poteto-mode/references/skill-authoring.md",
+    "includes": [
+      "revise once",
+      "one held-out case",
+      "after two revision rounds",
+      "never fabricate trial results"
+    ],
+    "excludes": []
+  },
+  {
+    "id": "S-007 synthesis",
+    "path": "skills/reflect/references/synthesizer.md",
+    "includes": [
+      "Hidden skills remain explicit-only; tuning does not enable automatic invocation.",
+      "validate and iterate the description through the authoring procedure"
+    ],
+    "excludes": [
+      "so it fires next time",
+      "path-shaped triggers belong in `paths:`"
+    ]
+  }
+]

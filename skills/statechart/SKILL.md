@@ -1,54 +1,90 @@
 ---
 name: statechart
-description: "Draw what an app's user sees as a Mermaid statechart from a TLA+ model. States are gray if they work, red if still wrong, and green if fixed. Each bug TLC finds is a numbered path. Use for /skill:statechart, \"show the PM the bug\", or to turn an agreed chart into a TLA+ skeleton."
+description: "Check a TLA+ model of a system that moves between states, such as a product flow, a protocol, or a service, and draw it as a Mermaid statechart. The report gives the shortest path to each state that breaks a rule. Use for /skill:statechart, or to show a bug as a path through states."
 disable-model-invocation: true
 ---
 
 # Statechart
 
-The chart shows what an app's user sees. A PM reads it to decide whether that behavior is right. Label each state with what is on the screen, such as "Paying". Label each step with what the user does or sees happen, such as "tap Pay" or "the charge goes through". Keep variable and action names out of labels. The scripts call this user the reader, as in `readerActions` and reader steps.
+The chart shows how a system moves between states, in the words of the person who reads it. That person, the reader, decides whether the behavior is right.
 
-## Establish authority and isolate inputs
+## Run
 
-Explicit invocation does not grant installation, network, product edits, or global configuration authority. A read-only request gets an explanation or unexecuted draft. Before execution, confirm authority for the scratch and output writes, the input trust, and the tools required by the chosen command.
+Work in a scratch folder outside the repo. Write a TLA+ spec and its config. Then run:
 
-Copy the spec, cfg, map, imported TLA modules, mapping dependencies, and any comparison inputs into a dedicated authorized isolated scratch folder outside the repo. Work only on these copies. A mapping module and its imports are unrestricted executable JavaScript, not data. Inspect and trust them before execution. They can run repeatedly in separate processes. Do not execute untrusted mappings.
+```sh
+<skill dir>/scripts/statechart SPEC.tla [--config FILE] [--view FILE] [--out DIR]
+```
 
-Use a dedicated output folder owned by this run. Never point `--out` at user-owned content or another run's folder. The coordinator replaces the entire accepted output folder, including prior PNGs on a later no-PNG run. Its accepted-name check does not prove ownership or preserve arbitrary user data. Direct helpers can overwrite files without the coordinator's transactional publication. The chart-to-TLA helper overwrites the source trio. `from-chart` keeps an existing TLA file, so missing companion cfg or map files require inspection rather than replacing the model.
+`scripts/statechart.ts` is TypeScript, so run it with a runtime that can execute TypeScript.
 
-Run `node <skill dir>/scripts/statechart.mjs --help` for commands. Resolve `<skill dir>` to this installed skill directory. Node runs the bundled helpers without npm dependencies. Actual checking requires separately provisioned Java 11 or later and an approved `tla2tools.jar`. Set `JAVA` and `TLA2TOOLS` to the approved absolute paths. The scripts do not download TLC, authenticate the jar, set a process timeout, or bound practical memory use. If dependencies or execution authority are absent, report checking blocked. Do not install them automatically.
+## Authority and dependencies
 
-Do not use `--png` by default. It runs unpinned `npx -y @mermaid-js/mermaid-cli`, which may download and execute packages, install scripts, and a browser runtime, and write caches. Obtain separate explicit approval for those external effects before rendering. Without it, hand off Mermaid source and report PNG rendering blocked. Never claim visual inspection from source or fake-renderer tests.
+Explicit invocation does not grant installation, network, product-edit, or global configuration authority. A read-only request gets an explanation or unexecuted draft. Confirm authority for execution and scratch/output writes first. Copy the spec, config, imported TLA modules, view and its dependencies into authorized isolated scratch outside the repo. Inspect and trust all executable view code and imports before running: they execute unrestricted JavaScript, not sandboxed data.
 
-## Interpret results and preserve evidence
+Use a dedicated new or empty output folder owned by this run, never another run's folder or user content. Do not run concurrent writers against one output. Preserve exact failure paths and process identities; diagnose before cleanup, and do not blindly retry cleanup.
 
-`from-chart` can write a missing source trio before discovering that TLC is absent. `from-spec` can write a missing-map scaffold and exit 2. Exit 2 is not a universal no-write guarantee. An invariant failure exits 1 unless exactly covered by `--expect-broken`. Do not add unexpected failures to that set to hide them. A PNG failure can publish generated files and still exit 2. Read the logs and summaries before claiming success.
+Node >=24 runs the bundled TypeScript without npm dependencies. Set both `TLA2TOOLS` and `JAVA` to separately approved absolute paths to a TLC jar and executable Java (11 or later). The helper refuses missing paths and never invokes mise or installs tools, including on direct invocation. Upstream uses TLC 1.7.4; other versions are not certified here. These path checks do not authenticate dependencies or sandbox execution. No dependencies are bundled or installed. If tools or authority are absent, report checking blocked. Rendering needs separate explicit approval; see `references/render.md`.
 
-Direct-input fingerprints do not cover imported modules or mapping dependencies. Preserve the copied inputs and exact command for reproducibility. Comparison with `--fixed` or `--against` is behavioral replay, not formal refinement. Hidden steps, coarse labels, and unmatched fields limit it. The finite model does not prove liveness or wall-clock timing. Do not silently reinterpret unsupported chart syntax.
+## Write the spec
 
-A killed run can leave temporary folders, asided output, or orphan Java processes. Preserve exact paths, process identities, and failure evidence. Diagnose before cleanup. Do not blindly delete or retry a retained rollback path. Avoid concurrent runs against the same output folder.
+- Write each rule that the reader agrees to as an INVARIANT. A rule can be about a screen, a result, a stored value, or a message. If the model has no variable for a rule, add the variable. Never weaken a rule to make it hold.
+- Write `Next` as a disjunction of the actions, such as `YouPressPlay \/ YouPressStop`. If you do not, TLC names every step `Next`.
+- A state with no step out breaks `NoDeadlock`, also when it is a correct end state. When an INVARIANT or a PROPERTY already has that name, the rule is `CHECK_DEADLOCK`. Add to `Next` an action that is true only in the end states and changes nothing, such as `Done == phase \in {"paid", "failed"} /\ UNCHANGED vars`, and give it a label in `step()`.
 
-## Pick the direction
+## Pick the chart
 
-Use `from-spec` when a TLA+ model exists or the code is concrete enough to model. Use `from-chart` when there is no model and the PM should agree on the behavior before anyone writes or changes the code.
+You do the work that needs judgment: the words on each state and arrow, the phases and their colors, the title, and the report to the reader. Put your work in a view module, and give it with `--view`.
 
-If the code already has a TLA+ spec, start from a copy of that spec. Add the variables the user sees, and keep the spec's existing invariants. To audit the code against that spec, make the copy model what the code does, and pass the spec unchanged as `--against`. In a new spec, tie every variable and action to code that a reviewer can open, and take its name from that code. Make each action one indivisible step in the code.
+To show the reader's words, the view exports `state(vars)`. The value that `state()` returns picks the form:
 
-## Spec to chart
+- A string gives a flat chart: `export const state = (v) => (v.paid ? "Paid" : "Paying");`
+- An array gives parent states: `export const state = (v) => v.main.split(".");`
+- An object gives one parallel region for each key: `export const state = (v) => ({ Playback: v.playback, Volume: v.volume });`
 
-1. Choose the chart's states. When the PM cares about something the screen does not show, such as a second charge while the screen still says "Paying", name the state "Paying, charged twice". Start with few states, and split a state only when the split separates two bugs.
-2. Write each rule the PM agrees to as one invariant, with the PM's sentence as its comment. For a rule that applies once everything settles, define `Settled == ~ENABLED System`, where `System` is the disjunction of the actions the user does not take. Report each broken rule as a bug. Never weaken a rule to make the chart pass.
-3. Run `from-spec`, then fill in the mapping file it writes. Put the labels in `state` and `step`, and list the user's actions in `readerActions` by action name. When two bugs end on the same screen through different code paths, add `cause` and make it name the code path. To color the states by what the PM cares about, such as "Toast shown", return that group from `group`. The legend names the groups, and states that break a rule still get a red border.
-4. If there is an open fix, model it from the code and pass that model as `--fixed`.
-5. Inspect the Mermaid source and each numbered path. If separately authorized to render, use `--png` and look at every PNG. Otherwise report visual inspection blocked. If a label reads like code, fix `state` or `step` in scratch and rerun.
-6. Replay each bug's story against the real code, as a test or a live repro, one step per model action. If a bug does not reproduce, assume the model is wrong until you show otherwise. Fix the model, not the rule.
+Label each state with what the reader can see or cares about, such as "Paying" or "Lease held, write pending". Keep variable names out of labels. In `vars`, a TLA+ sequence is an object with keys from 1, so `v.pc[1]` is `pc[1]`. A set is an array.
 
-## Chart to spec
+The view can also export `step(action, from, to)`. It gets the TLC action name and the values before and after the step, and it returns the label of the arrow. Write each step label as the user sees it happen, such as "you press play" or "the connect fails". Do not name the code or the TLA+ action. Two actions that end the same in the chart get the same label, so that they share one arrow.
 
-1. Draw the chart the PM agrees to. Use one region for each thing that changes independently, such as the connection and the sync badge. Add one `%% never` line per rule, with the PM's sentence. Draw "the app closes" as an edge to the state the user sees next.
-2. Run `from-chart`. If a rule breaks, the agreed chart has a design bug. Take the bug to the PM.
-3. Add the real code's guards and variables to the spec that `from-chart` wrote, and run `from-chart` again. For each difference it prints, ask the PM whether the code is wrong or the chart needs a correction.
+When a step can occur only in some conditions, end its label with the condition in brackets, in the reader's words, such as `you press play [while the file loads]`. In a regions chart, the command writes the condition on the other regions on the arrow, in the words of their labels, such as `[when Offline]`. Your brackets replace it, and two arrows from one state can then look the same. So in a regions chart, do not write brackets for a condition on another region. When a value that no label shows decides where a step goes, name the result in the label, such as "the roster read fails".
+
+The view can also export these:
+
+- `group(vars)` returns the name of a phase. Each chart state gets the color of its group. When the model states behind one chart state are in different groups, that state gets no color.
+- `colors` gives each group name a color class.
+- `title` is a string that the chart shows at the top.
+
+The command calls `state()` and `group()` at most once for each model state, and `step()` at most once for each step. The chart and the report both use those answers. So make each function depend only on its arguments.
+
+The chart does not draw a step that stays in one label. Split a label when the reader must see such a step.
+
+Aim for about 20 arrows or fewer, because a busier chart is hard to read. First return coarser labels from `state()`. Give one label to values that act the same, and leave out a detail that the reader does not need, such as a call in flight whose return changes nothing. Keep each state of a bug path, and keep each mark. When a merge changes a `breaks` state to `mayBreak`, it hides where a rule breaks. Do not merge two states that break different rules, because the reader then cannot see which rule breaks where. If the chart is still too busy, return `null` from `step()` for the steps that the reader does not need, such as a reset that every state has, or a step whose arrow repeats what other arrows show. Obey these rules when you hide steps:
+
+- Keep each chart state reachable by arrows from a start state.
+- Keep at least one arrow out of each chart state that has a step out in the model.
+- Hide all the steps of an arrow, or none of them. When you hide only some, its condition gets narrower.
+- In the hand-off, say which steps the chart hides.
+
+## Read the report
+
+- In the chart, a state that breaks a rule has the class `breaks`. When only some model states behind it break the rule, it has the class `mayBreak`. The Legend names the rules of each mark. When two rules break, it names both on one mark, so say in the hand-off which state breaks which rule. In a regions chart, a state gets a mark when each combination of region states that includes it can break a rule. When a combination can break a rule and none of its states has a mark, each state in that combination gets a mark.
+- TLC goes past a state that breaks a rule, so the chart shows the states after a bug.
+- Because TLC goes past bugs, a model with no limit on its states can run without end. Keep the constants small, or add a CONSTRAINT.
+- With a VIEW or a SYMMETRY, TLC counts states that it treats as the same as one state, and the chart draws that one state. An arrow can lead to it rather than to the state that the step reaches, and the report says so.
+- TLC checks the rules in each state past a CONSTRAINT or an ACTION_CONSTRAINT, but it does not explore that state or check it for deadlock. When TLC's shortest path for a rule ends in such a state, the chart draws that state, and the report gives that path. The chart does not draw the other states past the bound. A deadlock in such a state does not show. TLC also checks the rules after each step that an ACTION_CONSTRAINT excludes, also when it reaches the next state another way. When TLC's shortest path for a rule ends with such a step, the chart draws that step.
+- The command checks the rules with TLC on the config as written, with one worker. When a rule breaks, the command removes that rule and runs TLC again, until no rule breaks. After the first break, each run stops at 100,000 distinct states, so that a large model does not run without end. When a run reaches that bound or stops on an error, the report lists the rules that it did not check under "Rules not checked", and the chart does not mark them. A rule that is not checked can hold or break. To check it, remove the rules that break from the config, or make the model smaller. The bound adds a module that changes TLC's order of the variables, so for a property TLC can find a different counterexample than a run without the bound.
+- `tlc.out` is what TLC printed on the config as written. When the chart does not show the bug path of a rule that breaks, `tlc-RULE.out` is what TLC printed for the run that found it. When TLC repeats its first warning, plain TLC prints it twice, but `tlc.out` shows it once, because TLC leaves the second copy out of the output that this command reads. That happens only when Java runs with `-XX:+UseParallelGC`, since otherwise TLC's first warning is its advice to pass that flag, which it prints once.
+
+## Show the chart
+
+Show `chart.mmd` to the user as a `mermaid` code block. The chart has a budget of 500 states, counted by TLC on the config as written. Above that, the chart draws only the paths to the rules that break, and when no rule breaks, the command writes no `chart.mmd`. It still checks each rule, and the report gives the state count and each bug path. To see the whole graph, make the model smaller.
+
+Hand off Mermaid source by default. Only after separate explicit approval for renderer execution and any installation/network/cache effects, follow `references/render.md` for Pele. Never install or execute a renderer automatically. Do not claim visual inspection from source or replay fixtures.
 
 ## Hand off
 
-Give the PM the Mermaid source of each chart and any authorized, inspected PNGs. Distinguish checked output, unexecuted skeletons, and blocked checks or rendering. Add one line per bug with the rule it breaks, its steps as the chart numbers them, whether it reproduced, and whether the open fix fixes it. Take every count you quote from `summary.json`. Attach `stories.md` and the command that regenerates everything. Say what the model leaves out.
+Distinguish checked output, replay-only evidence, unexecuted drafts, and blocked checks or rendering. Record finite bounds, hidden steps, copied dependencies, exact tool versions and command. The finite model is not a proof of arbitrary implementation behavior, liveness or timing. Read report.md and TLC logs rather than inferring bug counts from the image.
+
+Give each chart and its Mermaid text to the person who must decide. Add one line for each bug: the rule, the reader's sentence for that rule, and the path as the report numbers it. Say what the model leaves out. Give the command that makes the files again, with a new `--out` folder.
+
+When the model describes code, replay each bug path against the real code, as a test or a live repro, one step for each action. If a bug does not occur, think that the model is wrong until you show that it is not.

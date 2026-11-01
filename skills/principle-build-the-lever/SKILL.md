@@ -14,7 +14,7 @@ Default to building the lever. Skip it only when the task is trivial, a couple o
 - Do the first unit by hand to learn the recipe, then build the tool. Prove it by rerunning it on that unit and diffing against your hand-done version. Make the lever safe to rerun.
 - Codemod or script for edits, generator for repetitive files, a dump-to-sqlite query for analysis, a rerunnable check for verification.
 - A deterministic lever beats fan-out. If the tool can process every unit in one pass, run it yourself. Don't fan out delegates to hand-apply what a script can do.
-- When you fan work out to subagents, give each the recipe, verification contract, and do-not-touch fences as evidence. Create a shared skill only if the recipe is reusable, and keep it outside delegates' write scopes.
+- When you fan work out to subagents, an authorized writer creates one shared skill they all read, even for one-off work: the recipe, the verification contract, and the do-not-touch fences in one artifact. Keep it outside the delegates' write scope so they cannot edit the contract. This does not change leaf tools or permissions.
 - For an authorized writer, applying this principle produces a rerunnable artifact. Read-only roles cannot create one; they return the proposed recipe or evidence to their owner instead. Do not cite a file-producing application of this principle when no artifact was made.
 - Commit the lever when the work outlives the session.
 

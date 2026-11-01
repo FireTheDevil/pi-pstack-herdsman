@@ -14,7 +14,7 @@ Invoke when the user says "reflect" or "/skill:reflect". Skip when the conversat
 
 ## 1. Locate the active transcript
 
-The parent finds its own transcript file before fanning out. Use the exact active session path exposed by the runtime when available; do not assume an environment variable or guess the session identity. For earlier sessions, use only `~/.pi/agent/sessions/--<cwd>--/`, where `<cwd>` is the resolved absolute cwd with its leading separator removed and each remaining slash, backslash, or colon replaced by `-`. Never glob other working-directory folders. That crosses project boundaries and reads unrelated private chats.
+The parent reads [session history resolution](../poteto-mode/references/session-history.md) and resolves its own exact transcript before fan-out. Respect custom storage and validate workspace headers. Never guess identity or glob other workspaces.
 
 For each candidate, inspect the session header for its cwd, then locate the first user message record and match its text to the conversation's opening prompt. Take the matching path. If no path resolves, write a tight digest of the session and pass that instead.
 
@@ -44,11 +44,13 @@ Before applying any Accepted edit, present the synthesizer's full Accepted, Reje
 
 Return Backlog recommendations or drafts by default. File or update external items only when the current request explicitly authorizes it and the required tools are available. Report missing authority or tools as a limitation.
 
+Never edit a skill in an installed package or cache. Before approval, show the exact proposed destination, `.pi/skills/<skill>/` or `~/.pi/agent/skills/<skill>/`. After approval for that destination and its writes, copy the skill folder there and edit the copy. Do not overwrite existing user work without explicit approval. Do not open a PR or push as part of Reflect.
+
 Follow each approved row's Routing exactly:
 
 - Trivial existing-skill edit such as a one-line bullet or stale fact correction. The parent does it directly.
 - Substantive existing-skill edit such as a new section or pattern table. Use `../poteto-mode/playbooks/authoring-a-skill.md` and `/skill:unslop` for the draft, test, and iterate loop.
-- `tune description: <skill path>`. Narrow the description to the phrases that should trigger it. Do not add unknown frontmatter keys.
+- `tune description: <skill path>`. Follow the case table, description validation, revision, and held-out-case loop in [Pi skill authoring procedure](../poteto-mode/references/skill-authoring.md), steps 4 through 6. Hidden skills remain explicit-only. If no authorized model-evaluation runner is available, report that limitation and the source walkthrough separately, not a successful model evaluation. Do not add unknown frontmatter keys.
 - `new skill: <kebab-name>`. Use `../poteto-mode/playbooks/authoring-a-skill.md` and `/skill:unslop`. Do not invent the shape ad hoc.
 
 If the environment ships a SKILL.md validator, run it on every touched skill before declaring done. Skip this step if it does not.

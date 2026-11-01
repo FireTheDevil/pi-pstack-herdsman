@@ -1,9 +1,8 @@
 #!/usr/bin/env bun
-import { assertDependenciesInstalled, ensureDependenciesInstalled } from "../bootstrap.ts";
+import { assertDependenciesInstalled } from "../bootstrap.ts";
 
 const argv = process.argv.slice(2);
 const boundedOption = "--stop-at-frontier-ready";
-let bounded = false;
 let afterSeparator = false;
 for (const argument of argv) {
   if (argument === "--") {
@@ -20,12 +19,8 @@ for (const argument of argv) {
       process.stderr.write(`error: use ${boundedOption} exactly, without a value or abbreviation, and before --\n`);
       process.exit(64);
     }
-    bounded = true;
   }
 }
-if (bounded)
-  assertDependenciesInstalled();
-else
-  ensureDependenciesInstalled();
+assertDependenciesInstalled();
 const { main } = await import("./cli.ts");
 process.exitCode = await main(argv);

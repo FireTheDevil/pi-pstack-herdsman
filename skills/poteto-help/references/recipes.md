@@ -5,7 +5,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 ## Understand
 
 - `/skill:in-your-own-words restate my goals and the problem in <thread>. don't start implementation.`
-- `/skill:sharpen <the prompt I am about to send>. return only a deeper rewritten prompt with expert sources, methods, and an outside check. leave my choices open. do not do the task.`
+- `/skill:sharpen <the prompt I am about to send>. show concise four-part framing, then a separate deeper rewritten prompt with expert sources, methods, and an outside check. leave my choices open. do not do the task.`
 
 - `/poteto-mode read <thread>. restate the underlying issue in your own words, in plain english.`
 - `/poteto-mode investigate why <symptom>. give me what we know, what data you used, and your best hypotheses. don't change any code yet.`
@@ -18,6 +18,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 - Bug: `/poteto-mode <symptom>. repro first, then fix and verify.`
 - Bug in an app: `/poteto-mode repro this with /skill:verify-<app>. if it repros on main, fix it and show me a video as proof.`
+- Bug with a cheap test: `/poteto-mode repro <bug> first. if there's a cheap test path and the user's testing policy permits it, /skill:tdd it. then fix and rerun.` No new unit tests are authorized by this example.
 - Feature: `/poteto-mode add <behavior>. <current output> stays byte-identical. verify both.`
 - Refactor: `/poteto-mode move <code> into one module, zero behavior change. record the current output first and prove it's unchanged after.`
 - Perf: `/poteto-mode <operation> takes <time> on <fixture>. trace it, fix the measured cause, show me before and after.`
@@ -33,7 +34,7 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 ## Review and ship
 
-- `/skill:interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the dismissals too.
+- `/skill:interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the Dropped list too.
 - `/skill:swarm check every package under <dir> against its check script. one worker per package. one report.`
 - `/poteto-mode open the pr. small ordered commits, evidence in the description.`
 - `/poteto-mode babysit this pr. get it green.` For status only: `/poteto-mode check on pr <number>. anything outstanding?`
@@ -43,8 +44,9 @@ Swap in the real paths, skills, and done checks. Informal wording works.
 
 - `/poteto-mode I am stepping away. <goal> within <scope>. I authorize a fresh external worktree off <base> and local commits, but no push or merge. Done means <checks>. Complete the trust preflight, keep a decision log, and stop with evidence if blocked. No periodic scheduler is authorized.`
 - `/skill:show-me-your-work catch me up on what you did last night.` Read its Attention section first.
+- `/skill:ketchup` catches you up on this chat since your last message and lists every call that waits on you.
 - `/poteto-mode full autopilot on this queue. each item is independent.`
-- `/poteto-mode autopilot these changes but stack them, don't ship. i'll land the stack.`
+- `/poteto-mode autopilot these changes, but don't merge. i'll land them.`
 - `/skill:reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.
 - `/skill:bro` restates the last reply in plain words.
 
@@ -57,6 +59,6 @@ For a race or invariant that tests miss, explicitly invoke [create-formal-verifi
 This creates one formal-property check, not an app-driving skill or feature-map maintenance loop. TLA+ is the default for event-ordering questions in any implementation language. Each check records covered code and a last-confirmed sync commit.
 
 - `/skill:maintain-formal-verification-skill the covered code changed after the recorded sync commit. update only the verification, show that it can still catch a break in isolated scratch, and distinguish drift from product bugs.`
-- `/skill:statechart show what the user sees when <behavior>. use trusted copied inputs in authorized isolated scratch and a dedicated owned output folder. do not install tools or run --png without separate approval.`
+- `/skill:statechart show what the user sees when <behavior>. use a TLA+ model and trusted executable view copied into authorized isolated scratch, with a dedicated new or empty output folder. report missing Java/TLC as blocked. give Mermaid source; do not install tools or execute Pele without separate approval.`
 
-If no formal verify skill exists, maintenance stops and points to creation. Statechart can start from a TLA+ model or an agreed Mermaid chart. A skeleton without a TLC run is not checked behavior.
+If no formal verify skill exists, maintenance stops and points to creation. Statechart checks a TLA+ model and draws its results. An unrun model is a draft, not checked behavior.

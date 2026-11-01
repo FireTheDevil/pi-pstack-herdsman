@@ -1,0 +1,832 @@
+--- pinned-upstream/skills/architect/SKILL.md
++++ working-tree/skills/architect/SKILL.md
+@@ -3 +3 @@
+-description: "Sketch types, signatures, and module structure before code, then stay in the loop while implementation fills in. Use for /architect, 'architect this', 'design this', or non-trivial work where jumping to code would lock in the wrong shape."
++description: "Sketch types, signatures, and module structure before code, then stay in the loop while implementation fills in. Use for /skill:architect, 'architect this', 'design this', or non-trivial work where jumping to code would lock in the wrong shape."
+@@ -9 +9 @@
+-Sketch types, function signatures, class shapes, and module boundaries with `not implemented` bodies and pseudocode. Synthesize across multiple model perspectives, then fill in code against the chosen sketch.
++Design before implementing. Sketch types, function signatures, class shapes, and module boundaries with `not implemented` bodies and pseudocode. Synthesize across independent design perspectives, then fill in code against the chosen sketch. If implementation proves the sketch wrong, throw it out and redesign.
+@@ -31 +31 @@
+-Take the runners from the `architect runners` line in the `pstack-models.mdc` rule, in place of the `arena runners` line. If the rule or that line is missing, use `claude-opus-5-5-xhigh` and `grok-4.7-xhigh-fast`. Alias and rejected entries follow the runner rules in the **arena** skill's Phase A.
++Use two independent pstack-advisor attempts as the normal starting point for read-only designs. Add justified attempts for distinct design directions within task authority and resource limits, without requiring another request. Read-only advisors return the complete design package in their completion results; the lead persists authorized design artifacts and forwards exact result refs through files. Advisors never write files. File-producing sketches require an appropriately authorized pstack-poteto-agent writer with disjoint output paths or explicitly prepared external worktrees with separate lead sessions. Different model candidates require explicitly configured discovered definitions, not a request pool field. Apply arena phases and report actual model overlap.
+@@ -45 +45 @@
+-Opt in to a checkpoint when the invoker explicitly asks: "/architect with checkpoint," "stop and show me before implementing," or similar. Then surface the synthesized design and pause for sign-off.
++Opt in to a checkpoint when the invoker explicitly asks: "/skill:architect with checkpoint," "stop and show me before implementing," or similar. Then surface the synthesized design and pause for sign-off.
+--- pinned-upstream/skills/arena/SKILL.md
++++ working-tree/skills/arena/SKILL.md
+@@ -3 +3 @@
+-description: "Spawn N parallel candidates at the same task, pick a base, graft the strongest parts of the losers into it. Use for /arena, 'arena this', 'throw it in the arena', or when one attempt at a non-trivial artifact would lock in the wrong shape."
++description: "Spawn N parallel candidates at the same task, pick a base, graft the strongest parts of the losers into it. Use for /skill:arena, 'arena this', 'throw it in the arena', or when one attempt at a non-trivial artifact would lock in the wrong shape."
+@@ -7,0 +8,2 @@
++
++For Herdsman launch, discovered definitions, asynchronous results, external isolation, and tool prerequisites, read [Herdsman runtime](../poteto-mode/references/herdsman-runtime.md) when needed. Required capabilities must be available before launch.
+@@ -16,3 +18,3 @@
+-2. Derive the rubric, 3-6 concrete gradeable criteria for what success looks like on *this* task. It is the picker's tool in Phase D. Candidates only see the task.
+-3. Pick the runners. Use the `arena runners` line in `~/.cursor/rules/pstack-models.mdc`. If the rule or that line is missing, default to one each on `claude-opus-5-5-xhigh` and `grok-4.7-xhigh-fast`. An `auto` or `inherit-parent` entry in this line means the parent model, so omit `model` for it. If the Task tool rejects a configured entry, run that seat on its family's default and say so. Families go by prefix: `claude-*`, and `grok-*` with `cursor-grok-*` and `composer-*`. A refused `composer-*` entry runs on `grok-4.7-xhigh-fast`. If the family has no default, or the Task tool rejects that default, use the closest valid slug of the same family from its error message, or drop the seat and say so when there is none. If dropped seats leave fewer than two runners, add runners until there are two, or one when the line has one entry. Run each added runner on a remaining runner's model, or omit `model` so it runs on the parent model when none remain, and say so. Spawn more runners when the arena covers multiple design directions. Use the same model N times when the work is generation-bound rather than judgment-sensitive. Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section of the **poteto-mode** skill.
+-4. Give each candidate its own output location (a git worktree where possible, otherwise `/tmp/arena-<slug>/candidate-<n>/`), per the **separate-before-serializing-shared-state** principle skill.
++2. Derive 3-6 concrete gradeable criteria for success on this task. The picker uses the rubric in Phase D. Candidates only see the task.
++3. Pick the runners. Use two independent attempts as the normal starting point. Add justified attempts for distinct design directions within task authority and resource limits, without requiring another request. Match code-writing roles to the [runtime role table](../poteto-mode/references/herdsman-runtime.md): poteto-agent for features/refactoring, bug-fix for defects, perf-issue for measured fixes, hillclimb for iterative optimization. Use pstack-advisor for read-only designs. Models come from actual definitions. For model diversity, explicitly configure distinct discovered definitions; otherwise disclose same-model independent attempts.
++4. Assign output ownership. Read-only pstack-advisor candidates return designs and rationales in their completion results; they do not write files. The lead persists those results to task-owned artifact paths when authorized, preserving their exact result refs. Reserve file-producing assignments for an appropriately authorized implementation-role writer with a disjoint output path or explicitly prepared external worktree and separate lead session, per the **separate-before-serializing-shared-state** principle skill.
+@@ -22 +24 @@
+-Spawn all N subagents in one message with `run_in_background: true`, each with the task, the path to the shared grounding, its own output path, and instructions to produce the artifact and a short rationale naming the alternatives it considered and what it rejected.
++Launch independent candidates using `delegate_agent` with definition, task and evidence files. For code in competing checkouts, first authorize external worktrees and separate lead sessions; there is no request cwd or managed isolation. Read-only proposals return through results, not filesystem writes. Disjoint output paths may suffice only for authorized file-producing writers; paths do not grant tools. Continue independent work or end the turn and yield. Integrate all asynchronous completions before Phase C. Require a short rationale naming the alternatives considered and the options rejected.
+@@ -28 +30,3 @@
+-After all Phase B candidates complete, choose one model from the `arena cross-judge pool` line in `~/.cursor/rules/pstack-models.mdc`. If the rule or that line is missing, choose from `claude-opus-5-5-xhigh` and `grok-4.7-xhigh-fast`. Spawn one readonly judge subagent. The judge is never from the parent's family, as Phase A step 3 defines families. Try only the entries from another family, in pool order. An `auto` or `inherit-parent` entry is the parent model, so it never judges. With the default pool, a Claude parent gets `grok-4.7-xhigh-fast`. A parent from any other family gets `claude-opus-5-5-xhigh` first. If the Task tool rejects an entry, use a valid slug of the same model at the closest level or speed from the error message, or move to the next entry when there is none. If no entry from another family runs, try the default pool's entries from another family the same way. If none of those runs, skip the judge, pick the base alone in Phase D, and say so. If you do not know the parent's model, try the pool's real slugs in pool order and say that the family check did not run. The judge sees the rubric and the candidates by path label, scores each criterion, and recommends a base with rationale. It runs in parallel with your reading in Phase D. Don't spawn it while candidates are still writing.
++After all candidates finish, inspect the effective discovered judge definitions. Choose one read-only pstack-advisor or pstack-reviewer whose configured model family differs from the parent's, in the explicitly configured preference order. Do not change model pins or pass model fields. Never use a parent-model alias as a diverse judge. If the parent's model is unknown, disclose that the family check could not run. If no authorized different-family judge is available, skip the judge and disclose the missing coverage. Do not invent a fallback model or silently substitute a same-family judge.
++
++Pass the rubric, any lead-persisted candidate paths and exact completion refs through files. The judge returns criterion scores, a recommended base and its rationale. Record its effective model. Read candidates independently while it works, then integrate its asynchronous result.
+@@ -32 +36 @@
+-Read every candidate end to end before picking. Score each against the rubric criterion by criterion, not on holistic feel, and compare with the cross-judge when Phase C ran one. Agreement on the base confirms the pick. Disagreement means one of you is biased or the rubric was ambiguous. Read both rationales before deciding.
++Read every candidate end to end before picking. Score each against the rubric criterion by criterion, not on holistic feel, and compare with the cross-judge when one ran. Agreement on the base confirms the pick. Disagreement means one of you is biased or the rubric was ambiguous. Read both rationales before deciding.
+@@ -34 +38,3 @@
+-Pick the base a future maintainer can extend most easily without breaking invariants. When two feel tied, prefer the cleaner boundary or smaller API, per the Laziness Protocol.
++Pick the base on which candidate a future maintainer can extend most easily without breaking invariants. Prefer the cleaner boundary or smaller API when two feel tied, per the Laziness Protocol.
++
++The lead records the pick and the reason in a short synthesis note alongside the base artifact, including the cross-judge's verdict or why the judge was skipped, when artifact writes are authorized. Otherwise return the synthesis and note in the lead's result.
+@@ -44 +50,3 @@
+-Verify the synthesized artifact like any other output, per the **prove-it-works** principle skill. If verification finds a problem the arena missed, either Phase A was wrong (re-frame and re-run) or a candidate caught it and you missed the graft (go back to Phase E). Don't paper over it.
++The synthesized artifact has to hold up under the same scrutiny as any other output, per the **prove-it-works** principle skill. Verify the real artifact and return the child outputs, not just a claim that a candidate passed.
++
++If verification surfaces a problem the arena did not catch, either Phase A was wrong (re-frame and re-run) or one candidate caught it and you missed the graft (go back to Phase E). Don't paper over.
+@@ -48 +56 @@
+-One synthesized artifact, with a short synthesis note alongside naming the base and why, the cross-judge's verdict or that Phase C skipped the judge, each graft with its source candidate, what was rejected and why, any convergence or dropouts, and the verification result.
++One synthesized artifact, with a short synthesis note alongside naming the base and why, the cross-judge's verdict or skipped coverage, each graft with its source candidate, what was rejected and why, any convergence or dropouts, and the verification result.
+--- pinned-upstream/skills/blast-radius/SKILL.md
++++ working-tree/skills/blast-radius/SKILL.md
+@@ -38 +38 @@
+-6. For a big or wide change, run it as an `arena`. Ask more than one model the same question and merge the answers. Different models catch different real bugs.
++6. For a big or wide change, run it as an `arena`. Ask independent investigator sessions the same question and merge the answers. Report actual model overlap rather than assuming diversity.
+--- pinned-upstream/skills/figure-it-out/SKILL.md
++++ working-tree/skills/figure-it-out/SKILL.md
+@@ -3 +3 @@
+-description: "Design an auditable playbook when no narrower one fits: a large migration, an ambitious multi-part change, or work a human reviews after stepping away. Scales rigor to the task, runs a hypothesis loop, and logs decisions. Use for /figure-it-out or 'figure it out'."
++description: "Design an auditable playbook when no narrower one fits: a large migration, an ambitious multi-part change, or work a human reviews after stepping away. Scales rigor to the task, runs a hypothesis loop, and logs decisions. Use for /skill:figure-it-out or 'figure it out'."
+@@ -9,0 +10,2 @@
++
++Before unattended execution, read and satisfy all four checks in [Unattended trust preflight](../poteto-mode/playbooks/autonomous-run.md#unattended-trust-preflight). Missing checks block unattended work, but may be established through authorized attended preparation. This grants no additional scheduling, publication, scope, or tools authority and does not gate normal attended work.
+@@ -31 +33 @@
+-- Decide what fans out. Parallelize only across seams, and give each worker its own worktree or branch (the **separate-before-serializing-shared-state** principle skill). Don't over-fan. Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section of the **poteto-mode** skill.
++- Decide what fans out. Parallelize only across seams, and give each worker its own worktree or branch (the **separate-before-serializing-shared-state** principle skill). Don't over-fan. Models and thinking come from effective discovered definitions, not per-request configuration.
+--- pinned-upstream/skills/poteto-help/SKILL.md
++++ working-tree/skills/poteto-help/SKILL.md
+@@ -3 +3 @@
+-description: Guides users through pstack setup, /poteto-mode, and picking the skill, playbook, or principle for a task. Type /poteto-help with a question.
++description: "Answer questions about Pi pstack setup, workflow selection, and prompt wording. Route explicit authorized work requests through Poteto mode. Type /skill:poteto-help with a question."
+@@ -9 +9 @@
+-Answer the user's question about pstack, hand them a prompt they can send, and link the file the answer came from. For a help question, don't start the work. The user asked how, and a pstack run spends real tokens, so let them send the prompt.
++For a help question, answer it, offer at most one ready-to-send prompt, and link the source file you read. Do not execute examples or start the workflow. A message that explicitly requests authorized work, such as "use pstack to fix this bug", is not a help question. Read [poteto-mode](../poteto-mode/SKILL.md) and do the authorized work under it without requiring another invocation. Ordinary questions stay read-only.
+@@ -11 +11 @@
+-A message that asks for work, such as "use pstack to fix this bug", is not a help question. Read [`poteto-mode`](../poteto-mode/SKILL.md), do the work under it, and mention once that a Custom Mode keeps it on.
++Infer the need from the message and chat. If unclear, ask one multiple-choice question: setup, starting a task, picking a skill, fixing a run, or customizing the workflow. Answer only the selected need. Read the routed file before recommending it; that file overrides this map. Use local source links, not invented public URLs or Cursor documentation.
+@@ -13 +13 @@
+-This file maps questions to the skills and guide pages that hold the answers. Those files own the details. Read the file you route to before you quote it, and trust it when it disagrees with this map. The links here point into the installed plugin, which the user may not be able to open, so give the user the file's public copy: `https://github.com/cursor/plugins/blob/main/pstack/` followed by its path.
++## Setup and runtime
+@@ -15 +15 @@
+-## Find out what they need
++Read [setup-pstack](../setup-pstack/SKILL.md) and [Herdsman runtime](../poteto-mode/references/herdsman-runtime.md) for setup questions. On lead session startup, the extension reconciles global profiles, creating missing ones and applying safe package description and prompt updates. Installed configuration, including models, thinking, and tools, remains user-owned. Conflicts and package capability changes hold the affected profile. Restart Pi after reported profile changes and inspect the effective definitions. Same-name globals override project definitions. Installation alone does not synchronize profiles. `/setup-pstack [role]` previews an optional confirmed project copy; it is not a model-budget wizard. Models and tools belong to effective discovered definitions. Preserve Sol, Luna, and Astra policy; never invent model availability or substitute a fallback.
+@@ -17 +17 @@
+-Infer the need from the message and the conversation. A named situation, such as "which skill reviews a PR?", goes straight to its section. If the need is still unclear, ask one multiple-choice question with these options, then answer only the section they pick:
++When effective definitions or availability are unknown and matter to the answer, mention that uncertainty. At most once per chat, ask whether the user wants setup guidance now or later. Do not inspect agents as a progress poll or change configuration from help. For cost questions, explain the cost of independent exploration and review, not nonexistent budget menus.
+@@ -19,5 +19 @@
+-- Get set up
+-- Start a task with `/poteto-mode`
+-- Pick a skill for a situation
+-- Fix a run that went wrong
+-- Make pstack my own
++For verification questions, identify whether a matching project verification skill or actual app tool is available. If none is known, say so and route to [create-verification-skill](../create-verification-skill/SKILL.md). For a formal property, race, or invariant beyond test reach with no existing formal check, route to [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md), explicitly invoked with `/skill:create-formal-verification-skill`. It produces one project-local formal check, not app-driving verification or a feature-map maintenance loop. If a formal check already exists and its covered code changed after its recorded sync commit, recommend `/skill:maintain-formal-verification-skill` and read the [maintenance skill](../maintain-formal-verification-skill/SKILL.md). Do not offer creation again. Missing sync history is a maintenance uncertainty, not evidence that the old pass proves current code. For a reader-visible checked chart, recommend `/skill:statechart` and read [Statechart](../statechart/SKILL.md). Explain its isolated scratch, trusted executable view, separately provisioned Java/TLC, owned new or empty output, and separate Pele rendering approval gates. A help question does not run checks, install tools, or mutate definitions. A green build does not prove behavior.
+@@ -25 +21 @@
+-Check the state that changes the answer, and mention it only when it does:
++## Start and select
+@@ -27,3 +23 @@
+-- No `~/.cursor/rules/pstack-models.mdc` means `/setup-pstack` hasn't run for this user, so every role uses its default model.
+-- No `verify-*` skill or other app harness in the project means agents have no scripted way to drive the app. Mention `/create-verification-skill` when the question is about proving a change works.
+-- No formal verification skill in the project means no property is checked past what tests reach. Mention `/create-formal-verification-skill` when the question is about a race, an invariant, or another case tests rarely hit. When one exists and the code it covers changed after the commit it records as last in sync, mention `/maintain-formal-verification-skill` if the question touches that code.
++`/poteto-mode` enables the style for the session; `/poteto-mode off` disables it. `/skill:poteto-mode` also enables it. `/pstack-status` takes no arguments and reports Poteto Mode and bundled skill visibility without changing session state. Hidden skills remain explicitly callable as `/skill:<name>`; no automatic discovery accuracy is promised. For prompt wording, read [prompting](references/prompting.md) and [recipes](references/recipes.md).
+@@ -31 +25,30 @@
+-When the model rule is missing and it matters, ask whether the user wants to pick a model for each role and a reasoning budget now. It matters when the user is new, the question is about setup or cost, or the answer depends on which models run. Ask at most once per chat. If the need is also unclear, ask both questions together. Offer two choices:
++| Need | Source |
++| --- | --- |
++| Rigorous implementation or workflow routing | [poteto-mode](../poteto-mode/SKILL.md) |
++| Mechanics, ownership, or placement | [how](../how/SKILL.md) |
++| Historical reasons or a number's origin | [why](../why/SKILL.md) |
++| Plain explanation | [teach](../teach/SKILL.md) |
++| Restate the goals and underlying problem without starting work | [in-your-own-words](../in-your-own-words/SKILL.md) |
++| Show four-part framing and a separate deeper rewritten prompt, without doing the task | [sharpen](../sharpen/SKILL.md) |
++| Recent cross-session context on a topic | [recall](../recall/SKILL.md) |
++| Current-chat outcomes, real visuals, and every self-contained human decision | [ketchup](../ketchup/SKILL.md) |
++| Explicitly requested subtitled slide-video catch-up, with human calls in text | [ketchup-video](../ketchup-video/SKILL.md) |
++| Breakage outside a diff | [blast-radius](../blast-radius/SKILL.md) |
++| Types and module design | [architect](../architect/SKILL.md) |
++| Same brief, competing candidates and synthesis | [arena](../arena/SKILL.md) |
++| Partitioned coverage or races | [swarm](../swarm/SKILL.md) |
++| Execution-backed independent adversarial review | [interrogate](../interrogate/SKILL.md) |
++| Test-first bug fix when a cheap local test exists, subject to the user's testing policy | [tdd](../tdd/SKILL.md) |
++| TypeScript edits or explicit type-system review, not ordinary reading | [typescript-best-practices](../typescript-best-practices/SKILL.md) |
++| Independent comment review before review | [no-comments](../no-comments/SKILL.md) |
++| Hear the last reply in plain words | [bro](../bro/SKILL.md) |
++| Prose cleanup or document structure | [unslop](../unslop/SKILL.md), [technical-writing](../technical-writing/SKILL.md) |
++| Reusable app proof or drift maintenance | [create-verification-skill](../create-verification-skill/SKILL.md), [maintain-verification-skill](../maintain-verification-skill/SKILL.md) |
++| Formal properties beyond test reach, with no existing check | [create-formal-verification-skill](../create-formal-verification-skill/SKILL.md) |
++| Existing formal checks after covered-code changes | [maintain-formal-verification-skill](../maintain-formal-verification-skill/SKILL.md) |
++| TLA+ checks with reader-visible statecharts and shortest violation paths | [statechart](../statechart/SKILL.md) |
++| Performance measurement rigor | [benchmark-checklist](../benchmark-checklist/SKILL.md) |
++| A bespoke rigorous run | [figure-it-out](../figure-it-out/SKILL.md) |
++| Decision trail | [show-me-your-work](../show-me-your-work/SKILL.md) |
++| Session lessons or repeated mistakes | [reflect](../reflect/SKILL.md), [correct](../correct/SKILL.md) |
++| Personal workflow | [automate-me](../automate-me/SKILL.md) |
+@@ -33,2 +56 @@
+-- Now: give them `/setup-pstack` to type, and answer their question too.
+-- Later: answer their question, and add one line saying every role keeps its default model until they run `/setup-pstack`.
++For another installed skill, read its frontmatter and body before routing. Principles are one-rule skills that shape decisions, not extra orchestration layers. Explicit invocation uses `/skill:principle-<name>`.
+@@ -36 +58 @@
+-## Get set up
++## Playbooks and close calls
+@@ -38,3 +60 @@
+-1. Install with `/add-plugin pstack` in chat, or from Customize in the sidebar.
+-2. Run [`/setup-pstack`](../setup-pstack/SKILL.md). It asks for a reasoning budget, maps a model to each role, and writes a rule. The rule applies to new chats. Then it offers once each to generate a verification skill and a formal verification skill for the project, unless the project already has one.
+-3. Start a real task with `/poteto-mode`, a goal, and a check that can pass or fail.
++Playbooks are files selected inside poteto-mode, not standalone commands. Read the matching file before recommending it.
+@@ -42 +62,8 @@
+-Installing changes nothing until the user invokes a skill. Only `/setup-pstack` loads from the user's words. The [README](../../README.md) and [guide page 1](../../docs/guide/01-setup.md) have the details. Offer to word their first prompt with them, per [`references/prompting.md`](references/prompting.md).
++- How explains mechanics; Why investigates reasons; Teach explains the evidence plainly.
++- Arena compares the same brief; Swarm partitions checks. Neither creates automatic worktrees or cloud isolation. One writer owns each boundary. External worktrees need authorization and separate lead sessions.
++- Recall reconstructs recent topic context; Ketchup summarizes this chat. Only an explicit `/skill:ketchup-video` request routes to video. Read that skill before recommending it: it bundles no renderer, requires authorized output outside the repository and separate approval for installations or external effects, and does not assume native video generation or Pi inline playback. Unsupported or unverified playback uses an absolute `file://` output link for an external player; missing tools or failed rendering/inspection returns a one-line explanation and text calls only. A help question never renders or installs anything. A specific old branch or session routes to [Session pickup](../poteto-mode/playbooks/session-pickup.md).
++- For a plan-only deliverable, use [Multi-phase plan](../poteto-mode/playbooks/multi-phase-plan.md). For unsettled design, use [Prototype](../poteto-mode/playbooks/prototype.md) or Architect first. State a checkpoint when implementation needs approval.
++- PR status or babysitting routes to [Babysit](../poteto-mode/playbooks/babysit.md). Status does not authorize fixes or merge. Landing routes to [Shipping](../poteto-mode/playbooks/shipping.md) with explicit authority and independent verification.
++- Autopilot-full delivers merged independent PRs only with merge authority. Autopilot-stack delivers verified PRs without merging. Stack only real dependencies.
++- One task to a predicate routes to [Autonomous run](../poteto-mode/playbooks/autonomous-run.md). A multi-day program routes to [Orchestrate](../poteto-mode/playbooks/orchestrate.md). Neither grants scheduling or broader authority.
++- Pausing routes to [Pause safely](../poteto-mode/playbooks/pause-safely.md). Skill edits use [Authoring a skill](../poteto-mode/playbooks/authoring-a-skill.md); evaluations require an authorized available runner.
+@@ -44 +71 @@
+-If cost is the worry, say where the tokens go and how to spend fewer. pstack spends extra tokens on subagents and review panels. Rerun `/setup-pstack` and pick a smaller budget or cheaper models. A role set to `auto` or `inherit-parent` runs on the chat's model, which saves tokens when the chat runs on Auto or a cheaper model. A shorter panel list runs fewer subagents, one for each entry. Save `/poteto-mode` for work that needs rigor.
++## Troubleshooting and reply
+@@ -46 +73 @@
+-pstack is built for Cursor, and it also installs in Claude Code with `/plugin marketplace add cursor/plugins`, then `/plugin install pstack@cursor-plugins`. There, each command takes a `pstack:` prefix, such as `/pstack:poteto-mode`. The [Claude Code adapter](../../docs/harness/claude-code.md) maps the Cursor names, and a step that needs a Cursor-only feature, such as Bugbot or Automations, is skipped with a one-line note.
++For drift, restate the goal or say "new task". For overlapping writers, stop and resolve ownership rather than assuming isolation. For unsupported tools or models, report the missing capability. For claimed success from compilation alone, ask for inspectable proof of the real behavior.
+@@ -48,116 +75 @@
+-Other tools can read the skills, because they use the Agent Skills format. But most workflow skills, including `/poteto-mode`, `/how`, `/why`, and `/teach`, spawn Cursor subagents with per-role models, and Custom Modes and `/loop` are Cursor features, so those parts may not work there.
+-
+-## Start a task with `/poteto-mode`
+-
+-`/poteto-mode` matches the task to a playbook, copies the playbook's steps into the todo list, and runs the other skills as the steps need them. A step it skips stays in the list as `skip: <reason>`. A good prompt states the goal and how to tell it's done. It doesn't list skills, because a hand-written sequence tends to drop or reorder steps the playbook would keep. Read [`references/prompting.md`](references/prompting.md) before you help word one. [Guide page 2](../../docs/guide/02-poteto-mode.md) has examples.
+-
+-Whether `/poteto-mode` stays on depends on how the user starts it:
+-
+-- Enter on `/poteto-mode` attaches the skill to one message. It fades as the chat moves on.
+-- Option+Enter on Mac or Alt+Enter on Windows, or Use as Mode from the skill entry, makes it a Custom Mode. It stays in context every turn until the user exits the mode, and it stays out of casual turns.
+-- Cursor's docs list Custom Modes in the Agents Window and the CLI. Elsewhere, start each new task with `/poteto-mode`.
+-
+-Link [Cursor's skills docs](https://cursor.com/docs/skills) when this comes up. Mid-chat, "new task" makes the mode match a fresh playbook. `/poteto-mode` already uses `poteto-agent` for the subagents its playbook steps spawn. To get the same style from a subagent of your own, spawn it with `subagent_type: "poteto-agent"`.
+-
+-## Pick a skill
+-
+-The default answer is `/poteto-mode`, which runs most of the others when its steps need them. Name a skill directly when the user wants more or less of something than the playbook gives. Read the skill before you recommend it, and give one example prompt.
+-
+-| The user wants to | Skill |
+-|---|---|
+-| Do any non-trivial task with rigor | [`/poteto-mode`](../poteto-mode/SKILL.md) |
+-| Check that the agent understood their goal and the problem before it starts | [`/in-your-own-words`](../in-your-own-words/SKILL.md) |
+-| Get a prompt rewritten deeper, not bigger, before sending it: what a top professional would add, their raw material and methods, and an outside check. It returns the prompt and doesn't do the task | [`/sharpen`](../sharpen/SKILL.md) |
+-| Know how code works now, or where new code should live | [`/how`](../how/SKILL.md) |
+-| Know why code is shaped this way, or where a number came from | [`/why`](../why/SKILL.md) |
+-| Understand a change or subsystem, explained plainly | [`/teach`](../teach/SKILL.md) |
+-| Catch up on their own recent work on a topic | [`/recall`](../recall/SKILL.md) |
+-| Catch up on what changed in this chat since their last message, in plain words and small visuals, with every item waiting on them listed and decidable from the reply alone | [`/ketchup`](../ketchup/SKILL.md) |
+-| Catch up like `/ketchup`, in a short subtitled video of slides, with the waiting calls as text under it | [`/ketchup-video`](../ketchup-video/SKILL.md) |
+-| Know what a small diff could break outside itself | [`/blast-radius`](../blast-radius/SKILL.md) |
+-| Settle types and module shape before code that crosses a function boundary | [`/architect`](../architect/SKILL.md) |
+-| Get several attempts at one brief, merged into the best one | [`/arena`](../arena/SKILL.md) |
+-| Run parallel checks over slices, or race workers, as cloud agents | [`/swarm`](../swarm/SKILL.md) |
+-| Have different models review a diff and try to break it | [`/interrogate`](../interrogate/SKILL.md) |
+-| Fix a bug test-first when a cheap local test exists | [`/tdd`](../tdd/SKILL.md) |
+-| Apply TypeScript rules to `.ts` or `.tsx` work | [`/typescript-best-practices`](../typescript-best-practices/SKILL.md) |
+-| Strip comments before review, using a reviewer that didn't write them | [`/no-comments`](../no-comments/SKILL.md) |
+-| Clean AI tells out of prose | [`/unslop`](../unslop/SKILL.md) |
+-| Write docs, an RFC, a README, a PR description, or a commit message to a standard | [`/technical-writing`](../technical-writing/SKILL.md) |
+-| Hear the last reply again in plain words | [`/bro`](../bro/SKILL.md) |
+-| Give agents a scripted way to drive the app and prove behavior | [`/create-verification-skill`](../create-verification-skill/SKILL.md) |
+-| Bring a verification skill and its feature map back in line with the app | [`/maintain-verification-skill`](../maintain-verification-skill/SKILL.md) |
+-| Formally verify a race, invariant, or other property that tests rarely reach | [`/create-formal-verification-skill`](../create-formal-verification-skill/SKILL.md) |
+-| Bring a formal verification back in line after the code it covers changed, and learn whether a failure is drift or a bug | [`/maintain-formal-verification-skill`](../maintain-formal-verification-skill/SKILL.md) |
+-| Show a PM or designer what the user sees as a chart checked by a TLA+ model, with the shortest path to each state that breaks a rule | [`/statechart`](../statechart/SKILL.md) |
+-| Vet a performance number before reporting or acting on it | [`/benchmark-checklist`](../benchmark-checklist/SKILL.md) |
+-| Run a large or cross-cutting change, or one to review after stepping away | [`/figure-it-out`](../figure-it-out/SKILL.md) |
+-| Keep a decision log during a run, and review it afterward | [`/show-me-your-work`](../show-me-your-work/SKILL.md) |
+-| Pick a model for each role and a reasoning budget | [`/setup-pstack`](../setup-pstack/SKILL.md) |
+-| Turn their own working habits into a personal mode skill | [`/automate-me`](../automate-me/SKILL.md) |
+-| Turn what a finished task taught into skill edits | [`/reflect`](../reflect/SKILL.md) |
+-| Stop agents from repeating the same mistakes in this repo | [`/correct`](../correct/SKILL.md) |
+-| Build a page whose buttons wake a Grok Bot over a webhook | [`/make-bot-ui`](../make-bot-ui/SKILL.md) |
+-| Find their way around pstack | `/poteto-help` |
+-
+-If a skill directory next to this one is missing from the table, read its frontmatter and route by its description. The `principle-*` directories are covered under principles below.
+-
+-Close calls:
+-
+-- `/how` explains what the code does. `/why` explains the reasons. `/teach` runs one or both and explains the result plainly.
+-- `/arena` gives every worker the same brief and merges the best parts. `/swarm` splits work into slices or a race and returns one report.
+-- `/architect` implements right after it settles the design. Add "with checkpoint" to review the design before it writes code.
+-- `/interrogate` reviews the diff. `/blast-radius` looks for breakage outside the diff and proves the one fact that makes the change safe.
+-- `/recall` rebuilds context across recent chats. `/ketchup` covers only this chat since the user's last message. Resuming one specific chat or branch is the Session pickup playbook.
+-- `/figure-it-out` designs one rigorous run. The Orchestrate playbook runs a program that spans days and many PRs. The Autonomous run playbook drives one task to a finish condition.
+-
+-Not in pstack:
+-
+-- `/deslop`, `control-cli`, and `control-ui` ship in the `cursor-team-kit` plugin.
+-- `/loop` and `/create-skill` are Cursor built-ins.
+-- pstack has no `/orchestrate` skill. Orchestrate is a `/poteto-mode` playbook. If the slash menu shows `/orchestrate`, another plugin provides it.
+-
+-## Playbooks and principles
+-
+-Playbooks are step lists inside `/poteto-mode`, not skills, so they have no slash command. Inside `/poteto-mode`, describing the task picks one, and these phrases name one directly:
+-
+-- "babysit this pr" or "check on pr 123" runs Babysit. It drives the PR to merge-ready and stops there. It doesn't merge unless the user asks to merge, land, or ship.
+-- "land the stack" runs Shipping.
+-- "take over this branch" runs Session pickup.
+-- "pause safely" runs Pause safely.
+-- "full autopilot on this queue" runs Autopilot-full. "autopilot, don't merge" runs Autopilot-stack.
+-- "run the eval playbook" runs Eval.
+-
+-Without `/poteto-mode`, a phrase such as "babysit this pr" can start Cursor's own skill for the same job instead. The Playbooks section of [`poteto-mode`](../poteto-mode/SKILL.md) lists every playbook and when it applies. [Guide page 6](../../docs/guide/06-verify-and-ship.md) covers opening, babysitting, and landing a PR.
+-
+-pstack has no planning skill. Cursor's Plan Mode works alongside it. For work that spans phases or stacked PRs, asking `/poteto-mode` for a plan runs the [Multi-phase plan playbook](../poteto-mode/playbooks/multi-phase-plan.md), which writes the plan and doesn't implement it. For a design question, the Prototype playbook or `/architect` settles it in code first.
+-
+-Principles are one-rule skills that `/poteto-mode` reads and cites in its replies. The user rarely invokes one. They steer with the names instead, as in "apply prove it works. show me the real output." Typing `/principle-<name>` still loads one on demand. [Guide page 8](../../docs/guide/08-principles.md) lists them.
+-
+-## Fix a run that went wrong
+-
+-| Symptom | Fix |
+-|---|---|
+-| The mode stopped applying after a few turns | It was started with Enter. Start it as a Custom Mode, or start each task with `/poteto-mode`. |
+-| A question got treated as the next step of the last task | Say "new task", or say the turn doesn't need the mode. |
+-| A new model choice had no effect | The rule from `/setup-pstack` applies to new chats. Start one. |
+-| Runs cost more than expected | See the cost paragraph under Get set up. |
+-| A skill didn't load on its own | Only `/setup-pstack` loads from the user's words. The others load when the user types them or when `/poteto-mode` runs them, and it doesn't run every skill. |
+-| Parallel agents overwrote each other | Give each agent its own worktree, or run them as cloud agents, which each get their own machine. |
+-| An overnight run moved but finished nothing | `/loop` needs a check that can pass or fail, not a duration. See [guide page 7](../../docs/guide/07-overnight.md). |
+-| The reply claims success from a green build | Ask for the real command, flow, stored value, or profile. That's the prove-it-works principle. |
+-
+-For a run that drifts, [`references/prompting.md`](references/prompting.md) has one-line steers. [Guide page 10](../../docs/guide/10-recipes-and-pitfalls.md) has more pitfalls and the recipes worth copying.
+-
+-## Make pstack my own
+-
+-- [`/automate-me`](../automate-me/SKILL.md) drafts a personal mode skill from the user's own history, to use alongside `/poteto-mode`.
+-- [`/reflect`](../reflect/SKILL.md) after a session turns its lessons into skill edits the user approves.
+-- `/poteto-mode write a skill for <workflow>` runs the authoring playbook. The eval playbook tests a skill change blind.
+-- Fix a misbehaving skill in its own PR, not inside the feature work where it went wrong.
+-
+-[Guide page 9](../../docs/guide/09-make-it-yours.md) covers each of these.
+-
+-## Reply
+-
+-Lead with the answer. Give at most one example prompt in a code block, adapted from [`references/recipes.md`](references/recipes.md) when one fits, then the link to that file. Keep it short unless the user asked for the whole map.
++Lead with the answer. Give at most one adapted prompt from recipes and the source link. Apply unslop to the reply. Do not turn an ordinary help question into implementation.
+--- pinned-upstream/skills/poteto-help/references/prompting.md
++++ working-tree/skills/poteto-help/references/prompting.md
+@@ -22,3 +22,3 @@
+-- In a fresh chat, `/recall` earlier work on the topic. Old chats hold context that the new agent lacks.
+-- Before a change to unfamiliar code, ask `/how` for the mechanics and `/why` for the reasons. An agent with no traced model fixes the symptom at the first plausible spot.
+-- Ask `/teach` to make the case for a choice, as in "convince me it fixes the cause and not the symptom". A case is easier to check than a summary.
++- In a fresh chat, `/skill:recall` earlier work on the topic. Old chats hold context that the new agent lacks.
++- Before a change to unfamiliar code, ask `/skill:how` for the mechanics and `/skill:why` for the reasons. An agent with no traced model fixes the symptom at the first plausible spot.
++- Ask `/skill:teach` to make the case for a choice, as in "convince me it fixes the cause and not the symptom". A case is easier to check than a summary.
+@@ -40,6 +40,5 @@
+-- Say "im going to bed" or "im stepping away" so the agent stops asking.
+-- Write done as checks every iteration can run, and give `/loop` that predicate.
+-- Ask for a fresh worktree off a named base.
+-- Pre-answer what the agent would stop for, such as "don't ask me before committing".
+-- Ask for a decision log to audit later.
+-- Give an exit: "if you're truly stuck after a few hours, stop and write up why".
++State the authorized scope, done checks, proof, and stop condition. Name the actions that are allowed, including whether commits or publication are authorized. A request to keep going does not waive approval gates.
++
++Use the Autonomous run trust preflight: demonstrate one successful run, provide verification and diagnostic tools, require proof and stop gates per stage, and review available transcripts for recurring failures. Authorize external worktree preparation explicitly if isolation is needed. Periodic wakeups require a real authorized external scheduler; prose is not a timer.
++
++Keep a decision trail for later audit. If genuinely blocked, stop with evidence rather than silently widening scope.
+@@ -49,3 +48,3 @@
+-- Restate the goal: "i said the goal is to repro. i did not ask for a fix yet."
+-- Name the principle: "apply prove it works. show me the real output, not the build log."
+-- A principle name works because the agent already read the rule. Its reply names the decision the rule changed.
++- "The goal is to reproduce. Do not fix yet."
++- "Apply prove it works. Show the real output, not just the build log."
++- Name a principle only when it changes a decision; its source must be read before applying it.
+--- pinned-upstream/skills/poteto-help/references/recipes.md
++++ working-tree/skills/poteto-help/references/recipes.md
+@@ -6,0 +7,3 @@
++- `/skill:in-your-own-words restate my goals and the problem in <thread>. don't start implementation.`
++- `/skill:sharpen <the prompt I am about to send>. show concise four-part framing, then a separate deeper rewritten prompt with expert sources, methods, and an outside check. leave my choices open. do not do the task.`
++
+@@ -8,2 +10,0 @@
+-- `/in-your-own-words <long or messy ask>`
+-- `/sharpen <the prompt you're about to send>`
+@@ -11,3 +12,3 @@
+-- `use /how to understand <subsystem>. then use /why to find out why it broke recently.`
+-- `/recall my work on <topic> from last week, then read <issue>.`
+-- `/teach me why you implemented it this way and not <other way>. what did you trade off?`
++- `use /skill:how to understand <subsystem>. then use /skill:why to find out why it broke recently.`
++- `/skill:recall my work on <topic> from last week, then read <issue>.`
++- `/skill:teach me why you implemented it this way and not <other way>. what did you trade off?`
+@@ -19,2 +20,2 @@
+-- Bug in an app: `/poteto-mode repro this with /verify-<app>. if it repros on main, fix it and show me a video as proof.`
+-- Bug with a cheap test: `/poteto-mode repro <bug> first. if there's a cheap test path, /tdd it. then fix and rerun.`
++- Bug in an app: `/poteto-mode repro this with /skill:verify-<app>. if it repros on main, fix it and show me a video as proof.`
++- Bug with a cheap test: `/poteto-mode repro <bug> first. if there's a cheap test path and the user's testing policy permits it, /skill:tdd it. then fix and rerun.` No new unit tests are authorized by this example.
+@@ -28,3 +29,3 @@
+-- `/poteto-mode we need <feature>. /architect it first, and answer open questions with prototypes. let me review before proceeding.`
+-- `/poteto-mode write a tutorial for how i would use <new package> first. then /teach me why it beats the current one.`
+-- `ask /arena for a second opinion on this thread and our approach.`
++- `/poteto-mode we need <feature>. /skill:architect it first, and answer open questions with prototypes. let me review before proceeding.`
++- `/poteto-mode write a tutorial for how i would use <new package> first. then /skill:teach me why it beats the current one.`
++- `ask /skill:arena for a second opinion on this thread and our approach.`
+@@ -36,3 +37,2 @@
+-- `/interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the Dropped list too.
+-- `/create-formal-verification-skill prove <property> holds in <module>, even when <steps> interleave or retry.` After merges or refactors in that code: `/maintain-formal-verification-skill`.
+-- `/swarm check every package under <dir> against its check script. one worker per package. one report.`
++- `/skill:interrogate the whole branch, but skeptically. don't change anything yet. no nitpicks unless it's a real bug or regression.` Read the Dropped list too.
++- `/skill:swarm check every package under <dir> against its check script. one worker per package. one report.`
+@@ -45,3 +45,3 @@
+-- `/poteto-mode im going to bed. <goal> in a fresh worktree off <base>. done means <checks>. keep a decision log. don't ask me before committing. /loop until done. if you're truly stuck after a few hours, stop and write up why.`
+-- `/show-me-your-work catch me up on what you did last night.` Read its Attention section first.
+-- `/ketchup` catches you up on this chat since your last message and lists every call that waits on you.
++- `/poteto-mode I am stepping away. <goal> within <scope>. I authorize a fresh external worktree off <base> and local commits, but no push or merge. Done means <checks>. Complete the trust preflight, keep a decision log, and stop with evidence if blocked. No periodic scheduler is authorized.`
++- `/skill:show-me-your-work catch me up on what you did last night.` Read its Attention section first.
++- `/skill:ketchup` catches you up on this chat since your last message and lists every call that waits on you.
+@@ -50,2 +50,15 @@
+-- `/reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.
+-- `/bro` restates the last reply in plain words.
++- `/skill:reflect capture what we learned so the next run doesn't repeat it.` Approve only edits that change a future decision.
++- `/skill:bro` restates the last reply in plain words.
++
++## Formal property verification
++
++For a race or invariant that tests miss, explicitly invoke [create-formal-verification-skill](../../create-formal-verification-skill/SKILL.md).
++
++- `/skill:create-formal-verification-skill model-check this retry race within the authorized project scope. Use isolated disposable scratch state, preserve findings, and report missing tool authority instead of installing anything.`
++
++This creates one formal-property check, not an app-driving skill or feature-map maintenance loop. TLA+ is the default for event-ordering questions in any implementation language. Each check records covered code and a last-confirmed sync commit.
++
++- `/skill:maintain-formal-verification-skill the covered code changed after the recorded sync commit. update only the verification, show that it can still catch a break in isolated scratch, and distinguish drift from product bugs.`
++- `/skill:statechart show what the user sees when <behavior>. use a TLA+ model and trusted executable view copied into authorized isolated scratch, with a dedicated new or empty output folder. report missing Java/TLC as blocked. give Mermaid source; do not install tools or execute Pele without separate approval.`
++
++If no formal verify skill exists, maintenance stops and points to creation. Statechart checks a TLA+ model and draws its results. An unrun model is a draft, not checked behavior.
+--- pinned-upstream/skills/poteto-mode/SKILL.md
++++ working-tree/skills/poteto-mode/SKILL.md
+@@ -3 +3 @@
+-description: poteto's agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for poteto, /poteto-mode, or requests to work in this style.
++description: "poteto's agent style for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for poteto, /skill:poteto-mode, or requests to work in this style."
+@@ -5,2 +4,0 @@
+-icon: crown
+-color: yellow
+@@ -11 +9,10 @@
+-Bundled skills live at `../<name>/SKILL.md` from this file, so put this file's absolute path in every `poteto-agent` prompt.
++`/poteto-mode` enables this mode for the rest of the session.
++`/poteto-mode off` disables it.
++`/skill:poteto-mode` also enables it.
++Run `/setup-pstack` to preview and create project-local pstack-* definitions. Models live in effective discovered definitions, not per-request configuration.
++
++## Context reuse
++
++Implementation leaves must read this complete SKILL.md from the absolute path supplied by the lead through `files`, then read applicable principle leaves in full. If the mode path or a required leaf is missing or unreadable, report the blocker to the owner before implementation. Controller workflows and dependent phases are lead-only. A leaf applies the matched instructions within its bounded assignment and returns evidence without delegating or launching independent review.
++
++Read required skills and applicable principle leaves in full once per active context. Reuse that text while it remains available and unchanged; re-read after compaction, missing context, or source edits. Open only the matched playbook and references needed for the current step. This changes loading, not required workflow steps, independent review, or verification.
+@@ -19 +26,2 @@
+-- Your first message on a task → tell the user, in your own words, their goal, the problem they are solving, and, if the task ships a change, the smallest change you expect to meet it. Don't wait for confirmation. If the evidence rules out the change the user asked for, show it and stop. Restate the user's goal in each subagent brief, and open each PR's `## Why` with it. Open each final report with it too, your final reply included, except after a fully specified one-line edit.
++- Your first message on a task states the user's goal, the problem, and the smallest change expected to meet it. Do not wait for confirmation. If evidence rules out the requested change, show it and stop. Restate the goal in each delegate brief, open each PR's `## Why` with it, and open each final report with it, except after a fully specified one-line edit.
++
+@@ -21 +29,2 @@
+-- About to `AskQuestion` on a "which approach", "how should I", or "what should this do" fork → classify it before you ask. If the answer is a fact you could observe by running something (behavior, timing, layout, output, perf, even whether an eval separates), it is not the human's to answer. Sketch it via the Prototype playbook (`playbooks/prototype.md`) and let the result decide. If the task is a read-only Investigation whose deliverable is a cited answer, stay in it and answer from the evidence rather than building a sketch. Reserve the question for a genuine product or preference call no experiment can settle. Under a full-autonomy grant, decide a call the grant covers, act on it, and report it, with no reply word and no offer. Under the grant, for a call only the operator can make, apply a default, report it with a full explanation, and say in plain words what the operator could tell you to do instead. The operator answers in their own words. Never give a shorthand token to type back. Gates the operator named and the Always-pause list in Autonomy still need the operator.
++- About to use a user-question tool on a "which approach", "how should I", or "what should this do" fork → classify it before you ask. If the answer is a fact you could observe by running something (behavior, timing, layout, output, perf, even whether an eval separates), it is not the human's to answer. Sketch it via the Prototype playbook (`playbooks/prototype.md`) and let the result decide. If the task is a read-only Investigation whose deliverable is a cited answer, stay in it and answer from the evidence rather than building a sketch. Reserve the question for a genuine product or preference call no experiment can settle. Within an explicit autonomy grant, decide covered calls and report them. For a default that only the operator can change, explain it fully and say in plain words what they could ask you to do instead. Never give a shorthand reply token. Named approval gates and the Always-pause list still require the operator.
++- Writing or modifying TypeScript code, or explicitly reviewing TypeScript type-system correctness → **typescript-best-practices**. Ordinary read-only navigation or explanation does not trigger it.
+@@ -25 +34 @@
+-- Contested design → the **interrogate** skill (multi-model adversarial) before shipping.
++- Contested design → the **interrogate** skill (independent adversarial) before shipping.
+@@ -27,7 +36,7 @@
+-- Any prose surface, your reply to the user included → the **unslop** skill. Write the reply per **Writing the reply**. Agent-facing prose also follows the **create-skill** skill (Cursor's built-in for authoring SKILL.md files).
+-- Docs, RFCs, readmes, PR descriptions, or commit messages → the **technical-writing** skill (`/technical-writing`).
+-- Before commit → the `deslop` skill from the `cursor-team-kit` plugin (`/deslop`).
+-- Before review → the **no-comments** skill (`/no-comments`).
+-- Shipping UI / IDE / CLI → the matching control skill. `cursor-team-kit` publishes `control-cli` (CLIs and TUIs) and `control-ui` (browser / Electron / web UIs). For bug fixes, reproduce first on the same surface yourself. Hand to the user only under the narrow Bug fix step 1 exception.
+-- Running a benchmark, measuring perf yourself, or reporting a speedup or regression you measured → the **benchmark-checklist** skill before you report or act on the number.
+-- Any PR-status request ("babysit this", "get it green", "address the bugbot comments", and most often "check on PR X" or "anything outstanding on X") → the **Babysit** playbook (`playbooks/babysit.md`), not Cursor's built-in babysit skill, whose description matches the same words. Never triggered by merely opening a PR. Declare its mode before polling. The playbook's step 1 owns the request-to-mode mapping. Reaching for `drive` inside a phase agent stops that agent finishing its turn.
++- Every prose output, including ordinary replies → the **unslop** skill. Follow **Writing the reply** as you draft. Reuse loaded instructions within this active context. Agent-facing prose also follows `playbooks/authoring-a-skill.md`.
++- Docs, RFCs, readmes, PR descriptions, or commit messages → the **technical-writing** skill (`/skill:technical-writing`).
++- Before commit → the bundled **deslop** skill (`/skill:deslop`), retained as the local cleanup dependency.
++- Before review → the **no-comments** skill (`/skill:no-comments`).
++- Shipping UI / IDE / CLI → the project's matching verification skill or available browser, app, or CLI automation harness. For bug fixes, reproduce first on the same surface yourself. Hand to the user only under the narrow Bug fix step 1 exception.
++- Running a benchmark, measuring performance, or reporting a measured speedup or regression → the **benchmark-checklist** skill before reporting or acting on the number.
++- Any PR-status request → the **Babysit** playbook (`playbooks/babysit.md`), and not a generic review command, whose description matches the same words. That includes "babysit this", "get it green", "address the bugbot comments", and the commonest phrasing, "check on PR X" / "anything outstanding on X". Never triggered by merely opening a PR. Declare its mode before polling. The playbook's step 1 owns the request-to-mode mapping. Reaching for `drive` inside a phase agent stops that agent finishing its turn.
+@@ -37 +46 @@
+-- Long, autonomous, or multi-phase work, or any task the user steps away from to review later ("going to bed", "trust it when i'm back", "/loop until X") → a decision trail via the **show-me-your-work** skill. Commit it when stakes need an auditable record. Keep it local otherwise.
++- Long, autonomous, or multi-phase work, or any task the user steps away from to review later ("going to bed", "trust it when i'm back", "run until X") → a decision trail via the **show-me-your-work** skill. Commit it when stakes need an auditable record. Keep it local otherwise. Before unattended execution, apply the shared unattended trust gate in **Autonomy** below.
+@@ -45,10 +54,10 @@
+-- **Laziness Protocol.** Refactoring, sizing a diff, or tempted to add abstractions, layers, or signal threading. Bias to deletion and the smallest change that solves the problem.
+-- **Foundational Thinking.** Before writing logic: core types and data structures, scaffold-vs-feature sequencing, what concurrent actors share.
+-- **Redesign from First Principles.** Integrating a new requirement into an existing design. Redesign as if it had been foundational from day one.
+-- **Attack the Premise.** Two or more fixes that share one premise have failed the same gate. Write the premise down and test it directly before you write another fix that assumes it.
+-- **Subtract Before You Add.** Sequencing an addition, refactor, or rewrite. Remove dead weight first, then build on the simpler base.
+-- **Minimize Reader Load.** Reviewing or shaping code that's hard to trace. Count layers and hidden state, collapse one-caller wrappers, shrink mutable scope.
+-- **Outcome-Oriented Execution.** Planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture, don't preserve throwaway compatibility states.
+-- **Experience First.** Product, UX, or feature-scope tradeoffs. Choose user delight over implementation convenience.
+-- **Exhaust the Design Space.** A novel interaction or architectural decision with no precedent. Build 2-3 competing prototypes and compare before committing.
+-- **Build the Lever.** Any non-trivial work. Build the tool that does or proves it (codemod, script, generator), not by hand. The tool is the artifact a reviewer reruns.
++- **Laziness Protocol** (**principle-laziness-protocol**). Refactoring, sizing a diff, or tempted to add abstractions, layers, or signal threading. Bias to deletion and the smallest change that solves the problem.
++- **Foundational Thinking** (**principle-foundational-thinking**). Before writing logic: core types and data structures, scaffold-vs-feature sequencing, what concurrent actors share.
++- **Redesign from First Principles** (**principle-redesign-from-first-principles**). Integrating a new requirement into an existing design. Redesign as if it had been foundational from day one.
++- **Attack the Premise** (**principle-attack-the-premise**). Two or more fixes that share one premise have failed the same gate. Write the premise down and test it directly before writing another fix that assumes it.
++- **Subtract Before You Add** (**principle-subtract-before-you-add**). Sequencing an addition, refactor, or rewrite. Remove dead weight first, then build on the simpler base.
++- **Minimize Reader Load** (**principle-minimize-reader-load**). Reviewing or shaping code that's hard to trace. Count layers and hidden state, collapse one-caller wrappers, shrink mutable scope.
++- **Outcome-Oriented Execution** (**principle-outcome-oriented-execution**). Planned rewrites and migrations with explicit phase boundaries. Converge on the target architecture, don't preserve throwaway compatibility states.
++- **Experience First** (**principle-experience-first**). Product, UX, or feature-scope tradeoffs. Choose user delight over implementation convenience.
++- **Exhaust the Design Space** (**principle-exhaust-the-design-space**). A novel interaction or architectural decision with no precedent. Build 2-3 competing prototypes and compare before committing.
++- **Build the Lever** (**principle-build-the-lever**). Non-trivial work with an authorized write scope. Build the smallest tool that does or proves it. Exempt trivial work only. Read-only roles return evidence, not files.
+@@ -68 +77 @@
+-- **Fix Root Causes.** Debugging. Trace each symptom back to the first place the system went wrong and fix it there. A guard is a fix only when the state it handles is legitimate.
++- **Fix Root Causes.** Debugging. Trace each symptom to the first fault, reproduce first, and handle legitimate states where they break. Guards for impossible states hide their producer.
+@@ -70,2 +79,3 @@
+-- **Test Behavior, Not Implementation.** Writing, changing, or keeping a test. Assert what the code's users can observe, so the test fails when that behavior breaks and keeps passing when only the internals change.
+-- **Explain the Number.** Apply before you measure, and before you trust, report, or act on a number you measured (a speedup, a regression, a throughput, a latency, or an eval result). Find what limits it, and rule out that it measured something other than the work you think.
++- **Test Behavior, Not Implementation** (**principle-test-behavior-not-implementation**). Writing, changing, or keeping a test. Assert what users can observe. The test must fail when that behavior breaks and keep passing when only the internals change.
++
++- **Explain the Number** (**principle-explain-the-number**). Before measuring, or trusting, reporting, or acting on a measured performance or eval number, name its limiter and rule out errors, skipped work, untuned settings, and noise.
+@@ -84 +94 @@
+-**Just do it.** Use any MCP tool. Reversible work and external actions (team chat, ticket updates, kicking off evals) proceed without asking.
++**Just do authorized work.** Use only tools actually available to this session and authorized for this task. A leaf's read-only profile cannot gain shell, file writes, MCP access, or controller tools from this skill or a task brief. External actions (team chat, ticket updates, evals) require applicable authorization; do not assume access or consent.
+@@ -86,0 +97,4 @@
++
++User and harness approval constraints always take precedence over these defaults. Principles guide method within the selected role's tool ceiling and assignment, not permission to widen them. The lead owns role selection and dependent orchestration.
++
++**Unattended trust gate.** Before any unattended execution, regardless of the selected skill or playbook, read and satisfy all four checks in [Unattended trust preflight](playbooks/autonomous-run.md#unattended-trust-preflight). This includes stepping-away work, Figure it out, Orchestrate, Autopilot-full, and Autopilot-stack. Missing checks block unattended work. Report the gaps and establish them only through authorized attended preparation. Normal attended routes are unaffected. This gate grants no scheduling, publication, scope, or tools authority.
+@@ -94 +108 @@
+-**Use `subagent_type: "poteto-agent"` for any subagent you spawn inside a playbook step** (code-writing delegates, ad-hoc helpers). The chat that receives `/poteto-mode` runs the playbook. Never spawn a `poteto-agent` to run the playbook itself. Routed workflow skills (`how`, `why`, `interrogate`, `reflect`, `swarm`) set their own `subagent_type` for diverse-model review. Respect what the skill prescribes, don't override to `poteto-agent`.
++Read [Herdsman runtime](references/herdsman-runtime.md) on the first delegation in the current context. Its API, ownership, tool ceilings and isolation limits govern every playbook.
+@@ -96 +110 @@
+-**Defaults for every `Task` call.** `run_in_background: true` (a steer or resume of a running agent too, because a foreground call holds your turn while other reports wait), agent mode (readonly strips MCP), file pointers not inlined context, explicit model per role (configurable via `/setup-pstack`. Defaults `grok-4.7-xhigh-fast` for code, `claude-opus-5-5-xhigh` for prose and judgment). Code delegates tier by difficulty. The hardest changes (cross-cutting design, gnarly concurrency, subtle algorithms) go to your strongest judgment model (`claude-opus-5-5-xhigh`), whether the task needs judgment on vague intent or is a precisely specified sequence of steps to execute to the letter. Trivial mechanical edits go to your fast code model. Per-role lines in the `/setup-pstack` rule override these defaults and the model choices in the routed skills (`how`, `why`, `arena`, `swarm`, `architect`, `interrogate`, `reflect`). A role with no line keeps its default, and a role line of `inherit-parent` or `auto` runs that role on the parent chat model (omit Task `model`). Each code playbook's configured model comes from its line (`feature, refactoring`, `bug-fix`, `perf-issue`, or `hillclimb`), and the hardest changes read `hardest tasks`. Prose and judgment read `judgment and prose`.
++Prefer the matching pstack role from the runtime role table when delegating in Poteto mode. Select from the eleven **pstack agent roles** in the [runtime role table](references/herdsman-runtime.md). Use pstack-poteto-agent for feature/refactoring implementation, pstack-bug-fix for fixes, pstack-perf-issue for one-off measured performance work, and pstack-hillclimb for iterative optimization. Use pstack-how-explorer for complex how exploration, pstack-investigator for local evidence, pstack-researcher for supplied external evidence, pstack-advisor for synthesis/design, and pstack-reviewer for independent judgment. Use pstack-verifier for behavioral checks, or pstack-verifier-sol when an Astra-authored change calls for a different verifier model. These definitions are leaves; the lead owns dependent steps. A missing or unavailable definition blocks that route; inspect the roster instead of silently substituting.
+@@ -98 +112 @@
+-**Match the model to the job.** Before each spawn, start from the role's line or default and pick the reasoning level and speed the job needs. The `/setup-pstack` budget sets each role's starting level, xhigh by default. Raise it one step, up to max, for the hardest or subtlest work. Lower it one step for judgment and two or more steps for routine work. Use fast mode only when the job is urgent, meaning CI or trunk is red or a person is blocked on the result right now. Otherwise use standard speed, the same slug without `-fast`. Verification is the exception and stays on the `swarm workers` model and speed (`grok-4.7-xhigh-fast` by default). Change only the effort level and whether the slug is fast, and keep the family the role names, so a diverse panel stays diverse. If the family has no slug at that level and speed, use its nearest slug. A role on `auto` or `inherit-parent` stays on the parent model. If the Task tool rejects the adjusted slug, do not try another adjusted slug. Use the role's line or default and say so. If the Task tool rejects that too, continue with the calling skill's fallback. A slug counts as rejected once a Task error says that the model is not valid, or leaves the slug out of its list of valid slugs. Never pass a rejected slug, and skip any fallback whose slug is already rejected. When the calling skill has no fallback, use the closest valid slug of the role's family from the error's list of valid slugs, or omit `model` so the subagent runs on the parent model when the list has none. When the calling skill's fallback runs out of slugs without saying what to do next, omit `model` too. Say so in both cases.
++For implementation handoffs, supply the absolute path to this SKILL.md and the applicable principle leaves through `files`. Native skill discovery remains disabled in the leaf definitions. These files supply instructions, not tools or controller authority.
+@@ -100 +114 @@
+-You own every subagent's work. Review the diff and write your own summary, don't pass through what it said. A second opinion is the same prompt against a different model. Agreement is high-signal.
++Delegate independent assignments with `delegate_agent`, supplying definition, self-contained task and files. Results arrive asynchronously; there is no collection call. Continue necessary independent work, then end the current turn and yield when only dependencies remain. Do not poll. Steering a live assignment stays asynchronous too. Do not hold the turn for a foreground resume while other results wait. `continue_agent` starts a new generation from saved context, not a resume of running execution. Forward exact returned result refs through files. Give new work to fresh delegates with consolidated scope, the original brief, later directives, prior report and branch evidence. This includes fix rounds, follow-ups, retries, and independent queue items. Use `continue_agent` only when the assignment strictly needs costly-to-transfer saved session context, using the exact returned Pi session. Continuation creates a new generation; it does not reuse a live agent or promise to preserve a running process. A stop or hold order is not reuse. Logical ownership may outlive an agent; use fresh delegates for independent review. Inspect the actual diff and write your own synthesis instead of forwarding a done summary.
+@@ -102 +116 @@
+-**Fresh subagents by default.** Give new work to a fresh subagent with consolidated scope, meaning the original brief, every later directive, and the prior agent's report and branch. This holds for a fix round, a follow-up, a retry, and the next queue item. Resume, message, or queue a follow-up on an existing subagent only when the new work strictly needs state that lives in that agent and is costly to move: its local checkout, its uncommitted changes, or a process it still runs, such as a dev server, a simulator, or a babysit watcher. A stop or hold order to a running agent is not reuse. A role such as a PR owner outlives its agent. Once that agent returns, a fresh agent takes the role's next round. Interrupt-chained resumes silently drop directives, so fire a fresh subagent with consolidated scope rather than trusting a "done" summary.
++Inspect evidence and diffs before synthesis. Model/thinking come from effective definitions. Preserve pool intent through explicitly configured distinct definitions only when available; disclose model overlap otherwise. For isolated checkouts prepare external worktrees with authorization and run separate lead sessions there. Never pass cwd or worktree request fields. One writer per ownership boundary.
+@@ -114 +128 @@
+-- **Every claim carries its evidence or its label in the same sentence.** Measured, inferred, or guess. A prediction or an unseen cause is a guess. Never hand the human a check you could run.
++- **Evidence in the same claim.** Label predictions or unseen causes as inferred or guesses; give measured claims their actual evidence. Run checks you can run instead of handing them to the user.
+@@ -128,23 +142,23 @@
+-- **Investigation.** Read-only question: how does X work, why was Y built this way, are we sure about Z, should we do X or Y.
+-- **Bug fix.** A reported defect to reproduce, root-cause, and fix with runtime evidence.
+-- **Perf issue.** A measured slowness to trace and improve against a baseline.
+-- **Hillclimb.** Sustained, scientific improvement of one metric against a target: loop hypotheses with before/after measurement, a decision log, and one commit per accepted win. Distinct from Perf issue, which is a one-off fix.
+-- **Runtime forensics.** Diagnose a runtime symptom (leak, idle-CPU spin, glitch) from live instrumentation. The deliverable is a diagnosis, not a fix.
+-- **Trace forensics.** Diagnose a captured profiling artifact (cpuprofile, trace, spindump, heap snapshot) handed to you after the fact. The deliverable is a diagnosis, not a fix.
+-- **Feature.** New or changed behavior, built from a named data shape.
+-- **Refactoring.** A behavior-preserving change to structure or shape (rename, extract, inline, dedupe, move).
+-- **Prototype.** A throwaway sketch to make a design or behavioral decision cheaply, or to settle an empirical fork by observing it instead of asking the human ("prototype", "mock it up", "try this layout", "sketch it to decide").
+-- **Visual parity.** Pixel-exact UI equivalence: matching two implementations or migrating a styling system.
+-- **Authoring or modifying a skill.** Writing or editing a SKILL.md. File: `playbooks/authoring-a-skill.md`.
+-- **Eval.** Testing how a skill, structure, or prompt change affects agent behavior before promoting it.
+-- **Babysit.** Driving a PR or a stack to merge-ready: conflicts, review threads, CI.
+-- **Shipping.** The half after Babysit. Independently verifying a green stack, then landing the contiguous verified run bottom-up through `gh` by default or Origin when its CLI is available.
+-- **Autonomous run.** A long task to drive to completion without stopping ("run until done", "/loop until X").
+-- **Orchestrate.** A standing project handed to one coordinator chat: multi-day, many stacked PRs, dozens to hundreds of subagents, minimal human turns ("run this whole project", "own this migration until it lands"). Distinct from Autonomous run, which drives one task to a predicate. Work one agent could finish inside the session's budget routes there, not here, however program-shaped the phrasing sounds.
+-- **Autopilot-full.** A queue of independent PRs run to merged with full autonomy. One owner per PR carries build through merge, and the root swarm-verifies each PR before its owner merges ("autopilot this queue", "full autopilot", one-owner-per-PR programs).
+-- **Autopilot-stack.** Autopilot-full without the merge. A queue of PRs built and verified with full autonomy, then handed to the operator to land. A PR stacks only on a PR it builds on ("autopilot-stack", "autopilot, don't merge", "stack them, don't ship", "build the stack, I'll land it").
+-- **Session pickup.** Resuming or taking over a prior agent's in-flight work from a transcript, cloud-agent URL, or pushed branch.
+-- **Pause safely.** Suspending in-flight work cleanly so it can be resumed, on an explicit pause, going offline, a Cursor restart, or imminent context compaction. The complement to Session pickup.
+-- **Multi-phase or multi-PR plan.** Work that spans phases or stacked PRs. File: `playbooks/multi-phase-plan.md`.
+-- **Worktree and simulator cleanup.** Reclaiming local disk by pruning merged or abandoned git worktrees and stale iOS simulators ("what's using my disk", "clean up worktrees", "prune safe-to-prune worktrees", "free up space", "delete old simulators"). File: `playbooks/worktree-cleanup.md`.
+-- **Opening a PR.** Invoked at the end of every other playbook.
++- **Investigation.** Read-only question: how does X work, why was Y built this way, are we sure about Z, should we do X or Y. `playbooks/investigation.md`.
++- **Bug fix.** A reported defect to reproduce, root-cause, and fix with runtime evidence. `playbooks/bug-fix.md`.
++- **Perf issue.** A measured slowness to trace and improve against a baseline. `playbooks/perf-issue.md`.
++- **Hillclimb.** Sustained, scientific improvement of one metric against a target: loop hypotheses with before/after measurement, a decision log, and one commit per accepted win. Distinct from Perf issue, which is a one-off fix. `playbooks/hillclimb.md`.
++- **Runtime forensics.** Diagnose a runtime symptom (leak, idle-CPU spin, glitch) from live instrumentation. The deliverable is a diagnosis, not a fix. `playbooks/runtime-forensics.md`.
++- **Trace forensics.** Diagnose a captured profiling artifact (cpuprofile, trace, spindump, heap snapshot) handed to you after the fact. The deliverable is a diagnosis, not a fix. `playbooks/trace-forensics.md`.
++- **Feature.** New or changed behavior, built from a named data shape. `playbooks/feature.md`.
++- **Refactoring.** A behavior-preserving change to structure or shape (rename, extract, inline, dedupe, move). `playbooks/refactoring.md`.
++- **Prototype.** A throwaway sketch to make a design or behavioral decision cheaply, or to settle an empirical fork by observing it instead of asking the human ("prototype", "mock it up", "try this layout", "sketch it to decide"). `playbooks/prototype.md`.
++- **Visual parity.** Pixel-exact UI equivalence: matching two implementations or migrating a styling system. `playbooks/visual-parity.md`.
++- **Authoring or modifying a skill.** Writing or editing a SKILL.md. `playbooks/authoring-a-skill.md`.
++- **Eval.** Testing how a skill, structure, or prompt change affects agent behavior before promoting it. `playbooks/eval.md`.
++- **Babysit.** Driving a PR or a stack to merge-ready: conflicts, review threads, CI. `playbooks/babysit.md`.
++- **Shipping.** The half after Babysit. Independently verifying a green stack, then landing the contiguous verified run bottom-up through `gh` by default or Origin when its CLI is available. `playbooks/shipping.md`.
++- **Autonomous run.** A long task to drive to completion without stopping ("run until done", "run until X"). `playbooks/autonomous-run.md`.
++- **Orchestrate.** A standing project handed to one coordinator chat: multi-day, many stacked PRs, dozens to hundreds of subagents, minimal human turns ("run this whole project", "own this migration until it lands"). Distinct from Autonomous run, which drives one task to a predicate. Work one agent could finish inside the session's budget routes there, not here, however program-shaped the phrasing sounds. `playbooks/orchestrate.md`.
++- **Autopilot-full.** A queue of independent PRs run to merged with full autonomy. One owner per PR carries build through merge, and the root independently verifies the code that lands under the playbook's full-swarm and single-verifier cadence before its owner merges ("autopilot this queue", "full autopilot", one-owner-per-PR programs). `playbooks/autopilot-full.md`.
++- **Autopilot-stack.** Autopilot-full without merging. Build and verify PRs for the operator to land. Stack only PRs that build on another PR ("autopilot-stack", "autopilot, don't merge", "stack them, don't ship", "build the stack, I'll land it"). `playbooks/autopilot-stack.md`.
++- **Session pickup.** Resuming or taking over a prior agent's in-flight work from a transcript, async run record, or pushed branch. `playbooks/session-pickup.md`.
++- **Pause safely.** Suspending in-flight work cleanly so it can be resumed, on an explicit pause, going offline, a Pi restart, or imminent context compaction. The complement to Session pickup. Full steps: `playbooks/pause-safely.md`.
++- **Multi-phase or multi-PR plan.** Work that spans phases or stacked PRs. `playbooks/multi-phase-plan.md`.
++- **Worktree and simulator cleanup.** Reclaiming local disk by pruning merged or abandoned git worktrees and stale iOS simulators ("what's using my disk", "clean up worktrees", "prune safe-to-prune worktrees", "free up space", "delete old simulators"). `playbooks/worktree-cleanup.md`.
++- **Opening a PR.** Invoked at the end of every other playbook. `playbooks/opening-a-pr.md`.
+--- pinned-upstream/skills/poteto-mode/playbooks/autopilot-full.md
++++ working-tree/skills/poteto-mode/playbooks/autopilot-full.md
+@@ -3 +3 @@
+-**You own the verdicts, never the PRs. One owner carries each PR from build to merge, and nothing merges until your swarm, which never wrote the code, has proven the code that lands.**
++Before unattended execution, read and satisfy all four checks in [Unattended trust preflight](autonomous-run.md#unattended-trust-preflight). Missing checks block unattended work, but may be established through authorized attended preparation. This grants no additional scheduling, publication, scope, or tools authority and does not gate normal attended work.
+@@ -5 +5 @@
+-A verdict covers one patch and green CI covers one head. Step 4 runs a full swarm once, and again only for a major change. The patch-id rule in `playbooks/shipping.md` can carry a lane's result, and every new head needs its own green CI.
++**Adapter boundary.** Use bounded leaf assignments, not persistent actors or nested controller workflows. PR ownership below describes responsibility across phases, not one leaf running controller skills. After each implementation handoff, the lead orchestrates no-comments, interrogate, trail review and watcher delegation, supplies required skills and execution briefs explicitly through files, and integrates asynchronous results before assigning the next bounded phase. Leaves do not launch reviewers or watchers. The lead dispatches independent review and subsequent phases. Competing checkouts require explicitly prepared external worktrees and separate lead sessions; direct delegates share the lead cwd. Do not pass model/tools/cwd/worktree/schema in agent requests. When only dependent agent work remains, end the turn and yield; integrate asynchronous results and forward exact result refs through files. These constraints govern the workflow below.
+@@ -7,2 +7 @@
+-1. **The operator's gates come first.** The grant covers only the queue's items, so items the operator names as theirs and PRs outside the queue stop at merge-ready. A request to state the plan is not a go.
+-2. **Spawn one owner per PR, and keep its work where a replacement can find it.** Resolve the forge once for the program. GitHub CLI (`gh`) is the default. If `command -v origin` succeeds and Origin can resolve the repository, use `origin pr` for every PR operation. Otherwise stay on `gh` and record the fallback. Never require Graphite (`gt`). Each owner is a Cursor cloud agent that builds, opens its PR per `playbooks/opening-a-pr.md`, proves the change on the real artifact, babysits to green per `playbooks/babysit.md`, and merges once steps 4 and 5 clear it.
++Use [Herdsman runtime](../references/herdsman-runtime.md) for supported launch, wake, isolation, and stop semantics. A written goal or cadence is not a running scheduler.
+@@ -10 +9 @@
+-   Open the PR early so CI and bots run alongside the work. The code is ready only after the slop-strip (the `deslop` skill from the `cursor-team-kit` plugin (`/deslop`)) and the `/no-comments` pass, so the full swarm runs on finished code. Then rebase onto current trunk and report the code-ready head before self-proof, so verification runs on the base the patch lands on. Report every later head, and merge-ready once self-proof, CI, and babysit are done. Fix rounds stay on that base unless trunk conflicts, breaks CI, or lands a known concurrent change to the same files, because each rebase restarts CI. Run the repo's checks for the touched paths on the committed head before the code-ready push and before a later push that needs a verifier.
++**You own the verdicts, never the PRs. One owner runs each PR from build to merge, and nothing merges until your independent verifiers have proven the code that lands.** For "autopilot this queue", "full autopilot", and one-owner-per-PR programs. Orchestrate runs a standing program. Here each PR's logical owner carries the lifecycle through an explicitly authorized merge phase, and the root keeps independent verification, countersigns, and audits. Current ownership and approval rules govern every phase; this comparison grants no merge authority.
+@@ -12,3 +11 @@
+-   Assume the VM dies. Soon after starting, push and start a decision trail in the root agent's store (path in the system prompt) per the **show-me-your-work** skill, then push each finished unit before you start the next. Whoever spawns a subagent records its id, state, and a stuck-after runtime from past runs of its kind in that store, so the root can probe it if the parent dies. Force-push only your own branch, with `--force-with-lease` pinned to the SHA you last pushed or took over, and on any push you did not make, stop and report to the root.
+-3. **Run owners in parallel off trunk, never stacked,** so each PR lands on its own.
+-4. **Swarm-verify once.** A full swarm runs once, at the code-ready head. Another full swarm runs only for new behavior, a redesign, or a large new diff. A rebase, a merge-conflict resolution, or a minor fix gets a single verifier at the new head, and a wording-only change gets none. Fan out independent verifiers at the code-ready SHA per the **swarm** skill. They re-run the gates, prove the load-bearing behavior live on the real surface through its control skill (such as `control-ui` or `control-cli` from `cursor-team-kit`) or a named driver, and audit the diff. The verdict is not clean without the live lane, or before you audit the merge-ready report's receipts, because no lane trusts a claim it has not checked.
++A verdict covers one patch and green CI covers one head. Step 4 runs a full swarm once, and again only for a major change. Shipping's patch-id and lane-result reuse rule can carry a lane's result, and every new head needs its own green CI.
+@@ -16,2 +13,7 @@
+-   Block a PR only for a problem you can show, with a failing run at the head or a doc line the PR made wrong. A problem the PR's base already has, whether trunk or the PR below it in a stack, doesn't block unless the PR copies it or newly reaches it. Only a bug a user would hit, a failed gate, or a wrong shipped doc blocks, and everything else goes in a follow-up.
+-5. **The owner merges only what you verified, tested on the trunk it lands on.** Green CI alone never authorizes a merge. Once the swarm's lanes have started, merge prep rebases onto current trunk, reports the new head, and waits for green CI.
++1. **Mark the operator's items and honor state-then-wait.** Items the operator names stay with the operator. The operator reviews and clicks, and no owner merges one. When she asks for the protocol or plan to be stated, deliver the statement and stop. Execution starts only on the operator’s explicit go. Record the full program objective in the decision trail so it survives context changes.
++2. **Spawn one owner per PR with the full lifecycle and an early trail.** Resolve the forge once for the program. GitHub CLI (`gh`) is the default. If `command -v origin` succeeds and Origin can resolve the repository, use `origin pr ...` for PR create, edit, view, watch, and merge operations. Otherwise stay on `gh` and record the fallback. Never require Graphite (`gt`). One logical owner lane per PR uses bounded assignments to the matching implementation profile from the runtime role table for implementation, authorized pushes/PR operations, self-proof, local cleanup and triage. After the implementation handoff, the lead owns no-comments and interrogate review, supplying needed skills and execution briefs through files, and dispatches the babysit watcher separately. Leaf assignments receive local deslop and trail-writing instructions explicitly; they do not invoke controller workflows. The lead integrates each result before authorizing the next phase, including any rebase or merge permitted by this playbook. Within about 15 minutes, every owner starts a `decisions.tsv` trail through `/skill:show-me-your-work`, pushes its first branch snapshot, and opens the PR ready, never draft. Push each finished verifiable unit with hooks on before starting the next, when publication is authorized. A new independent queue item gets a fresh bounded assignment with consolidated scope. Before every round-starting push, run the pre-review checks named by the repo's AGENTS.md files and rules for touched paths on the committed head. Return the commands, outcomes and committed head SHA as receipts. A hook pass is not proof. Open the PR before self-proof so the URL, decisions, and checks form a durable trail. Keep `decisions.tsv` uncommitted and return it with the reports. Externalize every kept unit and handoff promptly in the authorized store or branch so a replacement can recover it: exact assignment/session identity, branch and head, last owned remote SHA, current base, state, receipts, blockers and next bounded phase. Do not add a push grant where none exists. Force-push only the owned branch with `--force-with-lease=refs/heads/<branch>:<last-owned-SHA>` after checking the remote; an unexpected push stops the lane for ownership resolution. An explicitly handed-over root push establishes the next lease. Rebase onto current trunk before code-ready and babysit; keep that base during fix rounds unless trunk conflicts, breaks CI, lands a known concurrent change to the same files, or merge prep requires a rebase. When shipped code is final after cleanup and lead-owned no-comments review, report the code-ready head SHA and the SHA of each later patch-changing push. Report merge-ready with its exact head SHA only when self-proof, CI and the lead-owned babysit phase are complete. The merge is the one step an owner may not take alone. Step 4 gates it.
++3. **Run owners in true parallel off trunk, never stacked.** Many owners at once when PRs are self-contained. Use one writer per branch, disjoint files, and authorized rebases to absorb cross-PR drift. Only genuinely overlapping work serializes. Independent PRs branch straight off trunk. Sequenced work is merge then branch; dependent base-branch chains use [Autopilot-stack](autopilot-stack.md), not a private exception.
++4. **Swarm-verify once.** A full swarm runs once, at the code-ready head. Another full swarm runs only for new behavior, a redesign, or a large new diff. A rebase, a merge-conflict resolution, or a minor fix gets a single independent verifier at the new head. A wording-only change needs no new verifier, but still needs current-head CI and mergeability. Fan out parallel independent verifiers at the code-ready SHA per `/skill:swarm` and aggregate to one verdict. The lanes re-run the gates at that SHA, prove load-bearing behavior on the project's verification skill, and audit the receipts and diff instead of trusting the PR body. Require at least two independent focused audit lanes, each with the full brief and receipts. Give each lane one main focus, such as consumer parity, races, or data/config safety. Include a regression lane against trunk. If trunk does not have the feature, record that fact and gate the behavior the diff adds plus the end state the user waits for. The live lane is the floor. Block only a demonstrated bug a user would hit, a failed gate, or shipped documentation the PR made wrong. Show the failing run at the reviewed head or the wrong doc line. A defect already on the base, whether trunk or a parent PR, does not gate unless copied or newly reached by this PR. Record base-only defects against that base. Keep demonstrated PR-owned failures gating and record other concerns as follow-ups. No merge without the root's clean verdict. Audit the merge-ready report's receipts before the verdict. The lead consolidates every blocking finding into one fix-forward to the owner. A demonstrated behavior defect filed as a note is still a finding. For each behavior finding, require a red test covering every site with the same defect, or a reproduction receipt when no test can demonstrate it. Carry each defect into the next round's review brief. Give the next bounded assignment the consolidated findings and proof requirements; retain applicable results only under the patch-id and lane-result reuse rule in `playbooks/shipping.md`, with current-head CI and mergeability.
++5. **On a clean verdict the owner merges, and a fresh assignment takes the next item.** Merge preparation starts only after the round's verification lanes start. Rebase onto current trunk, report the resulting head SHA, and require CI on that exact head. Preserve applicable results only under the patch-id and lane-result reuse rule in `playbooks/shipping.md`. A later trunk move alone need not force another rebase. Immediately before merge, fetch trunk and require a clean `git merge-tree` against the head. Compare `git diff --name-only $(git merge-base HEAD origin/main) origin/main` with the PR's changed paths and all paths that determine its CI selection. If there is an overlap or conflict, rebase again unless the lockfile-only exception below proves safety; report the new SHA, require CI on it, and repeat these checks. Re-verify any changed patch. Also inspect caller and dependency changes, not just overlapping files: run the patch's checks on the merge result when trunk changed a caller, called code or dependency version. Record the tested merge-result SHA and receipts. A shared lockfile may avoid an overlap-driven rebase only with an authorized frozen install on the merge result and proof that the PR's changed packages resolve as on its head; failed or unavailable proof requires the rebase. This exception never bypasses a conflict, current-head CI, mergeability, or the applicable step 4 verification. If trunk would require a third merge-preparation rebase, hold and report so the root can sequence colliding work. The lead integrates proof and authorizes the bounded merge phase only with an independent clean verdict and the operator's merge grant. The owner merges through the resolved forge using [Shipping](shipping.md)'s installed-command validation and merged-state/trunk-base readback, then returns. A fresh bounded assignment takes the next independent item. Operator-named items wait at merge-ready for the operator.
++6. **Run the root layer.** Any new loosening of a gate, budget or allowlist needs verifier proof and then your fresh countersign, only within the operator's approval grant; otherwise hold for the operator. Absorbing already-landed values is drift, not new permission to loosen a gate. Do not disable or soft-fail a check to get green; restore its guarding behavior within authority. Never give or bypass an approval enforced by the forge. Run an audit tick over all owners every hour with a separately installed and explicitly authorized scheduler. If none is available, record periodic unattended auditing as blocked; Herdsman settlement is not a timer. Re-read this playbook from the current trunk path `skills/poteto-mode/playbooks/autopilot-full.md`, re-read the stored program objective and plan from the decision trail, then audit the operation against both inputs and correct drift during this tick. Inspect decision trails for the authorized audit; do not poll active agents for progress. Count only side effects as progress: commits, pushes, PR or check deltas, and stored reports. Inactivity is advisory, not proof of a hang. For a required control decision use only the exact live label and current available_tools. Steer changes work non-preemptively; interrupt cancels the current operation; close intentionally abandons work. Preserve identity, partial diffs and cleanup evidence; resolve pending controls and mailbox issues, confirm teardown and release of write ownership before replacement. Unknown teardown blocks replacement; do not silently retry or take over unresolved work. When merges batch, run a retro pass and a post-merge bot-comment sweep. A material operator-facing update uses [Ketchup](../../ketchup/SKILL.md); an unchanged audit tick stays quiet, with the tick and evidence recorded in the trail.
++7. **Stand down instantly on the operator's stop.** The operator’s hold or stand-down reaches every owner as a zero-writes order immediately. Owners hold their briefs until the operator releases them.
+@@ -19,7 +21 @@
+-   Right before merging, fetch trunk and ask whether its changes can affect the patch, because rebasing for every trunk move never ends. Rebase and wait for CI when the code that would land was never tested, as with a conflict, a file both sides changed, or a change to which checks run for the PR. A lockfile both sides changed needs no rebase when a frozen install passes on the merge result and the packages the PR changes resolve there as on the head, because that install tests the lockfile that would land, and a failing install means the rebase must repair it. When trunk changed a caller of the patch or something the patch depends on, such as code it calls or a dependency version, run the patch's checks on the merge result and merge on a pass. Otherwise merge. If trunk would force a third rebase past merge prep, hold and report to the root, which sequences the colliding work.
+-6. **Run the root layer.** Anything that loosens a gate, such as a raised budget or an allowlist entry, needs a verifier's proof and then your fresh countersign, because the owner is the one who wants green. Under a grant that covers approvals, that countersign is the approval, and the owner's record of it points at your countersign for a lane to check. A disabled or soft-failed check always comes out, because it stops guarding every case. Never give or bypass an approval the forge enforces, because no countersign covers it.
+-
+-   On the operator's go, arm `/loop 1h` to audit until no delegated work is left, because long runs drift and agents stall silently. Each tick re-reads this playbook from trunk and fixes drift, such as an unreported head or an unrecorded agent, by having its owner record it, because drift is a gap in the record, not a stall. It probes every agent, down to the leaf lanes, and judges each by its side effects, because status text and summaries can hide a stuck child. An agent is stuck when it errors, cannot start turns, or shows nothing new past its stuck-after runtime, and so is an owner that has neither pushed nor written a trail row by the first tick. One waiting on you or the operator is not stuck, so answer it. Replace a stuck agent at once, without waiting for its stop to land. A tick that changed something for the operator ends by catching them up per the **ketchup** skill, and one that changed nothing stays quiet.
+-7. **Stand down at once on the operator's stop.** A hold reaches every owner as a zero-writes order. Each reports where it stands and keeps its brief until the operator releases it.
+-
+-**Reply:** catch the operator up per the **ketchup** skill, covering each PR's state and verdict, what merged, countersigns and why, open operator gates, and parked follow-ups, with links to each PR and the trails.
++**Reply:** use [Ketchup](../../ketchup/SKILL.md) for user outcomes, PR states and verdicts, merges, countersigns and reasons, open operator gates and parked follow-ups. Link PRs and decision trails. Keep exact head SHAs, owner assignments and swarm receipts in the linked durable record; include them in the reply only when needed to act.
+--- pinned-upstream/skills/poteto-mode/playbooks/multi-phase-plan.md
++++ working-tree/skills/poteto-mode/playbooks/multi-phase-plan.md
+@@ -1,0 +2,4 @@
++
++**Adapter boundary.** Use bounded leaf assignments, not persistent actors or nested controller workflows. The lead dispatches independent review and subsequent phases. Competing checkouts require explicitly prepared external worktrees and separate lead sessions; direct delegates share the lead cwd. Do not pass model/tools/cwd/worktree/schema in agent requests. When only dependent agent work remains, end the turn and yield; integrate asynchronous results and forward exact result refs through files. These constraints govern the workflow below.
++
++Use [Herdsman runtime](../references/herdsman-runtime.md) for supported launch, wake, isolation, and stop semantics. A written goal or cadence is not a running scheduler.
+@@ -7,4 +11,4 @@
+-3. Explore in subagents with `subagent_type: "poteto-agent"` and an explicit model per the Subagents section (the **guard-the-context-window** principle skill). Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section. Each returns file pointers, conventions, test commands, and entry points. No inlined dumps.
+-4. Copy the skeleton below into the plan file and fill every placeholder. Unless the operator names a path, write the file under the agent store's `docs/`. Keep every heading and every sub-block in the order shown. One section per PR. One PR is one change with its own evidence (the **sequence-verifiable-units** principle skill). Name the execution playbook in **How to read this**. Pick `playbooks/autopilot-full.md` when the run may merge. Pick `playbooks/autopilot-stack.md` when the operator lands the PRs. A standing program takes `playbooks/orchestrate.md`.
+-5. Write under `/technical-writing` in full, then `/unslop`. The body is one Diátaxis mode, how-to. Appendices hold explanation and reference. Each heading states the task or the finding. No long dashes. No mid-sentence colons.
+-6. Run `node pstack/skills/poteto-mode/scripts/check-plan.mjs <plan.md>` and fix every line it prints (the **encode-lessons-in-structure** principle skill).
++3. Explore in Herdsman `pstack-investigator` agents with read-only briefs per the Subagents section (the **guard-the-context-window** principle skill). Each returns file pointers, conventions, test commands, and entry points. No inlined dumps.
++4. Copy the skeleton below into the plan file and fill every placeholder. Unless the operator names a path, write the file under the agent store's `docs/`. Keep every heading and every sub-block in the order shown. One section per PR. One PR is one change with its own evidence (the **sequence-verifiable-units** principle skill). Name the execution playbook in **How to read this**. Pick `playbooks/autopilot-full.md` when merging is authorized. Pick `playbooks/autopilot-stack.md` when the operator lands the PRs. A standing program takes `playbooks/orchestrate.md`.
++5. Write under `/skill:technical-writing` in full, then `/skill:unslop`. The body is one Diátaxis mode, how-to. Appendices hold explanation and reference. Each heading states the task or the finding. No long dashes. No mid-sentence colons.
++6. Run `node skills/poteto-mode/scripts/check-plan.mjs <plan.md>` and fix every line it prints (the **encode-lessons-in-structure** principle skill).
+@@ -13 +17 @@
+-**Verification.** Tests alone are not sufficient verification. A PR is verified only when its unit, live, and perf boxes are all checked (the **prove-it-works** principle skill). That sentence is the verification rule. Every verification block opens with it. The live block is mandatory. Ten lanes at the PR head drive the real surface through its control skill, per the **swarm** skill, on the `swarm workers` model (default `grok-4.7-xhigh-fast`). Each lane is one box with a concrete scenario, the screenshot it saves, and its pass predicate. One lane is the **Regression lane against trunk.** It runs the same load-bearing scenario on trunk and head. If trunk does not have the feature, the lane records that fact and gates the behavior the diff adds plus the end state the user waits for instead of inventing a trunk result. The perf gate is dual-sided. Trunk and head must both produce the named metric. If trunk lacks the feature, also isolate the work the diff adds and set an absolute budget for that work plus the end-to-end state the user waits for. Do not claim a ratio between unlike scenarios. The perf block names the metric, the interleaved probe, the trunk baseline measured first, and the rule with the number that fails. A PR that changes an interaction is review-gated. The operator reviews it in chat with screenshots and a video before merge. A PR that changes no interaction writes `**Review gate.** None. <PR id> is not review-gated.` and no boxes under it.
++**Verification.** Tests alone are not sufficient verification. A PR is verified only when its unit, live, and perf boxes are all checked (the **prove-it-works** principle skill). That sentence is the verification rule. Every verification block opens with it. The live block is mandatory. Ten lanes at the PR head, using an appropriately configured pstack-verifier definition, drive the real surface through the project's verification skill or harness, per the **swarm** skill. Each lane is one box with a concrete scenario, the screenshot it saves, and its pass predicate. One lane is the **Regression lane against trunk.** It runs the same load-bearing scenario on trunk and head. If trunk does not have the feature, the lane records that fact and gates the behavior the diff adds plus the end state the user waits for instead of inventing a trunk result. The perf gate is dual-sided. Trunk and head must both produce the named metric. If trunk lacks the feature, also isolate the work the diff adds and set an absolute budget for that work plus the end-to-end state the user waits for. Do not claim a ratio between unlike scenarios. The perf block names the metric, the interleaved probe, the trunk baseline measured first, and the rule with the number that fails. A PR that changes an interaction is review-gated. The operator reviews it in chat with screenshots and a video before merge. A PR that changes no interaction writes `**Review gate.** None. <PR id> is not review-gated.` and no boxes under it.
+@@ -15 +19 @@
+-**Control skill.** Pick it by surface. Browser, Electron, and web UIs use `control-ui` from `cursor-team-kit`. CLIs and TUIs use `control-cli` from `cursor-team-kit`. Native mobile uses whatever simulator-driving skill the repo has. A PR that touches two surfaces gets lanes on both. A surface with no control skill is a risk in Appendix C, and its live block still names how each lane drives it.
++**Verification surface.** Pick the project's verification skill or harness by surface. Browser, Electron, web UI, CLI, TUI, and native mobile changes each name the concrete launch, drive, and evidence commands. A PR that touches two surfaces gets lanes on both. A surface without a verification path is a risk in Appendix C, and its live block still names how each lane drives it.
+@@ -26 +30 @@
+-The program runs `pstack/skills/poteto-mode/playbooks/<execution playbook>.md`. <Who merges, and which PR ids are the operator's items that stop at merge-ready.>
++The program runs `skills/poteto-mode/playbooks/<execution playbook>.md`. <Who merges, and which PR ids are the operator's items that stop at merge-ready.>
+@@ -34,0 +39 @@
++- [ ] On the operator's go, record the standing goal with the plan path, PR ids in order, verification rule, merge authority, and done condition in the decision trail.
+@@ -36,7 +41,7 @@
+-  - [ ] `git show origin/main:pstack/skills/poteto-mode/playbooks/<execution playbook>.md`
+-  - [ ] `git show origin/main:pstack/skills/swarm/SKILL.md`
+-  - [ ] `git show origin/main:<control skill path>`
+-  - [ ] `git show origin/main:pstack/skills/poteto-mode/playbooks/opening-a-pr.md`
+-  - [ ] `git show origin/main:pstack/skills/<each other leaf skill the program uses>`
+-- [ ] On the operator's go, arm the audit tick as `/loop 1h` with the tick prompt below. Never leave the cadence to memory.
+-- [ ] Use this tick prompt, verbatim. "Re-read the execution playbook from trunk. Audit the operation against it and fix drift in this tick. Probe every active lane and judge progress by side effects only. Stand down a stuck lane and dispatch its replacement now. Then post a short status message to the operator in chat only when the audit found a tracked change that no earlier status message reported, such as a PR opened, a code-ready head, a round launched or closed, a verdict, a merge, a stuck agent and the action taken, a blocker added or cleared, or a decision only the operator can make. Name every such change and nothing else. Do not repeat a table, the merged list, or an unchanged blocker. If the audit found none, end the turn with no reply text. Either way, log this tick's row in your decision trail. The row names the items reported, or none."
++  - [ ] `git show origin/main:skills/poteto-mode/playbooks/<execution playbook>.md`
++  - [ ] `git show origin/main:skills/swarm/SKILL.md`
++  - [ ] `git show origin/main:<project verification skill or harness path>`
++  - [ ] `git show origin/main:skills/poteto-mode/playbooks/opening-a-pr.md`
++  - [ ] `git show origin/main:skills/<each other leaf skill the program uses>`
++- [ ] Arm the hourly audit tick with a separately installed, explicitly authorized scheduler; otherwise record the timed audit as blocked. Never leave the cadence to memory.
++- [ ] Use this tick prompt, verbatim. "Re-read the execution playbook from trunk and the plan. Audit the operation against both and fix authorized drift in this tick. Assess concrete evidence and required attention for direct-owned lanes only; do not status-poll active agents or treat inactivity as proof of a hang. If recovery is necessary, preserve exact assignment identity and partial-work evidence, and use only current available_tools for that live agent. Resolve pending controls and mailbox/result-persistence issues according to the recorded recovery instructions before closing or replacing an assignment. Confirm teardown of the old execution and release of its write ownership before any replacement; never create overlapping writers. If evidence, control resolution or teardown is uncertain, report the blocker and do not replace the lane. Then use the Ketchup skill for a short user-facing update in this chat only for tracked material changes not reported before, such as a new PR or head, a verdict, merge, recovered lane, blocker, or operator decision. Do not repeat unchanged tables or blockers. If nothing changed, end the turn without a status message. Append this tick and its reported items (or none) to the decision trail."
+@@ -57 +62 @@
+-- [ ] Open the PR ready, never draft, per **Opening a PR**. Use the run's built-in PR tool when it has one, else `origin pr create --status open --base <base-branch>` or `gh pr create --base <base-branch>` according to the resolved forge. A stack child targets its parent branch.
++- [ ] Open the PR ready, never draft, per **Opening a PR**, using an available PR tool only for operations its documented schema supports. Otherwise use `origin pr create --status open --base <base-branch>` or `gh pr create --base <base-branch>` according to the resolved forge. A stack child targets its parent branch. After each verifiable unit, push the authorized branch with hooks on. Use fresh consolidated assignments for independent items.
+@@ -59 +64 @@
+-- [ ] Run `/deslop` before each commit and `/no-comments` before review.
++- [ ] Run `/skill:deslop` before each commit using supplied instructions for a leaf. After the implementation handoff, the lead runs `/skill:no-comments` before review and owns any `/skill:interrogate` delegation, forwarding required skills and execution briefs and exact result refs through files.
+@@ -61 +66 @@
+-- [ ] Rebase onto current trunk before the code-ready report and babysit. Keep that merge base in fix rounds. Rebase again only at merge prep, on a `git merge-tree` conflict with trunk, on a CI failure that comes from a change on trunk, or when a known concurrent change to the same files lands.
++- [ ] For Autopilot-full, rebase onto current trunk before code-ready and babysit. Preserve that base during fix rounds. Rebase again at merge prep, on a trunk conflict, when trunk breaks CI, or when a known concurrent change to the same files lands. For Autopilot-stack, each branch owner rebases onto its dependency parent, or trunk for a root PR. Serialize chain changes and hand back the exact tip and lease before resuming writes.
+@@ -65,2 +70,2 @@
+-- [ ] A full swarm runs once, at the code-ready head. Another full swarm runs only for new behavior, a redesign, or a large new diff. A rebase, a merge-conflict resolution, or a minor fix gets a single verifier at the new head, and a wording-only change gets none. Run each full swarm per `pstack/skills/swarm/SKILL.md`. One gates lane. The ten live lanes from the PR's **Verify, live** block. The perf lane from its **Verify, perf** block. Two or more audit lanes, each with its own focus, that read the diff and the receipts and distrust the PR body. The root audits the receipts in the merge-ready report before the verdict.
+-- [ ] Judge every finding by the execution playbook's blocking rule. The verdict is clean when none blocks. A failure on trunk behavior in a lane marked `Regression lane against trunk.` is recorded against trunk and does not block the PR. A new head gets a fresh verdict, except for results that stay valid under the patch-id rule in `playbooks/shipping.md`.
++- [ ] A full swarm runs once, at the code-ready head. Another full swarm runs only for new behavior, a redesign, or a large new diff. A rebase, a merge-conflict resolution, or a minor fix gets a single independent verifier at the new head. A wording-only change gets none. Run each full swarm per `skills/swarm/SKILL.md`. One gates lane. The ten live lanes from the PR's **Verify, live** block. The perf lane from its **Verify, perf** block. At least two focused audit lanes read the diff and receipts rather than trusting the PR body. Justify extra lanes by distinct coverage. The root checks the receipts again at merge-ready.
++- [ ] Judge findings by the execution playbook's blocking rule. A defect already on the base, whether trunk or a parent PR, is recorded there and does not gate unless copied or newly reached by the PR. Only a demonstrated user-visible bug, a failed gate or a wrong shipped doc blocks. Record other concerns as follow-ups. Clean only when every required PR-owned lane is `PASS`. The lead sends every blocking finding to the owner in one fix-forward. A behavior defect filed as a note is a finding. Require a red test across every site with the same defect, or a reproduction receipt when no test can demonstrate it. Carry each defect into the next review brief. A new head gets a fresh verdict, except for results that stay valid under Shipping's patch-id and lane-result reuse rule. Require fresh current-head CI and mergeability; record the new head and proof.
+@@ -67,0 +73 @@
++- [ ] Preserve single-writer topology and explicit SHA-pinned leases. Any new gate, budget or allowlist loosening needs independent proof and an authorized countersign, or the operator's approval outside that grant. Never disable or soft-fail checks or bypass forge approvals.
+@@ -71 +77 @@
+-Each live lane runs on its own cloud VM at the PR head. Drive through `control-ui` or `control-cli` from `cursor-team-kit`.
++Each live lane requiring isolation runs in an explicitly prepared external worktree with a separate lead session at the PR head. Delegation does not provision worktrees or select cwd. Worktrees isolate files, not processes or security boundaries. They do not isolate ports, databases, or credentials. Disclose the actual isolation limits and assign separate resources for each lane before launch. Require stronger isolation only when the task needs it. Drive through the project's verification skill or harness.
+@@ -75,2 +81,2 @@
+-- [ ] <Deliver input only through the control skill's commands. Name the read-only diagnostics.>
+-- [ ] Save every screenshot to `/tmp/swarm-<pr-id>/worker-<n>/<slug>.png` and return the paths with the report.
++- [ ] <Deliver input only through the project verification skill's commands. Name the read-only diagnostics.>
++- [ ] Save every screenshot or other required artifact to `/tmp/swarm-<pr-id>/worker-<n>/<slug>` and return the paths with the report.
+@@ -100 +106 @@
+-**Verify, live.** Tests alone are not sufficient verification. A PR is verified only when its unit, live, and perf boxes are all checked. Ten lanes on `<swarm workers model>` at the PR head, per the boot recipe.
++**Verify, live.** Tests alone are not sufficient verification. A PR is verified only when its unit, live, and perf boxes are all checked. Ten lanes at the PR head, using an appropriately configured pstack-verifier definition, per the boot recipe.
+@@ -123 +129 @@
+-- [ ] Record a 30 to 60 second video of the change on a lane VM. Save it as `<media path>/<pr-id>-review.mp4`.
++- [ ] Record a 30 to 60 second video of the change in the actual authorized prepared verification environment. Report unavailable recording capability rather than inventing a video. Save it as `<media path>/<pr-id>-review.mp4`.
+@@ -130,2 +136,3 @@
+-- [ ] Rebased onto current trunk after the verdict, patch-id unchanged.
+-- [ ] <The owner squash-merges its own PR, or the root appends it to the base-branch stack and the operator lands it bottom-up.>
++- [ ] Merge-preparation rebase completed after verification lanes start, current-head CI passed, and patch-id checked per `playbooks/shipping.md`.
++- [ ] Immediately before merge, fetched trunk, confirmed a clean merge-tree and checked trunk changes against PR paths, CI-selection paths, callers and dependencies. Test the merge result and apply only the documented frozen-install lockfile exception per Autopilot-full step 5. Otherwise rebase, require CI and repeat, verifying any changed patch under the cadence above and Shipping's result-reuse rule. Hold if a third merge-preparation rebase would be required.
++- [ ] <The authorized owner merges its own PR using Shipping's validated forge command and readback, or the root appends it to the base-branch stack and the operator lands it bottom-up.>
+@@ -152 +159 @@
+-<Docs to read before editing. Which PRs get `pstack/skills/how/SKILL.md` and `pstack/skills/interrogate/SKILL.md`. The trail per `pstack/skills/show-me-your-work/SKILL.md`.>
++<Docs to read before editing. Which PRs get `skills/how/SKILL.md` and `skills/interrogate/SKILL.md`. The trail per `skills/show-me-your-work/SKILL.md`.>
+--- pinned-upstream/skills/poteto-mode/playbooks/opening-a-pr.md
++++ working-tree/skills/poteto-mode/playbooks/opening-a-pr.md
+@@ -3 +3 @@
+-Invoked at the end of every other playbook.
++Prepare a PR only within current implementation authority. Read-only investigations and plans do not authorize commits or publication. Inspect `git status` and the diff first. Confirm branch/worktree ownership and preserve unrelated changes. Commit, rebase, push, open, or merge only when explicitly authorized.
+@@ -5 +5 @@
+-**Worktree.** Work from a git worktree off main. Subagents inherit it. Multiple `Task` calls on the same branch each get their own worktree, or `git fetch && git reset --hard origin/<branch>` between them. Dirty branch with unrelated work: patch out, fresh worktree, apply. Snarled worktree: reset from main, redo minimally.
++**Worktree.** For isolated checkout work, explicitly authorize and prepare an external git worktree from the intended base, then start a separate lead session in that worktree. Herdsman delegates inherit the controller's cwd; there is no per-request cwd or managed-worktree option. Keep one writer per worktree or file boundary. Preserve unrelated dirty work in place. If the checkout is dirty or tangled, stop and report its state; use an authorized fresh worktree and transfer only the intended change after inspection. Never discard or reset shared work as a delegation fallback.
+@@ -7 +7 @@
+-**Commits.** Commit liberally. Rebase into small, ordered commits before opening PRs. Each commit is a future PR: landable, ordered to tell the story. Amend when the fix belongs in a just-made commit. New commit when separable. Commit bodies don't restate the subject.
++**Commits.** Commit liberally. Rebase into small, ordered commits before opening PRs. Each commit is a future PR. Amend when the fix belongs in a just-made commit. Make a new commit when the change is separable.
+@@ -9 +9 @@
+-**PRs.** Run `/deslop` from `cursor-team-kit` over the diff before commit and `/no-comments` before review. Write every PR title, description, and commit body with `/technical-writing` (every layer except Diátaxis, and apply the STE vocabulary rules: one word per action, keep articles, a plain verb over `-ing` where one works), then apply `/unslop`.
++**PRs.** Run the local `/skill:deslop` skill over the diff before commit. After the implementation handoff, the lead runs `/skill:no-comments` before review. Write every PR title, PR description, and commit body with `/skill:technical-writing`, then apply `/skill:unslop`. Apply every technical-writing layer except Diátaxis. Use one word for each action, keep articles, and avoid `-ing` when a plain verb works.
+@@ -11 +11 @@
+-**Titles.** Conventional Commits `type(scope): subject`, no trailing period. Type such as `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, or `perf`. Scope is the area, such as `pstack` or `poteto-mode`. Subject is short, imperative, and names a real symbol when one carries the change, for example `fix(pstack): retarget opening-a-pr babysit trigger`.
++**Titles.** Use Conventional Commits in the form `type(scope): subject`. Use `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, or `perf` as the type. Use the changed area, such as `pstack` or `poteto-mode`, as the scope. Keep the subject short and imperative. Name a real symbol when one carries the change. For example, `fix(pstack): retarget opening-a-pr babysit trigger`. Do not add a trailing period.
+@@ -13 +13 @@
+-**Descriptions.** The PR body is a one-minute briefing, not a lab notebook, for a reviewer who has the diff. It says why the change exists, what it leaves out, what it could break, and how you proved it works. Write short, simple sentences with few identifiers, no walls of text. The body becomes the squash commit body, so keep that commit under about 40 lines. Use `##` headings, not bold lead-ins, in this order, and drop a section with nothing to say:
++**Descriptions.** A reviewer should understand why, scope, risks, and proof in under a minute. The PR body becomes the squash body; keep it below about 40 lines. Commit bodies do not repeat the subject.
+@@ -15,6 +15 @@
+-- `## Why`: the problem and approach, 1–3 short sentences. No SHAs, rebase genealogy, or "based on main" preamble.
+-- `## What changed`: 1–3 short bullets. Name a real symbol or path only when it carries the change. Name both sides of a rename or retarget.
+-- `## Scope`: always. 1–3 short items on what it covers and what it deliberately leaves out (a follow-up, a known gap). No symbols, paths, or file-by-file essay.
+-- `## Tradeoffs`: only rejected alternatives a reviewer would otherwise ask about. Skip when there was no real choice.
+-- `## Blast Radius`: 1–2 sentences on who or what it touches and why that is safe or risky. If main is red, state the cost of leaving it red.
+-- `## Verification`: 1–3 bullets, each a real run path and its outcome. Perf: one primary number with its unit, `before → after`, and a link to the arena or swarm directory for the rest. No sample-size methodology, swarm recitals, or metric tables.
++Use `##` headings in this order. Scope is mandatory. Omit empty optional sections.
+@@ -22 +17,8 @@
+-After the sections, attach videos or screenshots when they prove a claim. Full SHAs, swarm or arena lane recitals, lever-correction essays, file-by-file checklists, and "CLEAN" verdicts go in a linked artifact, not the body.
++- `## Why` opens with the user's goal, then gives the problem and approach in one to three short sentences. No SHAs or rebase genealogy.
++- `## What changed` has one to three short bullets. Name real paths or symbols only when they carry the change. Name both sides of a rename.
++- `## Scope` gives one to three items on what is covered and deliberately excluded. No symbols, paths, or file-by-file essay.
++- `## Tradeoffs` names rejected alternatives a reviewer would otherwise ask about.
++- `## Blast Radius` gives one or two sentences on affected users or code and the risk. If main is red, state the cost.
++- `## Verification` gives one to three actual run paths and outcomes. For performance, give one primary before-and-after number with its unit, and link detailed evidence. No sample-size methodology, swarm recitals, or metric tables.
++
++Attach screenshots or videos when they prove a claim. Link logs, metric tables, SHAs, and detailed checklists instead of pasting them.
+@@ -26 +28 @@
+-**Built-in PR tool.** When the run provides a built-in PR tool, create, edit, retarget, and mark ready through it, never through a forge CLI. A CLI-made PR misses what the tool tracks. Use the resolved forge for everything the tool does not cover, and for every PR operation when the run has no such tool.
++**Built-in PR tool.** Prefer an actually available PR tool for operations its documented schema supports, including creation, editing, retargeting, and marking ready. Follow its instructions and tracked-state contract. Use the resolved forge for unsupported operations or when no such tool is available. Do not invent tool fields.
+@@ -28 +30 @@
+-**Size and stacks.** Prefer five narrow PRs to one large PR. A stack is a base-branch chain. The root PR targets trunk. Each child branch rebases onto its parent's exact tip and its PR targets the parent branch. As a parent merges, move its child onto trunk per `playbooks/shipping.md` step 4. Without a built-in PR tool, per the resolved forge, create a child with `origin pr create --status open --base <parent-branch>` or `gh pr create --base <parent-branch>`, and retarget one with `origin pr edit <pr> --base <parent-branch>` or `gh pr edit <pr> --base <parent-branch>`. Branch from trunk only for independent work. Rebase on trunk before substantial stack work.
++**Size and stacks.** Prefer five narrow PRs to one large PR. A stack is a base-branch chain. The root PR targets trunk. Each child branch rebases onto its parent's exact tip and its PR targets the parent branch. Without a supporting PR tool, create a child with `origin pr create --status open --base <parent-branch>` or `gh pr create --base <parent-branch>` according to the resolved forge. Without a supporting PR tool, retarget an existing child with `origin pr edit <pr> --base <parent-branch>` or `gh pr edit <pr> --base <parent-branch>`. Branch from trunk only for independent work. Rebase on trunk before substantial stack work, subject to the execution playbook's single topology writer. As a parent merges, the authorized topology writer moves its immediate child onto the confirmed trunk merge result per [Shipping](shipping.md), including explicit leases, patch-id and fresh checks; owners do not independently retarget a landing chain.
+@@ -30 +32 @@
+-**Readiness.** Open every PR ready, never as a draft. A built-in PR tool can default to draft, so set `draft: false` on every creation call through it. With Origin, pass `--status open`. With `gh`, omit `--draft`. If a PR still opens as a draft, mark it ready through the PR tool, or run `origin pr ready <number>` or `gh pr ready <number>` according to the resolved forge. Run `origin pr view <number>` or `gh pr view <number>` before you refer to PR status.
++**Readiness.** Open every PR ready, never as a draft. With a PR tool, use its documented readiness controls and verify the resulting state. Do not assume a universal draft field. With Origin, pass `--status open`. With `gh`, omit `--draft`. If a PR still opens as a draft, run `origin pr ready <number>` or `gh pr ready <number>` according to the resolved forge. Run `origin pr view <number>` or `gh pr view <number>` before you refer to PR status.
+@@ -32 +34 @@
+-**Babysit.** Opening a PR does not start a babysit. Post the URL and keep building. Finish the phase or stack first. Run a separate babysit pass only when the user asks for one after the whole stack exists. A babysit for each new PR stalls the build and spends checks on commits later waves restart. Push back when feedback drifts from intent.
++**Babysit.** Opening a PR does not start a babysit. Post the URL and keep building. Finish the phase or stack first. Run a separate Babysit playbook (`playbooks/babysit.md`) pass only when the user asks for one after the whole stack exists. A babysit for each new PR stalls the build and spends checks on commits later waves restart. Push back when feedback drifts from intent.
+@@ -34 +36 @@
+-A subagent that opens a PR runs `/deslop` and `/no-comments`, and posts the URL. It returns to the parent without babysitting, unless it is an Autopilot-full or Autopilot-stack owner. That owner's brief assigns the babysit loop and is the ask `playbooks/babysit.md` waits for. The owner starts the loop after its code-ready report, reports merge-ready, and is exempt from the rules here and in `playbooks/babysit.md` that hold babysitting until a whole stack is built.
++**Lead-owned review.** The selected implementation leaf (poteto-agent, bug-fix, perf-issue or hillclimb) implements only its authorized scope and returns the diff, validation evidence and exact completion ref to the lead. It does not launch reviewers. After the implementation handoff, the lead runs `/skill:no-comments` and `/skill:interrogate`, supplying the required review skills and execution briefs explicitly through files when the reviewer definition does not already provide them. Forward the exact implementation result ref through files and keep the reviewed scope frozen. Integrate asynchronous review results before authorizing follow-up edits or PR opening; end the turn and yield when only dependencies remain. Supply any needed deslop, technical-writing and unslop instructions as explicit evidence to a leaf assigned local cleanup or PR preparation. A leaf explicitly authorized to open the reviewed PR returns the URL and evidence, then returns to its owner without starting a babysit or nested review.
+--- pinned-upstream/skills/poteto-mode/playbooks/pause-safely.md
++++ working-tree/skills/poteto-mode/playbooks/pause-safely.md
+@@ -5 +5 @@
+-1. Stop at a safe boundary. Finish the current atomic step or back out of it. Start nothing new, and cancel any nested subagents.
++1. Stop authority wins. On an immediate stop or zero-writes hold, stop editing immediately, preserve the current state, and report any unresolved broken state. All later steps remain subject to the stop order; when writes are prohibited, report state without further file writes. Otherwise, only when permitted, finish the current atomic step or back out of it to reach a safe boundary. Start nothing new. Control only direct agents using exact live labels and currently available_tools; use interrupt for preemptive replacement instructions or close for intentional abandonment. Preserve identity and partial-work evidence. Leaves return to their owner rather than attempting nested control.
+@@ -7,2 +7,2 @@
+-3. Make the work durable. Commit uncommitted edits as one clear `wip:` commit on the current branch so nothing is lost. If the tree is broken, say so in the commit body in one line.
+-4. Write the resume note off-context. Capture intent, what you were doing, progress and what's verified, current state, next steps, key files, and gotchas. For the compaction trigger write it to a file like `/tmp/<slug>-resume.md`. If a show-me-your-work trail exists, point at it instead of duplicating it.
++3. Make the work durable. Only when current authority permits further writes and commits, commit uncommitted edits as one clear `wip:` commit on the current branch so nothing is lost. If the tree is broken, say so in the commit body in one line.
++4. Write the resume note off-context. Capture intent, what you were doing, progress and what's verified, current state, next steps, key files, and gotchas. Read [artifact locations](../../../config/artifact-locations.md) and use its resolved resume-note path, honoring explicit paths and existing adequate artifacts, including for the compaction trigger. If a show-me-your-work trail exists, point at it instead of duplicating it.
+--- pinned-upstream/skills/principle-build-the-lever/SKILL.md
++++ working-tree/skills/principle-build-the-lever/SKILL.md
+@@ -17,2 +17,2 @@
+-- When you fan work out to subagents, write the lever as a skill they all read: the recipe, the verification contract, and the do-not-touch fences in one artifact. Keep it outside the delegates' write scope so they can't quietly edit the contract.
+-- Applying this principle produces a file. If you cited it and there is no codemod, script, generator, or delegate skill in the diff, you didn't apply it.
++- When you fan work out to subagents, an authorized writer creates one shared skill they all read, even for one-off work: the recipe, the verification contract, and the do-not-touch fences in one artifact. Keep it outside the delegates' write scope so they cannot edit the contract. This does not change leaf tools or permissions.
++- For an authorized writer, applying this principle produces a rerunnable artifact. Read-only roles cannot create one; they return the proposed recipe or evidence to their owner instead. Do not cite a file-producing application of this principle when no artifact was made.
+--- pinned-upstream/skills/reflect/SKILL.md
++++ working-tree/skills/reflect/SKILL.md
+@@ -3 +3 @@
+-description: Spawn three parallel review subagents over the active transcript, surface learnings, and route each to a concrete edit on an existing skill. Use when the user says reflect.
++description: "Review the active transcript for durable learnings and propose authorized skill edits or Backlog drafts. Use for /skill:reflect or reflect."
+@@ -8,0 +9,2 @@
++For Herdsman launch, discovered definitions, asynchronous results, external isolation, and tool prerequisites, read [Herdsman runtime](../poteto-mode/references/herdsman-runtime.md) when needed. Required capabilities must be available before launch.
++
+@@ -11 +13 @@
+-Invoke when the user says "reflect" or "/reflect". Skip when the conversation is trivial, off-topic, or already covered by an existing skill the parent followed correctly. One-offs are not learnings.
++Invoke when the user says "reflect" or "/skill:reflect". Skip when the conversation is trivial, off-topic, or already covered by an existing skill the parent followed correctly. One-offs are not learnings.
+@@ -15 +17 @@
+-Before fanning out, find this conversation's transcript in the `agent-transcripts/` directory the system prompt names. Do not glob across `~/.cursor/projects/*/`. That crosses workspace boundaries and reads private chats from unrelated projects.
++The parent reads [session history resolution](../poteto-mode/references/session-history.md) and resolves its own exact transcript before fan-out. Respect custom storage and validate workspace headers. Never guess identity or glob other workspaces.
+@@ -17,5 +19 @@
+-```bash
+-ls -t <agent-transcripts>/*.jsonl <agent-transcripts>/*/*.jsonl <agent-transcripts>/*/subagents/*.jsonl 2>/dev/null | head -10
+-```
+-
+-That covers the legacy flat (`<id>.jsonl`), current nested (`<id>/<id>.jsonl`), and subagent (`<parent>/subagents/<child>.jsonl`) layouts. For each candidate, read the first JSONL line. Take the file whose `message.content[0].text` contains the conversation's opening user prompt. If none matches, pass a tight digest of the session instead.
++For each candidate, inspect the session header for its cwd, then locate the first user message record and match its text to the conversation's opening prompt. Take the matching path. If no path resolves, write a tight digest of the session and pass that instead.
+@@ -25 +23 @@
+-One message, three `Task` calls, `subagent_type: generalPurpose`, agent mode (`readonly: false`). Reviewers need MCP access to look up the tickets, chat threads, and observability traces the transcript references, and readonly strips MCPs.
++Delegate three fresh read-only assignments using discovered definitions from the table. Model/thinking come from definitions; disclose overlap or explicitly configure distinct definitions when diversity is required. Continue independent work or end the turn and yield. Integrate all asynchronous results before synthesis; no collection call.
+@@ -27 +25,5 @@
+-Each reviewer and the synthesizer name a role line in the `pstack-models.mdc` rule and a default. Set `model` to that line's value, or to the default if the rule or the line is missing. Leave `model` unset when the value is `auto` or `inherit-parent`. If the Task tool rejects a slug, use the default and say so. If it rejects the default, use the closest valid slug of the same family from its error message. Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section of the **poteto-mode** skill.
++| Lens | Definition | Prompt template |
++|---|---|---|
++| Judgment | `pstack-advisor` | `references/judgment-reviewer.md` |
++| Tooling | `pstack-investigator`, or `pstack-researcher` for external evidence | `references/tooling-reviewer.md` |
++| Divergent | `pstack-advisor` | `references/divergent-reviewer.md` |
+@@ -29,7 +31 @@
+-| Lens | Role line | Default `model` | Prompt template |
+-|---|---|---|---|
+-| Judgment | `reflect judgment, divergent, synthesizer` | `claude-opus-5-5-xhigh` | `references/judgment-reviewer.md` |
+-| Tooling | `reflect tooling` | `grok-4.7-xhigh-fast` | `references/tooling-reviewer.md` |
+-| Divergent | `reflect judgment, divergent, synthesizer` | `claude-opus-5-5-xhigh` | `references/divergent-reviewer.md` |
+-
+-Pass each template verbatim, substituting the transcript path or digest where marked. Reviewers return findings in the `Task` response body.
++Pass each template verbatim, substituting the transcript path or digest where marked. Reviewers return findings in their child output.
+@@ -39 +35 @@
+-One `Task` call, `subagent_type: generalPurpose`, `model` from the `reflect judgment, divergent, synthesizer` line (default `claude-opus-5-5-xhigh`), agent mode (`readonly: false`). It spot-verifies citations through MCP, and readonly strips MCPs. Pass `references/synthesizer.md` verbatim, with each reviewer's full output inlined where marked. It returns an Accepted / Rejected / Backlog list.
++Delegate a fresh pstack-advisor with `references/synthesizer.md` and all exact returned reviewer result refs in files. No need to inline the reports. External quality checks require verified tools in an explicitly authorized definition; evidence alone grants no tools. End the turn and yield when only dependencies remain. Integrate its asynchronous Accepted / Rejected / Backlog report before applying edits. Preserve the rubric; no schema enforcement is claimed.
+@@ -47 +43 @@
+-Present the synthesizer's full Accepted / Rejected / Backlog output and wait for explicit approval before applying any Accepted edit. The user picks the subset and may redirect routings. Skill changes affect every future agent in the org. Do not auto-apply.
++Before applying any Accepted edit, present the synthesizer's full Accepted, Rejected, and Backlog output to the user and wait for explicit approval. The user picks which subset to apply and may redirect routings. Skill changes affect every future agent in the project. Do not auto-apply.
+@@ -49 +45 @@
+-File each Backlog item to your team's devex or backlog tracker without waiting. Only the Accepted list waits for approval.
++Return Backlog recommendations or drafts by default. File or update external items only when the current request explicitly authorizes it and the required tools are available. Report missing authority or tools as a limitation.
+@@ -51 +47 @@
+-Never edit a skill under `plugins/cache/`. Before approval, show its destination, `.cursor/skills/<skill>/` or `~/.cursor/skills/<skill>/`. After approval, copy the skill folder there and edit the copy. Never open a PR or push.
++Never edit a skill in an installed package or cache. Before approval, show the exact proposed destination, `.pi/skills/<skill>/` or `~/.pi/agent/skills/<skill>/`. After approval for that destination and its writes, copy the skill folder there and edit the copy. Do not overwrite existing user work without explicit approval. Do not open a PR or push as part of Reflect.
+@@ -55,4 +51,4 @@
+-- Trivial existing-skill edit (a one-line bullet, a tightened sentence, a stale fact corrected): the parent does it directly.
+-- Substantive existing-skill edit (a new section, a new pattern table, more than ~10 lines): hand to Cursor's built-in `create-skill` skill and run its draft / test / iterate loop.
+-- `tune description: <skill path>` (the skill exists but didn't trigger when it should have): hand to `create-skill` and run its description-optimization loop.
+-- `new skill via create-skill: <kebab-name>`: hand creation to `create-skill`. Do not invent the shape ad hoc.
++- Trivial existing-skill edit such as a one-line bullet or stale fact correction. The parent does it directly.
++- Substantive existing-skill edit such as a new section or pattern table. Use `../poteto-mode/playbooks/authoring-a-skill.md` and `/skill:unslop` for the draft, test, and iterate loop.
++- `tune description: <skill path>`. Follow the case table, description validation, revision, and held-out-case loop in [Pi skill authoring procedure](../poteto-mode/references/skill-authoring.md), steps 4 through 6. Hidden skills remain explicit-only. If no authorized model-evaluation runner is available, report that limitation and the source walkthrough separately, not a successful model evaluation. Do not add unknown frontmatter keys.
++- `new skill: <kebab-name>`. Use `../poteto-mode/playbooks/authoring-a-skill.md` and `/skill:unslop`. Do not invent the shape ad hoc.
+@@ -60 +56 @@
+-If your environment ships a SKILL.md validator, run it on every touched skill before declaring done.
++If the environment ships a SKILL.md validator, run it on every touched skill before declaring done. Skip this step if it does not.
+@@ -66,4 +62,4 @@
+-- Edits applied: `<skill path>`. What changed, one line each.
+-- New skills created: `<skill path>`. One line each (rare).
+-- Backlog filed to the devex tracker: `<issue title>` (`<tags>`). One line each.
+-- Dropped: one line per rejected finding + reason from the synthesizer.
++- Edits applied. Name the skill path and what changed.
++- New skills created. Name the path and what it does.
++- Backlog recommended or drafted. If an external write was explicitly authorized, name the item and evidence.
++- Dropped. Name each rejected finding and why.
+--- pinned-upstream/skills/reflect/references/synthesizer.md
++++ working-tree/skills/reflect/references/synthesizer.md
+@@ -17 +17 @@
+-- Existing-skill-first: propose `new skill via create-skill:` only when no existing skill is a real home, the pattern recurs, and the topic deserves its own skill.
++- Existing-skill-first: propose `new skill:` only when no existing skill is a real home, the pattern recurs, and the topic deserves its own skill.
+@@ -21 +21 @@
+-- Skill-was-used: accept only findings that route to a skill, tool, or MCP the parent invoked in the transcript. If the skill wasn't used but should have been, route to `tune description: <skill path>`. If neither, reject as `skill-not-used`.
++- Skill-was-used: accept only findings that route to a skill, tool, or MCP the parent invoked in the transcript. If the skill was visible in the catalog but should have been selected, route to `tune description: <skill path>` for validation through the authoring procedure. Hidden skills remain explicit-only; tuning does not enable automatic invocation. If neither, reject as `skill-not-used`.
+@@ -34 +34 @@
+-- "path-shaped triggers belong in `paths:`, not description prose"
++- "description changes need representative requests and nearby non-matches, with only supported frontmatter keys"
+@@ -43,2 +43,2 @@
+-| <skill existed but didn't trigger> | <tune the skill's description so it fires next time> | <tune description: <skill path>> |
+-| <new pattern, no existing skill is a real home> | <draft a new skill via create-skill> | <new skill via create-skill: <kebab-name>> |
++| <visible skill was not selected when appropriate> | <validate and iterate the description through the authoring procedure> | <tune description: <skill path>> |
++| <new pattern, no existing skill is a real home> | <draft a new skill via the authoring playbook> | <new skill: <kebab-name>> |
+--- pinned-upstream/skills/sharpen/SKILL.md
++++ working-tree/skills/sharpen/SKILL.md
+@@ -3 +3 @@
+-description: "Make a task deeper, not bigger, then rewrite the prompt. Use for /sharpen."
++description: "Rewrite a prompt deeper, not bigger, with expert sources, methods, and an outside check. Show concise four-part framing, then a separate rewritten prompt without doing the task. Use for /skill:sharpen."
+@@ -7 +7 @@
+-I want a deeper version of this task, not a bigger one. Before rewriting it, do four things:
++# Sharpen
+@@ -9,4 +9 @@
+-1. Say what a top professional in this field would do here that I'm not asking for.
+-2. Name the rawest material they would start from instead of what has already been digested for me.
+-3. Name the specific methods and tools they would use.
+-4. Say what, other than you or me, would show the result is right.
++Rewrite the supplied prompt. Do not execute the task.
+@@ -14 +11 @@
+-Then rewrite my prompt to ask for exactly that.
++Before rewriting, show concise answers to these four questions:
+@@ -16 +13,8 @@
+-Leave choices that are mine to make open instead of deciding them.
++1. What would a top professional in this field do here that the prompt does not ask for?
++2. What raw material would they start from instead of an already digested account?
++3. Which specific methods and tools would they use?
++4. What, other than you or the user, would show that the result is right?
++
++Use the answers to make the task deeper, not bigger. Challenge irrelevant self-imposed assumptions, not the user's requirements, scope, safety rules, authority, architecture, security, protocol, or acceptance criteria. Leave user-owned choices open. Keep the outside check within available authorized tools or supplied evidence. State missing capability as a constraint in the rewrite, not invented access or results.
++
++After the four-part framing, return the rewritten prompt in a clearly separated section. Do not answer the task, start implementation, or treat the rewrite as execution approval. A plan-only or read-only request stays that way.
+--- pinned-upstream/skills/technical-writing/SKILL.md
++++ working-tree/skills/technical-writing/SKILL.md
+@@ -3 +3 @@
+-description: "Layered technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages."
++description: "Layered technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /skill:technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages."

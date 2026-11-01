@@ -1,0 +1,118 @@
+{
+  "upstreamCommit": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+  "files": [
+    {
+      "path": "skills/blast-radius/SKILL.md",
+      "upstreamSha256": "2e10745b97f5862323dcda3b29ca60d56b5c3c98e37020085d26b48efbe0a436",
+      "deltas": [
+        {
+          "upstream": "Ask more than one model the same question and merge the answers. Different models catch different real bugs.",
+          "local": "Ask independent investigator sessions the same question and merge the answers. Report actual model overlap rather than assuming diversity.",
+          "reason": "Fixed definition-owned models and actual coverage reporting, not dynamic model changes."
+        }
+      ]
+    },
+    {
+      "path": "skills/figure-it-out/SKILL.md",
+      "upstreamSha256": "bdb23cdbd82a1e6af094b495691c832a6f7f3ab9706ba9edbeb664ef51a726e1",
+      "deltas": [
+        {
+          "upstream": "Use for /figure-it-out",
+          "local": "Use for /skill:figure-it-out",
+          "reason": "Pi invocation syntax."
+        },
+        {
+          "upstream": "\n## Start\n",
+          "local": "\nBefore unattended execution, read and satisfy all four checks in [Unattended trust preflight](../poteto-mode/playbooks/autonomous-run.md#unattended-trust-preflight). Missing checks block unattended work, but may be established through authorized attended preparation. This grants no additional scheduling, publication, scope, or tools authority and does not gate normal attended work.\n\n## Start\n",
+          "reason": "Preserve the existing unattended trust and authority gate."
+        },
+        {
+          "upstream": "Pick each subagent's reasoning level and fast or standard speed for the job, per the Subagents section of the **poteto-mode** skill.",
+          "local": "Models and thinking come from effective discovered definitions, not per-request configuration.",
+          "reason": "Fixed definition-owned models and thinking."
+        }
+      ]
+    },
+    {
+      "path": "skills/how/references/explorer-prompt.md",
+      "upstreamSha256": "6300128385ee940fd42ecb84b0e623435440a2dc283eae54ee4a52ba56947ba1",
+      "deltas": []
+    },
+    {
+      "path": "skills/principle-encode-lessons-in-structure/SKILL.md",
+      "upstreamSha256": "228963799189f481827d6f28065f278bc2008ffa37030b1234cbd5814d36b9e9",
+      "deltas": []
+    },
+    {
+      "path": "skills/principle-exhaust-the-design-space/SKILL.md",
+      "upstreamSha256": "2de83d99f93f60ec6313455b0bc9aa9f0bfb93dd59f414f403691322db00d4db",
+      "deltas": []
+    },
+    {
+      "path": "skills/principle-guard-the-context-window/SKILL.md",
+      "upstreamSha256": "af0b9dd70b43628ce4a59a4d332e9d9ad055084e460f430e7a757495c627e81a",
+      "deltas": []
+    },
+    {
+      "path": "skills/principle-laziness-protocol/SKILL.md",
+      "upstreamSha256": "1be6e7a435f26a75a76eb848b9c3d611b9977d0f5822361753244da25ca3ca45",
+      "deltas": []
+    },
+    {
+      "path": "skills/principle-outcome-oriented-execution/SKILL.md",
+      "upstreamSha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d",
+      "deltas": []
+    },
+    {
+      "path": "skills/principle-prove-it-works/SKILL.md",
+      "upstreamSha256": "ec79a15025bac8d33d62011c54f3b612733fd2a024e623b531b3637aa75070e2",
+      "deltas": []
+    },
+    {
+      "path": "skills/principle-sequence-verifiable-units/SKILL.md",
+      "upstreamSha256": "2ccbbacc56ace5afdfb8670cef19d7bd009fb2a0033b9a741cbdf2b6baf72187",
+      "deltas": []
+    },
+    {
+      "path": "skills/tdd/SKILL.md",
+      "upstreamSha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
+      "deltas": []
+    },
+    {
+      "path": "skills/technical-writing/SKILL.md",
+      "upstreamSha256": "61fe9c424a798ebf36ad94941f87be049cb8827bdf86d21474a0dde37b513c43",
+      "deltas": [
+        {
+          "upstream": "Use for /technical-writing",
+          "local": "Use for /skill:technical-writing",
+          "reason": "Pi invocation syntax."
+        }
+      ]
+    },
+    {
+      "path": "skills/unslop/SKILL.md",
+      "upstreamSha256": "ccab208e315ce05e2fab8eeee2f7879f1289b5c6844840b2d307adf31c79144f",
+      "deltas": []
+    },
+    {
+      "path": "skills/why/references/sources/code-archaeology.md",
+      "upstreamSha256": "a4a3970e9db448054aed676f3f7feeee667b4b69f0bd57c8fd72b751be687cc7",
+      "deltas": []
+    },
+    {
+      "path": "skills/why/references/sources/incident-postmortem.md",
+      "upstreamSha256": "bf2661f1a81c37700884a45b77d6289be0c802b065febced31990e6564510839",
+      "deltas": []
+    },
+    {
+      "path": "skills/why/references/sources/sentry.md",
+      "upstreamSha256": "2d4f83048eac1df530b399e2aed75dd7c9c18577b7665420aaeb96d0ceb0b702",
+      "deltas": []
+    },
+    {
+      "path": "skills/why/references/sources/slack.md",
+      "upstreamSha256": "3bc6309f5c7b26ace3b919dbd7f7b048861dd2020f910fe24f656cc74b3b661c",
+      "deltas": []
+    }
+  ]
+}

@@ -127,7 +127,7 @@ test('PR opening preserves shared work and assigns review orchestration to the l
   assert.match(pr, /external git worktree.*separate lead session/);
   assert.match(pr, /Preserve unrelated dirty work in place/);
   assert.match(pr, /After the implementation handoff, the lead runs `\/skill:no-comments` and `\/skill:interrogate`/);
-  assert.match(pr, /required review skills\/rubrics explicitly through files/);
+  assert.match(pr, /required review skills and execution briefs explicitly through files/);
   assert.match(pr, /It does not launch reviewers/);
   assert.doesNotMatch(pr, /A subagent that opens a PR runs/);
   for (const name of ['autopilot-full', 'autopilot-stack']) {

@@ -10,7 +10,7 @@ checkProfiles(root);
 const inventory = packageInventory(root, manifest);
 const resources = inventory.resources;
 const skills = resources.filter(path => path.endsWith('/SKILL.md'));
-assert.equal(skills.length, 57);
+assert.equal(skills.length, 58);
 assert.equal(resources.filter(path => path.includes('/playbooks/') && path.endsWith('.md')).length, 23);
 for (const path of skills) {
   const text = readFileSync(join(root, path), 'utf8');

@@ -1,0 +1,6 @@
+ts	phase	decision	why	evidence	result
+2026-11-01T01:17:30Z	implementation	Recorded approved W/S dispositions	Implement the supplied questionnaire brief, not an alternative policy	docs/upstream-differences/current/approved-decisions.md	implemented; independent review pending
+2026-11-01T01:17:30Z	fidelity	Restored all 17 S-006 files with 14 exact and 3 enumerated mixed results	Remove retained expansions while preserving necessary host and existing safety rules	docs/upstream-differences/current/restorations.json	56 source checks passed
+2026-11-01T01:17:30Z	consistency	Aligned Sharpen callsites, Reflect tuning template and stop precedence	Restored leaf contracts must agree with help, examples and later steps	docs/upstream-differences/current/acceptance.json	source acceptance passed
+2026-11-01T01:17:30Z	provenance	Added current resolutions without replacing historical findings or lineage	Current approval does not prove old approval or unavailable source bytes	docs/upstream-differences/current/README.md	16 frozen audit documents and inherited source fields unchanged
+2026-11-01T01:17:30Z	verification	Ran existing checks and pinned source probes	Prove the actual source and package artifact rather than model efficacy	docs/upstream-differences/current/verification.md	37 existing tests passed; npm check passed; lead review remains

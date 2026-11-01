@@ -1,0 +1,13 @@
+# Resolve session history
+
+Resolve only the history needed for the task. Prefer an exact session path supplied by the runtime, the user or a canonical Herdsman result. `PI_SESSION_FILE`, when present, identifies the active persisted Pi session. Ephemeral sessions have no persisted file. Never guess identity from an agent label or assume the system prompt names a sessions directory.
+
+An authorized Pi extension can read `ctx.sessionManager.getSessionFile()` and `getSessionDir()`. These are extension APIs, not tools an agent can invent. Use a supported history tool only when its actual contract supplies the required session and workspace scope. Respect its privacy limits.
+
+For earlier sessions, establish the effective session directory before searching. Pi can override storage through `--session-dir`, `PI_CODING_AGENT_SESSION_DIR` or the `sessionDir` setting, with the CLI taking precedence. `PI_CODING_AGENT_DIR` changes the agent configuration directory, not every custom session location. The default is `<agent-dir>/sessions/--<cwd-slug>--/`. Treat that layout as a candidate only when default storage is established, not proof of complete history.
+
+Inspect each candidate's first JSONL session header before reading messages. Require `type: "session"` and a `cwd` matching the authorized workspace. For the active session, also match its known identity or opening user message. Read another workspace only when the task explicitly authorizes that exact scope. Do not glob all workspace directories, search all sessions globally, or read unrelated message bodies while finding a match.
+
+If the path, identity, storage configuration, permissions or history coverage cannot be established, report history unavailable or incomplete. Ask for an exact path or use an explicitly labelled current-context digest when the workflow permits it. A digest is not a verified transcript. Missing or old files do not prove inactivity.
+
+The worktree audit accepts `--session-dir <absolute-dir>` or `PI_CODING_AGENT_SESSION_DIR` for an explicitly authorized custom directory. Without either it checks only the main and candidate worktree's default directories. It validates headers before message search. A recent matching file suggests `verify-recent-chat`. Missing, unreadable, malformed or old history suggests `hold-unknown-history`, never `safe`. The script cannot establish full storage coverage, including CLI and settings overrides or ephemeral sessions, and therefore does not certify inactivity from filesystem absence. Transcript mtime is advisory, not live ownership evidence. User-designated active or pinned work and live ownership holds remain authoritative. Audit advice grants no deletion authority.
